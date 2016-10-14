@@ -59,6 +59,7 @@ def debug_blocker(ltable, rtable, candidate_set, use_plain, output_path, output_
     # string types for document concatenation.
     filter_corres_list(ltable, rtable, l_key, r_key,
                        ltable_col_dict, rtable_col_dict, corres_list)
+    print corres_list
 
     # Get field filtered new table.
     ltable_filtered, rtable_filtered = get_filtered_table(
@@ -118,6 +119,36 @@ def debug_blocker(ltable, rtable, candidate_set, use_plain, output_path, output_
     rtable_field_token_sum = calc_table_field_token_sum(rtable_field_length_list, len(feature_list))
     print ltable_field_token_sum
     print rtable_field_token_sum
+
+    ltoken_sum = 0
+    rtoken_sum = 0
+    for i in range(len(ltable_field_token_sum)):
+        ltoken_sum += ltable_field_token_sum[i]
+    for i in range(len(rtable_field_token_sum)):
+        rtoken_sum += rtable_field_token_sum[i]
+    ltoken_ave = ltoken_sum * 1.0 / len(lrecord_token_list)
+    rtoken_ave = rtoken_sum * 1.0 / len(rrecord_token_list)
+    print ltoken_ave, rtoken_ave
+
+    ltoken_ratio = []
+    rtoken_ratio = []
+    for i in range(len(ltable_field_token_sum)):
+        ltoken_ratio.append(ltable_field_token_sum[i] * 1.0 / ltoken_sum)
+    for i in range(len(rtable_field_token_sum)):
+        rtoken_ratio.append(rtable_field_token_sum[i] * 1.0 / rtoken_sum)
+    print ltoken_ratio
+    print rtoken_ratio
+
+    # tsum = 0
+    # tlist = []
+    # for i in xrange(len(ltable_field_token_sum)):
+    #     value = (ltable_field_token_sum[i] + rtable_field_token_sum[i]) \
+    #             * 1.0 / (len(lrecord_token_list) + len(rrecord_token_list))
+    #     tsum += value
+    #     tlist.append(value)
+    # for i in xrange(len(tlist)):
+    #     tlist[i] /= tsum
+    # print tlist
 
     debugblocker_cython(lrecord_token_list, rrecord_token_list,
                         lrecord_index_list, rrecord_index_list,
@@ -457,7 +488,7 @@ def get_feature_weight(table):
     weight = []
     for col in table.columns:
         value_set = set()
-        non_empty_count = 0;
+        non_empty_count = 0
         col_values = table[col]
         for value in col_values:
             if not pd.isnull(value):
@@ -643,7 +674,104 @@ if __name__ == "__main__":
     # output_size = 200
     # debug_blocker(ltable, rtable, cand_set, output_path + folder + '/', output_size)
 
+#####################################################################################################
+##### experiments
+#####################################################################################################
+
+    output_dir = '../results/exp/new/'
+    use_plain = False
+    folder = 'Walmart-Amazon'
+    blocker_type = 'similarity-based'
+    #cand_name = 'title_overlap<3'
+    lkey = 'id'
+    rkey = 'id'
+    cand_list = ['title_token_cos<0.4', 'title_token_cos<0.5', 'title_token_jac<0.4', 'title_token_jac<0.5']
+    for cand_name in cand_list:
+        ltable = mg.read_csv_metadata('../datasets/exp_data/cleaned/' + folder + '/tableA.csv', key=lkey)
+        rtable = mg.read_csv_metadata('../datasets/exp_data/cleaned/' + folder + '/tableB.csv', key=rkey)
+        cand_set = mg.read_csv_metadata('../datasets/exp_data/candidate_sets/' + folder + '/' + blocker_type + '/' + cand_name + '.csv',
+                                       ltable=ltable, rtable=rtable, fk_ltable='ltable_' + lkey,
+                                       fk_rtable='rtable_' + rkey, key='_id')
+        output_size = 200
+        output_path = output_dir + folder + '/' + blocker_type + '/' + cand_name + '/'
+        debug_blocker(ltable, rtable, cand_set, use_plain, output_path, output_size)
+
+    # output_path = '../results/exp/'
+    # use_plain = False
+    # folder = 'Walmart-Amazon'
+    # cand_name = 'cand_title<0.3'
+    # lkey = 'id'
+    # rkey = 'id'
+    # ltable = mg.read_csv_metadata('../datasets/exp_data/cleaned/' + folder + '/tableA.csv', key=lkey)
+    # rtable = mg.read_csv_metadata('../datasets/exp_data/cleaned/' + folder + '/tableB.csv', key=rkey)
+    # cand_set = mg.read_csv_metadata('../datasets/exp_data/cleaned/' + folder + '/candidate_sets/' + cand_name + '.csv',
+    #                                ltable=ltable, rtable=rtable, fk_ltable='ltable_' + lkey,
+    #                                fk_rtable='rtable_' + rkey, key='_id')
+    # output_size = 200
+    # debug_blocker(ltable, rtable, cand_set, use_plain, output_path + folder + '/' + cand_name + '/', output_size)
+
+    # output_dir = '../results/exp/new/'
+    # use_plain = False
+    # folder = 'Amazon-GoogleProducts'
+    # blocker_type = 'similarity-based'
+    # cand_name = 'title_token_cos<0.8'
+    # lkey = 'id'
+    # rkey = 'id'
+    # ltable = mg.read_csv_metadata('../datasets/exp_data/cleaned/' + folder + '/tableA.csv', key=lkey)
+    # rtable = mg.read_csv_metadata('../datasets/exp_data/cleaned/' + folder + '/tableB.csv', key=rkey)
+    # cand_set = mg.read_csv_metadata('../datasets/exp_data/candidate_sets/' + folder + '/' + blocker_type + '/' + cand_name + '.csv',
+    #                                ltable=ltable, rtable=rtable, fk_ltable='ltable_' + lkey,
+    #                                fk_rtable='rtable_' + rkey, key='_id')
+    # output_size = 200
+    # output_path = output_dir + folder + '/' + blocker_type + '/' + cand_name + '/'
+    # debug_blocker(ltable, rtable, cand_set, use_plain, output_path, output_size)
+
+
+    # output_path = '../results/exp/'
+    # use_plain = False
+    # folder = 'DBLP-GoogleScholar'
+    # cand_name = 'cand_rule8'
+    # lkey = 'id'
+    # rkey = 'id'
+    # ltable = mg.read_csv_metadata('../datasets/exp_data/cleaned/' + folder + '/tableA.csv', key=lkey)
+    # rtable = mg.read_csv_metadata('../datasets/exp_data/cleaned/' + folder + '/tableB.csv', key=rkey)
+    # cand_set = mg.read_csv_metadata('../datasets/exp_data/cleaned/' + folder + '/candidate_sets/' + cand_name + '.csv',
+    #                                ltable=ltable, rtable=rtable, fk_ltable='ltable_' + lkey,
+    #                                fk_rtable='rtable_' + rkey, key='_id')
+    # output_size = 200
+    # debug_blocker(ltable, rtable, cand_set, use_plain, output_path + folder + '/' + cand_name + '/', output_size)
+
+
+    # output_path = '../results/exp/'
+    # use_plain = False
+    # folder = 'ACM-DBLP'
+    # cand_name = 'cand_title_token_jac<0.8_AND_venue_3gram_jac<0.5'
+    # lkey = 'id'
+    # rkey = 'id'
+    # ltable = mg.read_csv_metadata('../datasets/exp_data/cleaned/' + folder + '/tableA.csv', key=lkey)
+    # rtable = mg.read_csv_metadata('../datasets/exp_data/cleaned/' + folder + '/tableB.csv', key=rkey)
+    # cand_set = mg.read_csv_metadata('../datasets/exp_data/cleaned/' + folder + '/candidate_sets/' + cand_name + '.csv',
+    #                                ltable=ltable, rtable=rtable, fk_ltable='ltable_' + lkey,
+    #                                fk_rtable='rtable_' + rkey, key='_id')
+    # output_size = 200
+    # debug_blocker(ltable, rtable, cand_set, use_plain, output_path + folder + '/' + cand_name + '/', output_size)
+
+    # output_path = '../results/exp/'
+    # use_plain = False
+    # folder = 'Fodors-Zagats'
+    # cand_name = 'cand_name_token_jac<0.5_AND_type_token_jac<0.5'
+    # lkey = 'id'
+    # rkey = 'id'
+    # ltable = mg.read_csv_metadata('../datasets/exp_data/cleaned/' + folder + '/tableA.csv', key=lkey)
+    # rtable = mg.read_csv_metadata('../datasets/exp_data/cleaned/' + folder + '/tableB.csv', key=rkey)
+    # cand_set = mg.read_csv_metadata('../datasets/exp_data/cleaned/' + folder + '/candidate_sets/' + cand_name + '.csv',
+    #                                ltable=ltable, rtable=rtable, fk_ltable='ltable_' + lkey,
+    #                                fk_rtable='rtable_' + rkey, key='_id')
+    # output_size = 200
+    # debug_blocker(ltable, rtable, cand_set, use_plain, output_path + folder + '/' + cand_name + '/', output_size)
+#####################################################################################################
     # output_path = '../results/new_allconfig_reuse_openmp/'
+    # output_path = '../results/temp/'
     # folder = 'M_ganz'
     # use_plain = False
     # lkey = 'id'
@@ -657,7 +785,8 @@ if __name__ == "__main__":
     # debug_blocker(ltable, rtable, cand_set, use_plain, output_path + folder + '/', output_size)
 
     # output_path = '../results/new_allconfig_noreuse_openmp/'
-    # use_plain = True
+    # output_path = '../results/temp/'
+    # use_plain = False
     # folder = 'L_bsarkar'
     # lkey = 'Id'
     # rkey = 'Id'
@@ -669,27 +798,31 @@ if __name__ == "__main__":
     # output_size = 200
     # debug_blocker(ltable, rtable, cand_set, use_plain, output_path + folder + '/', output_size)
 
-    output_path = '../results/new_allconfig_noreuse_openmp/'
-    use_plain = True
-    folder = 'TREC'
-    lkey = 'id'
-    rkey = 'id'
-    ltable = mg.read_csv_metadata('../datasets/' + folder + '/ohsumed_87.csv', key=lkey)
-    rtable = mg.read_csv_metadata('../datasets/' + folder + '/ohsumed_87.csv', key=rkey)
-    cand_set = mg.read_csv_metadata('../datasets/' + folder + '/tableC.csv',
-                                   ltable=ltable, rtable=rtable, fk_ltable='ltable_' + lkey,
-                                   fk_rtable='rtable_' + rkey, key='_id')
-    output_size = 200
-    debug_blocker(ltable, rtable, cand_set, use_plain, output_path + folder + '/', output_size)
-
+    # output_path = '../results/new_allconfig_noreuse_openmp/'
+    # use_plain = True
+    # folder = 'TREC'
+    # lkey = 'id'
+    # rkey = 'id'
+    # ltable = mg.read_csv_metadata('../datasets/' + folder + '/ohsumed_87.csv', key=lkey)
+    # rtable = mg.read_csv_metadata('../datasets/' + folder + '/ohsumed_87.csv', key=rkey)
+    # cand_set = mg.read_csv_metadata('../datasets/' + folder + '/tableC.csv',
+    #                                ltable=ltable, rtable=rtable, fk_ltable='ltable_' + lkey,
+    #                                fk_rtable='rtable_' + rkey, key='_id')
+    # output_size = 200
+    # debug_blocker(ltable, rtable, cand_set, use_plain, output_path + folder + '/', output_size)
 
     # folders = ['anime', 'beer', 'books', 'citations', 'cosmetics', 'ebooks', 'electronics']
     # key_pairs = [('ID', 'ID'), ('Label', 'Label'), ('ID', 'ID'), ('ID', 'ID'),
     #              ('Product_id', 'ID'), ('record_id', 'record_id'), ('ID', 'ID')]
+    # # folders = ['ebooks', 'electronics']
+    # # key_pairs = [('record_id', 'record_id'), ('ID', 'ID')]
+    # # folders = ['electronics']
+    # # key_pairs = [('ID', 'ID')]
     # use_plain = False
     # run_times = []
     # for i in range(len(folders)):
-    #     FOLDER = '../results/new_allconfig_reuse_openmp/' + folders[i] + '/'
+    #     # FOLDER = '../results/new_allconfig_reuse_openmp/' + folders[i] + '/'
+    #     FOLDER = '../results/temp/' + folders[i] + '/'
     #
     #     #folder = 'ebooks'
     #     folder = folders[i]

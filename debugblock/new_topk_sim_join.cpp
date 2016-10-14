@@ -713,6 +713,7 @@ static char __pyx_k_range[] = "range";
 static char __pyx_k_xrange[] = "xrange";
 static char __pyx_k_in_new_topk[] = "in new topk\n";
 static char __pyx_k_ld_16f_d_d_16f_d_d_d[] = "%ld (%.16f %d %d) (%.16f %d %d %d)\n";
+static char __pyx_k_number_of_reused_pairs_d[] = "number of reused pairs: %d\n";
 static char __pyx_k_number_of_compared_pairs_ld[] = "number of compared pairs: %ld\n";
 static PyObject *__pyx_n_s_main;
 static PyObject *__pyx_n_s_range;
@@ -3814,7 +3815,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
   __pyx_v_field_pair = 0;
 
-  /* "debugblock/new_topk_sim_join.pyx":422
+  /* "debugblock/new_topk_sim_join.pyx":427
  *     # printf("checkpoint2\n")
  * 
  *     while prefix_events.size() > 0:             # <<<<<<<<<<<<<<
@@ -3825,7 +3826,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
     __pyx_t_2 = ((__pyx_v_prefix_events.size() > 0) != 0);
     if (!__pyx_t_2) break;
 
-    /* "debugblock/new_topk_sim_join.pyx":423
+    /* "debugblock/new_topk_sim_join.pyx":428
  * 
  *     while prefix_events.size() > 0:
  *         if topk_heap.size() == output_size and topk_heap.top().sim >= prefix_events.top().threshold:             # <<<<<<<<<<<<<<
@@ -3843,7 +3844,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
     __pyx_L6_bool_binop_done:;
     if (__pyx_t_2) {
 
-      /* "debugblock/new_topk_sim_join.pyx":424
+      /* "debugblock/new_topk_sim_join.pyx":429
  *     while prefix_events.size() > 0:
  *         if topk_heap.size() == output_size and topk_heap.top().sim >= prefix_events.top().threshold:
  *             break             # <<<<<<<<<<<<<<
@@ -3852,7 +3853,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
       goto __pyx_L4_break;
 
-      /* "debugblock/new_topk_sim_join.pyx":423
+      /* "debugblock/new_topk_sim_join.pyx":428
  * 
  *     while prefix_events.size() > 0:
  *         if topk_heap.size() == output_size and topk_heap.top().sim >= prefix_events.top().threshold:             # <<<<<<<<<<<<<<
@@ -3861,7 +3862,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
     }
 
-    /* "debugblock/new_topk_sim_join.pyx":425
+    /* "debugblock/new_topk_sim_join.pyx":430
  *         if topk_heap.size() == output_size and topk_heap.top().sim >= prefix_events.top().threshold:
  *             break
  *         event = prefix_events.top()             # <<<<<<<<<<<<<<
@@ -3870,7 +3871,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
     __pyx_v_event = __pyx_v_prefix_events.top();
 
-    /* "debugblock/new_topk_sim_join.pyx":426
+    /* "debugblock/new_topk_sim_join.pyx":431
  *             break
  *         event = prefix_events.top()
  *         prefix_events.pop()             # <<<<<<<<<<<<<<
@@ -3879,7 +3880,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
     __pyx_v_prefix_events.pop();
 
-    /* "debugblock/new_topk_sim_join.pyx":427
+    /* "debugblock/new_topk_sim_join.pyx":432
  *         event = prefix_events.top()
  *         prefix_events.pop()
  *         table_indicator = event.table_indicator             # <<<<<<<<<<<<<<
@@ -3889,7 +3890,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
     __pyx_t_4 = __pyx_v_event.table_indicator;
     __pyx_v_table_indicator = __pyx_t_4;
 
-    /* "debugblock/new_topk_sim_join.pyx":429
+    /* "debugblock/new_topk_sim_join.pyx":434
  *         table_indicator = event.table_indicator
  *         # printf("%.6f %d %d %d\n", event.threshold, event.table_indicator, event.rec_idx, event.tok_idx)
  *         if table_indicator == 0:             # <<<<<<<<<<<<<<
@@ -3899,7 +3900,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
     __pyx_t_2 = ((__pyx_v_table_indicator == 0) != 0);
     if (__pyx_t_2) {
 
-      /* "debugblock/new_topk_sim_join.pyx":430
+      /* "debugblock/new_topk_sim_join.pyx":435
  *         # printf("%.6f %d %d %d\n", event.threshold, event.table_indicator, event.rec_idx, event.tok_idx)
  *         if table_indicator == 0:
  *             l_rec_idx = event.rec_idx             # <<<<<<<<<<<<<<
@@ -3909,7 +3910,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
       __pyx_t_4 = __pyx_v_event.rec_idx;
       __pyx_v_l_rec_idx = __pyx_t_4;
 
-      /* "debugblock/new_topk_sim_join.pyx":431
+      /* "debugblock/new_topk_sim_join.pyx":436
  *         if table_indicator == 0:
  *             l_rec_idx = event.rec_idx
  *             l_tok_idx = event.tok_idx             # <<<<<<<<<<<<<<
@@ -3919,7 +3920,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
       __pyx_t_4 = __pyx_v_event.tok_idx;
       __pyx_v_l_tok_idx = __pyx_t_4;
 
-      /* "debugblock/new_topk_sim_join.pyx":432
+      /* "debugblock/new_topk_sim_join.pyx":437
  *             l_rec_idx = event.rec_idx
  *             l_tok_idx = event.tok_idx
  *             token = ltoken_vector[l_rec_idx][l_tok_idx]             # <<<<<<<<<<<<<<
@@ -3928,7 +3929,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
       __pyx_v_token = ((__pyx_v_ltoken_vector[__pyx_v_l_rec_idx])[__pyx_v_l_tok_idx]);
 
-      /* "debugblock/new_topk_sim_join.pyx":433
+      /* "debugblock/new_topk_sim_join.pyx":438
  *             l_tok_idx = event.tok_idx
  *             token = ltoken_vector[l_rec_idx][l_tok_idx]
  *             l_len = ltoken_vector[l_rec_idx].size()             # <<<<<<<<<<<<<<
@@ -3937,7 +3938,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
       __pyx_v_l_len = (__pyx_v_ltoken_vector[__pyx_v_l_rec_idx]).size();
 
-      /* "debugblock/new_topk_sim_join.pyx":434
+      /* "debugblock/new_topk_sim_join.pyx":439
  *             token = ltoken_vector[l_rec_idx][l_tok_idx]
  *             l_len = ltoken_vector[l_rec_idx].size()
  *             if r_inverted_index.count(token):             # <<<<<<<<<<<<<<
@@ -3947,7 +3948,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
       __pyx_t_2 = (__pyx_v_r_inverted_index.count(__pyx_v_token) != 0);
       if (__pyx_t_2) {
 
-        /* "debugblock/new_topk_sim_join.pyx":435
+        /* "debugblock/new_topk_sim_join.pyx":440
  *             l_len = ltoken_vector[l_rec_idx].size()
  *             if r_inverted_index.count(token):
  *                 r_records = r_inverted_index[token]             # <<<<<<<<<<<<<<
@@ -3956,7 +3957,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
         __pyx_v_r_records = (__pyx_v_r_inverted_index[__pyx_v_token]);
 
-        /* "debugblock/new_topk_sim_join.pyx":436
+        /* "debugblock/new_topk_sim_join.pyx":441
  *             if r_inverted_index.count(token):
  *                 r_records = r_inverted_index[token]
  *                 for r_rec_tuple in r_records:             # <<<<<<<<<<<<<<
@@ -3970,7 +3971,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
           ++__pyx_t_5;
           __pyx_v_r_rec_tuple = __pyx_t_6;
 
-          /* "debugblock/new_topk_sim_join.pyx":437
+          /* "debugblock/new_topk_sim_join.pyx":442
  *                 r_records = r_inverted_index[token]
  *                 for r_rec_tuple in r_records:
  *                     r_rec_idx = r_rec_tuple.first             # <<<<<<<<<<<<<<
@@ -3980,7 +3981,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
           __pyx_t_4 = __pyx_v_r_rec_tuple.first;
           __pyx_v_r_rec_idx = __pyx_t_4;
 
-          /* "debugblock/new_topk_sim_join.pyx":438
+          /* "debugblock/new_topk_sim_join.pyx":443
  *                 for r_rec_tuple in r_records:
  *                     r_rec_idx = r_rec_tuple.first
  *                     r_tok_idx = r_rec_tuple.second             # <<<<<<<<<<<<<<
@@ -3990,7 +3991,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
           __pyx_t_4 = __pyx_v_r_rec_tuple.second;
           __pyx_v_r_tok_idx = __pyx_t_4;
 
-          /* "debugblock/new_topk_sim_join.pyx":439
+          /* "debugblock/new_topk_sim_join.pyx":444
  *                     r_rec_idx = r_rec_tuple.first
  *                     r_tok_idx = r_rec_tuple.second
  *                     r_len = rtoken_vector[r_rec_idx].size()             # <<<<<<<<<<<<<<
@@ -3999,7 +4000,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
           __pyx_v_r_len = (__pyx_v_rtoken_vector[__pyx_v_r_rec_idx]).size();
 
-          /* "debugblock/new_topk_sim_join.pyx":441
+          /* "debugblock/new_topk_sim_join.pyx":446
  *                     r_len = rtoken_vector[r_rec_idx].size()
  * 
  *                     if cand_set.count(l_rec_idx) and cand_set[l_rec_idx].count(r_rec_idx):             # <<<<<<<<<<<<<<
@@ -4017,7 +4018,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
           __pyx_L13_bool_binop_done:;
           if (__pyx_t_2) {
 
-            /* "debugblock/new_topk_sim_join.pyx":442
+            /* "debugblock/new_topk_sim_join.pyx":447
  * 
  *                     if cand_set.count(l_rec_idx) and cand_set[l_rec_idx].count(r_rec_idx):
  *                         continue             # <<<<<<<<<<<<<<
@@ -4026,7 +4027,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
             goto __pyx_L10_continue;
 
-            /* "debugblock/new_topk_sim_join.pyx":441
+            /* "debugblock/new_topk_sim_join.pyx":446
  *                     r_len = rtoken_vector[r_rec_idx].size()
  * 
  *                     if cand_set.count(l_rec_idx) and cand_set[l_rec_idx].count(r_rec_idx):             # <<<<<<<<<<<<<<
@@ -4035,7 +4036,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
           }
 
-          /* "debugblock/new_topk_sim_join.pyx":444
+          /* "debugblock/new_topk_sim_join.pyx":449
  *                         continue
  * 
  *                     if compared_set.count(l_rec_idx) and compared_set[l_rec_idx].count(r_rec_idx):             # <<<<<<<<<<<<<<
@@ -4053,7 +4054,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
           __pyx_L16_bool_binop_done:;
           if (__pyx_t_2) {
 
-            /* "debugblock/new_topk_sim_join.pyx":445
+            /* "debugblock/new_topk_sim_join.pyx":450
  * 
  *                     if compared_set.count(l_rec_idx) and compared_set[l_rec_idx].count(r_rec_idx):
  *                         continue             # <<<<<<<<<<<<<<
@@ -4062,7 +4063,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
             goto __pyx_L10_continue;
 
-            /* "debugblock/new_topk_sim_join.pyx":444
+            /* "debugblock/new_topk_sim_join.pyx":449
  *                         continue
  * 
  *                     if compared_set.count(l_rec_idx) and compared_set[l_rec_idx].count(r_rec_idx):             # <<<<<<<<<<<<<<
@@ -4071,12 +4072,12 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
           }
 
-          /* "debugblock/new_topk_sim_join.pyx":447
+          /* "debugblock/new_topk_sim_join.pyx":452
  *                         continue
  * 
  *                     if l_tok_idx + 1 == l_len or r_tok_idx + 1 == r_len:             # <<<<<<<<<<<<<<
+ *                         # cmps[0] += 1
  *                         # printf("left1\n")
- *                         overlap = 1
  */
           __pyx_t_3 = (((__pyx_v_l_tok_idx + 1) == __pyx_v_l_len) != 0);
           if (!__pyx_t_3) {
@@ -4089,8 +4090,8 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
           __pyx_L19_bool_binop_done:;
           if (__pyx_t_2) {
 
-            /* "debugblock/new_topk_sim_join.pyx":449
- *                     if l_tok_idx + 1 == l_len or r_tok_idx + 1 == r_len:
+            /* "debugblock/new_topk_sim_join.pyx":455
+ *                         # cmps[0] += 1
  *                         # printf("left1\n")
  *                         overlap = 1             # <<<<<<<<<<<<<<
  *                         if active_dict.count(l_rec_idx) and active_dict[l_rec_idx].count(r_rec_idx):
@@ -4098,7 +4099,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
             __pyx_v_overlap = 1;
 
-            /* "debugblock/new_topk_sim_join.pyx":450
+            /* "debugblock/new_topk_sim_join.pyx":456
  *                         # printf("left1\n")
  *                         overlap = 1
  *                         if active_dict.count(l_rec_idx) and active_dict[l_rec_idx].count(r_rec_idx):             # <<<<<<<<<<<<<<
@@ -4116,7 +4117,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
             __pyx_L22_bool_binop_done:;
             if (__pyx_t_2) {
 
-              /* "debugblock/new_topk_sim_join.pyx":451
+              /* "debugblock/new_topk_sim_join.pyx":457
  *                         overlap = 1
  *                         if active_dict.count(l_rec_idx) and active_dict[l_rec_idx].count(r_rec_idx):
  *                             bit_results = active_dict[l_rec_idx][r_rec_idx]             # <<<<<<<<<<<<<<
@@ -4125,7 +4126,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
               __pyx_v_bit_results = ((__pyx_v_active_dict[__pyx_v_l_rec_idx])[__pyx_v_r_rec_idx]);
 
-              /* "debugblock/new_topk_sim_join.pyx":452
+              /* "debugblock/new_topk_sim_join.pyx":458
  *                         if active_dict.count(l_rec_idx) and active_dict[l_rec_idx].count(r_rec_idx):
  *                             bit_results = active_dict[l_rec_idx][r_rec_idx]
  *                             active_dict[l_rec_idx].erase(r_rec_idx)             # <<<<<<<<<<<<<<
@@ -4134,7 +4135,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
               (__pyx_v_active_dict[__pyx_v_l_rec_idx]).erase(__pyx_v_r_rec_idx);
 
-              /* "debugblock/new_topk_sim_join.pyx":453
+              /* "debugblock/new_topk_sim_join.pyx":459
  *                             bit_results = active_dict[l_rec_idx][r_rec_idx]
  *                             active_dict[l_rec_idx].erase(r_rec_idx)
  *                             overlap += bit_results & COUNT             # <<<<<<<<<<<<<<
@@ -4143,7 +4144,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
               __pyx_v_overlap = (__pyx_v_overlap + (__pyx_v_bit_results & __pyx_v_COUNT));
 
-              /* "debugblock/new_topk_sim_join.pyx":450
+              /* "debugblock/new_topk_sim_join.pyx":456
  *                         # printf("left1\n")
  *                         overlap = 1
  *                         if active_dict.count(l_rec_idx) and active_dict[l_rec_idx].count(r_rec_idx):             # <<<<<<<<<<<<<<
@@ -4152,7 +4153,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
             }
 
-            /* "debugblock/new_topk_sim_join.pyx":455
+            /* "debugblock/new_topk_sim_join.pyx":461
  *                             overlap += bit_results & COUNT
  * 
  *                         sim = overlap * 1.0 / (l_len + r_len - overlap)             # <<<<<<<<<<<<<<
@@ -4169,11 +4170,11 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
               #ifdef WITH_THREAD
               PyGILState_Release(__pyx_gilstate_save);
               #endif
-              {__pyx_filename = __pyx_f[0]; __pyx_lineno = 455; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+              {__pyx_filename = __pyx_f[0]; __pyx_lineno = 461; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
             }
             __pyx_v_sim = (__pyx_t_7 / __pyx_t_4);
 
-            /* "debugblock/new_topk_sim_join.pyx":456
+            /* "debugblock/new_topk_sim_join.pyx":462
  * 
  *                         sim = overlap * 1.0 / (l_len + r_len - overlap)
  *                         if topk_heap.size() == output_size:             # <<<<<<<<<<<<<<
@@ -4183,7 +4184,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
             __pyx_t_2 = ((__pyx_v_topk_heap.size() == __pyx_v_output_size) != 0);
             if (__pyx_t_2) {
 
-              /* "debugblock/new_topk_sim_join.pyx":457
+              /* "debugblock/new_topk_sim_join.pyx":463
  *                         sim = overlap * 1.0 / (l_len + r_len - overlap)
  *                         if topk_heap.size() == output_size:
  *                             if topk_heap.top().sim < sim:             # <<<<<<<<<<<<<<
@@ -4193,7 +4194,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
               __pyx_t_2 = ((__pyx_v_topk_heap.top().sim < __pyx_v_sim) != 0);
               if (__pyx_t_2) {
 
-                /* "debugblock/new_topk_sim_join.pyx":458
+                /* "debugblock/new_topk_sim_join.pyx":464
  *                         if topk_heap.size() == output_size:
  *                             if topk_heap.top().sim < sim:
  *                                 topk_heap.pop()             # <<<<<<<<<<<<<<
@@ -4202,7 +4203,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
                 __pyx_v_topk_heap.pop();
 
-                /* "debugblock/new_topk_sim_join.pyx":459
+                /* "debugblock/new_topk_sim_join.pyx":465
  *                             if topk_heap.top().sim < sim:
  *                                 topk_heap.pop()
  *                                 topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))             # <<<<<<<<<<<<<<
@@ -4211,7 +4212,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
                 __pyx_v_topk_heap.push(TopPair(__pyx_v_sim, __pyx_v_l_rec_idx, __pyx_v_r_rec_idx));
 
-                /* "debugblock/new_topk_sim_join.pyx":457
+                /* "debugblock/new_topk_sim_join.pyx":463
  *                         sim = overlap * 1.0 / (l_len + r_len - overlap)
  *                         if topk_heap.size() == output_size:
  *                             if topk_heap.top().sim < sim:             # <<<<<<<<<<<<<<
@@ -4220,7 +4221,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
               }
 
-              /* "debugblock/new_topk_sim_join.pyx":456
+              /* "debugblock/new_topk_sim_join.pyx":462
  * 
  *                         sim = overlap * 1.0 / (l_len + r_len - overlap)
  *                         if topk_heap.size() == output_size:             # <<<<<<<<<<<<<<
@@ -4230,7 +4231,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
               goto __pyx_L24;
             }
 
-            /* "debugblock/new_topk_sim_join.pyx":461
+            /* "debugblock/new_topk_sim_join.pyx":467
  *                                 topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))
  *                         else:
  *                             topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))             # <<<<<<<<<<<<<<
@@ -4242,333 +4243,26 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
             }
             __pyx_L24:;
 
-            /* "debugblock/new_topk_sim_join.pyx":463
+            /* "debugblock/new_topk_sim_join.pyx":469
  *                             topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))
  * 
  *                         total_compared_pairs += 1             # <<<<<<<<<<<<<<
- *                     elif ltoken_vector[l_rec_idx][l_tok_idx + 1] == rtoken_vector[r_rec_idx][r_tok_idx + 1]:
- *                         # printf("left2\n")
+ *                     # elif ltoken_vector[l_rec_idx][l_tok_idx + 1] == rtoken_vector[r_rec_idx][r_tok_idx + 1]:
+ *                     #     cmps[1] += 1
  */
             __pyx_v_total_compared_pairs = (__pyx_v_total_compared_pairs + 1);
 
-            /* "debugblock/new_topk_sim_join.pyx":447
+            /* "debugblock/new_topk_sim_join.pyx":452
  *                         continue
  * 
  *                     if l_tok_idx + 1 == l_len or r_tok_idx + 1 == r_len:             # <<<<<<<<<<<<<<
+ *                         # cmps[0] += 1
  *                         # printf("left1\n")
- *                         overlap = 1
  */
             goto __pyx_L18;
           }
 
-          /* "debugblock/new_topk_sim_join.pyx":464
- * 
- *                         total_compared_pairs += 1
- *                     elif ltoken_vector[l_rec_idx][l_tok_idx + 1] == rtoken_vector[r_rec_idx][r_tok_idx + 1]:             # <<<<<<<<<<<<<<
- *                         # printf("left2\n")
- *                         reuse_info = ReuseInfo(0)
- */
-          __pyx_t_2 = ((((__pyx_v_ltoken_vector[__pyx_v_l_rec_idx])[(__pyx_v_l_tok_idx + 1)]) == ((__pyx_v_rtoken_vector[__pyx_v_r_rec_idx])[(__pyx_v_r_tok_idx + 1)])) != 0);
-          if (__pyx_t_2) {
-
-            /* "debugblock/new_topk_sim_join.pyx":466
- *                     elif ltoken_vector[l_rec_idx][l_tok_idx + 1] == rtoken_vector[r_rec_idx][r_tok_idx + 1]:
- *                         # printf("left2\n")
- *                         reuse_info = ReuseInfo(0)             # <<<<<<<<<<<<<<
- *                         # new_reuse_get_overlap(ltoken_vector[l_rec_idx], rtoken_vector[r_rec_idx],
- *                         #                       lindex_vector[l_rec_idx], rindex_vector[r_rec_idx],
- */
-            __pyx_v_reuse_info = ReuseInfo(0);
-
-            /* "debugblock/new_topk_sim_join.pyx":483
- *                         #             reuse_info.map[p] = 1
- * 
- *                         new_reuse_get_overlap(ltoken_vector[l_rec_idx], rtoken_vector[r_rec_idx],             # <<<<<<<<<<<<<<
- *                                               lindex_vector[l_rec_idx], rindex_vector[r_rec_idx],
- *                                               0, 0, reuse_info, offset_of_field_num)
- */
-            __pyx_f_10debugblock_17new_topk_sim_join_new_reuse_get_overlap((__pyx_v_ltoken_vector[__pyx_v_l_rec_idx]), (__pyx_v_rtoken_vector[__pyx_v_r_rec_idx]), (__pyx_v_lindex_vector[__pyx_v_l_rec_idx]), (__pyx_v_rindex_vector[__pyx_v_r_rec_idx]), 0, 0, __pyx_v_reuse_info, __pyx_v_offset_of_field_num);
-
-            /* "debugblock/new_topk_sim_join.pyx":487
- *                                               0, 0, reuse_info, offset_of_field_num)
- * 
- *                         if active_dict.count(l_rec_idx) and active_dict[l_rec_idx].count(r_rec_idx):             # <<<<<<<<<<<<<<
- *                             active_dict[l_rec_idx].erase(r_rec_idx)
- * 
- */
-            __pyx_t_3 = (__pyx_v_active_dict.count(__pyx_v_l_rec_idx) != 0);
-            if (__pyx_t_3) {
-            } else {
-              __pyx_t_2 = __pyx_t_3;
-              goto __pyx_L27_bool_binop_done;
-            }
-            __pyx_t_3 = ((__pyx_v_active_dict[__pyx_v_l_rec_idx]).count(__pyx_v_r_rec_idx) != 0);
-            __pyx_t_2 = __pyx_t_3;
-            __pyx_L27_bool_binop_done:;
-            if (__pyx_t_2) {
-
-              /* "debugblock/new_topk_sim_join.pyx":488
- * 
- *                         if active_dict.count(l_rec_idx) and active_dict[l_rec_idx].count(r_rec_idx):
- *                             active_dict[l_rec_idx].erase(r_rec_idx)             # <<<<<<<<<<<<<<
- * 
- *                         overlap = reuse_info.overlap
- */
-              (__pyx_v_active_dict[__pyx_v_l_rec_idx]).erase(__pyx_v_r_rec_idx);
-
-              /* "debugblock/new_topk_sim_join.pyx":487
- *                                               0, 0, reuse_info, offset_of_field_num)
- * 
- *                         if active_dict.count(l_rec_idx) and active_dict[l_rec_idx].count(r_rec_idx):             # <<<<<<<<<<<<<<
- *                             active_dict[l_rec_idx].erase(r_rec_idx)
- * 
- */
-            }
-
-            /* "debugblock/new_topk_sim_join.pyx":490
- *                             active_dict[l_rec_idx].erase(r_rec_idx)
- * 
- *                         overlap = reuse_info.overlap             # <<<<<<<<<<<<<<
- *                         sim = overlap * 1.0 / (l_len + r_len - overlap)
- *                         if topk_heap.size() == output_size:
- */
-            __pyx_t_4 = __pyx_v_reuse_info.overlap;
-            __pyx_v_overlap = __pyx_t_4;
-
-            /* "debugblock/new_topk_sim_join.pyx":491
- * 
- *                         overlap = reuse_info.overlap
- *                         sim = overlap * 1.0 / (l_len + r_len - overlap)             # <<<<<<<<<<<<<<
- *                         if topk_heap.size() == output_size:
- *                             if topk_heap.top().sim < sim:
- */
-            __pyx_t_7 = (__pyx_v_overlap * 1.0);
-            __pyx_t_4 = ((__pyx_v_l_len + __pyx_v_r_len) - __pyx_v_overlap);
-            if (unlikely(__pyx_t_4 == 0)) {
-              #ifdef WITH_THREAD
-              PyGILState_STATE __pyx_gilstate_save = PyGILState_Ensure();
-              #endif
-              PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-              #ifdef WITH_THREAD
-              PyGILState_Release(__pyx_gilstate_save);
-              #endif
-              {__pyx_filename = __pyx_f[0]; __pyx_lineno = 491; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-            }
-            __pyx_v_sim = (__pyx_t_7 / __pyx_t_4);
-
-            /* "debugblock/new_topk_sim_join.pyx":492
- *                         overlap = reuse_info.overlap
- *                         sim = overlap * 1.0 / (l_len + r_len - overlap)
- *                         if topk_heap.size() == output_size:             # <<<<<<<<<<<<<<
- *                             if topk_heap.top().sim < sim:
- *                                 topk_heap.pop()
- */
-            __pyx_t_2 = ((__pyx_v_topk_heap.size() == __pyx_v_output_size) != 0);
-            if (__pyx_t_2) {
-
-              /* "debugblock/new_topk_sim_join.pyx":493
- *                         sim = overlap * 1.0 / (l_len + r_len - overlap)
- *                         if topk_heap.size() == output_size:
- *                             if topk_heap.top().sim < sim:             # <<<<<<<<<<<<<<
- *                                 topk_heap.pop()
- *                                 topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))
- */
-              __pyx_t_2 = ((__pyx_v_topk_heap.top().sim < __pyx_v_sim) != 0);
-              if (__pyx_t_2) {
-
-                /* "debugblock/new_topk_sim_join.pyx":494
- *                         if topk_heap.size() == output_size:
- *                             if topk_heap.top().sim < sim:
- *                                 topk_heap.pop()             # <<<<<<<<<<<<<<
- *                                 topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))
- *                         else:
- */
-                __pyx_v_topk_heap.pop();
-
-                /* "debugblock/new_topk_sim_join.pyx":495
- *                             if topk_heap.top().sim < sim:
- *                                 topk_heap.pop()
- *                                 topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))             # <<<<<<<<<<<<<<
- *                         else:
- *                             topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))
- */
-                __pyx_v_topk_heap.push(TopPair(__pyx_v_sim, __pyx_v_l_rec_idx, __pyx_v_r_rec_idx));
-
-                /* "debugblock/new_topk_sim_join.pyx":493
- *                         sim = overlap * 1.0 / (l_len + r_len - overlap)
- *                         if topk_heap.size() == output_size:
- *                             if topk_heap.top().sim < sim:             # <<<<<<<<<<<<<<
- *                                 topk_heap.pop()
- *                                 topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))
- */
-              }
-
-              /* "debugblock/new_topk_sim_join.pyx":492
- *                         overlap = reuse_info.overlap
- *                         sim = overlap * 1.0 / (l_len + r_len - overlap)
- *                         if topk_heap.size() == output_size:             # <<<<<<<<<<<<<<
- *                             if topk_heap.top().sim < sim:
- *                                 topk_heap.pop()
- */
-              goto __pyx_L29;
-            }
-
-            /* "debugblock/new_topk_sim_join.pyx":497
- *                                 topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))
- *                         else:
- *                             topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))             # <<<<<<<<<<<<<<
- * 
- *                         if compared_set.count(l_rec_idx):
- */
-            /*else*/ {
-              __pyx_v_topk_heap.push(TopPair(__pyx_v_sim, __pyx_v_l_rec_idx, __pyx_v_r_rec_idx));
-            }
-            __pyx_L29:;
-
-            /* "debugblock/new_topk_sim_join.pyx":499
- *                             topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))
- * 
- *                         if compared_set.count(l_rec_idx):             # <<<<<<<<<<<<<<
- *                             compared_set[l_rec_idx].insert(r_rec_idx)
- *                         else:
- */
-            __pyx_t_2 = (__pyx_v_compared_set.count(__pyx_v_l_rec_idx) != 0);
-            if (__pyx_t_2) {
-
-              /* "debugblock/new_topk_sim_join.pyx":500
- * 
- *                         if compared_set.count(l_rec_idx):
- *                             compared_set[l_rec_idx].insert(r_rec_idx)             # <<<<<<<<<<<<<<
- *                         else:
- *                             compared_set[l_rec_idx] = uset[int]()
- */
-              (__pyx_v_compared_set[__pyx_v_l_rec_idx]).insert(__pyx_v_r_rec_idx);
-
-              /* "debugblock/new_topk_sim_join.pyx":499
- *                             topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))
- * 
- *                         if compared_set.count(l_rec_idx):             # <<<<<<<<<<<<<<
- *                             compared_set[l_rec_idx].insert(r_rec_idx)
- *                         else:
- */
-              goto __pyx_L31;
-            }
-
-            /* "debugblock/new_topk_sim_join.pyx":502
- *                             compared_set[l_rec_idx].insert(r_rec_idx)
- *                         else:
- *                             compared_set[l_rec_idx] = uset[int]()             # <<<<<<<<<<<<<<
- *                             compared_set[l_rec_idx].insert(r_rec_idx)
- * 
- */
-            /*else*/ {
-              try {
-                __pyx_t_8 = std::unordered_set<int> ();
-              } catch(...) {
-                #ifdef WITH_THREAD
-                PyGILState_STATE __pyx_gilstate_save = PyGILState_Ensure();
-                #endif
-                __Pyx_CppExn2PyErr();
-                #ifdef WITH_THREAD
-                PyGILState_Release(__pyx_gilstate_save);
-                #endif
-                {__pyx_filename = __pyx_f[0]; __pyx_lineno = 502; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-              }
-              (__pyx_v_compared_set[__pyx_v_l_rec_idx]) = __pyx_t_8;
-
-              /* "debugblock/new_topk_sim_join.pyx":503
- *                         else:
- *                             compared_set[l_rec_idx] = uset[int]()
- *                             compared_set[l_rec_idx].insert(r_rec_idx)             # <<<<<<<<<<<<<<
- * 
- *                         if reuse_set.count(l_rec_idx):
- */
-              (__pyx_v_compared_set[__pyx_v_l_rec_idx]).insert(__pyx_v_r_rec_idx);
-            }
-            __pyx_L31:;
-
-            /* "debugblock/new_topk_sim_join.pyx":505
- *                             compared_set[l_rec_idx].insert(r_rec_idx)
- * 
- *                         if reuse_set.count(l_rec_idx):             # <<<<<<<<<<<<<<
- *                             reuse_set[l_rec_idx][r_rec_idx] = reuse_info
- *                         else:
- */
-            __pyx_t_2 = (__pyx_v_reuse_set.count(__pyx_v_l_rec_idx) != 0);
-            if (__pyx_t_2) {
-
-              /* "debugblock/new_topk_sim_join.pyx":506
- * 
- *                         if reuse_set.count(l_rec_idx):
- *                             reuse_set[l_rec_idx][r_rec_idx] = reuse_info             # <<<<<<<<<<<<<<
- *                         else:
- *                             reuse_set[l_rec_idx] = umap[int, ReuseInfo]()
- */
-              ((__pyx_v_reuse_set[__pyx_v_l_rec_idx])[__pyx_v_r_rec_idx]) = __pyx_v_reuse_info;
-
-              /* "debugblock/new_topk_sim_join.pyx":505
- *                             compared_set[l_rec_idx].insert(r_rec_idx)
- * 
- *                         if reuse_set.count(l_rec_idx):             # <<<<<<<<<<<<<<
- *                             reuse_set[l_rec_idx][r_rec_idx] = reuse_info
- *                         else:
- */
-              goto __pyx_L32;
-            }
-
-            /* "debugblock/new_topk_sim_join.pyx":508
- *                             reuse_set[l_rec_idx][r_rec_idx] = reuse_info
- *                         else:
- *                             reuse_set[l_rec_idx] = umap[int, ReuseInfo]()             # <<<<<<<<<<<<<<
- *                             reuse_set[l_rec_idx][r_rec_idx] = reuse_info
- * 
- */
-            /*else*/ {
-              try {
-                __pyx_t_9 = std::unordered_map<int,ReuseInfo> ();
-              } catch(...) {
-                #ifdef WITH_THREAD
-                PyGILState_STATE __pyx_gilstate_save = PyGILState_Ensure();
-                #endif
-                __Pyx_CppExn2PyErr();
-                #ifdef WITH_THREAD
-                PyGILState_Release(__pyx_gilstate_save);
-                #endif
-                {__pyx_filename = __pyx_f[0]; __pyx_lineno = 508; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-              }
-              (__pyx_v_reuse_set[__pyx_v_l_rec_idx]) = __pyx_t_9;
-
-              /* "debugblock/new_topk_sim_join.pyx":509
- *                         else:
- *                             reuse_set[l_rec_idx] = umap[int, ReuseInfo]()
- *                             reuse_set[l_rec_idx][r_rec_idx] = reuse_info             # <<<<<<<<<<<<<<
- * 
- *                         total_compared_pairs += 1
- */
-              ((__pyx_v_reuse_set[__pyx_v_l_rec_idx])[__pyx_v_r_rec_idx]) = __pyx_v_reuse_info;
-            }
-            __pyx_L32:;
-
-            /* "debugblock/new_topk_sim_join.pyx":511
- *                             reuse_set[l_rec_idx][r_rec_idx] = reuse_info
- * 
- *                         total_compared_pairs += 1             # <<<<<<<<<<<<<<
- *                     else:
- *                         # printf("left3\n")
- */
-            __pyx_v_total_compared_pairs = (__pyx_v_total_compared_pairs + 1);
-
-            /* "debugblock/new_topk_sim_join.pyx":464
- * 
- *                         total_compared_pairs += 1
- *                     elif ltoken_vector[l_rec_idx][l_tok_idx + 1] == rtoken_vector[r_rec_idx][r_tok_idx + 1]:             # <<<<<<<<<<<<<<
- *                         # printf("left2\n")
- *                         reuse_info = ReuseInfo(0)
- */
-            goto __pyx_L18;
-          }
-
-          /* "debugblock/new_topk_sim_join.pyx":514
+          /* "debugblock/new_topk_sim_join.pyx":521
  *                     else:
  *                         # printf("left3\n")
  *                         if active_dict.count(l_rec_idx):             # <<<<<<<<<<<<<<
@@ -4579,7 +4273,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
             __pyx_t_2 = (__pyx_v_active_dict.count(__pyx_v_l_rec_idx) != 0);
             if (__pyx_t_2) {
 
-              /* "debugblock/new_topk_sim_join.pyx":516
+              /* "debugblock/new_topk_sim_join.pyx":523
  *                         if active_dict.count(l_rec_idx):
  *                             # printf("left3.1\n")
  *                             if active_dict[l_rec_idx].count(r_rec_idx):             # <<<<<<<<<<<<<<
@@ -4589,27 +4283,27 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
               __pyx_t_2 = ((__pyx_v_active_dict[__pyx_v_l_rec_idx]).count(__pyx_v_r_rec_idx) != 0);
               if (__pyx_t_2) {
 
-                /* "debugblock/new_topk_sim_join.pyx":518
+                /* "debugblock/new_topk_sim_join.pyx":525
  *                             if active_dict[l_rec_idx].count(r_rec_idx):
  *                                 # printf("left3.1.1\n")
  *                                 value = active_dict[l_rec_idx][r_rec_idx] & COUNT             # <<<<<<<<<<<<<<
  *                                 if value == prefix_match_max_size:
- *                                     # printf("left3.1.1.1\n")
+ *                                     # cmps[2] += 1
  */
                 __pyx_v_value = (((__pyx_v_active_dict[__pyx_v_l_rec_idx])[__pyx_v_r_rec_idx]) & __pyx_v_COUNT);
 
-                /* "debugblock/new_topk_sim_join.pyx":519
+                /* "debugblock/new_topk_sim_join.pyx":526
  *                                 # printf("left3.1.1\n")
  *                                 value = active_dict[l_rec_idx][r_rec_idx] & COUNT
  *                                 if value == prefix_match_max_size:             # <<<<<<<<<<<<<<
+ *                                     # cmps[2] += 1
  *                                     # printf("left3.1.1.1\n")
- *                                     reuse_info = ReuseInfo(0)
  */
                 __pyx_t_2 = ((__pyx_v_value == __pyx_v_prefix_match_max_size) != 0);
                 if (__pyx_t_2) {
 
-                  /* "debugblock/new_topk_sim_join.pyx":521
- *                                 if value == prefix_match_max_size:
+                  /* "debugblock/new_topk_sim_join.pyx":529
+ *                                     # cmps[2] += 1
  *                                     # printf("left3.1.1.1\n")
  *                                     reuse_info = ReuseInfo(0)             # <<<<<<<<<<<<<<
  *                                     # new_reuse_get_overlap(ltoken_vector[l_rec_idx], rtoken_vector[r_rec_idx],
@@ -4617,7 +4311,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
                   __pyx_v_reuse_info = ReuseInfo(0);
 
-                  /* "debugblock/new_topk_sim_join.pyx":536
+                  /* "debugblock/new_topk_sim_join.pyx":544
  *                                     #         reuse_info.map[p] = 1
  * 
  *                                     new_reuse_get_overlap(ltoken_vector[l_rec_idx], rtoken_vector[r_rec_idx],             # <<<<<<<<<<<<<<
@@ -4626,7 +4320,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
                   __pyx_f_10debugblock_17new_topk_sim_join_new_reuse_get_overlap((__pyx_v_ltoken_vector[__pyx_v_l_rec_idx]), (__pyx_v_rtoken_vector[__pyx_v_r_rec_idx]), (__pyx_v_lindex_vector[__pyx_v_l_rec_idx]), (__pyx_v_rindex_vector[__pyx_v_r_rec_idx]), 0, 0, __pyx_v_reuse_info, __pyx_v_offset_of_field_num);
 
-                  /* "debugblock/new_topk_sim_join.pyx":539
+                  /* "debugblock/new_topk_sim_join.pyx":547
  *                                                           lindex_vector[l_rec_idx], rindex_vector[r_rec_idx],
  *                                                           0, 0, reuse_info, offset_of_field_num)
  *                                     active_dict[l_rec_idx].erase(r_rec_idx)             # <<<<<<<<<<<<<<
@@ -4635,7 +4329,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
                   (__pyx_v_active_dict[__pyx_v_l_rec_idx]).erase(__pyx_v_r_rec_idx);
 
-                  /* "debugblock/new_topk_sim_join.pyx":541
+                  /* "debugblock/new_topk_sim_join.pyx":549
  *                                     active_dict[l_rec_idx].erase(r_rec_idx)
  * 
  *                                     overlap = reuse_info.overlap             # <<<<<<<<<<<<<<
@@ -4645,7 +4339,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
                   __pyx_t_4 = __pyx_v_reuse_info.overlap;
                   __pyx_v_overlap = __pyx_t_4;
 
-                  /* "debugblock/new_topk_sim_join.pyx":542
+                  /* "debugblock/new_topk_sim_join.pyx":550
  * 
  *                                     overlap = reuse_info.overlap
  *                                     sim = overlap * 1.0 / (l_len + r_len - overlap)             # <<<<<<<<<<<<<<
@@ -4662,11 +4356,11 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
                     #ifdef WITH_THREAD
                     PyGILState_Release(__pyx_gilstate_save);
                     #endif
-                    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 542; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+                    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 550; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
                   }
                   __pyx_v_sim = (__pyx_t_7 / __pyx_t_4);
 
-                  /* "debugblock/new_topk_sim_join.pyx":543
+                  /* "debugblock/new_topk_sim_join.pyx":551
  *                                     overlap = reuse_info.overlap
  *                                     sim = overlap * 1.0 / (l_len + r_len - overlap)
  *                                     if topk_heap.size() == output_size:             # <<<<<<<<<<<<<<
@@ -4676,7 +4370,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
                   __pyx_t_2 = ((__pyx_v_topk_heap.size() == __pyx_v_output_size) != 0);
                   if (__pyx_t_2) {
 
-                    /* "debugblock/new_topk_sim_join.pyx":544
+                    /* "debugblock/new_topk_sim_join.pyx":552
  *                                     sim = overlap * 1.0 / (l_len + r_len - overlap)
  *                                     if topk_heap.size() == output_size:
  *                                         if topk_heap.top().sim < sim:             # <<<<<<<<<<<<<<
@@ -4686,7 +4380,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
                     __pyx_t_2 = ((__pyx_v_topk_heap.top().sim < __pyx_v_sim) != 0);
                     if (__pyx_t_2) {
 
-                      /* "debugblock/new_topk_sim_join.pyx":545
+                      /* "debugblock/new_topk_sim_join.pyx":553
  *                                     if topk_heap.size() == output_size:
  *                                         if topk_heap.top().sim < sim:
  *                                             topk_heap.pop()             # <<<<<<<<<<<<<<
@@ -4695,7 +4389,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
                       __pyx_v_topk_heap.pop();
 
-                      /* "debugblock/new_topk_sim_join.pyx":546
+                      /* "debugblock/new_topk_sim_join.pyx":554
  *                                         if topk_heap.top().sim < sim:
  *                                             topk_heap.pop()
  *                                             topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))             # <<<<<<<<<<<<<<
@@ -4704,7 +4398,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
                       __pyx_v_topk_heap.push(TopPair(__pyx_v_sim, __pyx_v_l_rec_idx, __pyx_v_r_rec_idx));
 
-                      /* "debugblock/new_topk_sim_join.pyx":544
+                      /* "debugblock/new_topk_sim_join.pyx":552
  *                                     sim = overlap * 1.0 / (l_len + r_len - overlap)
  *                                     if topk_heap.size() == output_size:
  *                                         if topk_heap.top().sim < sim:             # <<<<<<<<<<<<<<
@@ -4713,17 +4407,17 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
                     }
 
-                    /* "debugblock/new_topk_sim_join.pyx":543
+                    /* "debugblock/new_topk_sim_join.pyx":551
  *                                     overlap = reuse_info.overlap
  *                                     sim = overlap * 1.0 / (l_len + r_len - overlap)
  *                                     if topk_heap.size() == output_size:             # <<<<<<<<<<<<<<
  *                                         if topk_heap.top().sim < sim:
  *                                             topk_heap.pop()
  */
-                    goto __pyx_L36;
+                    goto __pyx_L29;
                   }
 
-                  /* "debugblock/new_topk_sim_join.pyx":548
+                  /* "debugblock/new_topk_sim_join.pyx":556
  *                                             topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))
  *                                     else:
  *                                         topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))             # <<<<<<<<<<<<<<
@@ -4733,9 +4427,9 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
                   /*else*/ {
                     __pyx_v_topk_heap.push(TopPair(__pyx_v_sim, __pyx_v_l_rec_idx, __pyx_v_r_rec_idx));
                   }
-                  __pyx_L36:;
+                  __pyx_L29:;
 
-                  /* "debugblock/new_topk_sim_join.pyx":550
+                  /* "debugblock/new_topk_sim_join.pyx":558
  *                                         topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))
  * 
  *                                     if compared_set.count(l_rec_idx):             # <<<<<<<<<<<<<<
@@ -4745,7 +4439,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
                   __pyx_t_2 = (__pyx_v_compared_set.count(__pyx_v_l_rec_idx) != 0);
                   if (__pyx_t_2) {
 
-                    /* "debugblock/new_topk_sim_join.pyx":551
+                    /* "debugblock/new_topk_sim_join.pyx":559
  * 
  *                                     if compared_set.count(l_rec_idx):
  *                                         compared_set[l_rec_idx].insert(r_rec_idx)             # <<<<<<<<<<<<<<
@@ -4754,17 +4448,17 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
                     (__pyx_v_compared_set[__pyx_v_l_rec_idx]).insert(__pyx_v_r_rec_idx);
 
-                    /* "debugblock/new_topk_sim_join.pyx":550
+                    /* "debugblock/new_topk_sim_join.pyx":558
  *                                         topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))
  * 
  *                                     if compared_set.count(l_rec_idx):             # <<<<<<<<<<<<<<
  *                                         compared_set[l_rec_idx].insert(r_rec_idx)
  *                                     else:
  */
-                    goto __pyx_L38;
+                    goto __pyx_L31;
                   }
 
-                  /* "debugblock/new_topk_sim_join.pyx":553
+                  /* "debugblock/new_topk_sim_join.pyx":561
  *                                         compared_set[l_rec_idx].insert(r_rec_idx)
  *                                     else:
  *                                         compared_set[l_rec_idx] = uset[int]()             # <<<<<<<<<<<<<<
@@ -4782,11 +4476,11 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
                       #ifdef WITH_THREAD
                       PyGILState_Release(__pyx_gilstate_save);
                       #endif
-                      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 553; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+                      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 561; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
                     }
                     (__pyx_v_compared_set[__pyx_v_l_rec_idx]) = __pyx_t_8;
 
-                    /* "debugblock/new_topk_sim_join.pyx":554
+                    /* "debugblock/new_topk_sim_join.pyx":562
  *                                     else:
  *                                         compared_set[l_rec_idx] = uset[int]()
  *                                         compared_set[l_rec_idx].insert(r_rec_idx)             # <<<<<<<<<<<<<<
@@ -4795,9 +4489,9 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
                     (__pyx_v_compared_set[__pyx_v_l_rec_idx]).insert(__pyx_v_r_rec_idx);
                   }
-                  __pyx_L38:;
+                  __pyx_L31:;
 
-                  /* "debugblock/new_topk_sim_join.pyx":556
+                  /* "debugblock/new_topk_sim_join.pyx":564
  *                                         compared_set[l_rec_idx].insert(r_rec_idx)
  * 
  *                                     if reuse_set.count(l_rec_idx):             # <<<<<<<<<<<<<<
@@ -4807,7 +4501,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
                   __pyx_t_2 = (__pyx_v_reuse_set.count(__pyx_v_l_rec_idx) != 0);
                   if (__pyx_t_2) {
 
-                    /* "debugblock/new_topk_sim_join.pyx":557
+                    /* "debugblock/new_topk_sim_join.pyx":565
  * 
  *                                     if reuse_set.count(l_rec_idx):
  *                                         reuse_set[l_rec_idx][r_rec_idx] = reuse_info             # <<<<<<<<<<<<<<
@@ -4816,17 +4510,17 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
                     ((__pyx_v_reuse_set[__pyx_v_l_rec_idx])[__pyx_v_r_rec_idx]) = __pyx_v_reuse_info;
 
-                    /* "debugblock/new_topk_sim_join.pyx":556
+                    /* "debugblock/new_topk_sim_join.pyx":564
  *                                         compared_set[l_rec_idx].insert(r_rec_idx)
  * 
  *                                     if reuse_set.count(l_rec_idx):             # <<<<<<<<<<<<<<
  *                                         reuse_set[l_rec_idx][r_rec_idx] = reuse_info
  *                                     else:
  */
-                    goto __pyx_L39;
+                    goto __pyx_L32;
                   }
 
-                  /* "debugblock/new_topk_sim_join.pyx":559
+                  /* "debugblock/new_topk_sim_join.pyx":567
  *                                         reuse_set[l_rec_idx][r_rec_idx] = reuse_info
  *                                     else:
  *                                         reuse_set[l_rec_idx] = umap[int, ReuseInfo]()             # <<<<<<<<<<<<<<
@@ -4844,11 +4538,11 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
                       #ifdef WITH_THREAD
                       PyGILState_Release(__pyx_gilstate_save);
                       #endif
-                      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 559; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+                      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 567; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
                     }
                     (__pyx_v_reuse_set[__pyx_v_l_rec_idx]) = __pyx_t_9;
 
-                    /* "debugblock/new_topk_sim_join.pyx":560
+                    /* "debugblock/new_topk_sim_join.pyx":568
  *                                     else:
  *                                         reuse_set[l_rec_idx] = umap[int, ReuseInfo]()
  *                                         reuse_set[l_rec_idx][r_rec_idx] = reuse_info             # <<<<<<<<<<<<<<
@@ -4857,9 +4551,9 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
                     ((__pyx_v_reuse_set[__pyx_v_l_rec_idx])[__pyx_v_r_rec_idx]) = __pyx_v_reuse_info;
                   }
-                  __pyx_L39:;
+                  __pyx_L32:;
 
-                  /* "debugblock/new_topk_sim_join.pyx":562
+                  /* "debugblock/new_topk_sim_join.pyx":570
  *                                         reuse_set[l_rec_idx][r_rec_idx] = reuse_info
  * 
  *                                     total_compared_pairs += 1             # <<<<<<<<<<<<<<
@@ -4868,17 +4562,17 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
                   __pyx_v_total_compared_pairs = (__pyx_v_total_compared_pairs + 1);
 
-                  /* "debugblock/new_topk_sim_join.pyx":519
+                  /* "debugblock/new_topk_sim_join.pyx":526
  *                                 # printf("left3.1.1\n")
  *                                 value = active_dict[l_rec_idx][r_rec_idx] & COUNT
  *                                 if value == prefix_match_max_size:             # <<<<<<<<<<<<<<
+ *                                     # cmps[2] += 1
  *                                     # printf("left3.1.1.1\n")
- *                                     reuse_info = ReuseInfo(0)
  */
-                  goto __pyx_L35;
+                  goto __pyx_L28;
                 }
 
-                /* "debugblock/new_topk_sim_join.pyx":564
+                /* "debugblock/new_topk_sim_join.pyx":572
  *                                     total_compared_pairs += 1
  *                                 else:
  *                                     bits = active_dict[l_rec_idx][r_rec_idx]             # <<<<<<<<<<<<<<
@@ -4888,7 +4582,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
                 /*else*/ {
                   __pyx_v_bits = ((__pyx_v_active_dict[__pyx_v_l_rec_idx])[__pyx_v_r_rec_idx]);
 
-                  /* "debugblock/new_topk_sim_join.pyx":565
+                  /* "debugblock/new_topk_sim_join.pyx":573
  *                                 else:
  *                                     bits = active_dict[l_rec_idx][r_rec_idx]
  *                                     field_pair = lindex_vector[l_rec_idx][l_tok_idx] * offset_of_field_num + \             # <<<<<<<<<<<<<<
@@ -4897,7 +4591,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
                   __pyx_v_field_pair = ((((__pyx_v_lindex_vector[__pyx_v_l_rec_idx])[__pyx_v_l_tok_idx]) * __pyx_v_offset_of_field_num) + ((__pyx_v_rindex_vector[__pyx_v_r_rec_idx])[__pyx_v_r_tok_idx]));
 
-                  /* "debugblock/new_topk_sim_join.pyx":567
+                  /* "debugblock/new_topk_sim_join.pyx":575
  *                                     field_pair = lindex_vector[l_rec_idx][l_tok_idx] * offset_of_field_num + \
  *                                                  rindex_vector[r_rec_idx][r_tok_idx]
  *                                     bits |= (field_pair << ((COUNT & bits) * FIELD_BITS + COUNT_BITS))             # <<<<<<<<<<<<<<
@@ -4906,7 +4600,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
                   __pyx_v_bits = (__pyx_v_bits | (__pyx_v_field_pair << (((__pyx_v_COUNT & __pyx_v_bits) * __pyx_v_FIELD_BITS) + __pyx_v_COUNT_BITS)));
 
-                  /* "debugblock/new_topk_sim_join.pyx":568
+                  /* "debugblock/new_topk_sim_join.pyx":576
  *                                                  rindex_vector[r_rec_idx][r_tok_idx]
  *                                     bits |= (field_pair << ((COUNT & bits) * FIELD_BITS + COUNT_BITS))
  *                                     active_dict[l_rec_idx][r_rec_idx] = bits + INC             # <<<<<<<<<<<<<<
@@ -4915,19 +4609,19 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
                   ((__pyx_v_active_dict[__pyx_v_l_rec_idx])[__pyx_v_r_rec_idx]) = (__pyx_v_bits + __pyx_v_INC);
                 }
-                __pyx_L35:;
+                __pyx_L28:;
 
-                /* "debugblock/new_topk_sim_join.pyx":516
+                /* "debugblock/new_topk_sim_join.pyx":523
  *                         if active_dict.count(l_rec_idx):
  *                             # printf("left3.1\n")
  *                             if active_dict[l_rec_idx].count(r_rec_idx):             # <<<<<<<<<<<<<<
  *                                 # printf("left3.1.1\n")
  *                                 value = active_dict[l_rec_idx][r_rec_idx] & COUNT
  */
-                goto __pyx_L34;
+                goto __pyx_L27;
               }
 
-              /* "debugblock/new_topk_sim_join.pyx":571
+              /* "debugblock/new_topk_sim_join.pyx":579
  *                             else:
  *                                 # printf("left3.1.2\n")
  *                                 field_pair = lindex_vector[l_rec_idx][l_tok_idx] * offset_of_field_num + \             # <<<<<<<<<<<<<<
@@ -4936,7 +4630,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
               /*else*/ {
 
-                /* "debugblock/new_topk_sim_join.pyx":572
+                /* "debugblock/new_topk_sim_join.pyx":580
  *                                 # printf("left3.1.2\n")
  *                                 field_pair = lindex_vector[l_rec_idx][l_tok_idx] * offset_of_field_num + \
  *                                              rindex_vector[r_rec_idx][r_tok_idx]             # <<<<<<<<<<<<<<
@@ -4945,7 +4639,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
                 __pyx_v_field_pair = ((((__pyx_v_lindex_vector[__pyx_v_l_rec_idx])[__pyx_v_l_tok_idx]) * __pyx_v_offset_of_field_num) + ((__pyx_v_rindex_vector[__pyx_v_r_rec_idx])[__pyx_v_r_tok_idx]));
 
-                /* "debugblock/new_topk_sim_join.pyx":573
+                /* "debugblock/new_topk_sim_join.pyx":581
  *                                 field_pair = lindex_vector[l_rec_idx][l_tok_idx] * offset_of_field_num + \
  *                                              rindex_vector[r_rec_idx][r_tok_idx]
  *                                 bits = (field_pair << COUNT_BITS) + INC             # <<<<<<<<<<<<<<
@@ -4954,7 +4648,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
                 __pyx_v_bits = ((__pyx_v_field_pair << __pyx_v_COUNT_BITS) + __pyx_v_INC);
 
-                /* "debugblock/new_topk_sim_join.pyx":574
+                /* "debugblock/new_topk_sim_join.pyx":582
  *                                              rindex_vector[r_rec_idx][r_tok_idx]
  *                                 bits = (field_pair << COUNT_BITS) + INC
  *                                 active_dict[l_rec_idx][r_rec_idx] = bits             # <<<<<<<<<<<<<<
@@ -4963,19 +4657,19 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
                 ((__pyx_v_active_dict[__pyx_v_l_rec_idx])[__pyx_v_r_rec_idx]) = __pyx_v_bits;
               }
-              __pyx_L34:;
+              __pyx_L27:;
 
-              /* "debugblock/new_topk_sim_join.pyx":514
+              /* "debugblock/new_topk_sim_join.pyx":521
  *                     else:
  *                         # printf("left3\n")
  *                         if active_dict.count(l_rec_idx):             # <<<<<<<<<<<<<<
  *                             # printf("left3.1\n")
  *                             if active_dict[l_rec_idx].count(r_rec_idx):
  */
-              goto __pyx_L33;
+              goto __pyx_L26;
             }
 
-            /* "debugblock/new_topk_sim_join.pyx":577
+            /* "debugblock/new_topk_sim_join.pyx":585
  *                         else:
  *                             # printf("left3.2.1\n")
  *                             field_pair = lindex_vector[l_rec_idx][l_tok_idx] * offset_of_field_num + \             # <<<<<<<<<<<<<<
@@ -4984,7 +4678,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
             /*else*/ {
 
-              /* "debugblock/new_topk_sim_join.pyx":578
+              /* "debugblock/new_topk_sim_join.pyx":586
  *                             # printf("left3.2.1\n")
  *                             field_pair = lindex_vector[l_rec_idx][l_tok_idx] * offset_of_field_num + \
  *                                          rindex_vector[r_rec_idx][r_tok_idx]             # <<<<<<<<<<<<<<
@@ -4993,7 +4687,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
               __pyx_v_field_pair = ((((__pyx_v_lindex_vector[__pyx_v_l_rec_idx])[__pyx_v_l_tok_idx]) * __pyx_v_offset_of_field_num) + ((__pyx_v_rindex_vector[__pyx_v_r_rec_idx])[__pyx_v_r_tok_idx]));
 
-              /* "debugblock/new_topk_sim_join.pyx":580
+              /* "debugblock/new_topk_sim_join.pyx":588
  *                                          rindex_vector[r_rec_idx][r_tok_idx]
  *                             # printf("left3.2.2\n")
  *                             bits = (field_pair << COUNT_BITS) + INC             # <<<<<<<<<<<<<<
@@ -5002,7 +4696,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
               __pyx_v_bits = ((__pyx_v_field_pair << __pyx_v_COUNT_BITS) + __pyx_v_INC);
 
-              /* "debugblock/new_topk_sim_join.pyx":582
+              /* "debugblock/new_topk_sim_join.pyx":590
  *                             bits = (field_pair << COUNT_BITS) + INC
  *                             # printf("left3.2.3\n")
  *                             active_dict[l_rec_idx] = umap[int, uint64_t]()             # <<<<<<<<<<<<<<
@@ -5019,11 +4713,11 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
                 #ifdef WITH_THREAD
                 PyGILState_Release(__pyx_gilstate_save);
                 #endif
-                {__pyx_filename = __pyx_f[0]; __pyx_lineno = 582; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+                {__pyx_filename = __pyx_f[0]; __pyx_lineno = 590; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
               }
               (__pyx_v_active_dict[__pyx_v_l_rec_idx]) = __pyx_t_10;
 
-              /* "debugblock/new_topk_sim_join.pyx":584
+              /* "debugblock/new_topk_sim_join.pyx":592
  *                             active_dict[l_rec_idx] = umap[int, uint64_t]()
  *                             # printf("left3.2.4\n")
  *                             active_dict[l_rec_idx][r_rec_idx] = bits             # <<<<<<<<<<<<<<
@@ -5032,11 +4726,11 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
               ((__pyx_v_active_dict[__pyx_v_l_rec_idx])[__pyx_v_r_rec_idx]) = __pyx_v_bits;
             }
-            __pyx_L33:;
+            __pyx_L26:;
           }
           __pyx_L18:;
 
-          /* "debugblock/new_topk_sim_join.pyx":588
+          /* "debugblock/new_topk_sim_join.pyx":596
  *                     # printf("pass check\n")
  * 
  *                     if total_compared_pairs % 100000 == 0 and \             # <<<<<<<<<<<<<<
@@ -5047,10 +4741,10 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
           if (__pyx_t_3) {
           } else {
             __pyx_t_2 = __pyx_t_3;
-            goto __pyx_L41_bool_binop_done;
+            goto __pyx_L34_bool_binop_done;
           }
 
-          /* "debugblock/new_topk_sim_join.pyx":589
+          /* "debugblock/new_topk_sim_join.pyx":597
  * 
  *                     if total_compared_pairs % 100000 == 0 and \
  *                             total_compared_pairs_set.count(total_compared_pairs) <= 0:             # <<<<<<<<<<<<<<
@@ -5059,9 +4753,9 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
           __pyx_t_3 = ((__pyx_v_total_compared_pairs_set.count(__pyx_v_total_compared_pairs) <= 0) != 0);
           __pyx_t_2 = __pyx_t_3;
-          __pyx_L41_bool_binop_done:;
+          __pyx_L34_bool_binop_done:;
 
-          /* "debugblock/new_topk_sim_join.pyx":588
+          /* "debugblock/new_topk_sim_join.pyx":596
  *                     # printf("pass check\n")
  * 
  *                     if total_compared_pairs % 100000 == 0 and \             # <<<<<<<<<<<<<<
@@ -5070,7 +4764,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
           if (__pyx_t_2) {
 
-            /* "debugblock/new_topk_sim_join.pyx":590
+            /* "debugblock/new_topk_sim_join.pyx":598
  *                     if total_compared_pairs % 100000 == 0 and \
  *                             total_compared_pairs_set.count(total_compared_pairs) <= 0:
  *                         total_compared_pairs_set.insert(total_compared_pairs)             # <<<<<<<<<<<<<<
@@ -5079,7 +4773,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
             __pyx_v_total_compared_pairs_set.insert(__pyx_v_total_compared_pairs);
 
-            /* "debugblock/new_topk_sim_join.pyx":591
+            /* "debugblock/new_topk_sim_join.pyx":599
  *                             total_compared_pairs_set.count(total_compared_pairs) <= 0:
  *                         total_compared_pairs_set.insert(total_compared_pairs)
  *                         if topk_heap.size() > 0:             # <<<<<<<<<<<<<<
@@ -5089,7 +4783,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
             __pyx_t_2 = ((__pyx_v_topk_heap.size() > 0) != 0);
             if (__pyx_t_2) {
 
-              /* "debugblock/new_topk_sim_join.pyx":592
+              /* "debugblock/new_topk_sim_join.pyx":600
  *                         total_compared_pairs_set.insert(total_compared_pairs)
  *                         if topk_heap.size() > 0:
  *                             printf("%ld (%.16f %d %d) (%.16f %d %d %d)\n",             # <<<<<<<<<<<<<<
@@ -5098,7 +4792,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
               printf(__pyx_k_ld_16f_d_d_16f_d_d_d, __pyx_v_total_compared_pairs, __pyx_v_topk_heap.top().sim, __pyx_v_topk_heap.top().l_rec, __pyx_v_topk_heap.top().r_rec, __pyx_v_prefix_events.top().threshold, __pyx_v_prefix_events.top().table_indicator, __pyx_v_prefix_events.top().rec_idx, __pyx_v_prefix_events.top().tok_idx);
 
-              /* "debugblock/new_topk_sim_join.pyx":591
+              /* "debugblock/new_topk_sim_join.pyx":599
  *                             total_compared_pairs_set.count(total_compared_pairs) <= 0:
  *                         total_compared_pairs_set.insert(total_compared_pairs)
  *                         if topk_heap.size() > 0:             # <<<<<<<<<<<<<<
@@ -5107,7 +4801,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
             }
 
-            /* "debugblock/new_topk_sim_join.pyx":588
+            /* "debugblock/new_topk_sim_join.pyx":596
  *                     # printf("pass check\n")
  * 
  *                     if total_compared_pairs % 100000 == 0 and \             # <<<<<<<<<<<<<<
@@ -5116,7 +4810,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
           }
 
-          /* "debugblock/new_topk_sim_join.pyx":436
+          /* "debugblock/new_topk_sim_join.pyx":441
  *             if r_inverted_index.count(token):
  *                 r_records = r_inverted_index[token]
  *                 for r_rec_tuple in r_records:             # <<<<<<<<<<<<<<
@@ -5126,7 +4820,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
           __pyx_L10_continue:;
         }
 
-        /* "debugblock/new_topk_sim_join.pyx":434
+        /* "debugblock/new_topk_sim_join.pyx":439
  *             token = ltoken_vector[l_rec_idx][l_tok_idx]
  *             l_len = ltoken_vector[l_rec_idx].size()
  *             if r_inverted_index.count(token):             # <<<<<<<<<<<<<<
@@ -5135,8 +4829,8 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
       }
 
-      /* "debugblock/new_topk_sim_join.pyx":597
- *                                    prefix_events.top().rec_idx, prefix_events.top().tok_idx)
+      /* "debugblock/new_topk_sim_join.pyx":606
+ *                             # printf("%d %d %d\n", cmps[0], cmps[1], cmps[2])
  * 
  *             if l_tok_idx + 1 < l_len:             # <<<<<<<<<<<<<<
  *                 threshold = min(1 - (l_tok_idx + 1 - prefix_match_max_size) * 1.0 / l_len, 1.0)
@@ -5145,7 +4839,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
       __pyx_t_2 = (((__pyx_v_l_tok_idx + 1) < __pyx_v_l_len) != 0);
       if (__pyx_t_2) {
 
-        /* "debugblock/new_topk_sim_join.pyx":598
+        /* "debugblock/new_topk_sim_join.pyx":607
  * 
  *             if l_tok_idx + 1 < l_len:
  *                 threshold = min(1 - (l_tok_idx + 1 - prefix_match_max_size) * 1.0 / l_len, 1.0)             # <<<<<<<<<<<<<<
@@ -5162,7 +4856,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
           #ifdef WITH_THREAD
           PyGILState_Release(__pyx_gilstate_save);
           #endif
-          {__pyx_filename = __pyx_f[0]; __pyx_lineno = 598; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          {__pyx_filename = __pyx_f[0]; __pyx_lineno = 607; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         }
         __pyx_t_12 = (1.0 - (__pyx_t_11 / __pyx_v_l_len));
         if (((__pyx_t_7 < __pyx_t_12) != 0)) {
@@ -5172,7 +4866,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
         }
         __pyx_v_threshold = __pyx_t_11;
 
-        /* "debugblock/new_topk_sim_join.pyx":599
+        /* "debugblock/new_topk_sim_join.pyx":608
  *             if l_tok_idx + 1 < l_len:
  *                 threshold = min(1 - (l_tok_idx + 1 - prefix_match_max_size) * 1.0 / l_len, 1.0)
  *                 prefix_events.push(PrefixEvent(threshold, table_indicator, l_rec_idx, l_tok_idx + 1))             # <<<<<<<<<<<<<<
@@ -5181,8 +4875,8 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
         __pyx_v_prefix_events.push(PrefixEvent(__pyx_v_threshold, __pyx_v_table_indicator, __pyx_v_l_rec_idx, (__pyx_v_l_tok_idx + 1)));
 
-        /* "debugblock/new_topk_sim_join.pyx":597
- *                                    prefix_events.top().rec_idx, prefix_events.top().tok_idx)
+        /* "debugblock/new_topk_sim_join.pyx":606
+ *                             # printf("%d %d %d\n", cmps[0], cmps[1], cmps[2])
  * 
  *             if l_tok_idx + 1 < l_len:             # <<<<<<<<<<<<<<
  *                 threshold = min(1 - (l_tok_idx + 1 - prefix_match_max_size) * 1.0 / l_len, 1.0)
@@ -5190,7 +4884,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
       }
 
-      /* "debugblock/new_topk_sim_join.pyx":601
+      /* "debugblock/new_topk_sim_join.pyx":610
  *                 prefix_events.push(PrefixEvent(threshold, table_indicator, l_rec_idx, l_tok_idx + 1))
  * 
  *             if not l_inverted_index.count(token):             # <<<<<<<<<<<<<<
@@ -5200,7 +4894,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
       __pyx_t_2 = ((!(__pyx_v_l_inverted_index.count(__pyx_v_token) != 0)) != 0);
       if (__pyx_t_2) {
 
-        /* "debugblock/new_topk_sim_join.pyx":602
+        /* "debugblock/new_topk_sim_join.pyx":611
  * 
  *             if not l_inverted_index.count(token):
  *                 l_inverted_index[token] = oset[pair[int, int]]()             # <<<<<<<<<<<<<<
@@ -5217,11 +4911,11 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
           #ifdef WITH_THREAD
           PyGILState_Release(__pyx_gilstate_save);
           #endif
-          {__pyx_filename = __pyx_f[0]; __pyx_lineno = 602; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          {__pyx_filename = __pyx_f[0]; __pyx_lineno = 611; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         }
         (__pyx_v_l_inverted_index[__pyx_v_token]) = __pyx_t_13;
 
-        /* "debugblock/new_topk_sim_join.pyx":601
+        /* "debugblock/new_topk_sim_join.pyx":610
  *                 prefix_events.push(PrefixEvent(threshold, table_indicator, l_rec_idx, l_tok_idx + 1))
  * 
  *             if not l_inverted_index.count(token):             # <<<<<<<<<<<<<<
@@ -5230,7 +4924,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
       }
 
-      /* "debugblock/new_topk_sim_join.pyx":603
+      /* "debugblock/new_topk_sim_join.pyx":612
  *             if not l_inverted_index.count(token):
  *                 l_inverted_index[token] = oset[pair[int, int]]()
  *             l_inverted_index[token].insert(pair[int, int](l_rec_idx, l_tok_idx))             # <<<<<<<<<<<<<<
@@ -5247,7 +4941,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
         #ifdef WITH_THREAD
         PyGILState_Release(__pyx_gilstate_save);
         #endif
-        {__pyx_filename = __pyx_f[0]; __pyx_lineno = 603; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        {__pyx_filename = __pyx_f[0]; __pyx_lineno = 612; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       }
       try {
         (__pyx_v_l_inverted_index[__pyx_v_token]).insert(__pyx_t_6);
@@ -5259,10 +4953,10 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
         #ifdef WITH_THREAD
         PyGILState_Release(__pyx_gilstate_save);
         #endif
-        {__pyx_filename = __pyx_f[0]; __pyx_lineno = 603; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        {__pyx_filename = __pyx_f[0]; __pyx_lineno = 612; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       }
 
-      /* "debugblock/new_topk_sim_join.pyx":429
+      /* "debugblock/new_topk_sim_join.pyx":434
  *         table_indicator = event.table_indicator
  *         # printf("%.6f %d %d %d\n", event.threshold, event.table_indicator, event.rec_idx, event.tok_idx)
  *         if table_indicator == 0:             # <<<<<<<<<<<<<<
@@ -5272,7 +4966,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
       goto __pyx_L8;
     }
 
-    /* "debugblock/new_topk_sim_join.pyx":605
+    /* "debugblock/new_topk_sim_join.pyx":614
  *             l_inverted_index[token].insert(pair[int, int](l_rec_idx, l_tok_idx))
  *         else:
  *             r_rec_idx = event.rec_idx             # <<<<<<<<<<<<<<
@@ -5283,7 +4977,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
       __pyx_t_4 = __pyx_v_event.rec_idx;
       __pyx_v_r_rec_idx = __pyx_t_4;
 
-      /* "debugblock/new_topk_sim_join.pyx":606
+      /* "debugblock/new_topk_sim_join.pyx":615
  *         else:
  *             r_rec_idx = event.rec_idx
  *             r_tok_idx = event.tok_idx             # <<<<<<<<<<<<<<
@@ -5293,7 +4987,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
       __pyx_t_4 = __pyx_v_event.tok_idx;
       __pyx_v_r_tok_idx = __pyx_t_4;
 
-      /* "debugblock/new_topk_sim_join.pyx":607
+      /* "debugblock/new_topk_sim_join.pyx":616
  *             r_rec_idx = event.rec_idx
  *             r_tok_idx = event.tok_idx
  *             token = rtoken_vector[r_rec_idx][r_tok_idx]             # <<<<<<<<<<<<<<
@@ -5302,7 +4996,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
       __pyx_v_token = ((__pyx_v_rtoken_vector[__pyx_v_r_rec_idx])[__pyx_v_r_tok_idx]);
 
-      /* "debugblock/new_topk_sim_join.pyx":608
+      /* "debugblock/new_topk_sim_join.pyx":617
  *             r_tok_idx = event.tok_idx
  *             token = rtoken_vector[r_rec_idx][r_tok_idx]
  *             r_len = rtoken_vector[r_rec_idx].size()             # <<<<<<<<<<<<<<
@@ -5311,7 +5005,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
       __pyx_v_r_len = (__pyx_v_rtoken_vector[__pyx_v_r_rec_idx]).size();
 
-      /* "debugblock/new_topk_sim_join.pyx":609
+      /* "debugblock/new_topk_sim_join.pyx":618
  *             token = rtoken_vector[r_rec_idx][r_tok_idx]
  *             r_len = rtoken_vector[r_rec_idx].size()
  *             if l_inverted_index.count(token):             # <<<<<<<<<<<<<<
@@ -5321,7 +5015,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
       __pyx_t_2 = (__pyx_v_l_inverted_index.count(__pyx_v_token) != 0);
       if (__pyx_t_2) {
 
-        /* "debugblock/new_topk_sim_join.pyx":610
+        /* "debugblock/new_topk_sim_join.pyx":619
  *             r_len = rtoken_vector[r_rec_idx].size()
  *             if l_inverted_index.count(token):
  *                 l_records = l_inverted_index[token]             # <<<<<<<<<<<<<<
@@ -5330,7 +5024,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
         __pyx_v_l_records = (__pyx_v_l_inverted_index[__pyx_v_token]);
 
-        /* "debugblock/new_topk_sim_join.pyx":611
+        /* "debugblock/new_topk_sim_join.pyx":620
  *             if l_inverted_index.count(token):
  *                 l_records = l_inverted_index[token]
  *                 for l_rec_tuple in l_records:             # <<<<<<<<<<<<<<
@@ -5344,7 +5038,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
           ++__pyx_t_5;
           __pyx_v_l_rec_tuple = __pyx_t_6;
 
-          /* "debugblock/new_topk_sim_join.pyx":612
+          /* "debugblock/new_topk_sim_join.pyx":621
  *                 l_records = l_inverted_index[token]
  *                 for l_rec_tuple in l_records:
  *                     l_rec_idx = l_rec_tuple.first             # <<<<<<<<<<<<<<
@@ -5354,7 +5048,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
           __pyx_t_4 = __pyx_v_l_rec_tuple.first;
           __pyx_v_l_rec_idx = __pyx_t_4;
 
-          /* "debugblock/new_topk_sim_join.pyx":613
+          /* "debugblock/new_topk_sim_join.pyx":622
  *                 for l_rec_tuple in l_records:
  *                     l_rec_idx = l_rec_tuple.first
  *                     l_tok_idx = l_rec_tuple.second             # <<<<<<<<<<<<<<
@@ -5364,7 +5058,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
           __pyx_t_4 = __pyx_v_l_rec_tuple.second;
           __pyx_v_l_tok_idx = __pyx_t_4;
 
-          /* "debugblock/new_topk_sim_join.pyx":614
+          /* "debugblock/new_topk_sim_join.pyx":623
  *                     l_rec_idx = l_rec_tuple.first
  *                     l_tok_idx = l_rec_tuple.second
  *                     l_len = ltoken_vector[l_rec_idx].size()             # <<<<<<<<<<<<<<
@@ -5373,7 +5067,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
           __pyx_v_l_len = (__pyx_v_ltoken_vector[__pyx_v_l_rec_idx]).size();
 
-          /* "debugblock/new_topk_sim_join.pyx":616
+          /* "debugblock/new_topk_sim_join.pyx":625
  *                     l_len = ltoken_vector[l_rec_idx].size()
  * 
  *                     if cand_set.count(l_rec_idx) and cand_set[l_rec_idx].count(r_rec_idx):             # <<<<<<<<<<<<<<
@@ -5384,23 +5078,23 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
           if (__pyx_t_3) {
           } else {
             __pyx_t_2 = __pyx_t_3;
-            goto __pyx_L50_bool_binop_done;
+            goto __pyx_L43_bool_binop_done;
           }
           __pyx_t_3 = ((__pyx_v_cand_set[__pyx_v_l_rec_idx]).count(__pyx_v_r_rec_idx) != 0);
           __pyx_t_2 = __pyx_t_3;
-          __pyx_L50_bool_binop_done:;
+          __pyx_L43_bool_binop_done:;
           if (__pyx_t_2) {
 
-            /* "debugblock/new_topk_sim_join.pyx":617
+            /* "debugblock/new_topk_sim_join.pyx":626
  * 
  *                     if cand_set.count(l_rec_idx) and cand_set[l_rec_idx].count(r_rec_idx):
  *                         continue             # <<<<<<<<<<<<<<
  * 
  *                     if compared_set.count(l_rec_idx) and compared_set[l_rec_idx].count(r_rec_idx):
  */
-            goto __pyx_L47_continue;
+            goto __pyx_L40_continue;
 
-            /* "debugblock/new_topk_sim_join.pyx":616
+            /* "debugblock/new_topk_sim_join.pyx":625
  *                     l_len = ltoken_vector[l_rec_idx].size()
  * 
  *                     if cand_set.count(l_rec_idx) and cand_set[l_rec_idx].count(r_rec_idx):             # <<<<<<<<<<<<<<
@@ -5409,7 +5103,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
           }
 
-          /* "debugblock/new_topk_sim_join.pyx":619
+          /* "debugblock/new_topk_sim_join.pyx":628
  *                         continue
  * 
  *                     if compared_set.count(l_rec_idx) and compared_set[l_rec_idx].count(r_rec_idx):             # <<<<<<<<<<<<<<
@@ -5420,23 +5114,23 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
           if (__pyx_t_3) {
           } else {
             __pyx_t_2 = __pyx_t_3;
-            goto __pyx_L53_bool_binop_done;
+            goto __pyx_L46_bool_binop_done;
           }
           __pyx_t_3 = ((__pyx_v_compared_set[__pyx_v_l_rec_idx]).count(__pyx_v_r_rec_idx) != 0);
           __pyx_t_2 = __pyx_t_3;
-          __pyx_L53_bool_binop_done:;
+          __pyx_L46_bool_binop_done:;
           if (__pyx_t_2) {
 
-            /* "debugblock/new_topk_sim_join.pyx":620
+            /* "debugblock/new_topk_sim_join.pyx":629
  * 
  *                     if compared_set.count(l_rec_idx) and compared_set[l_rec_idx].count(r_rec_idx):
  *                         continue             # <<<<<<<<<<<<<<
  * 
  *                     if l_tok_idx + 1 == l_len or r_tok_idx + 1 == r_len:
  */
-            goto __pyx_L47_continue;
+            goto __pyx_L40_continue;
 
-            /* "debugblock/new_topk_sim_join.pyx":619
+            /* "debugblock/new_topk_sim_join.pyx":628
  *                         continue
  * 
  *                     if compared_set.count(l_rec_idx) and compared_set[l_rec_idx].count(r_rec_idx):             # <<<<<<<<<<<<<<
@@ -5445,26 +5139,26 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
           }
 
-          /* "debugblock/new_topk_sim_join.pyx":622
+          /* "debugblock/new_topk_sim_join.pyx":631
  *                         continue
  * 
  *                     if l_tok_idx + 1 == l_len or r_tok_idx + 1 == r_len:             # <<<<<<<<<<<<<<
+ *                         # cmps[0] += 1
  *                         # printf("right1\n")
- *                         overlap = 1
  */
           __pyx_t_3 = (((__pyx_v_l_tok_idx + 1) == __pyx_v_l_len) != 0);
           if (!__pyx_t_3) {
           } else {
             __pyx_t_2 = __pyx_t_3;
-            goto __pyx_L56_bool_binop_done;
+            goto __pyx_L49_bool_binop_done;
           }
           __pyx_t_3 = (((__pyx_v_r_tok_idx + 1) == __pyx_v_r_len) != 0);
           __pyx_t_2 = __pyx_t_3;
-          __pyx_L56_bool_binop_done:;
+          __pyx_L49_bool_binop_done:;
           if (__pyx_t_2) {
 
-            /* "debugblock/new_topk_sim_join.pyx":624
- *                     if l_tok_idx + 1 == l_len or r_tok_idx + 1 == r_len:
+            /* "debugblock/new_topk_sim_join.pyx":634
+ *                         # cmps[0] += 1
  *                         # printf("right1\n")
  *                         overlap = 1             # <<<<<<<<<<<<<<
  *                         if active_dict.count(l_rec_idx) and active_dict[l_rec_idx].count(r_rec_idx):
@@ -5472,7 +5166,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
             __pyx_v_overlap = 1;
 
-            /* "debugblock/new_topk_sim_join.pyx":625
+            /* "debugblock/new_topk_sim_join.pyx":635
  *                         # printf("right1\n")
  *                         overlap = 1
  *                         if active_dict.count(l_rec_idx) and active_dict[l_rec_idx].count(r_rec_idx):             # <<<<<<<<<<<<<<
@@ -5483,14 +5177,14 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
             if (__pyx_t_3) {
             } else {
               __pyx_t_2 = __pyx_t_3;
-              goto __pyx_L59_bool_binop_done;
+              goto __pyx_L52_bool_binop_done;
             }
             __pyx_t_3 = ((__pyx_v_active_dict[__pyx_v_l_rec_idx]).count(__pyx_v_r_rec_idx) != 0);
             __pyx_t_2 = __pyx_t_3;
-            __pyx_L59_bool_binop_done:;
+            __pyx_L52_bool_binop_done:;
             if (__pyx_t_2) {
 
-              /* "debugblock/new_topk_sim_join.pyx":626
+              /* "debugblock/new_topk_sim_join.pyx":636
  *                         overlap = 1
  *                         if active_dict.count(l_rec_idx) and active_dict[l_rec_idx].count(r_rec_idx):
  *                             bit_results = active_dict[l_rec_idx][r_rec_idx]             # <<<<<<<<<<<<<<
@@ -5499,7 +5193,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
               __pyx_v_bit_results = ((__pyx_v_active_dict[__pyx_v_l_rec_idx])[__pyx_v_r_rec_idx]);
 
-              /* "debugblock/new_topk_sim_join.pyx":627
+              /* "debugblock/new_topk_sim_join.pyx":637
  *                         if active_dict.count(l_rec_idx) and active_dict[l_rec_idx].count(r_rec_idx):
  *                             bit_results = active_dict[l_rec_idx][r_rec_idx]
  *                             active_dict[l_rec_idx].erase(r_rec_idx)             # <<<<<<<<<<<<<<
@@ -5508,7 +5202,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
               (__pyx_v_active_dict[__pyx_v_l_rec_idx]).erase(__pyx_v_r_rec_idx);
 
-              /* "debugblock/new_topk_sim_join.pyx":628
+              /* "debugblock/new_topk_sim_join.pyx":638
  *                             bit_results = active_dict[l_rec_idx][r_rec_idx]
  *                             active_dict[l_rec_idx].erase(r_rec_idx)
  *                             overlap += bit_results & COUNT             # <<<<<<<<<<<<<<
@@ -5517,7 +5211,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
               __pyx_v_overlap = (__pyx_v_overlap + (__pyx_v_bit_results & __pyx_v_COUNT));
 
-              /* "debugblock/new_topk_sim_join.pyx":625
+              /* "debugblock/new_topk_sim_join.pyx":635
  *                         # printf("right1\n")
  *                         overlap = 1
  *                         if active_dict.count(l_rec_idx) and active_dict[l_rec_idx].count(r_rec_idx):             # <<<<<<<<<<<<<<
@@ -5526,7 +5220,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
             }
 
-            /* "debugblock/new_topk_sim_join.pyx":630
+            /* "debugblock/new_topk_sim_join.pyx":640
  *                             overlap += bit_results & COUNT
  * 
  *                         sim = overlap * 1.0 / (l_len + r_len - overlap)             # <<<<<<<<<<<<<<
@@ -5543,11 +5237,11 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
               #ifdef WITH_THREAD
               PyGILState_Release(__pyx_gilstate_save);
               #endif
-              {__pyx_filename = __pyx_f[0]; __pyx_lineno = 630; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+              {__pyx_filename = __pyx_f[0]; __pyx_lineno = 640; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
             }
             __pyx_v_sim = (__pyx_t_11 / __pyx_t_4);
 
-            /* "debugblock/new_topk_sim_join.pyx":631
+            /* "debugblock/new_topk_sim_join.pyx":641
  * 
  *                         sim = overlap * 1.0 / (l_len + r_len - overlap)
  *                         if topk_heap.size() == output_size:             # <<<<<<<<<<<<<<
@@ -5557,7 +5251,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
             __pyx_t_2 = ((__pyx_v_topk_heap.size() == __pyx_v_output_size) != 0);
             if (__pyx_t_2) {
 
-              /* "debugblock/new_topk_sim_join.pyx":632
+              /* "debugblock/new_topk_sim_join.pyx":642
  *                         sim = overlap * 1.0 / (l_len + r_len - overlap)
  *                         if topk_heap.size() == output_size:
  *                             if topk_heap.top().sim < sim:             # <<<<<<<<<<<<<<
@@ -5567,7 +5261,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
               __pyx_t_2 = ((__pyx_v_topk_heap.top().sim < __pyx_v_sim) != 0);
               if (__pyx_t_2) {
 
-                /* "debugblock/new_topk_sim_join.pyx":633
+                /* "debugblock/new_topk_sim_join.pyx":643
  *                         if topk_heap.size() == output_size:
  *                             if topk_heap.top().sim < sim:
  *                                 topk_heap.pop()             # <<<<<<<<<<<<<<
@@ -5576,7 +5270,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
                 __pyx_v_topk_heap.pop();
 
-                /* "debugblock/new_topk_sim_join.pyx":634
+                /* "debugblock/new_topk_sim_join.pyx":644
  *                             if topk_heap.top().sim < sim:
  *                                 topk_heap.pop()
  *                                 topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))             # <<<<<<<<<<<<<<
@@ -5585,7 +5279,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
                 __pyx_v_topk_heap.push(TopPair(__pyx_v_sim, __pyx_v_l_rec_idx, __pyx_v_r_rec_idx));
 
-                /* "debugblock/new_topk_sim_join.pyx":632
+                /* "debugblock/new_topk_sim_join.pyx":642
  *                         sim = overlap * 1.0 / (l_len + r_len - overlap)
  *                         if topk_heap.size() == output_size:
  *                             if topk_heap.top().sim < sim:             # <<<<<<<<<<<<<<
@@ -5594,17 +5288,17 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
               }
 
-              /* "debugblock/new_topk_sim_join.pyx":631
+              /* "debugblock/new_topk_sim_join.pyx":641
  * 
  *                         sim = overlap * 1.0 / (l_len + r_len - overlap)
  *                         if topk_heap.size() == output_size:             # <<<<<<<<<<<<<<
  *                             if topk_heap.top().sim < sim:
  *                                 topk_heap.pop()
  */
-              goto __pyx_L61;
+              goto __pyx_L54;
             }
 
-            /* "debugblock/new_topk_sim_join.pyx":636
+            /* "debugblock/new_topk_sim_join.pyx":646
  *                                 topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))
  *                         else:
  *                             topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))             # <<<<<<<<<<<<<<
@@ -5614,335 +5308,28 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
             /*else*/ {
               __pyx_v_topk_heap.push(TopPair(__pyx_v_sim, __pyx_v_l_rec_idx, __pyx_v_r_rec_idx));
             }
-            __pyx_L61:;
+            __pyx_L54:;
 
-            /* "debugblock/new_topk_sim_join.pyx":638
+            /* "debugblock/new_topk_sim_join.pyx":648
  *                             topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))
  * 
  *                         total_compared_pairs += 1             # <<<<<<<<<<<<<<
- *                     elif ltoken_vector[l_rec_idx][l_tok_idx + 1] == rtoken_vector[r_rec_idx][r_tok_idx + 1]:
- *                         # printf("right2\n")
+ *                     # elif ltoken_vector[l_rec_idx][l_tok_idx + 1] == rtoken_vector[r_rec_idx][r_tok_idx + 1]:
+ *                     #     cmps[1] += 1
  */
             __pyx_v_total_compared_pairs = (__pyx_v_total_compared_pairs + 1);
 
-            /* "debugblock/new_topk_sim_join.pyx":622
+            /* "debugblock/new_topk_sim_join.pyx":631
  *                         continue
  * 
  *                     if l_tok_idx + 1 == l_len or r_tok_idx + 1 == r_len:             # <<<<<<<<<<<<<<
+ *                         # cmps[0] += 1
  *                         # printf("right1\n")
- *                         overlap = 1
  */
-            goto __pyx_L55;
+            goto __pyx_L48;
           }
 
-          /* "debugblock/new_topk_sim_join.pyx":639
- * 
- *                         total_compared_pairs += 1
- *                     elif ltoken_vector[l_rec_idx][l_tok_idx + 1] == rtoken_vector[r_rec_idx][r_tok_idx + 1]:             # <<<<<<<<<<<<<<
- *                         # printf("right2\n")
- *                         reuse_info = ReuseInfo(0)
- */
-          __pyx_t_2 = ((((__pyx_v_ltoken_vector[__pyx_v_l_rec_idx])[(__pyx_v_l_tok_idx + 1)]) == ((__pyx_v_rtoken_vector[__pyx_v_r_rec_idx])[(__pyx_v_r_tok_idx + 1)])) != 0);
-          if (__pyx_t_2) {
-
-            /* "debugblock/new_topk_sim_join.pyx":641
- *                     elif ltoken_vector[l_rec_idx][l_tok_idx + 1] == rtoken_vector[r_rec_idx][r_tok_idx + 1]:
- *                         # printf("right2\n")
- *                         reuse_info = ReuseInfo(0)             # <<<<<<<<<<<<<<
- *                         # new_reuse_get_overlap(ltoken_vector[l_rec_idx], rtoken_vector[r_rec_idx],
- *                         #                       lindex_vector[l_rec_idx], rindex_vector[r_rec_idx],
- */
-            __pyx_v_reuse_info = ReuseInfo(0);
-
-            /* "debugblock/new_topk_sim_join.pyx":658
- *                         #             reuse_info.map[p] = 1
- * 
- *                         new_reuse_get_overlap(ltoken_vector[l_rec_idx], rtoken_vector[r_rec_idx],             # <<<<<<<<<<<<<<
- *                                               lindex_vector[l_rec_idx], rindex_vector[r_rec_idx],
- *                                               0, 0, reuse_info, offset_of_field_num)
- */
-            __pyx_f_10debugblock_17new_topk_sim_join_new_reuse_get_overlap((__pyx_v_ltoken_vector[__pyx_v_l_rec_idx]), (__pyx_v_rtoken_vector[__pyx_v_r_rec_idx]), (__pyx_v_lindex_vector[__pyx_v_l_rec_idx]), (__pyx_v_rindex_vector[__pyx_v_r_rec_idx]), 0, 0, __pyx_v_reuse_info, __pyx_v_offset_of_field_num);
-
-            /* "debugblock/new_topk_sim_join.pyx":662
- *                                               0, 0, reuse_info, offset_of_field_num)
- * 
- *                         if active_dict.count(l_rec_idx) and active_dict[l_rec_idx].count(r_rec_idx):             # <<<<<<<<<<<<<<
- *                             active_dict[l_rec_idx].erase(r_rec_idx)
- * 
- */
-            __pyx_t_3 = (__pyx_v_active_dict.count(__pyx_v_l_rec_idx) != 0);
-            if (__pyx_t_3) {
-            } else {
-              __pyx_t_2 = __pyx_t_3;
-              goto __pyx_L64_bool_binop_done;
-            }
-            __pyx_t_3 = ((__pyx_v_active_dict[__pyx_v_l_rec_idx]).count(__pyx_v_r_rec_idx) != 0);
-            __pyx_t_2 = __pyx_t_3;
-            __pyx_L64_bool_binop_done:;
-            if (__pyx_t_2) {
-
-              /* "debugblock/new_topk_sim_join.pyx":663
- * 
- *                         if active_dict.count(l_rec_idx) and active_dict[l_rec_idx].count(r_rec_idx):
- *                             active_dict[l_rec_idx].erase(r_rec_idx)             # <<<<<<<<<<<<<<
- * 
- *                         overlap = reuse_info.overlap
- */
-              (__pyx_v_active_dict[__pyx_v_l_rec_idx]).erase(__pyx_v_r_rec_idx);
-
-              /* "debugblock/new_topk_sim_join.pyx":662
- *                                               0, 0, reuse_info, offset_of_field_num)
- * 
- *                         if active_dict.count(l_rec_idx) and active_dict[l_rec_idx].count(r_rec_idx):             # <<<<<<<<<<<<<<
- *                             active_dict[l_rec_idx].erase(r_rec_idx)
- * 
- */
-            }
-
-            /* "debugblock/new_topk_sim_join.pyx":665
- *                             active_dict[l_rec_idx].erase(r_rec_idx)
- * 
- *                         overlap = reuse_info.overlap             # <<<<<<<<<<<<<<
- *                         sim = overlap * 1.0 / (l_len + r_len - overlap)
- *                         if topk_heap.size() == output_size:
- */
-            __pyx_t_4 = __pyx_v_reuse_info.overlap;
-            __pyx_v_overlap = __pyx_t_4;
-
-            /* "debugblock/new_topk_sim_join.pyx":666
- * 
- *                         overlap = reuse_info.overlap
- *                         sim = overlap * 1.0 / (l_len + r_len - overlap)             # <<<<<<<<<<<<<<
- *                         if topk_heap.size() == output_size:
- *                             if topk_heap.top().sim < sim:
- */
-            __pyx_t_11 = (__pyx_v_overlap * 1.0);
-            __pyx_t_4 = ((__pyx_v_l_len + __pyx_v_r_len) - __pyx_v_overlap);
-            if (unlikely(__pyx_t_4 == 0)) {
-              #ifdef WITH_THREAD
-              PyGILState_STATE __pyx_gilstate_save = PyGILState_Ensure();
-              #endif
-              PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-              #ifdef WITH_THREAD
-              PyGILState_Release(__pyx_gilstate_save);
-              #endif
-              {__pyx_filename = __pyx_f[0]; __pyx_lineno = 666; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-            }
-            __pyx_v_sim = (__pyx_t_11 / __pyx_t_4);
-
-            /* "debugblock/new_topk_sim_join.pyx":667
- *                         overlap = reuse_info.overlap
- *                         sim = overlap * 1.0 / (l_len + r_len - overlap)
- *                         if topk_heap.size() == output_size:             # <<<<<<<<<<<<<<
- *                             if topk_heap.top().sim < sim:
- *                                 topk_heap.pop()
- */
-            __pyx_t_2 = ((__pyx_v_topk_heap.size() == __pyx_v_output_size) != 0);
-            if (__pyx_t_2) {
-
-              /* "debugblock/new_topk_sim_join.pyx":668
- *                         sim = overlap * 1.0 / (l_len + r_len - overlap)
- *                         if topk_heap.size() == output_size:
- *                             if topk_heap.top().sim < sim:             # <<<<<<<<<<<<<<
- *                                 topk_heap.pop()
- *                                 topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))
- */
-              __pyx_t_2 = ((__pyx_v_topk_heap.top().sim < __pyx_v_sim) != 0);
-              if (__pyx_t_2) {
-
-                /* "debugblock/new_topk_sim_join.pyx":669
- *                         if topk_heap.size() == output_size:
- *                             if topk_heap.top().sim < sim:
- *                                 topk_heap.pop()             # <<<<<<<<<<<<<<
- *                                 topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))
- *                         else:
- */
-                __pyx_v_topk_heap.pop();
-
-                /* "debugblock/new_topk_sim_join.pyx":670
- *                             if topk_heap.top().sim < sim:
- *                                 topk_heap.pop()
- *                                 topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))             # <<<<<<<<<<<<<<
- *                         else:
- *                             topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))
- */
-                __pyx_v_topk_heap.push(TopPair(__pyx_v_sim, __pyx_v_l_rec_idx, __pyx_v_r_rec_idx));
-
-                /* "debugblock/new_topk_sim_join.pyx":668
- *                         sim = overlap * 1.0 / (l_len + r_len - overlap)
- *                         if topk_heap.size() == output_size:
- *                             if topk_heap.top().sim < sim:             # <<<<<<<<<<<<<<
- *                                 topk_heap.pop()
- *                                 topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))
- */
-              }
-
-              /* "debugblock/new_topk_sim_join.pyx":667
- *                         overlap = reuse_info.overlap
- *                         sim = overlap * 1.0 / (l_len + r_len - overlap)
- *                         if topk_heap.size() == output_size:             # <<<<<<<<<<<<<<
- *                             if topk_heap.top().sim < sim:
- *                                 topk_heap.pop()
- */
-              goto __pyx_L66;
-            }
-
-            /* "debugblock/new_topk_sim_join.pyx":672
- *                                 topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))
- *                         else:
- *                             topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))             # <<<<<<<<<<<<<<
- * 
- *                         if compared_set.count(l_rec_idx):
- */
-            /*else*/ {
-              __pyx_v_topk_heap.push(TopPair(__pyx_v_sim, __pyx_v_l_rec_idx, __pyx_v_r_rec_idx));
-            }
-            __pyx_L66:;
-
-            /* "debugblock/new_topk_sim_join.pyx":674
- *                             topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))
- * 
- *                         if compared_set.count(l_rec_idx):             # <<<<<<<<<<<<<<
- *                             compared_set[l_rec_idx].insert(r_rec_idx)
- *                         else:
- */
-            __pyx_t_2 = (__pyx_v_compared_set.count(__pyx_v_l_rec_idx) != 0);
-            if (__pyx_t_2) {
-
-              /* "debugblock/new_topk_sim_join.pyx":675
- * 
- *                         if compared_set.count(l_rec_idx):
- *                             compared_set[l_rec_idx].insert(r_rec_idx)             # <<<<<<<<<<<<<<
- *                         else:
- *                             compared_set[l_rec_idx] = uset[int]()
- */
-              (__pyx_v_compared_set[__pyx_v_l_rec_idx]).insert(__pyx_v_r_rec_idx);
-
-              /* "debugblock/new_topk_sim_join.pyx":674
- *                             topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))
- * 
- *                         if compared_set.count(l_rec_idx):             # <<<<<<<<<<<<<<
- *                             compared_set[l_rec_idx].insert(r_rec_idx)
- *                         else:
- */
-              goto __pyx_L68;
-            }
-
-            /* "debugblock/new_topk_sim_join.pyx":677
- *                             compared_set[l_rec_idx].insert(r_rec_idx)
- *                         else:
- *                             compared_set[l_rec_idx] = uset[int]()             # <<<<<<<<<<<<<<
- *                             compared_set[l_rec_idx].insert(r_rec_idx)
- * 
- */
-            /*else*/ {
-              try {
-                __pyx_t_8 = std::unordered_set<int> ();
-              } catch(...) {
-                #ifdef WITH_THREAD
-                PyGILState_STATE __pyx_gilstate_save = PyGILState_Ensure();
-                #endif
-                __Pyx_CppExn2PyErr();
-                #ifdef WITH_THREAD
-                PyGILState_Release(__pyx_gilstate_save);
-                #endif
-                {__pyx_filename = __pyx_f[0]; __pyx_lineno = 677; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-              }
-              (__pyx_v_compared_set[__pyx_v_l_rec_idx]) = __pyx_t_8;
-
-              /* "debugblock/new_topk_sim_join.pyx":678
- *                         else:
- *                             compared_set[l_rec_idx] = uset[int]()
- *                             compared_set[l_rec_idx].insert(r_rec_idx)             # <<<<<<<<<<<<<<
- * 
- *                         if reuse_set.count(l_rec_idx):
- */
-              (__pyx_v_compared_set[__pyx_v_l_rec_idx]).insert(__pyx_v_r_rec_idx);
-            }
-            __pyx_L68:;
-
-            /* "debugblock/new_topk_sim_join.pyx":680
- *                             compared_set[l_rec_idx].insert(r_rec_idx)
- * 
- *                         if reuse_set.count(l_rec_idx):             # <<<<<<<<<<<<<<
- *                             reuse_set[l_rec_idx][r_rec_idx] = reuse_info
- *                         else:
- */
-            __pyx_t_2 = (__pyx_v_reuse_set.count(__pyx_v_l_rec_idx) != 0);
-            if (__pyx_t_2) {
-
-              /* "debugblock/new_topk_sim_join.pyx":681
- * 
- *                         if reuse_set.count(l_rec_idx):
- *                             reuse_set[l_rec_idx][r_rec_idx] = reuse_info             # <<<<<<<<<<<<<<
- *                         else:
- *                             reuse_set[l_rec_idx] = umap[int, ReuseInfo]()
- */
-              ((__pyx_v_reuse_set[__pyx_v_l_rec_idx])[__pyx_v_r_rec_idx]) = __pyx_v_reuse_info;
-
-              /* "debugblock/new_topk_sim_join.pyx":680
- *                             compared_set[l_rec_idx].insert(r_rec_idx)
- * 
- *                         if reuse_set.count(l_rec_idx):             # <<<<<<<<<<<<<<
- *                             reuse_set[l_rec_idx][r_rec_idx] = reuse_info
- *                         else:
- */
-              goto __pyx_L69;
-            }
-
-            /* "debugblock/new_topk_sim_join.pyx":683
- *                             reuse_set[l_rec_idx][r_rec_idx] = reuse_info
- *                         else:
- *                             reuse_set[l_rec_idx] = umap[int, ReuseInfo]()             # <<<<<<<<<<<<<<
- *                             reuse_set[l_rec_idx][r_rec_idx] = reuse_info
- * 
- */
-            /*else*/ {
-              try {
-                __pyx_t_9 = std::unordered_map<int,ReuseInfo> ();
-              } catch(...) {
-                #ifdef WITH_THREAD
-                PyGILState_STATE __pyx_gilstate_save = PyGILState_Ensure();
-                #endif
-                __Pyx_CppExn2PyErr();
-                #ifdef WITH_THREAD
-                PyGILState_Release(__pyx_gilstate_save);
-                #endif
-                {__pyx_filename = __pyx_f[0]; __pyx_lineno = 683; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-              }
-              (__pyx_v_reuse_set[__pyx_v_l_rec_idx]) = __pyx_t_9;
-
-              /* "debugblock/new_topk_sim_join.pyx":684
- *                         else:
- *                             reuse_set[l_rec_idx] = umap[int, ReuseInfo]()
- *                             reuse_set[l_rec_idx][r_rec_idx] = reuse_info             # <<<<<<<<<<<<<<
- * 
- *                         total_compared_pairs += 1
- */
-              ((__pyx_v_reuse_set[__pyx_v_l_rec_idx])[__pyx_v_r_rec_idx]) = __pyx_v_reuse_info;
-            }
-            __pyx_L69:;
-
-            /* "debugblock/new_topk_sim_join.pyx":686
- *                             reuse_set[l_rec_idx][r_rec_idx] = reuse_info
- * 
- *                         total_compared_pairs += 1             # <<<<<<<<<<<<<<
- *                     else:
- *                         # printf("right3\n")
- */
-            __pyx_v_total_compared_pairs = (__pyx_v_total_compared_pairs + 1);
-
-            /* "debugblock/new_topk_sim_join.pyx":639
- * 
- *                         total_compared_pairs += 1
- *                     elif ltoken_vector[l_rec_idx][l_tok_idx + 1] == rtoken_vector[r_rec_idx][r_tok_idx + 1]:             # <<<<<<<<<<<<<<
- *                         # printf("right2\n")
- *                         reuse_info = ReuseInfo(0)
- */
-            goto __pyx_L55;
-          }
-
-          /* "debugblock/new_topk_sim_join.pyx":689
+          /* "debugblock/new_topk_sim_join.pyx":700
  *                     else:
  *                         # printf("right3\n")
  *                         if active_dict.count(l_rec_idx):             # <<<<<<<<<<<<<<
@@ -5953,7 +5340,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
             __pyx_t_2 = (__pyx_v_active_dict.count(__pyx_v_l_rec_idx) != 0);
             if (__pyx_t_2) {
 
-              /* "debugblock/new_topk_sim_join.pyx":690
+              /* "debugblock/new_topk_sim_join.pyx":701
  *                         # printf("right3\n")
  *                         if active_dict.count(l_rec_idx):
  *                             if active_dict[l_rec_idx].count(r_rec_idx):             # <<<<<<<<<<<<<<
@@ -5963,36 +5350,36 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
               __pyx_t_2 = ((__pyx_v_active_dict[__pyx_v_l_rec_idx]).count(__pyx_v_r_rec_idx) != 0);
               if (__pyx_t_2) {
 
-                /* "debugblock/new_topk_sim_join.pyx":691
+                /* "debugblock/new_topk_sim_join.pyx":702
  *                         if active_dict.count(l_rec_idx):
  *                             if active_dict[l_rec_idx].count(r_rec_idx):
  *                                 value = active_dict[l_rec_idx][r_rec_idx] & COUNT             # <<<<<<<<<<<<<<
  *                                 if value == prefix_match_max_size:
- *                                     overlap = value
+ *                                     # cmps[2] += 1
  */
                 __pyx_v_value = (((__pyx_v_active_dict[__pyx_v_l_rec_idx])[__pyx_v_r_rec_idx]) & __pyx_v_COUNT);
 
-                /* "debugblock/new_topk_sim_join.pyx":692
+                /* "debugblock/new_topk_sim_join.pyx":703
  *                             if active_dict[l_rec_idx].count(r_rec_idx):
  *                                 value = active_dict[l_rec_idx][r_rec_idx] & COUNT
  *                                 if value == prefix_match_max_size:             # <<<<<<<<<<<<<<
+ *                                     # cmps[2] += 1
  *                                     overlap = value
- *                                     reuse_info = ReuseInfo(0)
  */
                 __pyx_t_2 = ((__pyx_v_value == __pyx_v_prefix_match_max_size) != 0);
                 if (__pyx_t_2) {
 
-                  /* "debugblock/new_topk_sim_join.pyx":693
- *                                 value = active_dict[l_rec_idx][r_rec_idx] & COUNT
+                  /* "debugblock/new_topk_sim_join.pyx":705
  *                                 if value == prefix_match_max_size:
+ *                                     # cmps[2] += 1
  *                                     overlap = value             # <<<<<<<<<<<<<<
  *                                     reuse_info = ReuseInfo(0)
  *                                     # new_reuse_get_overlap(ltoken_vector[l_rec_idx], rtoken_vector[r_rec_idx],
  */
                   __pyx_v_overlap = __pyx_v_value;
 
-                  /* "debugblock/new_topk_sim_join.pyx":694
- *                                 if value == prefix_match_max_size:
+                  /* "debugblock/new_topk_sim_join.pyx":706
+ *                                     # cmps[2] += 1
  *                                     overlap = value
  *                                     reuse_info = ReuseInfo(0)             # <<<<<<<<<<<<<<
  *                                     # new_reuse_get_overlap(ltoken_vector[l_rec_idx], rtoken_vector[r_rec_idx],
@@ -6000,7 +5387,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
                   __pyx_v_reuse_info = ReuseInfo(0);
 
-                  /* "debugblock/new_topk_sim_join.pyx":709
+                  /* "debugblock/new_topk_sim_join.pyx":721
  *                                     #         reuse_info.map[p] = 1
  * 
  *                                     new_reuse_get_overlap(ltoken_vector[l_rec_idx], rtoken_vector[r_rec_idx],             # <<<<<<<<<<<<<<
@@ -6009,7 +5396,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
                   __pyx_f_10debugblock_17new_topk_sim_join_new_reuse_get_overlap((__pyx_v_ltoken_vector[__pyx_v_l_rec_idx]), (__pyx_v_rtoken_vector[__pyx_v_r_rec_idx]), (__pyx_v_lindex_vector[__pyx_v_l_rec_idx]), (__pyx_v_rindex_vector[__pyx_v_r_rec_idx]), 0, 0, __pyx_v_reuse_info, __pyx_v_offset_of_field_num);
 
-                  /* "debugblock/new_topk_sim_join.pyx":712
+                  /* "debugblock/new_topk_sim_join.pyx":724
  *                                                           lindex_vector[l_rec_idx], rindex_vector[r_rec_idx],
  *                                                           0, 0, reuse_info, offset_of_field_num)
  *                                     active_dict[l_rec_idx].erase(r_rec_idx)             # <<<<<<<<<<<<<<
@@ -6018,7 +5405,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
                   (__pyx_v_active_dict[__pyx_v_l_rec_idx]).erase(__pyx_v_r_rec_idx);
 
-                  /* "debugblock/new_topk_sim_join.pyx":714
+                  /* "debugblock/new_topk_sim_join.pyx":726
  *                                     active_dict[l_rec_idx].erase(r_rec_idx)
  * 
  *                                     overlap = reuse_info.overlap             # <<<<<<<<<<<<<<
@@ -6028,7 +5415,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
                   __pyx_t_4 = __pyx_v_reuse_info.overlap;
                   __pyx_v_overlap = __pyx_t_4;
 
-                  /* "debugblock/new_topk_sim_join.pyx":715
+                  /* "debugblock/new_topk_sim_join.pyx":727
  * 
  *                                     overlap = reuse_info.overlap
  *                                     sim = overlap * 1.0 / (l_len + r_len - overlap)             # <<<<<<<<<<<<<<
@@ -6045,11 +5432,11 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
                     #ifdef WITH_THREAD
                     PyGILState_Release(__pyx_gilstate_save);
                     #endif
-                    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 715; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+                    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 727; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
                   }
                   __pyx_v_sim = (__pyx_t_11 / __pyx_t_4);
 
-                  /* "debugblock/new_topk_sim_join.pyx":716
+                  /* "debugblock/new_topk_sim_join.pyx":728
  *                                     overlap = reuse_info.overlap
  *                                     sim = overlap * 1.0 / (l_len + r_len - overlap)
  *                                     if topk_heap.size() == output_size:             # <<<<<<<<<<<<<<
@@ -6059,7 +5446,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
                   __pyx_t_2 = ((__pyx_v_topk_heap.size() == __pyx_v_output_size) != 0);
                   if (__pyx_t_2) {
 
-                    /* "debugblock/new_topk_sim_join.pyx":717
+                    /* "debugblock/new_topk_sim_join.pyx":729
  *                                     sim = overlap * 1.0 / (l_len + r_len - overlap)
  *                                     if topk_heap.size() == output_size:
  *                                         if topk_heap.top().sim < sim:             # <<<<<<<<<<<<<<
@@ -6069,7 +5456,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
                     __pyx_t_2 = ((__pyx_v_topk_heap.top().sim < __pyx_v_sim) != 0);
                     if (__pyx_t_2) {
 
-                      /* "debugblock/new_topk_sim_join.pyx":718
+                      /* "debugblock/new_topk_sim_join.pyx":730
  *                                     if topk_heap.size() == output_size:
  *                                         if topk_heap.top().sim < sim:
  *                                             topk_heap.pop()             # <<<<<<<<<<<<<<
@@ -6078,7 +5465,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
                       __pyx_v_topk_heap.pop();
 
-                      /* "debugblock/new_topk_sim_join.pyx":719
+                      /* "debugblock/new_topk_sim_join.pyx":731
  *                                         if topk_heap.top().sim < sim:
  *                                             topk_heap.pop()
  *                                             topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))             # <<<<<<<<<<<<<<
@@ -6087,7 +5474,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
                       __pyx_v_topk_heap.push(TopPair(__pyx_v_sim, __pyx_v_l_rec_idx, __pyx_v_r_rec_idx));
 
-                      /* "debugblock/new_topk_sim_join.pyx":717
+                      /* "debugblock/new_topk_sim_join.pyx":729
  *                                     sim = overlap * 1.0 / (l_len + r_len - overlap)
  *                                     if topk_heap.size() == output_size:
  *                                         if topk_heap.top().sim < sim:             # <<<<<<<<<<<<<<
@@ -6096,17 +5483,17 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
                     }
 
-                    /* "debugblock/new_topk_sim_join.pyx":716
+                    /* "debugblock/new_topk_sim_join.pyx":728
  *                                     overlap = reuse_info.overlap
  *                                     sim = overlap * 1.0 / (l_len + r_len - overlap)
  *                                     if topk_heap.size() == output_size:             # <<<<<<<<<<<<<<
  *                                         if topk_heap.top().sim < sim:
  *                                             topk_heap.pop()
  */
-                    goto __pyx_L73;
+                    goto __pyx_L59;
                   }
 
-                  /* "debugblock/new_topk_sim_join.pyx":721
+                  /* "debugblock/new_topk_sim_join.pyx":733
  *                                             topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))
  *                                     else:
  *                                         topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))             # <<<<<<<<<<<<<<
@@ -6116,9 +5503,9 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
                   /*else*/ {
                     __pyx_v_topk_heap.push(TopPair(__pyx_v_sim, __pyx_v_l_rec_idx, __pyx_v_r_rec_idx));
                   }
-                  __pyx_L73:;
+                  __pyx_L59:;
 
-                  /* "debugblock/new_topk_sim_join.pyx":723
+                  /* "debugblock/new_topk_sim_join.pyx":735
  *                                         topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))
  * 
  *                                     if compared_set.count(l_rec_idx):             # <<<<<<<<<<<<<<
@@ -6128,7 +5515,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
                   __pyx_t_2 = (__pyx_v_compared_set.count(__pyx_v_l_rec_idx) != 0);
                   if (__pyx_t_2) {
 
-                    /* "debugblock/new_topk_sim_join.pyx":724
+                    /* "debugblock/new_topk_sim_join.pyx":736
  * 
  *                                     if compared_set.count(l_rec_idx):
  *                                         compared_set[l_rec_idx].insert(r_rec_idx)             # <<<<<<<<<<<<<<
@@ -6137,17 +5524,17 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
                     (__pyx_v_compared_set[__pyx_v_l_rec_idx]).insert(__pyx_v_r_rec_idx);
 
-                    /* "debugblock/new_topk_sim_join.pyx":723
+                    /* "debugblock/new_topk_sim_join.pyx":735
  *                                         topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))
  * 
  *                                     if compared_set.count(l_rec_idx):             # <<<<<<<<<<<<<<
  *                                         compared_set[l_rec_idx].insert(r_rec_idx)
  *                                     else:
  */
-                    goto __pyx_L75;
+                    goto __pyx_L61;
                   }
 
-                  /* "debugblock/new_topk_sim_join.pyx":726
+                  /* "debugblock/new_topk_sim_join.pyx":738
  *                                         compared_set[l_rec_idx].insert(r_rec_idx)
  *                                     else:
  *                                         compared_set[l_rec_idx] = uset[int]()             # <<<<<<<<<<<<<<
@@ -6165,11 +5552,11 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
                       #ifdef WITH_THREAD
                       PyGILState_Release(__pyx_gilstate_save);
                       #endif
-                      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 726; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+                      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 738; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
                     }
                     (__pyx_v_compared_set[__pyx_v_l_rec_idx]) = __pyx_t_8;
 
-                    /* "debugblock/new_topk_sim_join.pyx":727
+                    /* "debugblock/new_topk_sim_join.pyx":739
  *                                     else:
  *                                         compared_set[l_rec_idx] = uset[int]()
  *                                         compared_set[l_rec_idx].insert(r_rec_idx)             # <<<<<<<<<<<<<<
@@ -6178,9 +5565,9 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
                     (__pyx_v_compared_set[__pyx_v_l_rec_idx]).insert(__pyx_v_r_rec_idx);
                   }
-                  __pyx_L75:;
+                  __pyx_L61:;
 
-                  /* "debugblock/new_topk_sim_join.pyx":729
+                  /* "debugblock/new_topk_sim_join.pyx":741
  *                                         compared_set[l_rec_idx].insert(r_rec_idx)
  * 
  *                                     if reuse_set.count(l_rec_idx):             # <<<<<<<<<<<<<<
@@ -6190,7 +5577,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
                   __pyx_t_2 = (__pyx_v_reuse_set.count(__pyx_v_l_rec_idx) != 0);
                   if (__pyx_t_2) {
 
-                    /* "debugblock/new_topk_sim_join.pyx":730
+                    /* "debugblock/new_topk_sim_join.pyx":742
  * 
  *                                     if reuse_set.count(l_rec_idx):
  *                                         reuse_set[l_rec_idx][r_rec_idx] = reuse_info             # <<<<<<<<<<<<<<
@@ -6199,17 +5586,17 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
                     ((__pyx_v_reuse_set[__pyx_v_l_rec_idx])[__pyx_v_r_rec_idx]) = __pyx_v_reuse_info;
 
-                    /* "debugblock/new_topk_sim_join.pyx":729
+                    /* "debugblock/new_topk_sim_join.pyx":741
  *                                         compared_set[l_rec_idx].insert(r_rec_idx)
  * 
  *                                     if reuse_set.count(l_rec_idx):             # <<<<<<<<<<<<<<
  *                                         reuse_set[l_rec_idx][r_rec_idx] = reuse_info
  *                                     else:
  */
-                    goto __pyx_L76;
+                    goto __pyx_L62;
                   }
 
-                  /* "debugblock/new_topk_sim_join.pyx":732
+                  /* "debugblock/new_topk_sim_join.pyx":744
  *                                         reuse_set[l_rec_idx][r_rec_idx] = reuse_info
  *                                     else:
  *                                         reuse_set[l_rec_idx] = umap[int, ReuseInfo]()             # <<<<<<<<<<<<<<
@@ -6227,11 +5614,11 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
                       #ifdef WITH_THREAD
                       PyGILState_Release(__pyx_gilstate_save);
                       #endif
-                      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 732; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+                      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 744; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
                     }
                     (__pyx_v_reuse_set[__pyx_v_l_rec_idx]) = __pyx_t_9;
 
-                    /* "debugblock/new_topk_sim_join.pyx":733
+                    /* "debugblock/new_topk_sim_join.pyx":745
  *                                     else:
  *                                         reuse_set[l_rec_idx] = umap[int, ReuseInfo]()
  *                                         reuse_set[l_rec_idx][r_rec_idx] = reuse_info             # <<<<<<<<<<<<<<
@@ -6240,9 +5627,9 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
                     ((__pyx_v_reuse_set[__pyx_v_l_rec_idx])[__pyx_v_r_rec_idx]) = __pyx_v_reuse_info;
                   }
-                  __pyx_L76:;
+                  __pyx_L62:;
 
-                  /* "debugblock/new_topk_sim_join.pyx":735
+                  /* "debugblock/new_topk_sim_join.pyx":747
  *                                         reuse_set[l_rec_idx][r_rec_idx] = reuse_info
  * 
  *                                     total_compared_pairs += 1             # <<<<<<<<<<<<<<
@@ -6251,17 +5638,17 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
                   __pyx_v_total_compared_pairs = (__pyx_v_total_compared_pairs + 1);
 
-                  /* "debugblock/new_topk_sim_join.pyx":692
+                  /* "debugblock/new_topk_sim_join.pyx":703
  *                             if active_dict[l_rec_idx].count(r_rec_idx):
  *                                 value = active_dict[l_rec_idx][r_rec_idx] & COUNT
  *                                 if value == prefix_match_max_size:             # <<<<<<<<<<<<<<
+ *                                     # cmps[2] += 1
  *                                     overlap = value
- *                                     reuse_info = ReuseInfo(0)
  */
-                  goto __pyx_L72;
+                  goto __pyx_L58;
                 }
 
-                /* "debugblock/new_topk_sim_join.pyx":737
+                /* "debugblock/new_topk_sim_join.pyx":749
  *                                     total_compared_pairs += 1
  *                                 else:
  *                                     bits = active_dict[l_rec_idx][r_rec_idx]             # <<<<<<<<<<<<<<
@@ -6271,7 +5658,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
                 /*else*/ {
                   __pyx_v_bits = ((__pyx_v_active_dict[__pyx_v_l_rec_idx])[__pyx_v_r_rec_idx]);
 
-                  /* "debugblock/new_topk_sim_join.pyx":738
+                  /* "debugblock/new_topk_sim_join.pyx":750
  *                                 else:
  *                                     bits = active_dict[l_rec_idx][r_rec_idx]
  *                                     field_pair = lindex_vector[l_rec_idx][l_tok_idx] * offset_of_field_num + \             # <<<<<<<<<<<<<<
@@ -6280,7 +5667,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
                   __pyx_v_field_pair = ((((__pyx_v_lindex_vector[__pyx_v_l_rec_idx])[__pyx_v_l_tok_idx]) * __pyx_v_offset_of_field_num) + ((__pyx_v_rindex_vector[__pyx_v_r_rec_idx])[__pyx_v_r_tok_idx]));
 
-                  /* "debugblock/new_topk_sim_join.pyx":740
+                  /* "debugblock/new_topk_sim_join.pyx":752
  *                                     field_pair = lindex_vector[l_rec_idx][l_tok_idx] * offset_of_field_num + \
  *                                                  rindex_vector[r_rec_idx][r_tok_idx]
  *                                     bits |= (field_pair << ((COUNT & bits) * FIELD_BITS + COUNT_BITS))             # <<<<<<<<<<<<<<
@@ -6289,7 +5676,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
                   __pyx_v_bits = (__pyx_v_bits | (__pyx_v_field_pair << (((__pyx_v_COUNT & __pyx_v_bits) * __pyx_v_FIELD_BITS) + __pyx_v_COUNT_BITS)));
 
-                  /* "debugblock/new_topk_sim_join.pyx":741
+                  /* "debugblock/new_topk_sim_join.pyx":753
  *                                                  rindex_vector[r_rec_idx][r_tok_idx]
  *                                     bits |= (field_pair << ((COUNT & bits) * FIELD_BITS + COUNT_BITS))
  *                                     active_dict[l_rec_idx][r_rec_idx] = bits + INC             # <<<<<<<<<<<<<<
@@ -6298,19 +5685,19 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
                   ((__pyx_v_active_dict[__pyx_v_l_rec_idx])[__pyx_v_r_rec_idx]) = (__pyx_v_bits + __pyx_v_INC);
                 }
-                __pyx_L72:;
+                __pyx_L58:;
 
-                /* "debugblock/new_topk_sim_join.pyx":690
+                /* "debugblock/new_topk_sim_join.pyx":701
  *                         # printf("right3\n")
  *                         if active_dict.count(l_rec_idx):
  *                             if active_dict[l_rec_idx].count(r_rec_idx):             # <<<<<<<<<<<<<<
  *                                 value = active_dict[l_rec_idx][r_rec_idx] & COUNT
  *                                 if value == prefix_match_max_size:
  */
-                goto __pyx_L71;
+                goto __pyx_L57;
               }
 
-              /* "debugblock/new_topk_sim_join.pyx":743
+              /* "debugblock/new_topk_sim_join.pyx":755
  *                                     active_dict[l_rec_idx][r_rec_idx] = bits + INC
  *                             else:
  *                                 field_pair = lindex_vector[l_rec_idx][l_tok_idx] * offset_of_field_num + \             # <<<<<<<<<<<<<<
@@ -6319,7 +5706,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
               /*else*/ {
 
-                /* "debugblock/new_topk_sim_join.pyx":744
+                /* "debugblock/new_topk_sim_join.pyx":756
  *                             else:
  *                                 field_pair = lindex_vector[l_rec_idx][l_tok_idx] * offset_of_field_num + \
  *                                              rindex_vector[r_rec_idx][r_tok_idx]             # <<<<<<<<<<<<<<
@@ -6328,7 +5715,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
                 __pyx_v_field_pair = ((((__pyx_v_lindex_vector[__pyx_v_l_rec_idx])[__pyx_v_l_tok_idx]) * __pyx_v_offset_of_field_num) + ((__pyx_v_rindex_vector[__pyx_v_r_rec_idx])[__pyx_v_r_tok_idx]));
 
-                /* "debugblock/new_topk_sim_join.pyx":745
+                /* "debugblock/new_topk_sim_join.pyx":757
  *                                 field_pair = lindex_vector[l_rec_idx][l_tok_idx] * offset_of_field_num + \
  *                                              rindex_vector[r_rec_idx][r_tok_idx]
  *                                 bits = (field_pair << COUNT_BITS) + INC             # <<<<<<<<<<<<<<
@@ -6337,7 +5724,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
                 __pyx_v_bits = ((__pyx_v_field_pair << __pyx_v_COUNT_BITS) + __pyx_v_INC);
 
-                /* "debugblock/new_topk_sim_join.pyx":746
+                /* "debugblock/new_topk_sim_join.pyx":758
  *                                              rindex_vector[r_rec_idx][r_tok_idx]
  *                                 bits = (field_pair << COUNT_BITS) + INC
  *                                 active_dict[l_rec_idx][r_rec_idx] = bits             # <<<<<<<<<<<<<<
@@ -6346,19 +5733,19 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
                 ((__pyx_v_active_dict[__pyx_v_l_rec_idx])[__pyx_v_r_rec_idx]) = __pyx_v_bits;
               }
-              __pyx_L71:;
+              __pyx_L57:;
 
-              /* "debugblock/new_topk_sim_join.pyx":689
+              /* "debugblock/new_topk_sim_join.pyx":700
  *                     else:
  *                         # printf("right3\n")
  *                         if active_dict.count(l_rec_idx):             # <<<<<<<<<<<<<<
  *                             if active_dict[l_rec_idx].count(r_rec_idx):
  *                                 value = active_dict[l_rec_idx][r_rec_idx] & COUNT
  */
-              goto __pyx_L70;
+              goto __pyx_L56;
             }
 
-            /* "debugblock/new_topk_sim_join.pyx":748
+            /* "debugblock/new_topk_sim_join.pyx":760
  *                                 active_dict[l_rec_idx][r_rec_idx] = bits
  *                         else:
  *                             field_pair = lindex_vector[l_rec_idx][l_tok_idx] * offset_of_field_num + \             # <<<<<<<<<<<<<<
@@ -6367,7 +5754,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
             /*else*/ {
 
-              /* "debugblock/new_topk_sim_join.pyx":749
+              /* "debugblock/new_topk_sim_join.pyx":761
  *                         else:
  *                             field_pair = lindex_vector[l_rec_idx][l_tok_idx] * offset_of_field_num + \
  *                                          rindex_vector[r_rec_idx][r_tok_idx]             # <<<<<<<<<<<<<<
@@ -6376,7 +5763,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
               __pyx_v_field_pair = ((((__pyx_v_lindex_vector[__pyx_v_l_rec_idx])[__pyx_v_l_tok_idx]) * __pyx_v_offset_of_field_num) + ((__pyx_v_rindex_vector[__pyx_v_r_rec_idx])[__pyx_v_r_tok_idx]));
 
-              /* "debugblock/new_topk_sim_join.pyx":750
+              /* "debugblock/new_topk_sim_join.pyx":762
  *                             field_pair = lindex_vector[l_rec_idx][l_tok_idx] * offset_of_field_num + \
  *                                          rindex_vector[r_rec_idx][r_tok_idx]
  *                             bits = (field_pair << COUNT_BITS) + INC             # <<<<<<<<<<<<<<
@@ -6385,7 +5772,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
               __pyx_v_bits = ((__pyx_v_field_pair << __pyx_v_COUNT_BITS) + __pyx_v_INC);
 
-              /* "debugblock/new_topk_sim_join.pyx":751
+              /* "debugblock/new_topk_sim_join.pyx":763
  *                                          rindex_vector[r_rec_idx][r_tok_idx]
  *                             bits = (field_pair << COUNT_BITS) + INC
  *                             active_dict[l_rec_idx] = umap[int, uint64_t]()             # <<<<<<<<<<<<<<
@@ -6402,11 +5789,11 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
                 #ifdef WITH_THREAD
                 PyGILState_Release(__pyx_gilstate_save);
                 #endif
-                {__pyx_filename = __pyx_f[0]; __pyx_lineno = 751; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+                {__pyx_filename = __pyx_f[0]; __pyx_lineno = 763; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
               }
               (__pyx_v_active_dict[__pyx_v_l_rec_idx]) = __pyx_t_10;
 
-              /* "debugblock/new_topk_sim_join.pyx":752
+              /* "debugblock/new_topk_sim_join.pyx":764
  *                             bits = (field_pair << COUNT_BITS) + INC
  *                             active_dict[l_rec_idx] = umap[int, uint64_t]()
  *                             active_dict[l_rec_idx][r_rec_idx] = bits             # <<<<<<<<<<<<<<
@@ -6415,11 +5802,11 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
               ((__pyx_v_active_dict[__pyx_v_l_rec_idx])[__pyx_v_r_rec_idx]) = __pyx_v_bits;
             }
-            __pyx_L70:;
+            __pyx_L56:;
           }
-          __pyx_L55:;
+          __pyx_L48:;
 
-          /* "debugblock/new_topk_sim_join.pyx":755
+          /* "debugblock/new_topk_sim_join.pyx":767
  *                     # printf("pass check\n")
  * 
  *                     if total_compared_pairs % 100000 == 0 and \             # <<<<<<<<<<<<<<
@@ -6430,10 +5817,10 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
           if (__pyx_t_3) {
           } else {
             __pyx_t_2 = __pyx_t_3;
-            goto __pyx_L78_bool_binop_done;
+            goto __pyx_L64_bool_binop_done;
           }
 
-          /* "debugblock/new_topk_sim_join.pyx":756
+          /* "debugblock/new_topk_sim_join.pyx":768
  * 
  *                     if total_compared_pairs % 100000 == 0 and \
  *                             total_compared_pairs_set.count(total_compared_pairs) <= 0:             # <<<<<<<<<<<<<<
@@ -6442,9 +5829,9 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
           __pyx_t_3 = ((__pyx_v_total_compared_pairs_set.count(__pyx_v_total_compared_pairs) <= 0) != 0);
           __pyx_t_2 = __pyx_t_3;
-          __pyx_L78_bool_binop_done:;
+          __pyx_L64_bool_binop_done:;
 
-          /* "debugblock/new_topk_sim_join.pyx":755
+          /* "debugblock/new_topk_sim_join.pyx":767
  *                     # printf("pass check\n")
  * 
  *                     if total_compared_pairs % 100000 == 0 and \             # <<<<<<<<<<<<<<
@@ -6453,7 +5840,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
           if (__pyx_t_2) {
 
-            /* "debugblock/new_topk_sim_join.pyx":757
+            /* "debugblock/new_topk_sim_join.pyx":769
  *                     if total_compared_pairs % 100000 == 0 and \
  *                             total_compared_pairs_set.count(total_compared_pairs) <= 0:
  *                         total_compared_pairs_set.insert(total_compared_pairs)             # <<<<<<<<<<<<<<
@@ -6462,7 +5849,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
             __pyx_v_total_compared_pairs_set.insert(__pyx_v_total_compared_pairs);
 
-            /* "debugblock/new_topk_sim_join.pyx":758
+            /* "debugblock/new_topk_sim_join.pyx":770
  *                             total_compared_pairs_set.count(total_compared_pairs) <= 0:
  *                         total_compared_pairs_set.insert(total_compared_pairs)
  *                         if topk_heap.size() > 0:             # <<<<<<<<<<<<<<
@@ -6472,7 +5859,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
             __pyx_t_2 = ((__pyx_v_topk_heap.size() > 0) != 0);
             if (__pyx_t_2) {
 
-              /* "debugblock/new_topk_sim_join.pyx":759
+              /* "debugblock/new_topk_sim_join.pyx":771
  *                         total_compared_pairs_set.insert(total_compared_pairs)
  *                         if topk_heap.size() > 0:
  *                             printf("%ld (%.16f %d %d) (%.16f %d %d %d)\n",             # <<<<<<<<<<<<<<
@@ -6481,7 +5868,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
               printf(__pyx_k_ld_16f_d_d_16f_d_d_d, __pyx_v_total_compared_pairs, __pyx_v_topk_heap.top().sim, __pyx_v_topk_heap.top().l_rec, __pyx_v_topk_heap.top().r_rec, __pyx_v_prefix_events.top().threshold, __pyx_v_prefix_events.top().table_indicator, __pyx_v_prefix_events.top().rec_idx, __pyx_v_prefix_events.top().tok_idx);
 
-              /* "debugblock/new_topk_sim_join.pyx":758
+              /* "debugblock/new_topk_sim_join.pyx":770
  *                             total_compared_pairs_set.count(total_compared_pairs) <= 0:
  *                         total_compared_pairs_set.insert(total_compared_pairs)
  *                         if topk_heap.size() > 0:             # <<<<<<<<<<<<<<
@@ -6490,7 +5877,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
             }
 
-            /* "debugblock/new_topk_sim_join.pyx":755
+            /* "debugblock/new_topk_sim_join.pyx":767
  *                     # printf("pass check\n")
  * 
  *                     if total_compared_pairs % 100000 == 0 and \             # <<<<<<<<<<<<<<
@@ -6499,17 +5886,17 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
           }
 
-          /* "debugblock/new_topk_sim_join.pyx":611
+          /* "debugblock/new_topk_sim_join.pyx":620
  *             if l_inverted_index.count(token):
  *                 l_records = l_inverted_index[token]
  *                 for l_rec_tuple in l_records:             # <<<<<<<<<<<<<<
  *                     l_rec_idx = l_rec_tuple.first
  *                     l_tok_idx = l_rec_tuple.second
  */
-          __pyx_L47_continue:;
+          __pyx_L40_continue:;
         }
 
-        /* "debugblock/new_topk_sim_join.pyx":609
+        /* "debugblock/new_topk_sim_join.pyx":618
  *             token = rtoken_vector[r_rec_idx][r_tok_idx]
  *             r_len = rtoken_vector[r_rec_idx].size()
  *             if l_inverted_index.count(token):             # <<<<<<<<<<<<<<
@@ -6518,8 +5905,8 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
       }
 
-      /* "debugblock/new_topk_sim_join.pyx":764
- *                                    prefix_events.top().rec_idx, prefix_events.top().tok_idx)
+      /* "debugblock/new_topk_sim_join.pyx":777
+ *                             # printf("%d %d %d\n", cmps[0], cmps[1],cmps[2])
  * 
  *             if r_tok_idx + 1 < r_len:             # <<<<<<<<<<<<<<
  *                 threshold = min(1 - (r_tok_idx + 1 - prefix_match_max_size) * 1.0 / r_len, 1.0)
@@ -6528,7 +5915,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
       __pyx_t_2 = (((__pyx_v_r_tok_idx + 1) < __pyx_v_r_len) != 0);
       if (__pyx_t_2) {
 
-        /* "debugblock/new_topk_sim_join.pyx":765
+        /* "debugblock/new_topk_sim_join.pyx":778
  * 
  *             if r_tok_idx + 1 < r_len:
  *                 threshold = min(1 - (r_tok_idx + 1 - prefix_match_max_size) * 1.0 / r_len, 1.0)             # <<<<<<<<<<<<<<
@@ -6545,7 +5932,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
           #ifdef WITH_THREAD
           PyGILState_Release(__pyx_gilstate_save);
           #endif
-          {__pyx_filename = __pyx_f[0]; __pyx_lineno = 765; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          {__pyx_filename = __pyx_f[0]; __pyx_lineno = 778; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         }
         __pyx_t_12 = (1.0 - (__pyx_t_7 / __pyx_v_r_len));
         if (((__pyx_t_11 < __pyx_t_12) != 0)) {
@@ -6555,7 +5942,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
         }
         __pyx_v_threshold = __pyx_t_7;
 
-        /* "debugblock/new_topk_sim_join.pyx":766
+        /* "debugblock/new_topk_sim_join.pyx":779
  *             if r_tok_idx + 1 < r_len:
  *                 threshold = min(1 - (r_tok_idx + 1 - prefix_match_max_size) * 1.0 / r_len, 1.0)
  *                 prefix_events.push(PrefixEvent(threshold, table_indicator, r_rec_idx, r_tok_idx + 1))             # <<<<<<<<<<<<<<
@@ -6564,8 +5951,8 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
         __pyx_v_prefix_events.push(PrefixEvent(__pyx_v_threshold, __pyx_v_table_indicator, __pyx_v_r_rec_idx, (__pyx_v_r_tok_idx + 1)));
 
-        /* "debugblock/new_topk_sim_join.pyx":764
- *                                    prefix_events.top().rec_idx, prefix_events.top().tok_idx)
+        /* "debugblock/new_topk_sim_join.pyx":777
+ *                             # printf("%d %d %d\n", cmps[0], cmps[1],cmps[2])
  * 
  *             if r_tok_idx + 1 < r_len:             # <<<<<<<<<<<<<<
  *                 threshold = min(1 - (r_tok_idx + 1 - prefix_match_max_size) * 1.0 / r_len, 1.0)
@@ -6573,7 +5960,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
       }
 
-      /* "debugblock/new_topk_sim_join.pyx":768
+      /* "debugblock/new_topk_sim_join.pyx":781
  *                 prefix_events.push(PrefixEvent(threshold, table_indicator, r_rec_idx, r_tok_idx + 1))
  * 
  *             if not r_inverted_index.count(token):             # <<<<<<<<<<<<<<
@@ -6583,7 +5970,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
       __pyx_t_2 = ((!(__pyx_v_r_inverted_index.count(__pyx_v_token) != 0)) != 0);
       if (__pyx_t_2) {
 
-        /* "debugblock/new_topk_sim_join.pyx":769
+        /* "debugblock/new_topk_sim_join.pyx":782
  * 
  *             if not r_inverted_index.count(token):
  *                 r_inverted_index[token] = oset[pair[int, int]]()             # <<<<<<<<<<<<<<
@@ -6600,11 +5987,11 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
           #ifdef WITH_THREAD
           PyGILState_Release(__pyx_gilstate_save);
           #endif
-          {__pyx_filename = __pyx_f[0]; __pyx_lineno = 769; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          {__pyx_filename = __pyx_f[0]; __pyx_lineno = 782; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         }
         (__pyx_v_r_inverted_index[__pyx_v_token]) = __pyx_t_13;
 
-        /* "debugblock/new_topk_sim_join.pyx":768
+        /* "debugblock/new_topk_sim_join.pyx":781
  *                 prefix_events.push(PrefixEvent(threshold, table_indicator, r_rec_idx, r_tok_idx + 1))
  * 
  *             if not r_inverted_index.count(token):             # <<<<<<<<<<<<<<
@@ -6613,7 +6000,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
       }
 
-      /* "debugblock/new_topk_sim_join.pyx":770
+      /* "debugblock/new_topk_sim_join.pyx":783
  *             if not r_inverted_index.count(token):
  *                 r_inverted_index[token] = oset[pair[int, int]]()
  *             r_inverted_index[token].insert(pair[int, int](r_rec_idx, r_tok_idx))             # <<<<<<<<<<<<<<
@@ -6630,7 +6017,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
         #ifdef WITH_THREAD
         PyGILState_Release(__pyx_gilstate_save);
         #endif
-        {__pyx_filename = __pyx_f[0]; __pyx_lineno = 770; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        {__pyx_filename = __pyx_f[0]; __pyx_lineno = 783; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       }
       try {
         (__pyx_v_r_inverted_index[__pyx_v_token]).insert(__pyx_t_6);
@@ -6642,14 +6029,14 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
         #ifdef WITH_THREAD
         PyGILState_Release(__pyx_gilstate_save);
         #endif
-        {__pyx_filename = __pyx_f[0]; __pyx_lineno = 770; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        {__pyx_filename = __pyx_f[0]; __pyx_lineno = 783; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       }
     }
     __pyx_L8:;
   }
   __pyx_L4_break:;
 
-  /* "debugblock/new_topk_sim_join.pyx":775
+  /* "debugblock/new_topk_sim_join.pyx":788
  *     # printf("checkpoint3\n")
  * 
  *     cdef double bound = 1e-6             # <<<<<<<<<<<<<<
@@ -6658,7 +6045,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
   __pyx_v_bound = 1e-6;
 
-  /* "debugblock/new_topk_sim_join.pyx":776
+  /* "debugblock/new_topk_sim_join.pyx":789
  * 
  *     cdef double bound = 1e-6
  *     if prefix_events.size() > 0:             # <<<<<<<<<<<<<<
@@ -6668,7 +6055,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
   __pyx_t_2 = ((__pyx_v_prefix_events.size() > 0) != 0);
   if (__pyx_t_2) {
 
-    /* "debugblock/new_topk_sim_join.pyx":777
+    /* "debugblock/new_topk_sim_join.pyx":790
  *     cdef double bound = 1e-6
  *     if prefix_events.size() > 0:
  *         bound = prefix_events.top().threshold             # <<<<<<<<<<<<<<
@@ -6678,7 +6065,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
     __pyx_t_7 = __pyx_v_prefix_events.top().threshold;
     __pyx_v_bound = __pyx_t_7;
 
-    /* "debugblock/new_topk_sim_join.pyx":776
+    /* "debugblock/new_topk_sim_join.pyx":789
  * 
  *     cdef double bound = 1e-6
  *     if prefix_events.size() > 0:             # <<<<<<<<<<<<<<
@@ -6687,7 +6074,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
   }
 
-  /* "debugblock/new_topk_sim_join.pyx":781
+  /* "debugblock/new_topk_sim_join.pyx":794
  *     cdef pair[int, umap[int, uint64_t]] p1
  *     cdef pair[int, uint64_t] p2
  *     for p1 in active_dict:             # <<<<<<<<<<<<<<
@@ -6701,7 +6088,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
     ++__pyx_t_14;
     __pyx_v_p1 = __pyx_t_15;
 
-    /* "debugblock/new_topk_sim_join.pyx":782
+    /* "debugblock/new_topk_sim_join.pyx":795
  *     cdef pair[int, uint64_t] p2
  *     for p1 in active_dict:
  *         l_rec_idx = p1.first             # <<<<<<<<<<<<<<
@@ -6711,7 +6098,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
     __pyx_t_4 = __pyx_v_p1.first;
     __pyx_v_l_rec_idx = __pyx_t_4;
 
-    /* "debugblock/new_topk_sim_join.pyx":783
+    /* "debugblock/new_topk_sim_join.pyx":796
  *     for p1 in active_dict:
  *         l_rec_idx = p1.first
  *         for p2 in p1.second:             # <<<<<<<<<<<<<<
@@ -6726,7 +6113,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
       ++__pyx_t_16;
       __pyx_v_p2 = __pyx_t_18;
 
-      /* "debugblock/new_topk_sim_join.pyx":784
+      /* "debugblock/new_topk_sim_join.pyx":797
  *         l_rec_idx = p1.first
  *         for p2 in p1.second:
  *             if ltoken_vector[l_rec_idx].size() < (prefix_match_max_size + 1) / bound and\             # <<<<<<<<<<<<<<
@@ -6742,16 +6129,16 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
         #ifdef WITH_THREAD
         PyGILState_Release(__pyx_gilstate_save);
         #endif
-        {__pyx_filename = __pyx_f[0]; __pyx_lineno = 784; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        {__pyx_filename = __pyx_f[0]; __pyx_lineno = 797; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       }
       __pyx_t_3 = (((__pyx_v_ltoken_vector[__pyx_v_l_rec_idx]).size() < (__pyx_t_1 / __pyx_v_bound)) != 0);
       if (__pyx_t_3) {
       } else {
         __pyx_t_2 = __pyx_t_3;
-        goto __pyx_L89_bool_binop_done;
+        goto __pyx_L75_bool_binop_done;
       }
 
-      /* "debugblock/new_topk_sim_join.pyx":785
+      /* "debugblock/new_topk_sim_join.pyx":798
  *         for p2 in p1.second:
  *             if ltoken_vector[l_rec_idx].size() < (prefix_match_max_size + 1) / bound and\
  *                     rtoken_vector[p2.first].size() < (prefix_match_max_size + 1) / bound:             # <<<<<<<<<<<<<<
@@ -6767,13 +6154,13 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
         #ifdef WITH_THREAD
         PyGILState_Release(__pyx_gilstate_save);
         #endif
-        {__pyx_filename = __pyx_f[0]; __pyx_lineno = 785; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        {__pyx_filename = __pyx_f[0]; __pyx_lineno = 798; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       }
       __pyx_t_3 = (((__pyx_v_rtoken_vector[__pyx_v_p2.first]).size() < (__pyx_t_1 / __pyx_v_bound)) != 0);
       __pyx_t_2 = __pyx_t_3;
-      __pyx_L89_bool_binop_done:;
+      __pyx_L75_bool_binop_done:;
 
-      /* "debugblock/new_topk_sim_join.pyx":784
+      /* "debugblock/new_topk_sim_join.pyx":797
  *         l_rec_idx = p1.first
  *         for p2 in p1.second:
  *             if ltoken_vector[l_rec_idx].size() < (prefix_match_max_size + 1) / bound and\             # <<<<<<<<<<<<<<
@@ -6782,7 +6169,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
       if (__pyx_t_2) {
 
-        /* "debugblock/new_topk_sim_join.pyx":786
+        /* "debugblock/new_topk_sim_join.pyx":799
  *             if ltoken_vector[l_rec_idx].size() < (prefix_match_max_size + 1) / bound and\
  *                     rtoken_vector[p2.first].size() < (prefix_match_max_size + 1) / bound:
  *                 value = p2.second & COUNT             # <<<<<<<<<<<<<<
@@ -6791,7 +6178,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
         __pyx_v_value = (__pyx_v_p2.second & __pyx_v_COUNT);
 
-        /* "debugblock/new_topk_sim_join.pyx":787
+        /* "debugblock/new_topk_sim_join.pyx":800
  *                     rtoken_vector[p2.first].size() < (prefix_match_max_size + 1) / bound:
  *                 value = p2.second & COUNT
  *                 sim = value * 1.0 / (ltoken_vector[l_rec_idx].size() + rtoken_vector[p2.first].size() - value)             # <<<<<<<<<<<<<<
@@ -6808,11 +6195,11 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
           #ifdef WITH_THREAD
           PyGILState_Release(__pyx_gilstate_save);
           #endif
-          {__pyx_filename = __pyx_f[0]; __pyx_lineno = 787; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          {__pyx_filename = __pyx_f[0]; __pyx_lineno = 800; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         }
         __pyx_v_sim = (__pyx_t_7 / __pyx_t_19);
 
-        /* "debugblock/new_topk_sim_join.pyx":788
+        /* "debugblock/new_topk_sim_join.pyx":801
  *                 value = p2.second & COUNT
  *                 sim = value * 1.0 / (ltoken_vector[l_rec_idx].size() + rtoken_vector[p2.first].size() - value)
  *                 if topk_heap.size() == output_size:             # <<<<<<<<<<<<<<
@@ -6822,7 +6209,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
         __pyx_t_2 = ((__pyx_v_topk_heap.size() == __pyx_v_output_size) != 0);
         if (__pyx_t_2) {
 
-          /* "debugblock/new_topk_sim_join.pyx":789
+          /* "debugblock/new_topk_sim_join.pyx":802
  *                 sim = value * 1.0 / (ltoken_vector[l_rec_idx].size() + rtoken_vector[p2.first].size() - value)
  *                 if topk_heap.size() == output_size:
  *                     if topk_heap.top().sim < sim:             # <<<<<<<<<<<<<<
@@ -6832,7 +6219,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
           __pyx_t_2 = ((__pyx_v_topk_heap.top().sim < __pyx_v_sim) != 0);
           if (__pyx_t_2) {
 
-            /* "debugblock/new_topk_sim_join.pyx":790
+            /* "debugblock/new_topk_sim_join.pyx":803
  *                 if topk_heap.size() == output_size:
  *                     if topk_heap.top().sim < sim:
  *                         topk_heap.pop()             # <<<<<<<<<<<<<<
@@ -6841,7 +6228,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
             __pyx_v_topk_heap.pop();
 
-            /* "debugblock/new_topk_sim_join.pyx":791
+            /* "debugblock/new_topk_sim_join.pyx":804
  *                     if topk_heap.top().sim < sim:
  *                         topk_heap.pop()
  *                         topk_heap.push(TopPair(sim, l_rec_idx, p2.first))             # <<<<<<<<<<<<<<
@@ -6850,7 +6237,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
             __pyx_v_topk_heap.push(TopPair(__pyx_v_sim, __pyx_v_l_rec_idx, __pyx_v_p2.first));
 
-            /* "debugblock/new_topk_sim_join.pyx":789
+            /* "debugblock/new_topk_sim_join.pyx":802
  *                 sim = value * 1.0 / (ltoken_vector[l_rec_idx].size() + rtoken_vector[p2.first].size() - value)
  *                 if topk_heap.size() == output_size:
  *                     if topk_heap.top().sim < sim:             # <<<<<<<<<<<<<<
@@ -6859,17 +6246,17 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
           }
 
-          /* "debugblock/new_topk_sim_join.pyx":788
+          /* "debugblock/new_topk_sim_join.pyx":801
  *                 value = p2.second & COUNT
  *                 sim = value * 1.0 / (ltoken_vector[l_rec_idx].size() + rtoken_vector[p2.first].size() - value)
  *                 if topk_heap.size() == output_size:             # <<<<<<<<<<<<<<
  *                     if topk_heap.top().sim < sim:
  *                         topk_heap.pop()
  */
-          goto __pyx_L91;
+          goto __pyx_L77;
         }
 
-        /* "debugblock/new_topk_sim_join.pyx":793
+        /* "debugblock/new_topk_sim_join.pyx":806
  *                         topk_heap.push(TopPair(sim, l_rec_idx, p2.first))
  *                 else:
  *                     topk_heap.push(TopPair(sim, l_rec_idx, p2.first))             # <<<<<<<<<<<<<<
@@ -6879,9 +6266,9 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
         /*else*/ {
           __pyx_v_topk_heap.push(TopPair(__pyx_v_sim, __pyx_v_l_rec_idx, __pyx_v_p2.first));
         }
-        __pyx_L91:;
+        __pyx_L77:;
 
-        /* "debugblock/new_topk_sim_join.pyx":784
+        /* "debugblock/new_topk_sim_join.pyx":797
  *         l_rec_idx = p1.first
  *         for p2 in p1.second:
  *             if ltoken_vector[l_rec_idx].size() < (prefix_match_max_size + 1) / bound and\             # <<<<<<<<<<<<<<
@@ -6890,7 +6277,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
       }
 
-      /* "debugblock/new_topk_sim_join.pyx":783
+      /* "debugblock/new_topk_sim_join.pyx":796
  *     for p1 in active_dict:
  *         l_rec_idx = p1.first
  *         for p2 in p1.second:             # <<<<<<<<<<<<<<
@@ -6899,7 +6286,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
     }
 
-    /* "debugblock/new_topk_sim_join.pyx":781
+    /* "debugblock/new_topk_sim_join.pyx":794
  *     cdef pair[int, umap[int, uint64_t]] p1
  *     cdef pair[int, uint64_t] p2
  *     for p1 in active_dict:             # <<<<<<<<<<<<<<
@@ -6908,7 +6295,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
   }
 
-  /* "debugblock/new_topk_sim_join.pyx":796
+  /* "debugblock/new_topk_sim_join.pyx":809
  * 
  * 
  *     printf("number of compared pairs: %ld\n", total_compared_pairs)             # <<<<<<<<<<<<<<
@@ -6917,7 +6304,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
  */
   printf(__pyx_k_number_of_compared_pairs_ld, __pyx_v_total_compared_pairs);
 
-  /* "debugblock/new_topk_sim_join.pyx":799
+  /* "debugblock/new_topk_sim_join.pyx":812
  *     # printf("checkpoint4\n")
  * 
  *     return             # <<<<<<<<<<<<<<
@@ -6940,7 +6327,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_record_im
   __pyx_L0:;
 }
 
-/* "debugblock/new_topk_sim_join.pyx":802
+/* "debugblock/new_topk_sim_join.pyx":815
  * 
  * 
  * cdef void new_reuse_get_overlap(const vector[int]& ltoken_list, const vector[int]& rtoken_list,             # <<<<<<<<<<<<<<
@@ -6957,7 +6344,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_reuse_get_overlap(std::
   int __pyx_t_3;
   int __pyx_t_4;
 
-  /* "debugblock/new_topk_sim_join.pyx":810
+  /* "debugblock/new_topk_sim_join.pyx":823
  * 
  *     cdef umap[int, int] rmap
  *     for i in xrange(rtoken_list.size() - r_tok_idx):             # <<<<<<<<<<<<<<
@@ -6968,7 +6355,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_reuse_get_overlap(std::
   for (__pyx_t_2 = 0; __pyx_t_2 < __pyx_t_1; __pyx_t_2+=1) {
     __pyx_v_i = __pyx_t_2;
 
-    /* "debugblock/new_topk_sim_join.pyx":811
+    /* "debugblock/new_topk_sim_join.pyx":824
  *     cdef umap[int, int] rmap
  *     for i in xrange(rtoken_list.size() - r_tok_idx):
  *         rmap[rtoken_list[i + r_tok_idx]] = rindex_list[i + r_tok_idx]             # <<<<<<<<<<<<<<
@@ -6978,7 +6365,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_reuse_get_overlap(std::
     (__pyx_v_rmap[(__pyx_v_rtoken_list[(__pyx_v_i + __pyx_v_r_tok_idx)])]) = (__pyx_v_rindex_list[(__pyx_v_i + __pyx_v_r_tok_idx)]);
   }
 
-  /* "debugblock/new_topk_sim_join.pyx":813
+  /* "debugblock/new_topk_sim_join.pyx":826
  *         rmap[rtoken_list[i + r_tok_idx]] = rindex_list[i + r_tok_idx]
  * 
  *     for i in xrange(ltoken_list.size() - l_tok_idx):             # <<<<<<<<<<<<<<
@@ -6989,7 +6376,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_reuse_get_overlap(std::
   for (__pyx_t_2 = 0; __pyx_t_2 < __pyx_t_1; __pyx_t_2+=1) {
     __pyx_v_i = __pyx_t_2;
 
-    /* "debugblock/new_topk_sim_join.pyx":814
+    /* "debugblock/new_topk_sim_join.pyx":827
  * 
  *     for i in xrange(ltoken_list.size() - l_tok_idx):
  *         if rmap.count(ltoken_list[i + l_tok_idx]):             # <<<<<<<<<<<<<<
@@ -6999,7 +6386,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_reuse_get_overlap(std::
     __pyx_t_3 = (__pyx_v_rmap.count((__pyx_v_ltoken_list[(__pyx_v_i + __pyx_v_l_tok_idx)])) != 0);
     if (__pyx_t_3) {
 
-      /* "debugblock/new_topk_sim_join.pyx":815
+      /* "debugblock/new_topk_sim_join.pyx":828
  *     for i in xrange(ltoken_list.size() - l_tok_idx):
  *         if rmap.count(ltoken_list[i + l_tok_idx]):
  *             reuse_info.overlap += 1             # <<<<<<<<<<<<<<
@@ -7008,7 +6395,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_reuse_get_overlap(std::
  */
       __pyx_v_reuse_info.overlap = (__pyx_v_reuse_info.overlap + 1);
 
-      /* "debugblock/new_topk_sim_join.pyx":816
+      /* "debugblock/new_topk_sim_join.pyx":829
  *         if rmap.count(ltoken_list[i + l_tok_idx]):
  *             reuse_info.overlap += 1
  *             value = lindex_list[i + l_tok_idx] * offset_of_field_num + rmap[ltoken_list[i + l_tok_idx]]             # <<<<<<<<<<<<<<
@@ -7017,7 +6404,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_reuse_get_overlap(std::
  */
       __pyx_v_value = (((__pyx_v_lindex_list[(__pyx_v_i + __pyx_v_l_tok_idx)]) * __pyx_v_offset_of_field_num) + (__pyx_v_rmap[(__pyx_v_ltoken_list[(__pyx_v_i + __pyx_v_l_tok_idx)])]));
 
-      /* "debugblock/new_topk_sim_join.pyx":817
+      /* "debugblock/new_topk_sim_join.pyx":830
  *             reuse_info.overlap += 1
  *             value = lindex_list[i + l_tok_idx] * offset_of_field_num + rmap[ltoken_list[i + l_tok_idx]]
  *             if reuse_info.map.count(value):             # <<<<<<<<<<<<<<
@@ -7027,7 +6414,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_reuse_get_overlap(std::
       __pyx_t_3 = (__pyx_v_reuse_info.map.count(__pyx_v_value) != 0);
       if (__pyx_t_3) {
 
-        /* "debugblock/new_topk_sim_join.pyx":818
+        /* "debugblock/new_topk_sim_join.pyx":831
  *             value = lindex_list[i + l_tok_idx] * offset_of_field_num + rmap[ltoken_list[i + l_tok_idx]]
  *             if reuse_info.map.count(value):
  *                 reuse_info.map[value] += 1             # <<<<<<<<<<<<<<
@@ -7037,7 +6424,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_reuse_get_overlap(std::
         __pyx_t_4 = __pyx_v_value;
         (__pyx_v_reuse_info.map[__pyx_t_4]) = ((__pyx_v_reuse_info.map[__pyx_t_4]) + 1);
 
-        /* "debugblock/new_topk_sim_join.pyx":817
+        /* "debugblock/new_topk_sim_join.pyx":830
  *             reuse_info.overlap += 1
  *             value = lindex_list[i + l_tok_idx] * offset_of_field_num + rmap[ltoken_list[i + l_tok_idx]]
  *             if reuse_info.map.count(value):             # <<<<<<<<<<<<<<
@@ -7047,7 +6434,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_reuse_get_overlap(std::
         goto __pyx_L8;
       }
 
-      /* "debugblock/new_topk_sim_join.pyx":820
+      /* "debugblock/new_topk_sim_join.pyx":833
  *                 reuse_info.map[value] += 1
  *             else:
  *                 reuse_info.map[value] = 1             # <<<<<<<<<<<<<<
@@ -7059,7 +6446,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_reuse_get_overlap(std::
       }
       __pyx_L8:;
 
-      /* "debugblock/new_topk_sim_join.pyx":814
+      /* "debugblock/new_topk_sim_join.pyx":827
  * 
  *     for i in xrange(ltoken_list.size() - l_tok_idx):
  *         if rmap.count(ltoken_list[i + l_tok_idx]):             # <<<<<<<<<<<<<<
@@ -7069,7 +6456,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_reuse_get_overlap(std::
     }
   }
 
-  /* "debugblock/new_topk_sim_join.pyx":822
+  /* "debugblock/new_topk_sim_join.pyx":835
  *                 reuse_info.map[value] = 1
  * 
  *     return             # <<<<<<<<<<<<<<
@@ -7078,7 +6465,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_reuse_get_overlap(std::
  */
   goto __pyx_L0;
 
-  /* "debugblock/new_topk_sim_join.pyx":802
+  /* "debugblock/new_topk_sim_join.pyx":815
  * 
  * 
  * cdef void new_reuse_get_overlap(const vector[int]& ltoken_list, const vector[int]& rtoken_list,             # <<<<<<<<<<<<<<
@@ -7090,7 +6477,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_reuse_get_overlap(std::
   __pyx_L0:;
 }
 
-/* "debugblock/new_topk_sim_join.pyx":825
+/* "debugblock/new_topk_sim_join.pyx":838
  * 
  * 
  * cdef void init_shift_array(const int num, const int field_bits, const int count_bits,             # <<<<<<<<<<<<<<
@@ -7107,7 +6494,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_init_shift_array(int const 
   int __pyx_t_3;
   int __pyx_t_4;
 
-  /* "debugblock/new_topk_sim_join.pyx":828
+  /* "debugblock/new_topk_sim_join.pyx":841
  *                            uint64_t* shift_array) nogil:
  *     cdef int i, j
  *     cdef uint64_t base = 0             # <<<<<<<<<<<<<<
@@ -7116,7 +6503,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_init_shift_array(int const 
  */
   __pyx_v_base = 0;
 
-  /* "debugblock/new_topk_sim_join.pyx":829
+  /* "debugblock/new_topk_sim_join.pyx":842
  *     cdef int i, j
  *     cdef uint64_t base = 0
  *     for i in xrange(field_bits):             # <<<<<<<<<<<<<<
@@ -7127,7 +6514,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_init_shift_array(int const 
   for (__pyx_t_2 = 0; __pyx_t_2 < __pyx_t_1; __pyx_t_2+=1) {
     __pyx_v_i = __pyx_t_2;
 
-    /* "debugblock/new_topk_sim_join.pyx":830
+    /* "debugblock/new_topk_sim_join.pyx":843
  *     cdef uint64_t base = 0
  *     for i in xrange(field_bits):
  *         base = base * 2 + 1             # <<<<<<<<<<<<<<
@@ -7137,7 +6524,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_init_shift_array(int const 
     __pyx_v_base = ((__pyx_v_base * 2) + 1);
   }
 
-  /* "debugblock/new_topk_sim_join.pyx":831
+  /* "debugblock/new_topk_sim_join.pyx":844
  *     for i in xrange(field_bits):
  *         base = base * 2 + 1
  *     for i in xrange(count_bits):             # <<<<<<<<<<<<<<
@@ -7148,7 +6535,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_init_shift_array(int const 
   for (__pyx_t_2 = 0; __pyx_t_2 < __pyx_t_1; __pyx_t_2+=1) {
     __pyx_v_i = __pyx_t_2;
 
-    /* "debugblock/new_topk_sim_join.pyx":832
+    /* "debugblock/new_topk_sim_join.pyx":845
  *         base = base * 2 + 1
  *     for i in xrange(count_bits):
  *         base <<= 1             # <<<<<<<<<<<<<<
@@ -7158,7 +6545,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_init_shift_array(int const 
     __pyx_v_base = (__pyx_v_base << 1);
   }
 
-  /* "debugblock/new_topk_sim_join.pyx":834
+  /* "debugblock/new_topk_sim_join.pyx":847
  *         base <<= 1
  * 
  *     for i in xrange(num):             # <<<<<<<<<<<<<<
@@ -7169,7 +6556,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_init_shift_array(int const 
   for (__pyx_t_2 = 0; __pyx_t_2 < __pyx_t_1; __pyx_t_2+=1) {
     __pyx_v_i = __pyx_t_2;
 
-    /* "debugblock/new_topk_sim_join.pyx":835
+    /* "debugblock/new_topk_sim_join.pyx":848
  * 
  *     for i in xrange(num):
  *         shift_array[i] = base             # <<<<<<<<<<<<<<
@@ -7178,7 +6565,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_init_shift_array(int const 
  */
     (__pyx_v_shift_array[__pyx_v_i]) = __pyx_v_base;
 
-    /* "debugblock/new_topk_sim_join.pyx":836
+    /* "debugblock/new_topk_sim_join.pyx":849
  *     for i in xrange(num):
  *         shift_array[i] = base
  *         for j in xrange(field_bits):             # <<<<<<<<<<<<<<
@@ -7189,7 +6576,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_init_shift_array(int const 
     for (__pyx_t_4 = 0; __pyx_t_4 < __pyx_t_3; __pyx_t_4+=1) {
       __pyx_v_j = __pyx_t_4;
 
-      /* "debugblock/new_topk_sim_join.pyx":837
+      /* "debugblock/new_topk_sim_join.pyx":850
  *         shift_array[i] = base
  *         for j in xrange(field_bits):
  *             base <<= 1             # <<<<<<<<<<<<<<
@@ -7200,7 +6587,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_init_shift_array(int const 
     }
   }
 
-  /* "debugblock/new_topk_sim_join.pyx":838
+  /* "debugblock/new_topk_sim_join.pyx":851
  *         for j in xrange(field_bits):
  *             base <<= 1
  *     return             # <<<<<<<<<<<<<<
@@ -7209,7 +6596,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_init_shift_array(int const 
  */
   goto __pyx_L0;
 
-  /* "debugblock/new_topk_sim_join.pyx":825
+  /* "debugblock/new_topk_sim_join.pyx":838
  * 
  * 
  * cdef void init_shift_array(const int num, const int field_bits, const int count_bits,             # <<<<<<<<<<<<<<
@@ -7221,7 +6608,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_init_shift_array(int const 
   __pyx_L0:;
 }
 
-/* "debugblock/new_topk_sim_join.pyx":844
+/* "debugblock/new_topk_sim_join.pyx":857
  * ####################################################################################################
  * # For new topk sim join. Only reuse pre-calculated info but don't record.
  * cdef heap[TopPair] new_topk_sim_join_reuse(const vector[vector[int]]& ltoken_vector,             # <<<<<<<<<<<<<<
@@ -7234,7 +6621,7 @@ static std::priority_queue<TopPair>  __pyx_f_10debugblock_17new_topk_sim_join_ne
   std::priority_queue<TopPair>  __pyx_v_topk_heap;
   std::priority_queue<TopPair>  __pyx_r;
 
-  /* "debugblock/new_topk_sim_join.pyx":851
+  /* "debugblock/new_topk_sim_join.pyx":864
  *                                            const int output_size) nogil:
  *     cdef heap[PrefixEvent] prefix_events
  *     new_generate_prefix_events(ltoken_vector, rtoken_vector, prefix_events)             # <<<<<<<<<<<<<<
@@ -7243,7 +6630,7 @@ static std::priority_queue<TopPair>  __pyx_f_10debugblock_17new_topk_sim_join_ne
  */
   __pyx_f_10debugblock_17new_topk_sim_join_new_generate_prefix_events(__pyx_v_ltoken_vector, __pyx_v_rtoken_vector, __pyx_v_prefix_events);
 
-  /* "debugblock/new_topk_sim_join.pyx":854
+  /* "debugblock/new_topk_sim_join.pyx":867
  * 
  *     cdef heap[TopPair] topk_heap
  *     new_topk_sim_join_reuse_impl(ltoken_vector, rtoken_vector, remained_fields,             # <<<<<<<<<<<<<<
@@ -7252,7 +6639,7 @@ static std::priority_queue<TopPair>  __pyx_f_10debugblock_17new_topk_sim_join_ne
  */
   __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_impl(__pyx_v_ltoken_vector, __pyx_v_rtoken_vector, __pyx_v_remained_fields, __pyx_v_cand_set, __pyx_v_reuse_set, __pyx_v_prefix_events, __pyx_v_topk_heap, __pyx_v_offset_of_field_num, __pyx_v_prefix_match_max_size, __pyx_v_output_size);
 
-  /* "debugblock/new_topk_sim_join.pyx":858
+  /* "debugblock/new_topk_sim_join.pyx":871
  *                                  offset_of_field_num, prefix_match_max_size, output_size)
  * 
  *     return topk_heap             # <<<<<<<<<<<<<<
@@ -7262,7 +6649,7 @@ static std::priority_queue<TopPair>  __pyx_f_10debugblock_17new_topk_sim_join_ne
   __pyx_r = __pyx_v_topk_heap;
   goto __pyx_L0;
 
-  /* "debugblock/new_topk_sim_join.pyx":844
+  /* "debugblock/new_topk_sim_join.pyx":857
  * ####################################################################################################
  * # For new topk sim join. Only reuse pre-calculated info but don't record.
  * cdef heap[TopPair] new_topk_sim_join_reuse(const vector[vector[int]]& ltoken_vector,             # <<<<<<<<<<<<<<
@@ -7275,7 +6662,7 @@ static std::priority_queue<TopPair>  __pyx_f_10debugblock_17new_topk_sim_join_ne
   return __pyx_r;
 }
 
-/* "debugblock/new_topk_sim_join.pyx":861
+/* "debugblock/new_topk_sim_join.pyx":874
  * 
  * 
  * cdef void new_topk_sim_join_reuse_impl(const vector[vector[int]]& ltoken_vector,             # <<<<<<<<<<<<<<
@@ -7312,6 +6699,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
   int __pyx_v_lfield;
   int __pyx_v_rfield;
   std::pair<int,int>  __pyx_v_field_pair;
+  int __pyx_v_reuse_count;
   double __pyx_v_bound;
   std::pair<int,std::unordered_map<int,short> >  __pyx_v_p1;
   std::pair<int,short>  __pyx_v_p2;
@@ -7342,7 +6730,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
 
-  /* "debugblock/new_topk_sim_join.pyx":869
+  /* "debugblock/new_topk_sim_join.pyx":882
  *                                        const int output_size) nogil:
  *     # printf("checkpoint1\n")
  *     cdef uint64_t total_compared_pairs = 0             # <<<<<<<<<<<<<<
@@ -7351,7 +6739,16 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
   __pyx_v_total_compared_pairs = 0;
 
-  /* "debugblock/new_topk_sim_join.pyx":889
+  /* "debugblock/new_topk_sim_join.pyx":900
+ *     cdef pair[int, int] field_pair
+ * 
+ *     cdef int reuse_count = 0             # <<<<<<<<<<<<<<
+ * 
+ *     # printf("checkpoint2\n")
+ */
+  __pyx_v_reuse_count = 0;
+
+  /* "debugblock/new_topk_sim_join.pyx":904
  *     # printf("checkpoint2\n")
  * 
  *     while prefix_events.size() > 0:             # <<<<<<<<<<<<<<
@@ -7362,7 +6759,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
     __pyx_t_1 = ((__pyx_v_prefix_events.size() > 0) != 0);
     if (!__pyx_t_1) break;
 
-    /* "debugblock/new_topk_sim_join.pyx":890
+    /* "debugblock/new_topk_sim_join.pyx":905
  * 
  *     while prefix_events.size() > 0:
  *         if topk_heap.size() == output_size and topk_heap.top().sim >= prefix_events.top().threshold:             # <<<<<<<<<<<<<<
@@ -7380,7 +6777,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
     __pyx_L6_bool_binop_done:;
     if (__pyx_t_1) {
 
-      /* "debugblock/new_topk_sim_join.pyx":891
+      /* "debugblock/new_topk_sim_join.pyx":906
  *     while prefix_events.size() > 0:
  *         if topk_heap.size() == output_size and topk_heap.top().sim >= prefix_events.top().threshold:
  *             break             # <<<<<<<<<<<<<<
@@ -7389,7 +6786,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
       goto __pyx_L4_break;
 
-      /* "debugblock/new_topk_sim_join.pyx":890
+      /* "debugblock/new_topk_sim_join.pyx":905
  * 
  *     while prefix_events.size() > 0:
  *         if topk_heap.size() == output_size and topk_heap.top().sim >= prefix_events.top().threshold:             # <<<<<<<<<<<<<<
@@ -7398,7 +6795,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
     }
 
-    /* "debugblock/new_topk_sim_join.pyx":892
+    /* "debugblock/new_topk_sim_join.pyx":907
  *         if topk_heap.size() == output_size and topk_heap.top().sim >= prefix_events.top().threshold:
  *             break
  *         event = prefix_events.top()             # <<<<<<<<<<<<<<
@@ -7407,7 +6804,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
     __pyx_v_event = __pyx_v_prefix_events.top();
 
-    /* "debugblock/new_topk_sim_join.pyx":893
+    /* "debugblock/new_topk_sim_join.pyx":908
  *             break
  *         event = prefix_events.top()
  *         prefix_events.pop()             # <<<<<<<<<<<<<<
@@ -7416,7 +6813,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
     __pyx_v_prefix_events.pop();
 
-    /* "debugblock/new_topk_sim_join.pyx":894
+    /* "debugblock/new_topk_sim_join.pyx":909
  *         event = prefix_events.top()
  *         prefix_events.pop()
  *         table_indicator = event.table_indicator             # <<<<<<<<<<<<<<
@@ -7426,7 +6823,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
     __pyx_t_3 = __pyx_v_event.table_indicator;
     __pyx_v_table_indicator = __pyx_t_3;
 
-    /* "debugblock/new_topk_sim_join.pyx":896
+    /* "debugblock/new_topk_sim_join.pyx":911
  *         table_indicator = event.table_indicator
  *         # printf("%.6f %d %d %d\n", event.threshold, event.table_indicator, event.rec_idx, event.tok_idx)
  *         if table_indicator == 0:             # <<<<<<<<<<<<<<
@@ -7436,7 +6833,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
     __pyx_t_1 = ((__pyx_v_table_indicator == 0) != 0);
     if (__pyx_t_1) {
 
-      /* "debugblock/new_topk_sim_join.pyx":897
+      /* "debugblock/new_topk_sim_join.pyx":912
  *         # printf("%.6f %d %d %d\n", event.threshold, event.table_indicator, event.rec_idx, event.tok_idx)
  *         if table_indicator == 0:
  *             l_rec_idx = event.rec_idx             # <<<<<<<<<<<<<<
@@ -7446,7 +6843,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
       __pyx_t_3 = __pyx_v_event.rec_idx;
       __pyx_v_l_rec_idx = __pyx_t_3;
 
-      /* "debugblock/new_topk_sim_join.pyx":898
+      /* "debugblock/new_topk_sim_join.pyx":913
  *         if table_indicator == 0:
  *             l_rec_idx = event.rec_idx
  *             l_tok_idx = event.tok_idx             # <<<<<<<<<<<<<<
@@ -7456,7 +6853,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
       __pyx_t_3 = __pyx_v_event.tok_idx;
       __pyx_v_l_tok_idx = __pyx_t_3;
 
-      /* "debugblock/new_topk_sim_join.pyx":899
+      /* "debugblock/new_topk_sim_join.pyx":914
  *             l_rec_idx = event.rec_idx
  *             l_tok_idx = event.tok_idx
  *             token = ltoken_vector[l_rec_idx][l_tok_idx]             # <<<<<<<<<<<<<<
@@ -7465,7 +6862,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
       __pyx_v_token = ((__pyx_v_ltoken_vector[__pyx_v_l_rec_idx])[__pyx_v_l_tok_idx]);
 
-      /* "debugblock/new_topk_sim_join.pyx":900
+      /* "debugblock/new_topk_sim_join.pyx":915
  *             l_tok_idx = event.tok_idx
  *             token = ltoken_vector[l_rec_idx][l_tok_idx]
  *             l_len = ltoken_vector[l_rec_idx].size()             # <<<<<<<<<<<<<<
@@ -7474,7 +6871,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
       __pyx_v_l_len = (__pyx_v_ltoken_vector[__pyx_v_l_rec_idx]).size();
 
-      /* "debugblock/new_topk_sim_join.pyx":901
+      /* "debugblock/new_topk_sim_join.pyx":916
  *             token = ltoken_vector[l_rec_idx][l_tok_idx]
  *             l_len = ltoken_vector[l_rec_idx].size()
  *             if r_inverted_index.count(token):             # <<<<<<<<<<<<<<
@@ -7484,7 +6881,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
       __pyx_t_1 = (__pyx_v_r_inverted_index.count(__pyx_v_token) != 0);
       if (__pyx_t_1) {
 
-        /* "debugblock/new_topk_sim_join.pyx":902
+        /* "debugblock/new_topk_sim_join.pyx":917
  *             l_len = ltoken_vector[l_rec_idx].size()
  *             if r_inverted_index.count(token):
  *                 r_records = r_inverted_index[token]             # <<<<<<<<<<<<<<
@@ -7493,7 +6890,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
         __pyx_v_r_records = (__pyx_v_r_inverted_index[__pyx_v_token]);
 
-        /* "debugblock/new_topk_sim_join.pyx":903
+        /* "debugblock/new_topk_sim_join.pyx":918
  *             if r_inverted_index.count(token):
  *                 r_records = r_inverted_index[token]
  *                 for r_rec_tuple in r_records:             # <<<<<<<<<<<<<<
@@ -7507,7 +6904,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
           ++__pyx_t_4;
           __pyx_v_r_rec_tuple = __pyx_t_5;
 
-          /* "debugblock/new_topk_sim_join.pyx":904
+          /* "debugblock/new_topk_sim_join.pyx":919
  *                 r_records = r_inverted_index[token]
  *                 for r_rec_tuple in r_records:
  *                     r_rec_idx = r_rec_tuple.first             # <<<<<<<<<<<<<<
@@ -7517,7 +6914,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
           __pyx_t_3 = __pyx_v_r_rec_tuple.first;
           __pyx_v_r_rec_idx = __pyx_t_3;
 
-          /* "debugblock/new_topk_sim_join.pyx":905
+          /* "debugblock/new_topk_sim_join.pyx":920
  *                 for r_rec_tuple in r_records:
  *                     r_rec_idx = r_rec_tuple.first
  *                     r_tok_idx = r_rec_tuple.second             # <<<<<<<<<<<<<<
@@ -7527,7 +6924,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
           __pyx_t_3 = __pyx_v_r_rec_tuple.second;
           __pyx_v_r_tok_idx = __pyx_t_3;
 
-          /* "debugblock/new_topk_sim_join.pyx":906
+          /* "debugblock/new_topk_sim_join.pyx":921
  *                     r_rec_idx = r_rec_tuple.first
  *                     r_tok_idx = r_rec_tuple.second
  *                     r_len = rtoken_vector[r_rec_idx].size()             # <<<<<<<<<<<<<<
@@ -7536,7 +6933,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
           __pyx_v_r_len = (__pyx_v_rtoken_vector[__pyx_v_r_rec_idx]).size();
 
-          /* "debugblock/new_topk_sim_join.pyx":908
+          /* "debugblock/new_topk_sim_join.pyx":923
  *                     r_len = rtoken_vector[r_rec_idx].size()
  * 
  *                     if cand_set.count(l_rec_idx) and cand_set[l_rec_idx].count(r_rec_idx):             # <<<<<<<<<<<<<<
@@ -7554,7 +6951,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
           __pyx_L13_bool_binop_done:;
           if (__pyx_t_1) {
 
-            /* "debugblock/new_topk_sim_join.pyx":909
+            /* "debugblock/new_topk_sim_join.pyx":924
  * 
  *                     if cand_set.count(l_rec_idx) and cand_set[l_rec_idx].count(r_rec_idx):
  *                         continue             # <<<<<<<<<<<<<<
@@ -7563,7 +6960,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
             goto __pyx_L10_continue;
 
-            /* "debugblock/new_topk_sim_join.pyx":908
+            /* "debugblock/new_topk_sim_join.pyx":923
  *                     r_len = rtoken_vector[r_rec_idx].size()
  * 
  *                     if cand_set.count(l_rec_idx) and cand_set[l_rec_idx].count(r_rec_idx):             # <<<<<<<<<<<<<<
@@ -7572,7 +6969,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
           }
 
-          /* "debugblock/new_topk_sim_join.pyx":911
+          /* "debugblock/new_topk_sim_join.pyx":926
  *                         continue
  * 
  *                     if compared_set.count(l_rec_idx) and compared_set[l_rec_idx].count(r_rec_idx):             # <<<<<<<<<<<<<<
@@ -7590,7 +6987,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
           __pyx_L16_bool_binop_done:;
           if (__pyx_t_1) {
 
-            /* "debugblock/new_topk_sim_join.pyx":912
+            /* "debugblock/new_topk_sim_join.pyx":927
  * 
  *                     if compared_set.count(l_rec_idx) and compared_set[l_rec_idx].count(r_rec_idx):
  *                         continue             # <<<<<<<<<<<<<<
@@ -7599,7 +6996,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
             goto __pyx_L10_continue;
 
-            /* "debugblock/new_topk_sim_join.pyx":911
+            /* "debugblock/new_topk_sim_join.pyx":926
  *                         continue
  * 
  *                     if compared_set.count(l_rec_idx) and compared_set[l_rec_idx].count(r_rec_idx):             # <<<<<<<<<<<<<<
@@ -7608,7 +7005,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
           }
 
-          /* "debugblock/new_topk_sim_join.pyx":914
+          /* "debugblock/new_topk_sim_join.pyx":929
  *                         continue
  * 
  *                     if l_tok_idx + 1 == l_len or r_tok_idx + 1 == r_len:             # <<<<<<<<<<<<<<
@@ -7626,7 +7023,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
           __pyx_L19_bool_binop_done:;
           if (__pyx_t_1) {
 
-            /* "debugblock/new_topk_sim_join.pyx":915
+            /* "debugblock/new_topk_sim_join.pyx":930
  * 
  *                     if l_tok_idx + 1 == l_len or r_tok_idx + 1 == r_len:
  *                         overlap = 1             # <<<<<<<<<<<<<<
@@ -7635,7 +7032,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
             __pyx_v_overlap = 1;
 
-            /* "debugblock/new_topk_sim_join.pyx":916
+            /* "debugblock/new_topk_sim_join.pyx":931
  *                     if l_tok_idx + 1 == l_len or r_tok_idx + 1 == r_len:
  *                         overlap = 1
  *                         if active_dict.count(l_rec_idx) and active_dict[l_rec_idx].count(r_rec_idx):             # <<<<<<<<<<<<<<
@@ -7653,7 +7050,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
             __pyx_L22_bool_binop_done:;
             if (__pyx_t_1) {
 
-              /* "debugblock/new_topk_sim_join.pyx":917
+              /* "debugblock/new_topk_sim_join.pyx":932
  *                         overlap = 1
  *                         if active_dict.count(l_rec_idx) and active_dict[l_rec_idx].count(r_rec_idx):
  *                             overlap += active_dict[l_rec_idx][r_rec_idx]             # <<<<<<<<<<<<<<
@@ -7662,7 +7059,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
               __pyx_v_overlap = (__pyx_v_overlap + ((__pyx_v_active_dict[__pyx_v_l_rec_idx])[__pyx_v_r_rec_idx]));
 
-              /* "debugblock/new_topk_sim_join.pyx":918
+              /* "debugblock/new_topk_sim_join.pyx":933
  *                         if active_dict.count(l_rec_idx) and active_dict[l_rec_idx].count(r_rec_idx):
  *                             overlap += active_dict[l_rec_idx][r_rec_idx]
  *                             active_dict[l_rec_idx].erase(r_rec_idx)             # <<<<<<<<<<<<<<
@@ -7671,7 +7068,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
               (__pyx_v_active_dict[__pyx_v_l_rec_idx]).erase(__pyx_v_r_rec_idx);
 
-              /* "debugblock/new_topk_sim_join.pyx":916
+              /* "debugblock/new_topk_sim_join.pyx":931
  *                     if l_tok_idx + 1 == l_len or r_tok_idx + 1 == r_len:
  *                         overlap = 1
  *                         if active_dict.count(l_rec_idx) and active_dict[l_rec_idx].count(r_rec_idx):             # <<<<<<<<<<<<<<
@@ -7680,7 +7077,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
             }
 
-            /* "debugblock/new_topk_sim_join.pyx":924
+            /* "debugblock/new_topk_sim_join.pyx":939
  *                         #         printf("%d %d %d\n", overlap, l_tok_idx, r_tok_idx)
  * 
  *                         sim = overlap * 1.0 / (l_len + r_len - overlap)             # <<<<<<<<<<<<<<
@@ -7697,11 +7094,11 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
               #ifdef WITH_THREAD
               PyGILState_Release(__pyx_gilstate_save);
               #endif
-              {__pyx_filename = __pyx_f[0]; __pyx_lineno = 924; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+              {__pyx_filename = __pyx_f[0]; __pyx_lineno = 939; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
             }
             __pyx_v_sim = (__pyx_t_6 / __pyx_t_3);
 
-            /* "debugblock/new_topk_sim_join.pyx":925
+            /* "debugblock/new_topk_sim_join.pyx":940
  * 
  *                         sim = overlap * 1.0 / (l_len + r_len - overlap)
  *                         if topk_heap.size() == output_size:             # <<<<<<<<<<<<<<
@@ -7711,7 +7108,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
             __pyx_t_1 = ((__pyx_v_topk_heap.size() == __pyx_v_output_size) != 0);
             if (__pyx_t_1) {
 
-              /* "debugblock/new_topk_sim_join.pyx":926
+              /* "debugblock/new_topk_sim_join.pyx":941
  *                         sim = overlap * 1.0 / (l_len + r_len - overlap)
  *                         if topk_heap.size() == output_size:
  *                             if topk_heap.top().sim < sim:             # <<<<<<<<<<<<<<
@@ -7721,7 +7118,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
               __pyx_t_1 = ((__pyx_v_topk_heap.top().sim < __pyx_v_sim) != 0);
               if (__pyx_t_1) {
 
-                /* "debugblock/new_topk_sim_join.pyx":927
+                /* "debugblock/new_topk_sim_join.pyx":942
  *                         if topk_heap.size() == output_size:
  *                             if topk_heap.top().sim < sim:
  *                                 topk_heap.pop()             # <<<<<<<<<<<<<<
@@ -7730,7 +7127,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
                 __pyx_v_topk_heap.pop();
 
-                /* "debugblock/new_topk_sim_join.pyx":928
+                /* "debugblock/new_topk_sim_join.pyx":943
  *                             if topk_heap.top().sim < sim:
  *                                 topk_heap.pop()
  *                                 topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))             # <<<<<<<<<<<<<<
@@ -7739,7 +7136,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
                 __pyx_v_topk_heap.push(TopPair(__pyx_v_sim, __pyx_v_l_rec_idx, __pyx_v_r_rec_idx));
 
-                /* "debugblock/new_topk_sim_join.pyx":926
+                /* "debugblock/new_topk_sim_join.pyx":941
  *                         sim = overlap * 1.0 / (l_len + r_len - overlap)
  *                         if topk_heap.size() == output_size:
  *                             if topk_heap.top().sim < sim:             # <<<<<<<<<<<<<<
@@ -7748,7 +7145,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
               }
 
-              /* "debugblock/new_topk_sim_join.pyx":925
+              /* "debugblock/new_topk_sim_join.pyx":940
  * 
  *                         sim = overlap * 1.0 / (l_len + r_len - overlap)
  *                         if topk_heap.size() == output_size:             # <<<<<<<<<<<<<<
@@ -7758,7 +7155,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
               goto __pyx_L24;
             }
 
-            /* "debugblock/new_topk_sim_join.pyx":930
+            /* "debugblock/new_topk_sim_join.pyx":945
  *                                 topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))
  *                         else:
  *                             topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))             # <<<<<<<<<<<<<<
@@ -7770,16 +7167,16 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
             }
             __pyx_L24:;
 
-            /* "debugblock/new_topk_sim_join.pyx":932
+            /* "debugblock/new_topk_sim_join.pyx":947
  *                             topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))
  * 
  *                         total_compared_pairs += 1             # <<<<<<<<<<<<<<
- *                     elif ltoken_vector[l_rec_idx][l_tok_idx + 1] == rtoken_vector[r_rec_idx][r_tok_idx + 1]:
- *                         if reuse_set.count(l_rec_idx) and reuse_set[l_rec_idx].count(r_rec_idx):
+ *                     # elif ltoken_vector[l_rec_idx][l_tok_idx + 1] == rtoken_vector[r_rec_idx][r_tok_idx + 1]:
+ *                     #     if reuse_set.count(l_rec_idx) and reuse_set[l_rec_idx].count(r_rec_idx):
  */
             __pyx_v_total_compared_pairs = (__pyx_v_total_compared_pairs + 1);
 
-            /* "debugblock/new_topk_sim_join.pyx":914
+            /* "debugblock/new_topk_sim_join.pyx":929
  *                         continue
  * 
  *                     if l_tok_idx + 1 == l_len or r_tok_idx + 1 == r_len:             # <<<<<<<<<<<<<<
@@ -7789,648 +7186,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
             goto __pyx_L18;
           }
 
-          /* "debugblock/new_topk_sim_join.pyx":933
- * 
- *                         total_compared_pairs += 1
- *                     elif ltoken_vector[l_rec_idx][l_tok_idx + 1] == rtoken_vector[r_rec_idx][r_tok_idx + 1]:             # <<<<<<<<<<<<<<
- *                         if reuse_set.count(l_rec_idx) and reuse_set[l_rec_idx].count(r_rec_idx):
- *                             reuse_info = reuse_set[l_rec_idx][r_rec_idx]
- */
-          __pyx_t_1 = ((((__pyx_v_ltoken_vector[__pyx_v_l_rec_idx])[(__pyx_v_l_tok_idx + 1)]) == ((__pyx_v_rtoken_vector[__pyx_v_r_rec_idx])[(__pyx_v_r_tok_idx + 1)])) != 0);
-          if (__pyx_t_1) {
-
-            /* "debugblock/new_topk_sim_join.pyx":934
- *                         total_compared_pairs += 1
- *                     elif ltoken_vector[l_rec_idx][l_tok_idx + 1] == rtoken_vector[r_rec_idx][r_tok_idx + 1]:
- *                         if reuse_set.count(l_rec_idx) and reuse_set[l_rec_idx].count(r_rec_idx):             # <<<<<<<<<<<<<<
- *                             reuse_info = reuse_set[l_rec_idx][r_rec_idx]
- *                             overlap = reuse_info.overlap
- */
-            __pyx_t_2 = (__pyx_v_reuse_set.count(__pyx_v_l_rec_idx) != 0);
-            if (__pyx_t_2) {
-            } else {
-              __pyx_t_1 = __pyx_t_2;
-              goto __pyx_L27_bool_binop_done;
-            }
-            __pyx_t_2 = ((__pyx_v_reuse_set[__pyx_v_l_rec_idx]).count(__pyx_v_r_rec_idx) != 0);
-            __pyx_t_1 = __pyx_t_2;
-            __pyx_L27_bool_binop_done:;
-            if (__pyx_t_1) {
-
-              /* "debugblock/new_topk_sim_join.pyx":935
- *                     elif ltoken_vector[l_rec_idx][l_tok_idx + 1] == rtoken_vector[r_rec_idx][r_tok_idx + 1]:
- *                         if reuse_set.count(l_rec_idx) and reuse_set[l_rec_idx].count(r_rec_idx):
- *                             reuse_info = reuse_set[l_rec_idx][r_rec_idx]             # <<<<<<<<<<<<<<
- *                             overlap = reuse_info.overlap
- *                             denom = l_len + r_len - overlap
- */
-              __pyx_v_reuse_info = ((__pyx_v_reuse_set[__pyx_v_l_rec_idx])[__pyx_v_r_rec_idx]);
-
-              /* "debugblock/new_topk_sim_join.pyx":936
- *                         if reuse_set.count(l_rec_idx) and reuse_set[l_rec_idx].count(r_rec_idx):
- *                             reuse_info = reuse_set[l_rec_idx][r_rec_idx]
- *                             overlap = reuse_info.overlap             # <<<<<<<<<<<<<<
- *                             denom = l_len + r_len - overlap
- *                             # if l_rec_idx == 3482 and r_rec_idx == 4047:
- */
-              __pyx_t_3 = __pyx_v_reuse_info.overlap;
-              __pyx_v_overlap = __pyx_t_3;
-
-              /* "debugblock/new_topk_sim_join.pyx":937
- *                             reuse_info = reuse_set[l_rec_idx][r_rec_idx]
- *                             overlap = reuse_info.overlap
- *                             denom = l_len + r_len - overlap             # <<<<<<<<<<<<<<
- *                             # if l_rec_idx == 3482 and r_rec_idx == 4047:
- *                             #     printf("left2.1\n")
- */
-              __pyx_v_denom = ((__pyx_v_l_len + __pyx_v_r_len) - __pyx_v_overlap);
-
-              /* "debugblock/new_topk_sim_join.pyx":944
- *                             #         printf("%d %d ", field_pair.first, field_pair.second)
- *                             #     printf("\n")
- *                             if denom <= 0 or topk_heap.size() < output_size or \             # <<<<<<<<<<<<<<
- *                                     overlap * 1.0 / denom > topk_heap.top().sim:
- *                                 for field_pair in reuse_info.map:
- */
-              __pyx_t_2 = ((__pyx_v_denom <= 0) != 0);
-              if (!__pyx_t_2) {
-              } else {
-                __pyx_t_1 = __pyx_t_2;
-                goto __pyx_L30_bool_binop_done;
-              }
-              __pyx_t_2 = ((__pyx_v_topk_heap.size() < __pyx_v_output_size) != 0);
-              if (!__pyx_t_2) {
-              } else {
-                __pyx_t_1 = __pyx_t_2;
-                goto __pyx_L30_bool_binop_done;
-              }
-
-              /* "debugblock/new_topk_sim_join.pyx":945
- *                             #     printf("\n")
- *                             if denom <= 0 or topk_heap.size() < output_size or \
- *                                     overlap * 1.0 / denom > topk_heap.top().sim:             # <<<<<<<<<<<<<<
- *                                 for field_pair in reuse_info.map:
- *                                     lfield = field_pair.first / offset_of_field_num
- */
-              __pyx_t_6 = (__pyx_v_overlap * 1.0);
-              if (unlikely(__pyx_v_denom == 0)) {
-                #ifdef WITH_THREAD
-                PyGILState_STATE __pyx_gilstate_save = PyGILState_Ensure();
-                #endif
-                PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-                #ifdef WITH_THREAD
-                PyGILState_Release(__pyx_gilstate_save);
-                #endif
-                {__pyx_filename = __pyx_f[0]; __pyx_lineno = 945; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-              }
-              __pyx_t_2 = (((__pyx_t_6 / __pyx_v_denom) > __pyx_v_topk_heap.top().sim) != 0);
-              __pyx_t_1 = __pyx_t_2;
-              __pyx_L30_bool_binop_done:;
-
-              /* "debugblock/new_topk_sim_join.pyx":944
- *                             #         printf("%d %d ", field_pair.first, field_pair.second)
- *                             #     printf("\n")
- *                             if denom <= 0 or topk_heap.size() < output_size or \             # <<<<<<<<<<<<<<
- *                                     overlap * 1.0 / denom > topk_heap.top().sim:
- *                                 for field_pair in reuse_info.map:
- */
-              if (__pyx_t_1) {
-
-                /* "debugblock/new_topk_sim_join.pyx":946
- *                             if denom <= 0 or topk_heap.size() < output_size or \
- *                                     overlap * 1.0 / denom > topk_heap.top().sim:
- *                                 for field_pair in reuse_info.map:             # <<<<<<<<<<<<<<
- *                                     lfield = field_pair.first / offset_of_field_num
- *                                     rfield = field_pair.first % offset_of_field_num
- */
-                __pyx_t_8 = &__pyx_v_reuse_info.map;
-                __pyx_t_7 = __pyx_t_8->begin();
-                for (;;) {
-                  if (!(__pyx_t_7 != __pyx_t_8->end())) break;
-                  __pyx_t_9 = *__pyx_t_7;
-                  ++__pyx_t_7;
-                  __pyx_v_field_pair = __pyx_t_9;
-
-                  /* "debugblock/new_topk_sim_join.pyx":947
- *                                     overlap * 1.0 / denom > topk_heap.top().sim:
- *                                 for field_pair in reuse_info.map:
- *                                     lfield = field_pair.first / offset_of_field_num             # <<<<<<<<<<<<<<
- *                                     rfield = field_pair.first % offset_of_field_num
- *                                     if not remained_fields.count(lfield) or not remained_fields.count(rfield):
- */
-                  if (unlikely(__pyx_v_offset_of_field_num == 0)) {
-                    #ifdef WITH_THREAD
-                    PyGILState_STATE __pyx_gilstate_save = PyGILState_Ensure();
-                    #endif
-                    PyErr_SetString(PyExc_ZeroDivisionError, "integer division or modulo by zero");
-                    #ifdef WITH_THREAD
-                    PyGILState_Release(__pyx_gilstate_save);
-                    #endif
-                    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 947; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-                  }
-                  else if (sizeof(int) == sizeof(long) && (!(((int const )-1) > 0)) && unlikely(__pyx_v_offset_of_field_num == (int const )-1)  && unlikely(UNARY_NEG_WOULD_OVERFLOW(__pyx_v_field_pair.first))) {
-                    #ifdef WITH_THREAD
-                    PyGILState_STATE __pyx_gilstate_save = PyGILState_Ensure();
-                    #endif
-                    PyErr_SetString(PyExc_OverflowError, "value too large to perform division");
-                    #ifdef WITH_THREAD
-                    PyGILState_Release(__pyx_gilstate_save);
-                    #endif
-                    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 947; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-                  }
-                  __pyx_v_lfield = __Pyx_div_int(__pyx_v_field_pair.first, __pyx_v_offset_of_field_num);
-
-                  /* "debugblock/new_topk_sim_join.pyx":948
- *                                 for field_pair in reuse_info.map:
- *                                     lfield = field_pair.first / offset_of_field_num
- *                                     rfield = field_pair.first % offset_of_field_num             # <<<<<<<<<<<<<<
- *                                     if not remained_fields.count(lfield) or not remained_fields.count(rfield):
- *                                         overlap -= field_pair.second
- */
-                  if (unlikely(__pyx_v_offset_of_field_num == 0)) {
-                    #ifdef WITH_THREAD
-                    PyGILState_STATE __pyx_gilstate_save = PyGILState_Ensure();
-                    #endif
-                    PyErr_SetString(PyExc_ZeroDivisionError, "integer division or modulo by zero");
-                    #ifdef WITH_THREAD
-                    PyGILState_Release(__pyx_gilstate_save);
-                    #endif
-                    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 948; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-                  }
-                  __pyx_v_rfield = __Pyx_mod_int(__pyx_v_field_pair.first, __pyx_v_offset_of_field_num);
-
-                  /* "debugblock/new_topk_sim_join.pyx":949
- *                                     lfield = field_pair.first / offset_of_field_num
- *                                     rfield = field_pair.first % offset_of_field_num
- *                                     if not remained_fields.count(lfield) or not remained_fields.count(rfield):             # <<<<<<<<<<<<<<
- *                                         overlap -= field_pair.second
- *                                 sim = overlap * 1.0 / (l_len + r_len - overlap)
- */
-                  __pyx_t_2 = ((!(__pyx_v_remained_fields.count(__pyx_v_lfield) != 0)) != 0);
-                  if (!__pyx_t_2) {
-                  } else {
-                    __pyx_t_1 = __pyx_t_2;
-                    goto __pyx_L36_bool_binop_done;
-                  }
-                  __pyx_t_2 = ((!(__pyx_v_remained_fields.count(__pyx_v_rfield) != 0)) != 0);
-                  __pyx_t_1 = __pyx_t_2;
-                  __pyx_L36_bool_binop_done:;
-                  if (__pyx_t_1) {
-
-                    /* "debugblock/new_topk_sim_join.pyx":950
- *                                     rfield = field_pair.first % offset_of_field_num
- *                                     if not remained_fields.count(lfield) or not remained_fields.count(rfield):
- *                                         overlap -= field_pair.second             # <<<<<<<<<<<<<<
- *                                 sim = overlap * 1.0 / (l_len + r_len - overlap)
- *                                 if topk_heap.size() == output_size:
- */
-                    __pyx_v_overlap = (__pyx_v_overlap - __pyx_v_field_pair.second);
-
-                    /* "debugblock/new_topk_sim_join.pyx":949
- *                                     lfield = field_pair.first / offset_of_field_num
- *                                     rfield = field_pair.first % offset_of_field_num
- *                                     if not remained_fields.count(lfield) or not remained_fields.count(rfield):             # <<<<<<<<<<<<<<
- *                                         overlap -= field_pair.second
- *                                 sim = overlap * 1.0 / (l_len + r_len - overlap)
- */
-                  }
-
-                  /* "debugblock/new_topk_sim_join.pyx":946
- *                             if denom <= 0 or topk_heap.size() < output_size or \
- *                                     overlap * 1.0 / denom > topk_heap.top().sim:
- *                                 for field_pair in reuse_info.map:             # <<<<<<<<<<<<<<
- *                                     lfield = field_pair.first / offset_of_field_num
- *                                     rfield = field_pair.first % offset_of_field_num
- */
-                }
-
-                /* "debugblock/new_topk_sim_join.pyx":951
- *                                     if not remained_fields.count(lfield) or not remained_fields.count(rfield):
- *                                         overlap -= field_pair.second
- *                                 sim = overlap * 1.0 / (l_len + r_len - overlap)             # <<<<<<<<<<<<<<
- *                                 if topk_heap.size() == output_size:
- *                                     if topk_heap.top().sim < sim:
- */
-                __pyx_t_6 = (__pyx_v_overlap * 1.0);
-                __pyx_t_3 = ((__pyx_v_l_len + __pyx_v_r_len) - __pyx_v_overlap);
-                if (unlikely(__pyx_t_3 == 0)) {
-                  #ifdef WITH_THREAD
-                  PyGILState_STATE __pyx_gilstate_save = PyGILState_Ensure();
-                  #endif
-                  PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-                  #ifdef WITH_THREAD
-                  PyGILState_Release(__pyx_gilstate_save);
-                  #endif
-                  {__pyx_filename = __pyx_f[0]; __pyx_lineno = 951; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-                }
-                __pyx_v_sim = (__pyx_t_6 / __pyx_t_3);
-
-                /* "debugblock/new_topk_sim_join.pyx":952
- *                                         overlap -= field_pair.second
- *                                 sim = overlap * 1.0 / (l_len + r_len - overlap)
- *                                 if topk_heap.size() == output_size:             # <<<<<<<<<<<<<<
- *                                     if topk_heap.top().sim < sim:
- *                                         topk_heap.pop()
- */
-                __pyx_t_1 = ((__pyx_v_topk_heap.size() == __pyx_v_output_size) != 0);
-                if (__pyx_t_1) {
-
-                  /* "debugblock/new_topk_sim_join.pyx":953
- *                                 sim = overlap * 1.0 / (l_len + r_len - overlap)
- *                                 if topk_heap.size() == output_size:
- *                                     if topk_heap.top().sim < sim:             # <<<<<<<<<<<<<<
- *                                         topk_heap.pop()
- *                                         topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))
- */
-                  __pyx_t_1 = ((__pyx_v_topk_heap.top().sim < __pyx_v_sim) != 0);
-                  if (__pyx_t_1) {
-
-                    /* "debugblock/new_topk_sim_join.pyx":954
- *                                 if topk_heap.size() == output_size:
- *                                     if topk_heap.top().sim < sim:
- *                                         topk_heap.pop()             # <<<<<<<<<<<<<<
- *                                         topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))
- *                                 else:
- */
-                    __pyx_v_topk_heap.pop();
-
-                    /* "debugblock/new_topk_sim_join.pyx":955
- *                                     if topk_heap.top().sim < sim:
- *                                         topk_heap.pop()
- *                                         topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))             # <<<<<<<<<<<<<<
- *                                 else:
- *                                     topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))
- */
-                    __pyx_v_topk_heap.push(TopPair(__pyx_v_sim, __pyx_v_l_rec_idx, __pyx_v_r_rec_idx));
-
-                    /* "debugblock/new_topk_sim_join.pyx":953
- *                                 sim = overlap * 1.0 / (l_len + r_len - overlap)
- *                                 if topk_heap.size() == output_size:
- *                                     if topk_heap.top().sim < sim:             # <<<<<<<<<<<<<<
- *                                         topk_heap.pop()
- *                                         topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))
- */
-                  }
-
-                  /* "debugblock/new_topk_sim_join.pyx":952
- *                                         overlap -= field_pair.second
- *                                 sim = overlap * 1.0 / (l_len + r_len - overlap)
- *                                 if topk_heap.size() == output_size:             # <<<<<<<<<<<<<<
- *                                     if topk_heap.top().sim < sim:
- *                                         topk_heap.pop()
- */
-                  goto __pyx_L38;
-                }
-
-                /* "debugblock/new_topk_sim_join.pyx":957
- *                                         topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))
- *                                 else:
- *                                     topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))             # <<<<<<<<<<<<<<
- * 
- *                             if compared_set.count(l_rec_idx):
- */
-                /*else*/ {
-                  __pyx_v_topk_heap.push(TopPair(__pyx_v_sim, __pyx_v_l_rec_idx, __pyx_v_r_rec_idx));
-                }
-                __pyx_L38:;
-
-                /* "debugblock/new_topk_sim_join.pyx":944
- *                             #         printf("%d %d ", field_pair.first, field_pair.second)
- *                             #     printf("\n")
- *                             if denom <= 0 or topk_heap.size() < output_size or \             # <<<<<<<<<<<<<<
- *                                     overlap * 1.0 / denom > topk_heap.top().sim:
- *                                 for field_pair in reuse_info.map:
- */
-              }
-
-              /* "debugblock/new_topk_sim_join.pyx":959
- *                                     topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))
- * 
- *                             if compared_set.count(l_rec_idx):             # <<<<<<<<<<<<<<
- *                                 compared_set[l_rec_idx].insert(r_rec_idx)
- *                             else:
- */
-              __pyx_t_1 = (__pyx_v_compared_set.count(__pyx_v_l_rec_idx) != 0);
-              if (__pyx_t_1) {
-
-                /* "debugblock/new_topk_sim_join.pyx":960
- * 
- *                             if compared_set.count(l_rec_idx):
- *                                 compared_set[l_rec_idx].insert(r_rec_idx)             # <<<<<<<<<<<<<<
- *                             else:
- *                                 compared_set[l_rec_idx] = uset[int]()
- */
-                (__pyx_v_compared_set[__pyx_v_l_rec_idx]).insert(__pyx_v_r_rec_idx);
-
-                /* "debugblock/new_topk_sim_join.pyx":959
- *                                     topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))
- * 
- *                             if compared_set.count(l_rec_idx):             # <<<<<<<<<<<<<<
- *                                 compared_set[l_rec_idx].insert(r_rec_idx)
- *                             else:
- */
-                goto __pyx_L40;
-              }
-
-              /* "debugblock/new_topk_sim_join.pyx":962
- *                                 compared_set[l_rec_idx].insert(r_rec_idx)
- *                             else:
- *                                 compared_set[l_rec_idx] = uset[int]()             # <<<<<<<<<<<<<<
- *                                 compared_set[l_rec_idx].insert(r_rec_idx)
- * 
- */
-              /*else*/ {
-                try {
-                  __pyx_t_10 = std::unordered_set<int> ();
-                } catch(...) {
-                  #ifdef WITH_THREAD
-                  PyGILState_STATE __pyx_gilstate_save = PyGILState_Ensure();
-                  #endif
-                  __Pyx_CppExn2PyErr();
-                  #ifdef WITH_THREAD
-                  PyGILState_Release(__pyx_gilstate_save);
-                  #endif
-                  {__pyx_filename = __pyx_f[0]; __pyx_lineno = 962; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-                }
-                (__pyx_v_compared_set[__pyx_v_l_rec_idx]) = __pyx_t_10;
-
-                /* "debugblock/new_topk_sim_join.pyx":963
- *                             else:
- *                                 compared_set[l_rec_idx] = uset[int]()
- *                                 compared_set[l_rec_idx].insert(r_rec_idx)             # <<<<<<<<<<<<<<
- * 
- *                             if active_dict.count(l_rec_idx) and active_dict[l_rec_idx].count(r_rec_idx):
- */
-                (__pyx_v_compared_set[__pyx_v_l_rec_idx]).insert(__pyx_v_r_rec_idx);
-              }
-              __pyx_L40:;
-
-              /* "debugblock/new_topk_sim_join.pyx":965
- *                                 compared_set[l_rec_idx].insert(r_rec_idx)
- * 
- *                             if active_dict.count(l_rec_idx) and active_dict[l_rec_idx].count(r_rec_idx):             # <<<<<<<<<<<<<<
- *                                 active_dict[l_rec_idx].erase(r_rec_idx)
- * 
- */
-              __pyx_t_2 = (__pyx_v_active_dict.count(__pyx_v_l_rec_idx) != 0);
-              if (__pyx_t_2) {
-              } else {
-                __pyx_t_1 = __pyx_t_2;
-                goto __pyx_L42_bool_binop_done;
-              }
-              __pyx_t_2 = ((__pyx_v_active_dict[__pyx_v_l_rec_idx]).count(__pyx_v_r_rec_idx) != 0);
-              __pyx_t_1 = __pyx_t_2;
-              __pyx_L42_bool_binop_done:;
-              if (__pyx_t_1) {
-
-                /* "debugblock/new_topk_sim_join.pyx":966
- * 
- *                             if active_dict.count(l_rec_idx) and active_dict[l_rec_idx].count(r_rec_idx):
- *                                 active_dict[l_rec_idx].erase(r_rec_idx)             # <<<<<<<<<<<<<<
- * 
- *                         else:
- */
-                (__pyx_v_active_dict[__pyx_v_l_rec_idx]).erase(__pyx_v_r_rec_idx);
-
-                /* "debugblock/new_topk_sim_join.pyx":965
- *                                 compared_set[l_rec_idx].insert(r_rec_idx)
- * 
- *                             if active_dict.count(l_rec_idx) and active_dict[l_rec_idx].count(r_rec_idx):             # <<<<<<<<<<<<<<
- *                                 active_dict[l_rec_idx].erase(r_rec_idx)
- * 
- */
-              }
-
-              /* "debugblock/new_topk_sim_join.pyx":934
- *                         total_compared_pairs += 1
- *                     elif ltoken_vector[l_rec_idx][l_tok_idx + 1] == rtoken_vector[r_rec_idx][r_tok_idx + 1]:
- *                         if reuse_set.count(l_rec_idx) and reuse_set[l_rec_idx].count(r_rec_idx):             # <<<<<<<<<<<<<<
- *                             reuse_info = reuse_set[l_rec_idx][r_rec_idx]
- *                             overlap = reuse_info.overlap
- */
-              goto __pyx_L26;
-            }
-
-            /* "debugblock/new_topk_sim_join.pyx":971
- *                             # overlap = new_get_overlap(ltoken_vector[l_rec_idx], rtoken_vector[r_rec_idx],
- *                             #                           l_tok_idx, r_tok_idx)
- *                             overlap = new_get_overlap(ltoken_vector[l_rec_idx], rtoken_vector[r_rec_idx],             # <<<<<<<<<<<<<<
- *                                                       0, 0)
- * 
- */
-            /*else*/ {
-              __pyx_v_overlap = __pyx_f_10debugblock_17new_topk_sim_join_new_get_overlap((__pyx_v_ltoken_vector[__pyx_v_l_rec_idx]), (__pyx_v_rtoken_vector[__pyx_v_r_rec_idx]), 0, 0);
-
-              /* "debugblock/new_topk_sim_join.pyx":978
- *                             #     printf("%d\n", overlap)
- * 
- *                             if active_dict.count(l_rec_idx) and active_dict[l_rec_idx].count(r_rec_idx):             # <<<<<<<<<<<<<<
- *                                 # overlap += active_dict[l_rec_idx][r_rec_idx]
- *                                 active_dict[l_rec_idx].erase(r_rec_idx)
- */
-              __pyx_t_2 = (__pyx_v_active_dict.count(__pyx_v_l_rec_idx) != 0);
-              if (__pyx_t_2) {
-              } else {
-                __pyx_t_1 = __pyx_t_2;
-                goto __pyx_L45_bool_binop_done;
-              }
-              __pyx_t_2 = ((__pyx_v_active_dict[__pyx_v_l_rec_idx]).count(__pyx_v_r_rec_idx) != 0);
-              __pyx_t_1 = __pyx_t_2;
-              __pyx_L45_bool_binop_done:;
-              if (__pyx_t_1) {
-
-                /* "debugblock/new_topk_sim_join.pyx":980
- *                             if active_dict.count(l_rec_idx) and active_dict[l_rec_idx].count(r_rec_idx):
- *                                 # overlap += active_dict[l_rec_idx][r_rec_idx]
- *                                 active_dict[l_rec_idx].erase(r_rec_idx)             # <<<<<<<<<<<<<<
- * 
- *                             sim = overlap * 1.0 / (l_len + r_len - overlap)
- */
-                (__pyx_v_active_dict[__pyx_v_l_rec_idx]).erase(__pyx_v_r_rec_idx);
-
-                /* "debugblock/new_topk_sim_join.pyx":978
- *                             #     printf("%d\n", overlap)
- * 
- *                             if active_dict.count(l_rec_idx) and active_dict[l_rec_idx].count(r_rec_idx):             # <<<<<<<<<<<<<<
- *                                 # overlap += active_dict[l_rec_idx][r_rec_idx]
- *                                 active_dict[l_rec_idx].erase(r_rec_idx)
- */
-              }
-
-              /* "debugblock/new_topk_sim_join.pyx":982
- *                                 active_dict[l_rec_idx].erase(r_rec_idx)
- * 
- *                             sim = overlap * 1.0 / (l_len + r_len - overlap)             # <<<<<<<<<<<<<<
- *                             if topk_heap.size() == output_size:
- *                                 if topk_heap.top().sim < sim:
- */
-              __pyx_t_6 = (__pyx_v_overlap * 1.0);
-              __pyx_t_3 = ((__pyx_v_l_len + __pyx_v_r_len) - __pyx_v_overlap);
-              if (unlikely(__pyx_t_3 == 0)) {
-                #ifdef WITH_THREAD
-                PyGILState_STATE __pyx_gilstate_save = PyGILState_Ensure();
-                #endif
-                PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-                #ifdef WITH_THREAD
-                PyGILState_Release(__pyx_gilstate_save);
-                #endif
-                {__pyx_filename = __pyx_f[0]; __pyx_lineno = 982; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-              }
-              __pyx_v_sim = (__pyx_t_6 / __pyx_t_3);
-
-              /* "debugblock/new_topk_sim_join.pyx":983
- * 
- *                             sim = overlap * 1.0 / (l_len + r_len - overlap)
- *                             if topk_heap.size() == output_size:             # <<<<<<<<<<<<<<
- *                                 if topk_heap.top().sim < sim:
- *                                     topk_heap.pop()
- */
-              __pyx_t_1 = ((__pyx_v_topk_heap.size() == __pyx_v_output_size) != 0);
-              if (__pyx_t_1) {
-
-                /* "debugblock/new_topk_sim_join.pyx":984
- *                             sim = overlap * 1.0 / (l_len + r_len - overlap)
- *                             if topk_heap.size() == output_size:
- *                                 if topk_heap.top().sim < sim:             # <<<<<<<<<<<<<<
- *                                     topk_heap.pop()
- *                                     topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))
- */
-                __pyx_t_1 = ((__pyx_v_topk_heap.top().sim < __pyx_v_sim) != 0);
-                if (__pyx_t_1) {
-
-                  /* "debugblock/new_topk_sim_join.pyx":985
- *                             if topk_heap.size() == output_size:
- *                                 if topk_heap.top().sim < sim:
- *                                     topk_heap.pop()             # <<<<<<<<<<<<<<
- *                                     topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))
- *                             else:
- */
-                  __pyx_v_topk_heap.pop();
-
-                  /* "debugblock/new_topk_sim_join.pyx":986
- *                                 if topk_heap.top().sim < sim:
- *                                     topk_heap.pop()
- *                                     topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))             # <<<<<<<<<<<<<<
- *                             else:
- *                                 topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))
- */
-                  __pyx_v_topk_heap.push(TopPair(__pyx_v_sim, __pyx_v_l_rec_idx, __pyx_v_r_rec_idx));
-
-                  /* "debugblock/new_topk_sim_join.pyx":984
- *                             sim = overlap * 1.0 / (l_len + r_len - overlap)
- *                             if topk_heap.size() == output_size:
- *                                 if topk_heap.top().sim < sim:             # <<<<<<<<<<<<<<
- *                                     topk_heap.pop()
- *                                     topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))
- */
-                }
-
-                /* "debugblock/new_topk_sim_join.pyx":983
- * 
- *                             sim = overlap * 1.0 / (l_len + r_len - overlap)
- *                             if topk_heap.size() == output_size:             # <<<<<<<<<<<<<<
- *                                 if topk_heap.top().sim < sim:
- *                                     topk_heap.pop()
- */
-                goto __pyx_L47;
-              }
-
-              /* "debugblock/new_topk_sim_join.pyx":988
- *                                     topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))
- *                             else:
- *                                 topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))             # <<<<<<<<<<<<<<
- * 
- *                             if compared_set.count(l_rec_idx):
- */
-              /*else*/ {
-                __pyx_v_topk_heap.push(TopPair(__pyx_v_sim, __pyx_v_l_rec_idx, __pyx_v_r_rec_idx));
-              }
-              __pyx_L47:;
-
-              /* "debugblock/new_topk_sim_join.pyx":990
- *                                 topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))
- * 
- *                             if compared_set.count(l_rec_idx):             # <<<<<<<<<<<<<<
- *                                 compared_set[l_rec_idx].insert(r_rec_idx)
- *                             else:
- */
-              __pyx_t_1 = (__pyx_v_compared_set.count(__pyx_v_l_rec_idx) != 0);
-              if (__pyx_t_1) {
-
-                /* "debugblock/new_topk_sim_join.pyx":991
- * 
- *                             if compared_set.count(l_rec_idx):
- *                                 compared_set[l_rec_idx].insert(r_rec_idx)             # <<<<<<<<<<<<<<
- *                             else:
- *                                 compared_set[l_rec_idx] = uset[int]()
- */
-                (__pyx_v_compared_set[__pyx_v_l_rec_idx]).insert(__pyx_v_r_rec_idx);
-
-                /* "debugblock/new_topk_sim_join.pyx":990
- *                                 topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))
- * 
- *                             if compared_set.count(l_rec_idx):             # <<<<<<<<<<<<<<
- *                                 compared_set[l_rec_idx].insert(r_rec_idx)
- *                             else:
- */
-                goto __pyx_L49;
-              }
-
-              /* "debugblock/new_topk_sim_join.pyx":993
- *                                 compared_set[l_rec_idx].insert(r_rec_idx)
- *                             else:
- *                                 compared_set[l_rec_idx] = uset[int]()             # <<<<<<<<<<<<<<
- *                                 compared_set[l_rec_idx].insert(r_rec_idx)
- * 
- */
-              /*else*/ {
-                try {
-                  __pyx_t_10 = std::unordered_set<int> ();
-                } catch(...) {
-                  #ifdef WITH_THREAD
-                  PyGILState_STATE __pyx_gilstate_save = PyGILState_Ensure();
-                  #endif
-                  __Pyx_CppExn2PyErr();
-                  #ifdef WITH_THREAD
-                  PyGILState_Release(__pyx_gilstate_save);
-                  #endif
-                  {__pyx_filename = __pyx_f[0]; __pyx_lineno = 993; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-                }
-                (__pyx_v_compared_set[__pyx_v_l_rec_idx]) = __pyx_t_10;
-
-                /* "debugblock/new_topk_sim_join.pyx":994
- *                             else:
- *                                 compared_set[l_rec_idx] = uset[int]()
- *                                 compared_set[l_rec_idx].insert(r_rec_idx)             # <<<<<<<<<<<<<<
- * 
- *                         total_compared_pairs += 1
- */
-                (__pyx_v_compared_set[__pyx_v_l_rec_idx]).insert(__pyx_v_r_rec_idx);
-              }
-              __pyx_L49:;
-            }
-            __pyx_L26:;
-
-            /* "debugblock/new_topk_sim_join.pyx":996
- *                                 compared_set[l_rec_idx].insert(r_rec_idx)
- * 
- *                         total_compared_pairs += 1             # <<<<<<<<<<<<<<
- *                     else:
- *                         # printf("left3\n")
- */
-            __pyx_v_total_compared_pairs = (__pyx_v_total_compared_pairs + 1);
-
-            /* "debugblock/new_topk_sim_join.pyx":933
- * 
- *                         total_compared_pairs += 1
- *                     elif ltoken_vector[l_rec_idx][l_tok_idx + 1] == rtoken_vector[r_rec_idx][r_tok_idx + 1]:             # <<<<<<<<<<<<<<
- *                         if reuse_set.count(l_rec_idx) and reuse_set[l_rec_idx].count(r_rec_idx):
- *                             reuse_info = reuse_set[l_rec_idx][r_rec_idx]
- */
-            goto __pyx_L18;
-          }
-
-          /* "debugblock/new_topk_sim_join.pyx":999
+          /* "debugblock/new_topk_sim_join.pyx":1014
  *                     else:
  *                         # printf("left3\n")
  *                         if active_dict.count(l_rec_idx):             # <<<<<<<<<<<<<<
@@ -8441,7 +7197,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
             __pyx_t_1 = (__pyx_v_active_dict.count(__pyx_v_l_rec_idx) != 0);
             if (__pyx_t_1) {
 
-              /* "debugblock/new_topk_sim_join.pyx":1001
+              /* "debugblock/new_topk_sim_join.pyx":1016
  *                         if active_dict.count(l_rec_idx):
  *                             # printf("left3.1\n")
  *                             if active_dict[l_rec_idx].count(r_rec_idx):             # <<<<<<<<<<<<<<
@@ -8451,7 +7207,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
               __pyx_t_1 = ((__pyx_v_active_dict[__pyx_v_l_rec_idx]).count(__pyx_v_r_rec_idx) != 0);
               if (__pyx_t_1) {
 
-                /* "debugblock/new_topk_sim_join.pyx":1003
+                /* "debugblock/new_topk_sim_join.pyx":1018
  *                             if active_dict[l_rec_idx].count(r_rec_idx):
  *                                 # printf("left3.1.1\n")
  *                                 value = active_dict[l_rec_idx][r_rec_idx]             # <<<<<<<<<<<<<<
@@ -8460,7 +7216,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
                 __pyx_v_value = ((__pyx_v_active_dict[__pyx_v_l_rec_idx])[__pyx_v_r_rec_idx]);
 
-                /* "debugblock/new_topk_sim_join.pyx":1004
+                /* "debugblock/new_topk_sim_join.pyx":1019
  *                                 # printf("left3.1.1\n")
  *                                 value = active_dict[l_rec_idx][r_rec_idx]
  *                                 if value == prefix_match_max_size:             # <<<<<<<<<<<<<<
@@ -8470,35 +7226,44 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
                 __pyx_t_1 = ((__pyx_v_value == __pyx_v_prefix_match_max_size) != 0);
                 if (__pyx_t_1) {
 
-                  /* "debugblock/new_topk_sim_join.pyx":1006
+                  /* "debugblock/new_topk_sim_join.pyx":1021
  *                                 if value == prefix_match_max_size:
  *                                     # printf("left3.1.1.1\n")
  *                                     if reuse_set.count(l_rec_idx) and reuse_set[l_rec_idx].count(r_rec_idx):             # <<<<<<<<<<<<<<
+ *                                         reuse_count += 1
  *                                         reuse_info = reuse_set[l_rec_idx][r_rec_idx]
- *                                         overlap = reuse_info.overlap
  */
                   __pyx_t_2 = (__pyx_v_reuse_set.count(__pyx_v_l_rec_idx) != 0);
                   if (__pyx_t_2) {
                   } else {
                     __pyx_t_1 = __pyx_t_2;
-                    goto __pyx_L54_bool_binop_done;
+                    goto __pyx_L30_bool_binop_done;
                   }
                   __pyx_t_2 = ((__pyx_v_reuse_set[__pyx_v_l_rec_idx]).count(__pyx_v_r_rec_idx) != 0);
                   __pyx_t_1 = __pyx_t_2;
-                  __pyx_L54_bool_binop_done:;
+                  __pyx_L30_bool_binop_done:;
                   if (__pyx_t_1) {
 
-                    /* "debugblock/new_topk_sim_join.pyx":1007
+                    /* "debugblock/new_topk_sim_join.pyx":1022
  *                                     # printf("left3.1.1.1\n")
  *                                     if reuse_set.count(l_rec_idx) and reuse_set[l_rec_idx].count(r_rec_idx):
+ *                                         reuse_count += 1             # <<<<<<<<<<<<<<
+ *                                         reuse_info = reuse_set[l_rec_idx][r_rec_idx]
+ *                                         overlap = reuse_info.overlap
+ */
+                    __pyx_v_reuse_count = (__pyx_v_reuse_count + 1);
+
+                    /* "debugblock/new_topk_sim_join.pyx":1023
+ *                                     if reuse_set.count(l_rec_idx) and reuse_set[l_rec_idx].count(r_rec_idx):
+ *                                         reuse_count += 1
  *                                         reuse_info = reuse_set[l_rec_idx][r_rec_idx]             # <<<<<<<<<<<<<<
  *                                         overlap = reuse_info.overlap
  *                                         denom = l_len + r_len - overlap
  */
                     __pyx_v_reuse_info = ((__pyx_v_reuse_set[__pyx_v_l_rec_idx])[__pyx_v_r_rec_idx]);
 
-                    /* "debugblock/new_topk_sim_join.pyx":1008
- *                                     if reuse_set.count(l_rec_idx) and reuse_set[l_rec_idx].count(r_rec_idx):
+                    /* "debugblock/new_topk_sim_join.pyx":1024
+ *                                         reuse_count += 1
  *                                         reuse_info = reuse_set[l_rec_idx][r_rec_idx]
  *                                         overlap = reuse_info.overlap             # <<<<<<<<<<<<<<
  *                                         denom = l_len + r_len - overlap
@@ -8507,7 +7272,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
                     __pyx_t_3 = __pyx_v_reuse_info.overlap;
                     __pyx_v_overlap = __pyx_t_3;
 
-                    /* "debugblock/new_topk_sim_join.pyx":1009
+                    /* "debugblock/new_topk_sim_join.pyx":1025
  *                                         reuse_info = reuse_set[l_rec_idx][r_rec_idx]
  *                                         overlap = reuse_info.overlap
  *                                         denom = l_len + r_len - overlap             # <<<<<<<<<<<<<<
@@ -8516,7 +7281,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
                     __pyx_v_denom = ((__pyx_v_l_len + __pyx_v_r_len) - __pyx_v_overlap);
 
-                    /* "debugblock/new_topk_sim_join.pyx":1016
+                    /* "debugblock/new_topk_sim_join.pyx":1032
  *                                         #         printf("%d %d ", field_pair.first, field_pair.second)
  *                                         #     printf("\n")
  *                                         if denom <= 0 or topk_heap.size() < output_size or \             # <<<<<<<<<<<<<<
@@ -8527,16 +7292,16 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
                     if (!__pyx_t_2) {
                     } else {
                       __pyx_t_1 = __pyx_t_2;
-                      goto __pyx_L57_bool_binop_done;
+                      goto __pyx_L33_bool_binop_done;
                     }
                     __pyx_t_2 = ((__pyx_v_topk_heap.size() < __pyx_v_output_size) != 0);
                     if (!__pyx_t_2) {
                     } else {
                       __pyx_t_1 = __pyx_t_2;
-                      goto __pyx_L57_bool_binop_done;
+                      goto __pyx_L33_bool_binop_done;
                     }
 
-                    /* "debugblock/new_topk_sim_join.pyx":1017
+                    /* "debugblock/new_topk_sim_join.pyx":1033
  *                                         #     printf("\n")
  *                                         if denom <= 0 or topk_heap.size() < output_size or \
  *                                                 overlap * 1.0 / denom > topk_heap.top().sim:             # <<<<<<<<<<<<<<
@@ -8552,13 +7317,13 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
                       #ifdef WITH_THREAD
                       PyGILState_Release(__pyx_gilstate_save);
                       #endif
-                      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1017; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+                      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1033; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
                     }
                     __pyx_t_2 = (((__pyx_t_6 / __pyx_v_denom) > __pyx_v_topk_heap.top().sim) != 0);
                     __pyx_t_1 = __pyx_t_2;
-                    __pyx_L57_bool_binop_done:;
+                    __pyx_L33_bool_binop_done:;
 
-                    /* "debugblock/new_topk_sim_join.pyx":1016
+                    /* "debugblock/new_topk_sim_join.pyx":1032
  *                                         #         printf("%d %d ", field_pair.first, field_pair.second)
  *                                         #     printf("\n")
  *                                         if denom <= 0 or topk_heap.size() < output_size or \             # <<<<<<<<<<<<<<
@@ -8567,7 +7332,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
                     if (__pyx_t_1) {
 
-                      /* "debugblock/new_topk_sim_join.pyx":1018
+                      /* "debugblock/new_topk_sim_join.pyx":1034
  *                                         if denom <= 0 or topk_heap.size() < output_size or \
  *                                                 overlap * 1.0 / denom > topk_heap.top().sim:
  *                                             for field_pair in reuse_info.map:             # <<<<<<<<<<<<<<
@@ -8582,7 +7347,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
                         ++__pyx_t_7;
                         __pyx_v_field_pair = __pyx_t_9;
 
-                        /* "debugblock/new_topk_sim_join.pyx":1019
+                        /* "debugblock/new_topk_sim_join.pyx":1035
  *                                                 overlap * 1.0 / denom > topk_heap.top().sim:
  *                                             for field_pair in reuse_info.map:
  *                                                 lfield = field_pair.first / offset_of_field_num             # <<<<<<<<<<<<<<
@@ -8597,7 +7362,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
                           #ifdef WITH_THREAD
                           PyGILState_Release(__pyx_gilstate_save);
                           #endif
-                          {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1019; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+                          {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1035; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
                         }
                         else if (sizeof(int) == sizeof(long) && (!(((int const )-1) > 0)) && unlikely(__pyx_v_offset_of_field_num == (int const )-1)  && unlikely(UNARY_NEG_WOULD_OVERFLOW(__pyx_v_field_pair.first))) {
                           #ifdef WITH_THREAD
@@ -8607,11 +7372,11 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
                           #ifdef WITH_THREAD
                           PyGILState_Release(__pyx_gilstate_save);
                           #endif
-                          {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1019; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+                          {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1035; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
                         }
                         __pyx_v_lfield = __Pyx_div_int(__pyx_v_field_pair.first, __pyx_v_offset_of_field_num);
 
-                        /* "debugblock/new_topk_sim_join.pyx":1020
+                        /* "debugblock/new_topk_sim_join.pyx":1036
  *                                             for field_pair in reuse_info.map:
  *                                                 lfield = field_pair.first / offset_of_field_num
  *                                                 rfield = field_pair.first % offset_of_field_num             # <<<<<<<<<<<<<<
@@ -8626,11 +7391,11 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
                           #ifdef WITH_THREAD
                           PyGILState_Release(__pyx_gilstate_save);
                           #endif
-                          {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1020; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+                          {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1036; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
                         }
                         __pyx_v_rfield = __Pyx_mod_int(__pyx_v_field_pair.first, __pyx_v_offset_of_field_num);
 
-                        /* "debugblock/new_topk_sim_join.pyx":1021
+                        /* "debugblock/new_topk_sim_join.pyx":1037
  *                                                 lfield = field_pair.first / offset_of_field_num
  *                                                 rfield = field_pair.first % offset_of_field_num
  *                                                 if not remained_fields.count(lfield) or not remained_fields.count(rfield):             # <<<<<<<<<<<<<<
@@ -8641,14 +7406,14 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
                         if (!__pyx_t_2) {
                         } else {
                           __pyx_t_1 = __pyx_t_2;
-                          goto __pyx_L63_bool_binop_done;
+                          goto __pyx_L39_bool_binop_done;
                         }
                         __pyx_t_2 = ((!(__pyx_v_remained_fields.count(__pyx_v_rfield) != 0)) != 0);
                         __pyx_t_1 = __pyx_t_2;
-                        __pyx_L63_bool_binop_done:;
+                        __pyx_L39_bool_binop_done:;
                         if (__pyx_t_1) {
 
-                          /* "debugblock/new_topk_sim_join.pyx":1022
+                          /* "debugblock/new_topk_sim_join.pyx":1038
  *                                                 rfield = field_pair.first % offset_of_field_num
  *                                                 if not remained_fields.count(lfield) or not remained_fields.count(rfield):
  *                                                     overlap -= field_pair.second             # <<<<<<<<<<<<<<
@@ -8657,7 +7422,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
                           __pyx_v_overlap = (__pyx_v_overlap - __pyx_v_field_pair.second);
 
-                          /* "debugblock/new_topk_sim_join.pyx":1021
+                          /* "debugblock/new_topk_sim_join.pyx":1037
  *                                                 lfield = field_pair.first / offset_of_field_num
  *                                                 rfield = field_pair.first % offset_of_field_num
  *                                                 if not remained_fields.count(lfield) or not remained_fields.count(rfield):             # <<<<<<<<<<<<<<
@@ -8666,7 +7431,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
                         }
 
-                        /* "debugblock/new_topk_sim_join.pyx":1018
+                        /* "debugblock/new_topk_sim_join.pyx":1034
  *                                         if denom <= 0 or topk_heap.size() < output_size or \
  *                                                 overlap * 1.0 / denom > topk_heap.top().sim:
  *                                             for field_pair in reuse_info.map:             # <<<<<<<<<<<<<<
@@ -8675,7 +7440,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
                       }
 
-                      /* "debugblock/new_topk_sim_join.pyx":1023
+                      /* "debugblock/new_topk_sim_join.pyx":1039
  *                                                 if not remained_fields.count(lfield) or not remained_fields.count(rfield):
  *                                                     overlap -= field_pair.second
  *                                             sim = overlap * 1.0 / (l_len + r_len - overlap)             # <<<<<<<<<<<<<<
@@ -8692,11 +7457,11 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
                         #ifdef WITH_THREAD
                         PyGILState_Release(__pyx_gilstate_save);
                         #endif
-                        {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1023; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+                        {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1039; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
                       }
                       __pyx_v_sim = (__pyx_t_6 / __pyx_t_3);
 
-                      /* "debugblock/new_topk_sim_join.pyx":1024
+                      /* "debugblock/new_topk_sim_join.pyx":1040
  *                                                     overlap -= field_pair.second
  *                                             sim = overlap * 1.0 / (l_len + r_len - overlap)
  *                                             if topk_heap.size() == output_size:             # <<<<<<<<<<<<<<
@@ -8706,7 +7471,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
                       __pyx_t_1 = ((__pyx_v_topk_heap.size() == __pyx_v_output_size) != 0);
                       if (__pyx_t_1) {
 
-                        /* "debugblock/new_topk_sim_join.pyx":1025
+                        /* "debugblock/new_topk_sim_join.pyx":1041
  *                                             sim = overlap * 1.0 / (l_len + r_len - overlap)
  *                                             if topk_heap.size() == output_size:
  *                                                 if topk_heap.top().sim < sim:             # <<<<<<<<<<<<<<
@@ -8716,7 +7481,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
                         __pyx_t_1 = ((__pyx_v_topk_heap.top().sim < __pyx_v_sim) != 0);
                         if (__pyx_t_1) {
 
-                          /* "debugblock/new_topk_sim_join.pyx":1026
+                          /* "debugblock/new_topk_sim_join.pyx":1042
  *                                             if topk_heap.size() == output_size:
  *                                                 if topk_heap.top().sim < sim:
  *                                                     topk_heap.pop()             # <<<<<<<<<<<<<<
@@ -8725,7 +7490,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
                           __pyx_v_topk_heap.pop();
 
-                          /* "debugblock/new_topk_sim_join.pyx":1027
+                          /* "debugblock/new_topk_sim_join.pyx":1043
  *                                                 if topk_heap.top().sim < sim:
  *                                                     topk_heap.pop()
  *                                                     topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))             # <<<<<<<<<<<<<<
@@ -8734,7 +7499,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
                           __pyx_v_topk_heap.push(TopPair(__pyx_v_sim, __pyx_v_l_rec_idx, __pyx_v_r_rec_idx));
 
-                          /* "debugblock/new_topk_sim_join.pyx":1025
+                          /* "debugblock/new_topk_sim_join.pyx":1041
  *                                             sim = overlap * 1.0 / (l_len + r_len - overlap)
  *                                             if topk_heap.size() == output_size:
  *                                                 if topk_heap.top().sim < sim:             # <<<<<<<<<<<<<<
@@ -8743,17 +7508,17 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
                         }
 
-                        /* "debugblock/new_topk_sim_join.pyx":1024
+                        /* "debugblock/new_topk_sim_join.pyx":1040
  *                                                     overlap -= field_pair.second
  *                                             sim = overlap * 1.0 / (l_len + r_len - overlap)
  *                                             if topk_heap.size() == output_size:             # <<<<<<<<<<<<<<
  *                                                 if topk_heap.top().sim < sim:
  *                                                     topk_heap.pop()
  */
-                        goto __pyx_L65;
+                        goto __pyx_L41;
                       }
 
-                      /* "debugblock/new_topk_sim_join.pyx":1029
+                      /* "debugblock/new_topk_sim_join.pyx":1045
  *                                                     topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))
  *                                             else:
  *                                                 topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))             # <<<<<<<<<<<<<<
@@ -8763,9 +7528,9 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
                       /*else*/ {
                         __pyx_v_topk_heap.push(TopPair(__pyx_v_sim, __pyx_v_l_rec_idx, __pyx_v_r_rec_idx));
                       }
-                      __pyx_L65:;
+                      __pyx_L41:;
 
-                      /* "debugblock/new_topk_sim_join.pyx":1016
+                      /* "debugblock/new_topk_sim_join.pyx":1032
  *                                         #         printf("%d %d ", field_pair.first, field_pair.second)
  *                                         #     printf("\n")
  *                                         if denom <= 0 or topk_heap.size() < output_size or \             # <<<<<<<<<<<<<<
@@ -8774,7 +7539,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
                     }
 
-                    /* "debugblock/new_topk_sim_join.pyx":1031
+                    /* "debugblock/new_topk_sim_join.pyx":1047
  *                                                 topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))
  * 
  *                                         if compared_set.count(l_rec_idx):             # <<<<<<<<<<<<<<
@@ -8784,7 +7549,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
                     __pyx_t_1 = (__pyx_v_compared_set.count(__pyx_v_l_rec_idx) != 0);
                     if (__pyx_t_1) {
 
-                      /* "debugblock/new_topk_sim_join.pyx":1032
+                      /* "debugblock/new_topk_sim_join.pyx":1048
  * 
  *                                         if compared_set.count(l_rec_idx):
  *                                             compared_set[l_rec_idx].insert(r_rec_idx)             # <<<<<<<<<<<<<<
@@ -8793,17 +7558,17 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
                       (__pyx_v_compared_set[__pyx_v_l_rec_idx]).insert(__pyx_v_r_rec_idx);
 
-                      /* "debugblock/new_topk_sim_join.pyx":1031
+                      /* "debugblock/new_topk_sim_join.pyx":1047
  *                                                 topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))
  * 
  *                                         if compared_set.count(l_rec_idx):             # <<<<<<<<<<<<<<
  *                                             compared_set[l_rec_idx].insert(r_rec_idx)
  *                                         else:
  */
-                      goto __pyx_L67;
+                      goto __pyx_L43;
                     }
 
-                    /* "debugblock/new_topk_sim_join.pyx":1034
+                    /* "debugblock/new_topk_sim_join.pyx":1050
  *                                             compared_set[l_rec_idx].insert(r_rec_idx)
  *                                         else:
  *                                             compared_set[l_rec_idx] = uset[int]()             # <<<<<<<<<<<<<<
@@ -8821,11 +7586,11 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
                         #ifdef WITH_THREAD
                         PyGILState_Release(__pyx_gilstate_save);
                         #endif
-                        {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1034; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+                        {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1050; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
                       }
                       (__pyx_v_compared_set[__pyx_v_l_rec_idx]) = __pyx_t_10;
 
-                      /* "debugblock/new_topk_sim_join.pyx":1035
+                      /* "debugblock/new_topk_sim_join.pyx":1051
  *                                         else:
  *                                             compared_set[l_rec_idx] = uset[int]()
  *                                             compared_set[l_rec_idx].insert(r_rec_idx)             # <<<<<<<<<<<<<<
@@ -8834,9 +7599,9 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
                       (__pyx_v_compared_set[__pyx_v_l_rec_idx]).insert(__pyx_v_r_rec_idx);
                     }
-                    __pyx_L67:;
+                    __pyx_L43:;
 
-                    /* "debugblock/new_topk_sim_join.pyx":1037
+                    /* "debugblock/new_topk_sim_join.pyx":1053
  *                                             compared_set[l_rec_idx].insert(r_rec_idx)
  * 
  *                                         if active_dict.count(l_rec_idx) and active_dict[l_rec_idx].count(r_rec_idx):             # <<<<<<<<<<<<<<
@@ -8847,14 +7612,14 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
                     if (__pyx_t_2) {
                     } else {
                       __pyx_t_1 = __pyx_t_2;
-                      goto __pyx_L69_bool_binop_done;
+                      goto __pyx_L45_bool_binop_done;
                     }
                     __pyx_t_2 = ((__pyx_v_active_dict[__pyx_v_l_rec_idx]).count(__pyx_v_r_rec_idx) != 0);
                     __pyx_t_1 = __pyx_t_2;
-                    __pyx_L69_bool_binop_done:;
+                    __pyx_L45_bool_binop_done:;
                     if (__pyx_t_1) {
 
-                      /* "debugblock/new_topk_sim_join.pyx":1038
+                      /* "debugblock/new_topk_sim_join.pyx":1054
  * 
  *                                         if active_dict.count(l_rec_idx) and active_dict[l_rec_idx].count(r_rec_idx):
  *                                             active_dict[l_rec_idx].erase(r_rec_idx)             # <<<<<<<<<<<<<<
@@ -8863,7 +7628,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
                       (__pyx_v_active_dict[__pyx_v_l_rec_idx]).erase(__pyx_v_r_rec_idx);
 
-                      /* "debugblock/new_topk_sim_join.pyx":1037
+                      /* "debugblock/new_topk_sim_join.pyx":1053
  *                                             compared_set[l_rec_idx].insert(r_rec_idx)
  * 
  *                                         if active_dict.count(l_rec_idx) and active_dict[l_rec_idx].count(r_rec_idx):             # <<<<<<<<<<<<<<
@@ -8872,17 +7637,17 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
                     }
 
-                    /* "debugblock/new_topk_sim_join.pyx":1006
+                    /* "debugblock/new_topk_sim_join.pyx":1021
  *                                 if value == prefix_match_max_size:
  *                                     # printf("left3.1.1.1\n")
  *                                     if reuse_set.count(l_rec_idx) and reuse_set[l_rec_idx].count(r_rec_idx):             # <<<<<<<<<<<<<<
+ *                                         reuse_count += 1
  *                                         reuse_info = reuse_set[l_rec_idx][r_rec_idx]
- *                                         overlap = reuse_info.overlap
  */
-                    goto __pyx_L53;
+                    goto __pyx_L29;
                   }
 
-                  /* "debugblock/new_topk_sim_join.pyx":1042
+                  /* "debugblock/new_topk_sim_join.pyx":1058
  *                                     else:
  *                                         # overlap = value
  *                                         overlap = new_get_overlap(ltoken_vector[l_rec_idx], rtoken_vector[r_rec_idx],             # <<<<<<<<<<<<<<
@@ -8892,7 +7657,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
                   /*else*/ {
                     __pyx_v_overlap = __pyx_f_10debugblock_17new_topk_sim_join_new_get_overlap((__pyx_v_ltoken_vector[__pyx_v_l_rec_idx]), (__pyx_v_rtoken_vector[__pyx_v_r_rec_idx]), 0, 0);
 
-                    /* "debugblock/new_topk_sim_join.pyx":1044
+                    /* "debugblock/new_topk_sim_join.pyx":1060
  *                                         overlap = new_get_overlap(ltoken_vector[l_rec_idx], rtoken_vector[r_rec_idx],
  *                                                                    0, 0)
  *                                         active_dict[l_rec_idx].erase(r_rec_idx)             # <<<<<<<<<<<<<<
@@ -8901,7 +7666,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
                     (__pyx_v_active_dict[__pyx_v_l_rec_idx]).erase(__pyx_v_r_rec_idx);
 
-                    /* "debugblock/new_topk_sim_join.pyx":1046
+                    /* "debugblock/new_topk_sim_join.pyx":1062
  *                                         active_dict[l_rec_idx].erase(r_rec_idx)
  * 
  *                                         sim = overlap * 1.0 / (l_len + r_len - overlap)             # <<<<<<<<<<<<<<
@@ -8918,11 +7683,11 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
                       #ifdef WITH_THREAD
                       PyGILState_Release(__pyx_gilstate_save);
                       #endif
-                      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1046; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+                      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1062; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
                     }
                     __pyx_v_sim = (__pyx_t_6 / __pyx_t_3);
 
-                    /* "debugblock/new_topk_sim_join.pyx":1047
+                    /* "debugblock/new_topk_sim_join.pyx":1063
  * 
  *                                         sim = overlap * 1.0 / (l_len + r_len - overlap)
  *                                         if topk_heap.size() == output_size:             # <<<<<<<<<<<<<<
@@ -8932,7 +7697,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
                     __pyx_t_1 = ((__pyx_v_topk_heap.size() == __pyx_v_output_size) != 0);
                     if (__pyx_t_1) {
 
-                      /* "debugblock/new_topk_sim_join.pyx":1048
+                      /* "debugblock/new_topk_sim_join.pyx":1064
  *                                         sim = overlap * 1.0 / (l_len + r_len - overlap)
  *                                         if topk_heap.size() == output_size:
  *                                             if topk_heap.top().sim < sim:             # <<<<<<<<<<<<<<
@@ -8942,7 +7707,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
                       __pyx_t_1 = ((__pyx_v_topk_heap.top().sim < __pyx_v_sim) != 0);
                       if (__pyx_t_1) {
 
-                        /* "debugblock/new_topk_sim_join.pyx":1049
+                        /* "debugblock/new_topk_sim_join.pyx":1065
  *                                         if topk_heap.size() == output_size:
  *                                             if topk_heap.top().sim < sim:
  *                                                 topk_heap.pop()             # <<<<<<<<<<<<<<
@@ -8951,7 +7716,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
                         __pyx_v_topk_heap.pop();
 
-                        /* "debugblock/new_topk_sim_join.pyx":1050
+                        /* "debugblock/new_topk_sim_join.pyx":1066
  *                                             if topk_heap.top().sim < sim:
  *                                                 topk_heap.pop()
  *                                                 topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))             # <<<<<<<<<<<<<<
@@ -8960,7 +7725,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
                         __pyx_v_topk_heap.push(TopPair(__pyx_v_sim, __pyx_v_l_rec_idx, __pyx_v_r_rec_idx));
 
-                        /* "debugblock/new_topk_sim_join.pyx":1048
+                        /* "debugblock/new_topk_sim_join.pyx":1064
  *                                         sim = overlap * 1.0 / (l_len + r_len - overlap)
  *                                         if topk_heap.size() == output_size:
  *                                             if topk_heap.top().sim < sim:             # <<<<<<<<<<<<<<
@@ -8969,17 +7734,17 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
                       }
 
-                      /* "debugblock/new_topk_sim_join.pyx":1047
+                      /* "debugblock/new_topk_sim_join.pyx":1063
  * 
  *                                         sim = overlap * 1.0 / (l_len + r_len - overlap)
  *                                         if topk_heap.size() == output_size:             # <<<<<<<<<<<<<<
  *                                             if topk_heap.top().sim < sim:
  *                                                 topk_heap.pop()
  */
-                      goto __pyx_L71;
+                      goto __pyx_L47;
                     }
 
-                    /* "debugblock/new_topk_sim_join.pyx":1052
+                    /* "debugblock/new_topk_sim_join.pyx":1068
  *                                                 topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))
  *                                         else:
  *                                             topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))             # <<<<<<<<<<<<<<
@@ -8989,9 +7754,9 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
                     /*else*/ {
                       __pyx_v_topk_heap.push(TopPair(__pyx_v_sim, __pyx_v_l_rec_idx, __pyx_v_r_rec_idx));
                     }
-                    __pyx_L71:;
+                    __pyx_L47:;
 
-                    /* "debugblock/new_topk_sim_join.pyx":1054
+                    /* "debugblock/new_topk_sim_join.pyx":1070
  *                                             topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))
  * 
  *                                         if compared_set.count(l_rec_idx):             # <<<<<<<<<<<<<<
@@ -9001,7 +7766,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
                     __pyx_t_1 = (__pyx_v_compared_set.count(__pyx_v_l_rec_idx) != 0);
                     if (__pyx_t_1) {
 
-                      /* "debugblock/new_topk_sim_join.pyx":1055
+                      /* "debugblock/new_topk_sim_join.pyx":1071
  * 
  *                                         if compared_set.count(l_rec_idx):
  *                                             compared_set[l_rec_idx].insert(r_rec_idx)             # <<<<<<<<<<<<<<
@@ -9010,17 +7775,17 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
                       (__pyx_v_compared_set[__pyx_v_l_rec_idx]).insert(__pyx_v_r_rec_idx);
 
-                      /* "debugblock/new_topk_sim_join.pyx":1054
+                      /* "debugblock/new_topk_sim_join.pyx":1070
  *                                             topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))
  * 
  *                                         if compared_set.count(l_rec_idx):             # <<<<<<<<<<<<<<
  *                                             compared_set[l_rec_idx].insert(r_rec_idx)
  *                                         else:
  */
-                      goto __pyx_L73;
+                      goto __pyx_L49;
                     }
 
-                    /* "debugblock/new_topk_sim_join.pyx":1057
+                    /* "debugblock/new_topk_sim_join.pyx":1073
  *                                             compared_set[l_rec_idx].insert(r_rec_idx)
  *                                         else:
  *                                             compared_set[l_rec_idx] = uset[int]()             # <<<<<<<<<<<<<<
@@ -9038,11 +7803,11 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
                         #ifdef WITH_THREAD
                         PyGILState_Release(__pyx_gilstate_save);
                         #endif
-                        {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1057; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+                        {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1073; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
                       }
                       (__pyx_v_compared_set[__pyx_v_l_rec_idx]) = __pyx_t_10;
 
-                      /* "debugblock/new_topk_sim_join.pyx":1058
+                      /* "debugblock/new_topk_sim_join.pyx":1074
  *                                         else:
  *                                             compared_set[l_rec_idx] = uset[int]()
  *                                             compared_set[l_rec_idx].insert(r_rec_idx)             # <<<<<<<<<<<<<<
@@ -9051,11 +7816,11 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
                       (__pyx_v_compared_set[__pyx_v_l_rec_idx]).insert(__pyx_v_r_rec_idx);
                     }
-                    __pyx_L73:;
+                    __pyx_L49:;
                   }
-                  __pyx_L53:;
+                  __pyx_L29:;
 
-                  /* "debugblock/new_topk_sim_join.pyx":1060
+                  /* "debugblock/new_topk_sim_join.pyx":1076
  *                                             compared_set[l_rec_idx].insert(r_rec_idx)
  * 
  *                                     total_compared_pairs += 1             # <<<<<<<<<<<<<<
@@ -9064,17 +7829,17 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
                   __pyx_v_total_compared_pairs = (__pyx_v_total_compared_pairs + 1);
 
-                  /* "debugblock/new_topk_sim_join.pyx":1004
+                  /* "debugblock/new_topk_sim_join.pyx":1019
  *                                 # printf("left3.1.1\n")
  *                                 value = active_dict[l_rec_idx][r_rec_idx]
  *                                 if value == prefix_match_max_size:             # <<<<<<<<<<<<<<
  *                                     # printf("left3.1.1.1\n")
  *                                     if reuse_set.count(l_rec_idx) and reuse_set[l_rec_idx].count(r_rec_idx):
  */
-                  goto __pyx_L52;
+                  goto __pyx_L28;
                 }
 
-                /* "debugblock/new_topk_sim_join.pyx":1062
+                /* "debugblock/new_topk_sim_join.pyx":1078
  *                                     total_compared_pairs += 1
  *                                 else:
  *                                     active_dict[l_rec_idx][r_rec_idx] += 1             # <<<<<<<<<<<<<<
@@ -9086,19 +7851,19 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
                   __pyx_t_11 = __pyx_v_r_rec_idx;
                   ((__pyx_v_active_dict[__pyx_t_3])[__pyx_t_11]) = (((__pyx_v_active_dict[__pyx_t_3])[__pyx_t_11]) + 1);
                 }
-                __pyx_L52:;
+                __pyx_L28:;
 
-                /* "debugblock/new_topk_sim_join.pyx":1001
+                /* "debugblock/new_topk_sim_join.pyx":1016
  *                         if active_dict.count(l_rec_idx):
  *                             # printf("left3.1\n")
  *                             if active_dict[l_rec_idx].count(r_rec_idx):             # <<<<<<<<<<<<<<
  *                                 # printf("left3.1.1\n")
  *                                 value = active_dict[l_rec_idx][r_rec_idx]
  */
-                goto __pyx_L51;
+                goto __pyx_L27;
               }
 
-              /* "debugblock/new_topk_sim_join.pyx":1065
+              /* "debugblock/new_topk_sim_join.pyx":1081
  *                             else:
  *                                 # printf("left3.1.2\n")
  *                                 active_dict[l_rec_idx][r_rec_idx] = 1             # <<<<<<<<<<<<<<
@@ -9108,19 +7873,19 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
               /*else*/ {
                 ((__pyx_v_active_dict[__pyx_v_l_rec_idx])[__pyx_v_r_rec_idx]) = 1;
               }
-              __pyx_L51:;
+              __pyx_L27:;
 
-              /* "debugblock/new_topk_sim_join.pyx":999
+              /* "debugblock/new_topk_sim_join.pyx":1014
  *                     else:
  *                         # printf("left3\n")
  *                         if active_dict.count(l_rec_idx):             # <<<<<<<<<<<<<<
  *                             # printf("left3.1\n")
  *                             if active_dict[l_rec_idx].count(r_rec_idx):
  */
-              goto __pyx_L50;
+              goto __pyx_L26;
             }
 
-            /* "debugblock/new_topk_sim_join.pyx":1067
+            /* "debugblock/new_topk_sim_join.pyx":1083
  *                                 active_dict[l_rec_idx][r_rec_idx] = 1
  *                         else:
  *                             active_dict[l_rec_idx] = umap[int, short]()             # <<<<<<<<<<<<<<
@@ -9138,11 +7903,11 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
                 #ifdef WITH_THREAD
                 PyGILState_Release(__pyx_gilstate_save);
                 #endif
-                {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1067; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+                {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1083; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
               }
               (__pyx_v_active_dict[__pyx_v_l_rec_idx]) = __pyx_t_12;
 
-              /* "debugblock/new_topk_sim_join.pyx":1068
+              /* "debugblock/new_topk_sim_join.pyx":1084
  *                         else:
  *                             active_dict[l_rec_idx] = umap[int, short]()
  *                             active_dict[l_rec_idx][r_rec_idx] = 1             # <<<<<<<<<<<<<<
@@ -9151,11 +7916,11 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
               ((__pyx_v_active_dict[__pyx_v_l_rec_idx])[__pyx_v_r_rec_idx]) = 1;
             }
-            __pyx_L50:;
+            __pyx_L26:;
           }
           __pyx_L18:;
 
-          /* "debugblock/new_topk_sim_join.pyx":1071
+          /* "debugblock/new_topk_sim_join.pyx":1087
  *                     # printf("pass check\n")
  * 
  *                     if total_compared_pairs % 100000 == 0 and \             # <<<<<<<<<<<<<<
@@ -9166,10 +7931,10 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
           if (__pyx_t_2) {
           } else {
             __pyx_t_1 = __pyx_t_2;
-            goto __pyx_L75_bool_binop_done;
+            goto __pyx_L51_bool_binop_done;
           }
 
-          /* "debugblock/new_topk_sim_join.pyx":1072
+          /* "debugblock/new_topk_sim_join.pyx":1088
  * 
  *                     if total_compared_pairs % 100000 == 0 and \
  *                             total_compared_pairs_set.count(total_compared_pairs) <= 0:             # <<<<<<<<<<<<<<
@@ -9178,9 +7943,9 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
           __pyx_t_2 = ((__pyx_v_total_compared_pairs_set.count(__pyx_v_total_compared_pairs) <= 0) != 0);
           __pyx_t_1 = __pyx_t_2;
-          __pyx_L75_bool_binop_done:;
+          __pyx_L51_bool_binop_done:;
 
-          /* "debugblock/new_topk_sim_join.pyx":1071
+          /* "debugblock/new_topk_sim_join.pyx":1087
  *                     # printf("pass check\n")
  * 
  *                     if total_compared_pairs % 100000 == 0 and \             # <<<<<<<<<<<<<<
@@ -9189,7 +7954,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
           if (__pyx_t_1) {
 
-            /* "debugblock/new_topk_sim_join.pyx":1073
+            /* "debugblock/new_topk_sim_join.pyx":1089
  *                     if total_compared_pairs % 100000 == 0 and \
  *                             total_compared_pairs_set.count(total_compared_pairs) <= 0:
  *                         total_compared_pairs_set.insert(total_compared_pairs)             # <<<<<<<<<<<<<<
@@ -9198,7 +7963,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
             __pyx_v_total_compared_pairs_set.insert(__pyx_v_total_compared_pairs);
 
-            /* "debugblock/new_topk_sim_join.pyx":1074
+            /* "debugblock/new_topk_sim_join.pyx":1090
  *                             total_compared_pairs_set.count(total_compared_pairs) <= 0:
  *                         total_compared_pairs_set.insert(total_compared_pairs)
  *                         if topk_heap.size() > 0:             # <<<<<<<<<<<<<<
@@ -9208,7 +7973,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
             __pyx_t_1 = ((__pyx_v_topk_heap.size() > 0) != 0);
             if (__pyx_t_1) {
 
-              /* "debugblock/new_topk_sim_join.pyx":1075
+              /* "debugblock/new_topk_sim_join.pyx":1091
  *                         total_compared_pairs_set.insert(total_compared_pairs)
  *                         if topk_heap.size() > 0:
  *                             printf("%ld (%.16f %d %d) (%.16f %d %d %d)\n",             # <<<<<<<<<<<<<<
@@ -9217,7 +7982,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
               printf(__pyx_k_ld_16f_d_d_16f_d_d_d, __pyx_v_total_compared_pairs, __pyx_v_topk_heap.top().sim, __pyx_v_topk_heap.top().l_rec, __pyx_v_topk_heap.top().r_rec, __pyx_v_prefix_events.top().threshold, __pyx_v_prefix_events.top().table_indicator, __pyx_v_prefix_events.top().rec_idx, __pyx_v_prefix_events.top().tok_idx);
 
-              /* "debugblock/new_topk_sim_join.pyx":1074
+              /* "debugblock/new_topk_sim_join.pyx":1090
  *                             total_compared_pairs_set.count(total_compared_pairs) <= 0:
  *                         total_compared_pairs_set.insert(total_compared_pairs)
  *                         if topk_heap.size() > 0:             # <<<<<<<<<<<<<<
@@ -9226,7 +7991,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
             }
 
-            /* "debugblock/new_topk_sim_join.pyx":1071
+            /* "debugblock/new_topk_sim_join.pyx":1087
  *                     # printf("pass check\n")
  * 
  *                     if total_compared_pairs % 100000 == 0 and \             # <<<<<<<<<<<<<<
@@ -9235,7 +8000,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
           }
 
-          /* "debugblock/new_topk_sim_join.pyx":903
+          /* "debugblock/new_topk_sim_join.pyx":918
  *             if r_inverted_index.count(token):
  *                 r_records = r_inverted_index[token]
  *                 for r_rec_tuple in r_records:             # <<<<<<<<<<<<<<
@@ -9245,7 +8010,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
           __pyx_L10_continue:;
         }
 
-        /* "debugblock/new_topk_sim_join.pyx":901
+        /* "debugblock/new_topk_sim_join.pyx":916
  *             token = ltoken_vector[l_rec_idx][l_tok_idx]
  *             l_len = ltoken_vector[l_rec_idx].size()
  *             if r_inverted_index.count(token):             # <<<<<<<<<<<<<<
@@ -9254,7 +8019,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
       }
 
-      /* "debugblock/new_topk_sim_join.pyx":1080
+      /* "debugblock/new_topk_sim_join.pyx":1096
  *                                    prefix_events.top().rec_idx, prefix_events.top().tok_idx)
  * 
  *             if l_tok_idx + 1 < l_len:             # <<<<<<<<<<<<<<
@@ -9264,7 +8029,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
       __pyx_t_1 = (((__pyx_v_l_tok_idx + 1) < __pyx_v_l_len) != 0);
       if (__pyx_t_1) {
 
-        /* "debugblock/new_topk_sim_join.pyx":1081
+        /* "debugblock/new_topk_sim_join.pyx":1097
  * 
  *             if l_tok_idx + 1 < l_len:
  *                 threshold = min(1 - (l_tok_idx + 1 - prefix_match_max_size) * 1.0 / l_len, 1.0)             # <<<<<<<<<<<<<<
@@ -9281,7 +8046,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
           #ifdef WITH_THREAD
           PyGILState_Release(__pyx_gilstate_save);
           #endif
-          {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1081; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1097; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         }
         __pyx_t_14 = (1.0 - (__pyx_t_13 / __pyx_v_l_len));
         if (((__pyx_t_6 < __pyx_t_14) != 0)) {
@@ -9291,7 +8056,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
         }
         __pyx_v_threshold = __pyx_t_13;
 
-        /* "debugblock/new_topk_sim_join.pyx":1082
+        /* "debugblock/new_topk_sim_join.pyx":1098
  *             if l_tok_idx + 1 < l_len:
  *                 threshold = min(1 - (l_tok_idx + 1 - prefix_match_max_size) * 1.0 / l_len, 1.0)
  *                 prefix_events.push(PrefixEvent(threshold, table_indicator, l_rec_idx, l_tok_idx + 1))             # <<<<<<<<<<<<<<
@@ -9300,7 +8065,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
         __pyx_v_prefix_events.push(PrefixEvent(__pyx_v_threshold, __pyx_v_table_indicator, __pyx_v_l_rec_idx, (__pyx_v_l_tok_idx + 1)));
 
-        /* "debugblock/new_topk_sim_join.pyx":1080
+        /* "debugblock/new_topk_sim_join.pyx":1096
  *                                    prefix_events.top().rec_idx, prefix_events.top().tok_idx)
  * 
  *             if l_tok_idx + 1 < l_len:             # <<<<<<<<<<<<<<
@@ -9309,7 +8074,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
       }
 
-      /* "debugblock/new_topk_sim_join.pyx":1084
+      /* "debugblock/new_topk_sim_join.pyx":1100
  *                 prefix_events.push(PrefixEvent(threshold, table_indicator, l_rec_idx, l_tok_idx + 1))
  * 
  *             if not l_inverted_index.count(token):             # <<<<<<<<<<<<<<
@@ -9319,7 +8084,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
       __pyx_t_1 = ((!(__pyx_v_l_inverted_index.count(__pyx_v_token) != 0)) != 0);
       if (__pyx_t_1) {
 
-        /* "debugblock/new_topk_sim_join.pyx":1085
+        /* "debugblock/new_topk_sim_join.pyx":1101
  * 
  *             if not l_inverted_index.count(token):
  *                 l_inverted_index[token] = oset[pair[int, int]]()             # <<<<<<<<<<<<<<
@@ -9336,11 +8101,11 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
           #ifdef WITH_THREAD
           PyGILState_Release(__pyx_gilstate_save);
           #endif
-          {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1085; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1101; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         }
         (__pyx_v_l_inverted_index[__pyx_v_token]) = __pyx_t_15;
 
-        /* "debugblock/new_topk_sim_join.pyx":1084
+        /* "debugblock/new_topk_sim_join.pyx":1100
  *                 prefix_events.push(PrefixEvent(threshold, table_indicator, l_rec_idx, l_tok_idx + 1))
  * 
  *             if not l_inverted_index.count(token):             # <<<<<<<<<<<<<<
@@ -9349,7 +8114,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
       }
 
-      /* "debugblock/new_topk_sim_join.pyx":1086
+      /* "debugblock/new_topk_sim_join.pyx":1102
  *             if not l_inverted_index.count(token):
  *                 l_inverted_index[token] = oset[pair[int, int]]()
  *             l_inverted_index[token].insert(pair[int, int](l_rec_idx, l_tok_idx))             # <<<<<<<<<<<<<<
@@ -9366,7 +8131,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
         #ifdef WITH_THREAD
         PyGILState_Release(__pyx_gilstate_save);
         #endif
-        {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1086; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1102; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       }
       try {
         (__pyx_v_l_inverted_index[__pyx_v_token]).insert(__pyx_t_5);
@@ -9378,10 +8143,10 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
         #ifdef WITH_THREAD
         PyGILState_Release(__pyx_gilstate_save);
         #endif
-        {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1086; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1102; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       }
 
-      /* "debugblock/new_topk_sim_join.pyx":896
+      /* "debugblock/new_topk_sim_join.pyx":911
  *         table_indicator = event.table_indicator
  *         # printf("%.6f %d %d %d\n", event.threshold, event.table_indicator, event.rec_idx, event.tok_idx)
  *         if table_indicator == 0:             # <<<<<<<<<<<<<<
@@ -9391,7 +8156,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
       goto __pyx_L8;
     }
 
-    /* "debugblock/new_topk_sim_join.pyx":1088
+    /* "debugblock/new_topk_sim_join.pyx":1104
  *             l_inverted_index[token].insert(pair[int, int](l_rec_idx, l_tok_idx))
  *         else:
  *             r_rec_idx = event.rec_idx             # <<<<<<<<<<<<<<
@@ -9402,7 +8167,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
       __pyx_t_3 = __pyx_v_event.rec_idx;
       __pyx_v_r_rec_idx = __pyx_t_3;
 
-      /* "debugblock/new_topk_sim_join.pyx":1089
+      /* "debugblock/new_topk_sim_join.pyx":1105
  *         else:
  *             r_rec_idx = event.rec_idx
  *             r_tok_idx = event.tok_idx             # <<<<<<<<<<<<<<
@@ -9412,7 +8177,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
       __pyx_t_3 = __pyx_v_event.tok_idx;
       __pyx_v_r_tok_idx = __pyx_t_3;
 
-      /* "debugblock/new_topk_sim_join.pyx":1090
+      /* "debugblock/new_topk_sim_join.pyx":1106
  *             r_rec_idx = event.rec_idx
  *             r_tok_idx = event.tok_idx
  *             token = rtoken_vector[r_rec_idx][r_tok_idx]             # <<<<<<<<<<<<<<
@@ -9421,7 +8186,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
       __pyx_v_token = ((__pyx_v_rtoken_vector[__pyx_v_r_rec_idx])[__pyx_v_r_tok_idx]);
 
-      /* "debugblock/new_topk_sim_join.pyx":1091
+      /* "debugblock/new_topk_sim_join.pyx":1107
  *             r_tok_idx = event.tok_idx
  *             token = rtoken_vector[r_rec_idx][r_tok_idx]
  *             r_len = rtoken_vector[r_rec_idx].size()             # <<<<<<<<<<<<<<
@@ -9430,7 +8195,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
       __pyx_v_r_len = (__pyx_v_rtoken_vector[__pyx_v_r_rec_idx]).size();
 
-      /* "debugblock/new_topk_sim_join.pyx":1092
+      /* "debugblock/new_topk_sim_join.pyx":1108
  *             token = rtoken_vector[r_rec_idx][r_tok_idx]
  *             r_len = rtoken_vector[r_rec_idx].size()
  *             if l_inverted_index.count(token):             # <<<<<<<<<<<<<<
@@ -9440,7 +8205,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
       __pyx_t_1 = (__pyx_v_l_inverted_index.count(__pyx_v_token) != 0);
       if (__pyx_t_1) {
 
-        /* "debugblock/new_topk_sim_join.pyx":1093
+        /* "debugblock/new_topk_sim_join.pyx":1109
  *             r_len = rtoken_vector[r_rec_idx].size()
  *             if l_inverted_index.count(token):
  *                 l_records = l_inverted_index[token]             # <<<<<<<<<<<<<<
@@ -9449,7 +8214,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
         __pyx_v_l_records = (__pyx_v_l_inverted_index[__pyx_v_token]);
 
-        /* "debugblock/new_topk_sim_join.pyx":1094
+        /* "debugblock/new_topk_sim_join.pyx":1110
  *             if l_inverted_index.count(token):
  *                 l_records = l_inverted_index[token]
  *                 for l_rec_tuple in l_records:             # <<<<<<<<<<<<<<
@@ -9463,7 +8228,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
           ++__pyx_t_4;
           __pyx_v_l_rec_tuple = __pyx_t_5;
 
-          /* "debugblock/new_topk_sim_join.pyx":1095
+          /* "debugblock/new_topk_sim_join.pyx":1111
  *                 l_records = l_inverted_index[token]
  *                 for l_rec_tuple in l_records:
  *                     l_rec_idx = l_rec_tuple.first             # <<<<<<<<<<<<<<
@@ -9473,7 +8238,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
           __pyx_t_3 = __pyx_v_l_rec_tuple.first;
           __pyx_v_l_rec_idx = __pyx_t_3;
 
-          /* "debugblock/new_topk_sim_join.pyx":1096
+          /* "debugblock/new_topk_sim_join.pyx":1112
  *                 for l_rec_tuple in l_records:
  *                     l_rec_idx = l_rec_tuple.first
  *                     l_tok_idx = l_rec_tuple.second             # <<<<<<<<<<<<<<
@@ -9483,7 +8248,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
           __pyx_t_3 = __pyx_v_l_rec_tuple.second;
           __pyx_v_l_tok_idx = __pyx_t_3;
 
-          /* "debugblock/new_topk_sim_join.pyx":1097
+          /* "debugblock/new_topk_sim_join.pyx":1113
  *                     l_rec_idx = l_rec_tuple.first
  *                     l_tok_idx = l_rec_tuple.second
  *                     l_len = ltoken_vector[l_rec_idx].size()             # <<<<<<<<<<<<<<
@@ -9492,7 +8257,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
           __pyx_v_l_len = (__pyx_v_ltoken_vector[__pyx_v_l_rec_idx]).size();
 
-          /* "debugblock/new_topk_sim_join.pyx":1099
+          /* "debugblock/new_topk_sim_join.pyx":1115
  *                     l_len = ltoken_vector[l_rec_idx].size()
  * 
  *                     if cand_set.count(l_rec_idx) and cand_set[l_rec_idx].count(r_rec_idx):             # <<<<<<<<<<<<<<
@@ -9503,23 +8268,23 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
           if (__pyx_t_2) {
           } else {
             __pyx_t_1 = __pyx_t_2;
-            goto __pyx_L84_bool_binop_done;
+            goto __pyx_L60_bool_binop_done;
           }
           __pyx_t_2 = ((__pyx_v_cand_set[__pyx_v_l_rec_idx]).count(__pyx_v_r_rec_idx) != 0);
           __pyx_t_1 = __pyx_t_2;
-          __pyx_L84_bool_binop_done:;
+          __pyx_L60_bool_binop_done:;
           if (__pyx_t_1) {
 
-            /* "debugblock/new_topk_sim_join.pyx":1100
+            /* "debugblock/new_topk_sim_join.pyx":1116
  * 
  *                     if cand_set.count(l_rec_idx) and cand_set[l_rec_idx].count(r_rec_idx):
  *                         continue             # <<<<<<<<<<<<<<
  * 
  *                     if compared_set.count(l_rec_idx) and compared_set[l_rec_idx].count(r_rec_idx):
  */
-            goto __pyx_L81_continue;
+            goto __pyx_L57_continue;
 
-            /* "debugblock/new_topk_sim_join.pyx":1099
+            /* "debugblock/new_topk_sim_join.pyx":1115
  *                     l_len = ltoken_vector[l_rec_idx].size()
  * 
  *                     if cand_set.count(l_rec_idx) and cand_set[l_rec_idx].count(r_rec_idx):             # <<<<<<<<<<<<<<
@@ -9528,7 +8293,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
           }
 
-          /* "debugblock/new_topk_sim_join.pyx":1102
+          /* "debugblock/new_topk_sim_join.pyx":1118
  *                         continue
  * 
  *                     if compared_set.count(l_rec_idx) and compared_set[l_rec_idx].count(r_rec_idx):             # <<<<<<<<<<<<<<
@@ -9539,23 +8304,23 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
           if (__pyx_t_2) {
           } else {
             __pyx_t_1 = __pyx_t_2;
-            goto __pyx_L87_bool_binop_done;
+            goto __pyx_L63_bool_binop_done;
           }
           __pyx_t_2 = ((__pyx_v_compared_set[__pyx_v_l_rec_idx]).count(__pyx_v_r_rec_idx) != 0);
           __pyx_t_1 = __pyx_t_2;
-          __pyx_L87_bool_binop_done:;
+          __pyx_L63_bool_binop_done:;
           if (__pyx_t_1) {
 
-            /* "debugblock/new_topk_sim_join.pyx":1103
+            /* "debugblock/new_topk_sim_join.pyx":1119
  * 
  *                     if compared_set.count(l_rec_idx) and compared_set[l_rec_idx].count(r_rec_idx):
  *                         continue             # <<<<<<<<<<<<<<
  * 
  *                     if l_rec_idx + 1 == l_len or r_rec_idx + 1 == r_len:
  */
-            goto __pyx_L81_continue;
+            goto __pyx_L57_continue;
 
-            /* "debugblock/new_topk_sim_join.pyx":1102
+            /* "debugblock/new_topk_sim_join.pyx":1118
  *                         continue
  * 
  *                     if compared_set.count(l_rec_idx) and compared_set[l_rec_idx].count(r_rec_idx):             # <<<<<<<<<<<<<<
@@ -9564,7 +8329,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
           }
 
-          /* "debugblock/new_topk_sim_join.pyx":1105
+          /* "debugblock/new_topk_sim_join.pyx":1121
  *                         continue
  * 
  *                     if l_rec_idx + 1 == l_len or r_rec_idx + 1 == r_len:             # <<<<<<<<<<<<<<
@@ -9575,14 +8340,14 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
           if (!__pyx_t_2) {
           } else {
             __pyx_t_1 = __pyx_t_2;
-            goto __pyx_L90_bool_binop_done;
+            goto __pyx_L66_bool_binop_done;
           }
           __pyx_t_2 = (((__pyx_v_r_rec_idx + 1) == __pyx_v_r_len) != 0);
           __pyx_t_1 = __pyx_t_2;
-          __pyx_L90_bool_binop_done:;
+          __pyx_L66_bool_binop_done:;
           if (__pyx_t_1) {
 
-            /* "debugblock/new_topk_sim_join.pyx":1106
+            /* "debugblock/new_topk_sim_join.pyx":1122
  * 
  *                     if l_rec_idx + 1 == l_len or r_rec_idx + 1 == r_len:
  *                         overlap = 1             # <<<<<<<<<<<<<<
@@ -9591,7 +8356,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
             __pyx_v_overlap = 1;
 
-            /* "debugblock/new_topk_sim_join.pyx":1107
+            /* "debugblock/new_topk_sim_join.pyx":1123
  *                     if l_rec_idx + 1 == l_len or r_rec_idx + 1 == r_len:
  *                         overlap = 1
  *                         if active_dict.count(l_rec_idx) and active_dict[l_rec_idx].count(r_rec_idx):             # <<<<<<<<<<<<<<
@@ -9602,14 +8367,14 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
             if (__pyx_t_2) {
             } else {
               __pyx_t_1 = __pyx_t_2;
-              goto __pyx_L93_bool_binop_done;
+              goto __pyx_L69_bool_binop_done;
             }
             __pyx_t_2 = ((__pyx_v_active_dict[__pyx_v_l_rec_idx]).count(__pyx_v_r_rec_idx) != 0);
             __pyx_t_1 = __pyx_t_2;
-            __pyx_L93_bool_binop_done:;
+            __pyx_L69_bool_binop_done:;
             if (__pyx_t_1) {
 
-              /* "debugblock/new_topk_sim_join.pyx":1108
+              /* "debugblock/new_topk_sim_join.pyx":1124
  *                         overlap = 1
  *                         if active_dict.count(l_rec_idx) and active_dict[l_rec_idx].count(r_rec_idx):
  *                             overlap += active_dict[l_rec_idx][r_rec_idx]             # <<<<<<<<<<<<<<
@@ -9618,7 +8383,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
               __pyx_v_overlap = (__pyx_v_overlap + ((__pyx_v_active_dict[__pyx_v_l_rec_idx])[__pyx_v_r_rec_idx]));
 
-              /* "debugblock/new_topk_sim_join.pyx":1109
+              /* "debugblock/new_topk_sim_join.pyx":1125
  *                         if active_dict.count(l_rec_idx) and active_dict[l_rec_idx].count(r_rec_idx):
  *                             overlap += active_dict[l_rec_idx][r_rec_idx]
  *                             active_dict[l_rec_idx].erase(r_rec_idx)             # <<<<<<<<<<<<<<
@@ -9627,7 +8392,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
               (__pyx_v_active_dict[__pyx_v_l_rec_idx]).erase(__pyx_v_r_rec_idx);
 
-              /* "debugblock/new_topk_sim_join.pyx":1107
+              /* "debugblock/new_topk_sim_join.pyx":1123
  *                     if l_rec_idx + 1 == l_len or r_rec_idx + 1 == r_len:
  *                         overlap = 1
  *                         if active_dict.count(l_rec_idx) and active_dict[l_rec_idx].count(r_rec_idx):             # <<<<<<<<<<<<<<
@@ -9636,7 +8401,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
             }
 
-            /* "debugblock/new_topk_sim_join.pyx":1115
+            /* "debugblock/new_topk_sim_join.pyx":1131
  *                         #     printf("%d\n", overlap)
  * 
  *                         sim = overlap * 1.0 / (l_len + r_len - overlap)             # <<<<<<<<<<<<<<
@@ -9653,11 +8418,11 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
               #ifdef WITH_THREAD
               PyGILState_Release(__pyx_gilstate_save);
               #endif
-              {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1115; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+              {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1131; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
             }
             __pyx_v_sim = (__pyx_t_13 / __pyx_t_3);
 
-            /* "debugblock/new_topk_sim_join.pyx":1116
+            /* "debugblock/new_topk_sim_join.pyx":1132
  * 
  *                         sim = overlap * 1.0 / (l_len + r_len - overlap)
  *                         if topk_heap.size() == output_size:             # <<<<<<<<<<<<<<
@@ -9667,7 +8432,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
             __pyx_t_1 = ((__pyx_v_topk_heap.size() == __pyx_v_output_size) != 0);
             if (__pyx_t_1) {
 
-              /* "debugblock/new_topk_sim_join.pyx":1117
+              /* "debugblock/new_topk_sim_join.pyx":1133
  *                         sim = overlap * 1.0 / (l_len + r_len - overlap)
  *                         if topk_heap.size() == output_size:
  *                             if topk_heap.top().sim < sim:             # <<<<<<<<<<<<<<
@@ -9677,7 +8442,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
               __pyx_t_1 = ((__pyx_v_topk_heap.top().sim < __pyx_v_sim) != 0);
               if (__pyx_t_1) {
 
-                /* "debugblock/new_topk_sim_join.pyx":1118
+                /* "debugblock/new_topk_sim_join.pyx":1134
  *                         if topk_heap.size() == output_size:
  *                             if topk_heap.top().sim < sim:
  *                                 topk_heap.pop()             # <<<<<<<<<<<<<<
@@ -9686,7 +8451,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
                 __pyx_v_topk_heap.pop();
 
-                /* "debugblock/new_topk_sim_join.pyx":1119
+                /* "debugblock/new_topk_sim_join.pyx":1135
  *                             if topk_heap.top().sim < sim:
  *                                 topk_heap.pop()
  *                                 topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))             # <<<<<<<<<<<<<<
@@ -9695,7 +8460,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
                 __pyx_v_topk_heap.push(TopPair(__pyx_v_sim, __pyx_v_l_rec_idx, __pyx_v_r_rec_idx));
 
-                /* "debugblock/new_topk_sim_join.pyx":1117
+                /* "debugblock/new_topk_sim_join.pyx":1133
  *                         sim = overlap * 1.0 / (l_len + r_len - overlap)
  *                         if topk_heap.size() == output_size:
  *                             if topk_heap.top().sim < sim:             # <<<<<<<<<<<<<<
@@ -9704,17 +8469,17 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
               }
 
-              /* "debugblock/new_topk_sim_join.pyx":1116
+              /* "debugblock/new_topk_sim_join.pyx":1132
  * 
  *                         sim = overlap * 1.0 / (l_len + r_len - overlap)
  *                         if topk_heap.size() == output_size:             # <<<<<<<<<<<<<<
  *                             if topk_heap.top().sim < sim:
  *                                 topk_heap.pop()
  */
-              goto __pyx_L95;
+              goto __pyx_L71;
             }
 
-            /* "debugblock/new_topk_sim_join.pyx":1121
+            /* "debugblock/new_topk_sim_join.pyx":1137
  *                                 topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))
  *                         else:
  *                             topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))             # <<<<<<<<<<<<<<
@@ -9724,669 +8489,28 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
             /*else*/ {
               __pyx_v_topk_heap.push(TopPair(__pyx_v_sim, __pyx_v_l_rec_idx, __pyx_v_r_rec_idx));
             }
-            __pyx_L95:;
+            __pyx_L71:;
 
-            /* "debugblock/new_topk_sim_join.pyx":1123
+            /* "debugblock/new_topk_sim_join.pyx":1139
  *                             topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))
  * 
  *                         total_compared_pairs += 1             # <<<<<<<<<<<<<<
- *                     elif ltoken_vector[l_rec_idx][l_tok_idx + 1] == rtoken_vector[r_rec_idx][r_tok_idx + 1]:
- *                         if reuse_set.count(l_rec_idx) and reuse_set[l_rec_idx].count(r_rec_idx):
+ *                     # elif ltoken_vector[l_rec_idx][l_tok_idx + 1] == rtoken_vector[r_rec_idx][r_tok_idx + 1]:
+ *                     #     if reuse_set.count(l_rec_idx) and reuse_set[l_rec_idx].count(r_rec_idx):
  */
             __pyx_v_total_compared_pairs = (__pyx_v_total_compared_pairs + 1);
 
-            /* "debugblock/new_topk_sim_join.pyx":1105
+            /* "debugblock/new_topk_sim_join.pyx":1121
  *                         continue
  * 
  *                     if l_rec_idx + 1 == l_len or r_rec_idx + 1 == r_len:             # <<<<<<<<<<<<<<
  *                         overlap = 1
  *                         if active_dict.count(l_rec_idx) and active_dict[l_rec_idx].count(r_rec_idx):
  */
-            goto __pyx_L89;
+            goto __pyx_L65;
           }
 
-          /* "debugblock/new_topk_sim_join.pyx":1124
- * 
- *                         total_compared_pairs += 1
- *                     elif ltoken_vector[l_rec_idx][l_tok_idx + 1] == rtoken_vector[r_rec_idx][r_tok_idx + 1]:             # <<<<<<<<<<<<<<
- *                         if reuse_set.count(l_rec_idx) and reuse_set[l_rec_idx].count(r_rec_idx):
- *                             reuse_info = reuse_set[l_rec_idx][r_rec_idx]
- */
-          __pyx_t_1 = ((((__pyx_v_ltoken_vector[__pyx_v_l_rec_idx])[(__pyx_v_l_tok_idx + 1)]) == ((__pyx_v_rtoken_vector[__pyx_v_r_rec_idx])[(__pyx_v_r_tok_idx + 1)])) != 0);
-          if (__pyx_t_1) {
-
-            /* "debugblock/new_topk_sim_join.pyx":1125
- *                         total_compared_pairs += 1
- *                     elif ltoken_vector[l_rec_idx][l_tok_idx + 1] == rtoken_vector[r_rec_idx][r_tok_idx + 1]:
- *                         if reuse_set.count(l_rec_idx) and reuse_set[l_rec_idx].count(r_rec_idx):             # <<<<<<<<<<<<<<
- *                             reuse_info = reuse_set[l_rec_idx][r_rec_idx]
- *                             overlap = reuse_info.overlap
- */
-            __pyx_t_2 = (__pyx_v_reuse_set.count(__pyx_v_l_rec_idx) != 0);
-            if (__pyx_t_2) {
-            } else {
-              __pyx_t_1 = __pyx_t_2;
-              goto __pyx_L98_bool_binop_done;
-            }
-            __pyx_t_2 = ((__pyx_v_reuse_set[__pyx_v_l_rec_idx]).count(__pyx_v_r_rec_idx) != 0);
-            __pyx_t_1 = __pyx_t_2;
-            __pyx_L98_bool_binop_done:;
-            if (__pyx_t_1) {
-
-              /* "debugblock/new_topk_sim_join.pyx":1126
- *                     elif ltoken_vector[l_rec_idx][l_tok_idx + 1] == rtoken_vector[r_rec_idx][r_tok_idx + 1]:
- *                         if reuse_set.count(l_rec_idx) and reuse_set[l_rec_idx].count(r_rec_idx):
- *                             reuse_info = reuse_set[l_rec_idx][r_rec_idx]             # <<<<<<<<<<<<<<
- *                             overlap = reuse_info.overlap
- *                             denom = l_len + r_len - overlap
- */
-              __pyx_v_reuse_info = ((__pyx_v_reuse_set[__pyx_v_l_rec_idx])[__pyx_v_r_rec_idx]);
-
-              /* "debugblock/new_topk_sim_join.pyx":1127
- *                         if reuse_set.count(l_rec_idx) and reuse_set[l_rec_idx].count(r_rec_idx):
- *                             reuse_info = reuse_set[l_rec_idx][r_rec_idx]
- *                             overlap = reuse_info.overlap             # <<<<<<<<<<<<<<
- *                             denom = l_len + r_len - overlap
- *                             # if l_rec_idx == 3482 and r_rec_idx == 4047:
- */
-              __pyx_t_3 = __pyx_v_reuse_info.overlap;
-              __pyx_v_overlap = __pyx_t_3;
-
-              /* "debugblock/new_topk_sim_join.pyx":1128
- *                             reuse_info = reuse_set[l_rec_idx][r_rec_idx]
- *                             overlap = reuse_info.overlap
- *                             denom = l_len + r_len - overlap             # <<<<<<<<<<<<<<
- *                             # if l_rec_idx == 3482 and r_rec_idx == 4047:
- *                             #     printf("right2.1\n")
- */
-              __pyx_v_denom = ((__pyx_v_l_len + __pyx_v_r_len) - __pyx_v_overlap);
-
-              /* "debugblock/new_topk_sim_join.pyx":1135
- *                             #         printf("%d %d ", field_pair.first, field_pair.second)
- *                             #     printf("\n")
- *                             if denom <= 0 or topk_heap.size() < output_size or \             # <<<<<<<<<<<<<<
- *                                     overlap * 1.0 / denom > topk_heap.top().sim:
- *                                 for field_pair in reuse_info.map:
- */
-              __pyx_t_2 = ((__pyx_v_denom <= 0) != 0);
-              if (!__pyx_t_2) {
-              } else {
-                __pyx_t_1 = __pyx_t_2;
-                goto __pyx_L101_bool_binop_done;
-              }
-              __pyx_t_2 = ((__pyx_v_topk_heap.size() < __pyx_v_output_size) != 0);
-              if (!__pyx_t_2) {
-              } else {
-                __pyx_t_1 = __pyx_t_2;
-                goto __pyx_L101_bool_binop_done;
-              }
-
-              /* "debugblock/new_topk_sim_join.pyx":1136
- *                             #     printf("\n")
- *                             if denom <= 0 or topk_heap.size() < output_size or \
- *                                     overlap * 1.0 / denom > topk_heap.top().sim:             # <<<<<<<<<<<<<<
- *                                 for field_pair in reuse_info.map:
- *                                     lfield = field_pair.first / offset_of_field_num
- */
-              __pyx_t_13 = (__pyx_v_overlap * 1.0);
-              if (unlikely(__pyx_v_denom == 0)) {
-                #ifdef WITH_THREAD
-                PyGILState_STATE __pyx_gilstate_save = PyGILState_Ensure();
-                #endif
-                PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-                #ifdef WITH_THREAD
-                PyGILState_Release(__pyx_gilstate_save);
-                #endif
-                {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1136; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-              }
-              __pyx_t_2 = (((__pyx_t_13 / __pyx_v_denom) > __pyx_v_topk_heap.top().sim) != 0);
-              __pyx_t_1 = __pyx_t_2;
-              __pyx_L101_bool_binop_done:;
-
-              /* "debugblock/new_topk_sim_join.pyx":1135
- *                             #         printf("%d %d ", field_pair.first, field_pair.second)
- *                             #     printf("\n")
- *                             if denom <= 0 or topk_heap.size() < output_size or \             # <<<<<<<<<<<<<<
- *                                     overlap * 1.0 / denom > topk_heap.top().sim:
- *                                 for field_pair in reuse_info.map:
- */
-              if (__pyx_t_1) {
-
-                /* "debugblock/new_topk_sim_join.pyx":1137
- *                             if denom <= 0 or topk_heap.size() < output_size or \
- *                                     overlap * 1.0 / denom > topk_heap.top().sim:
- *                                 for field_pair in reuse_info.map:             # <<<<<<<<<<<<<<
- *                                     lfield = field_pair.first / offset_of_field_num
- *                                     rfield = field_pair.first % offset_of_field_num
- */
-                __pyx_t_8 = &__pyx_v_reuse_info.map;
-                __pyx_t_7 = __pyx_t_8->begin();
-                for (;;) {
-                  if (!(__pyx_t_7 != __pyx_t_8->end())) break;
-                  __pyx_t_9 = *__pyx_t_7;
-                  ++__pyx_t_7;
-                  __pyx_v_field_pair = __pyx_t_9;
-
-                  /* "debugblock/new_topk_sim_join.pyx":1138
- *                                     overlap * 1.0 / denom > topk_heap.top().sim:
- *                                 for field_pair in reuse_info.map:
- *                                     lfield = field_pair.first / offset_of_field_num             # <<<<<<<<<<<<<<
- *                                     rfield = field_pair.first % offset_of_field_num
- *                                     if not remained_fields.count(lfield) or not remained_fields.count(rfield):
- */
-                  if (unlikely(__pyx_v_offset_of_field_num == 0)) {
-                    #ifdef WITH_THREAD
-                    PyGILState_STATE __pyx_gilstate_save = PyGILState_Ensure();
-                    #endif
-                    PyErr_SetString(PyExc_ZeroDivisionError, "integer division or modulo by zero");
-                    #ifdef WITH_THREAD
-                    PyGILState_Release(__pyx_gilstate_save);
-                    #endif
-                    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1138; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-                  }
-                  else if (sizeof(int) == sizeof(long) && (!(((int const )-1) > 0)) && unlikely(__pyx_v_offset_of_field_num == (int const )-1)  && unlikely(UNARY_NEG_WOULD_OVERFLOW(__pyx_v_field_pair.first))) {
-                    #ifdef WITH_THREAD
-                    PyGILState_STATE __pyx_gilstate_save = PyGILState_Ensure();
-                    #endif
-                    PyErr_SetString(PyExc_OverflowError, "value too large to perform division");
-                    #ifdef WITH_THREAD
-                    PyGILState_Release(__pyx_gilstate_save);
-                    #endif
-                    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1138; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-                  }
-                  __pyx_v_lfield = __Pyx_div_int(__pyx_v_field_pair.first, __pyx_v_offset_of_field_num);
-
-                  /* "debugblock/new_topk_sim_join.pyx":1139
- *                                 for field_pair in reuse_info.map:
- *                                     lfield = field_pair.first / offset_of_field_num
- *                                     rfield = field_pair.first % offset_of_field_num             # <<<<<<<<<<<<<<
- *                                     if not remained_fields.count(lfield) or not remained_fields.count(rfield):
- *                                         overlap -= field_pair.second
- */
-                  if (unlikely(__pyx_v_offset_of_field_num == 0)) {
-                    #ifdef WITH_THREAD
-                    PyGILState_STATE __pyx_gilstate_save = PyGILState_Ensure();
-                    #endif
-                    PyErr_SetString(PyExc_ZeroDivisionError, "integer division or modulo by zero");
-                    #ifdef WITH_THREAD
-                    PyGILState_Release(__pyx_gilstate_save);
-                    #endif
-                    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1139; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-                  }
-                  __pyx_v_rfield = __Pyx_mod_int(__pyx_v_field_pair.first, __pyx_v_offset_of_field_num);
-
-                  /* "debugblock/new_topk_sim_join.pyx":1140
- *                                     lfield = field_pair.first / offset_of_field_num
- *                                     rfield = field_pair.first % offset_of_field_num
- *                                     if not remained_fields.count(lfield) or not remained_fields.count(rfield):             # <<<<<<<<<<<<<<
- *                                         overlap -= field_pair.second
- *                                 sim = overlap * 1.0 / (l_len + r_len - overlap)
- */
-                  __pyx_t_2 = ((!(__pyx_v_remained_fields.count(__pyx_v_lfield) != 0)) != 0);
-                  if (!__pyx_t_2) {
-                  } else {
-                    __pyx_t_1 = __pyx_t_2;
-                    goto __pyx_L107_bool_binop_done;
-                  }
-                  __pyx_t_2 = ((!(__pyx_v_remained_fields.count(__pyx_v_rfield) != 0)) != 0);
-                  __pyx_t_1 = __pyx_t_2;
-                  __pyx_L107_bool_binop_done:;
-                  if (__pyx_t_1) {
-
-                    /* "debugblock/new_topk_sim_join.pyx":1141
- *                                     rfield = field_pair.first % offset_of_field_num
- *                                     if not remained_fields.count(lfield) or not remained_fields.count(rfield):
- *                                         overlap -= field_pair.second             # <<<<<<<<<<<<<<
- *                                 sim = overlap * 1.0 / (l_len + r_len - overlap)
- *                                 if topk_heap.size() == output_size:
- */
-                    __pyx_v_overlap = (__pyx_v_overlap - __pyx_v_field_pair.second);
-
-                    /* "debugblock/new_topk_sim_join.pyx":1140
- *                                     lfield = field_pair.first / offset_of_field_num
- *                                     rfield = field_pair.first % offset_of_field_num
- *                                     if not remained_fields.count(lfield) or not remained_fields.count(rfield):             # <<<<<<<<<<<<<<
- *                                         overlap -= field_pair.second
- *                                 sim = overlap * 1.0 / (l_len + r_len - overlap)
- */
-                  }
-
-                  /* "debugblock/new_topk_sim_join.pyx":1137
- *                             if denom <= 0 or topk_heap.size() < output_size or \
- *                                     overlap * 1.0 / denom > topk_heap.top().sim:
- *                                 for field_pair in reuse_info.map:             # <<<<<<<<<<<<<<
- *                                     lfield = field_pair.first / offset_of_field_num
- *                                     rfield = field_pair.first % offset_of_field_num
- */
-                }
-
-                /* "debugblock/new_topk_sim_join.pyx":1142
- *                                     if not remained_fields.count(lfield) or not remained_fields.count(rfield):
- *                                         overlap -= field_pair.second
- *                                 sim = overlap * 1.0 / (l_len + r_len - overlap)             # <<<<<<<<<<<<<<
- *                                 if topk_heap.size() == output_size:
- *                                     if topk_heap.top().sim < sim:
- */
-                __pyx_t_13 = (__pyx_v_overlap * 1.0);
-                __pyx_t_3 = ((__pyx_v_l_len + __pyx_v_r_len) - __pyx_v_overlap);
-                if (unlikely(__pyx_t_3 == 0)) {
-                  #ifdef WITH_THREAD
-                  PyGILState_STATE __pyx_gilstate_save = PyGILState_Ensure();
-                  #endif
-                  PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-                  #ifdef WITH_THREAD
-                  PyGILState_Release(__pyx_gilstate_save);
-                  #endif
-                  {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1142; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-                }
-                __pyx_v_sim = (__pyx_t_13 / __pyx_t_3);
-
-                /* "debugblock/new_topk_sim_join.pyx":1143
- *                                         overlap -= field_pair.second
- *                                 sim = overlap * 1.0 / (l_len + r_len - overlap)
- *                                 if topk_heap.size() == output_size:             # <<<<<<<<<<<<<<
- *                                     if topk_heap.top().sim < sim:
- *                                         topk_heap.pop()
- */
-                __pyx_t_1 = ((__pyx_v_topk_heap.size() == __pyx_v_output_size) != 0);
-                if (__pyx_t_1) {
-
-                  /* "debugblock/new_topk_sim_join.pyx":1144
- *                                 sim = overlap * 1.0 / (l_len + r_len - overlap)
- *                                 if topk_heap.size() == output_size:
- *                                     if topk_heap.top().sim < sim:             # <<<<<<<<<<<<<<
- *                                         topk_heap.pop()
- *                                         topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))
- */
-                  __pyx_t_1 = ((__pyx_v_topk_heap.top().sim < __pyx_v_sim) != 0);
-                  if (__pyx_t_1) {
-
-                    /* "debugblock/new_topk_sim_join.pyx":1145
- *                                 if topk_heap.size() == output_size:
- *                                     if topk_heap.top().sim < sim:
- *                                         topk_heap.pop()             # <<<<<<<<<<<<<<
- *                                         topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))
- *                                 else:
- */
-                    __pyx_v_topk_heap.pop();
-
-                    /* "debugblock/new_topk_sim_join.pyx":1146
- *                                     if topk_heap.top().sim < sim:
- *                                         topk_heap.pop()
- *                                         topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))             # <<<<<<<<<<<<<<
- *                                 else:
- *                                     topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))
- */
-                    __pyx_v_topk_heap.push(TopPair(__pyx_v_sim, __pyx_v_l_rec_idx, __pyx_v_r_rec_idx));
-
-                    /* "debugblock/new_topk_sim_join.pyx":1144
- *                                 sim = overlap * 1.0 / (l_len + r_len - overlap)
- *                                 if topk_heap.size() == output_size:
- *                                     if topk_heap.top().sim < sim:             # <<<<<<<<<<<<<<
- *                                         topk_heap.pop()
- *                                         topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))
- */
-                  }
-
-                  /* "debugblock/new_topk_sim_join.pyx":1143
- *                                         overlap -= field_pair.second
- *                                 sim = overlap * 1.0 / (l_len + r_len - overlap)
- *                                 if topk_heap.size() == output_size:             # <<<<<<<<<<<<<<
- *                                     if topk_heap.top().sim < sim:
- *                                         topk_heap.pop()
- */
-                  goto __pyx_L109;
-                }
-
-                /* "debugblock/new_topk_sim_join.pyx":1148
- *                                         topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))
- *                                 else:
- *                                     topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))             # <<<<<<<<<<<<<<
- * 
- *                             if compared_set.count(l_rec_idx):
- */
-                /*else*/ {
-                  __pyx_v_topk_heap.push(TopPair(__pyx_v_sim, __pyx_v_l_rec_idx, __pyx_v_r_rec_idx));
-                }
-                __pyx_L109:;
-
-                /* "debugblock/new_topk_sim_join.pyx":1135
- *                             #         printf("%d %d ", field_pair.first, field_pair.second)
- *                             #     printf("\n")
- *                             if denom <= 0 or topk_heap.size() < output_size or \             # <<<<<<<<<<<<<<
- *                                     overlap * 1.0 / denom > topk_heap.top().sim:
- *                                 for field_pair in reuse_info.map:
- */
-              }
-
-              /* "debugblock/new_topk_sim_join.pyx":1150
- *                                     topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))
- * 
- *                             if compared_set.count(l_rec_idx):             # <<<<<<<<<<<<<<
- *                                 compared_set[l_rec_idx].insert(r_rec_idx)
- *                             else:
- */
-              __pyx_t_1 = (__pyx_v_compared_set.count(__pyx_v_l_rec_idx) != 0);
-              if (__pyx_t_1) {
-
-                /* "debugblock/new_topk_sim_join.pyx":1151
- * 
- *                             if compared_set.count(l_rec_idx):
- *                                 compared_set[l_rec_idx].insert(r_rec_idx)             # <<<<<<<<<<<<<<
- *                             else:
- *                                 compared_set[l_rec_idx] = uset[int]()
- */
-                (__pyx_v_compared_set[__pyx_v_l_rec_idx]).insert(__pyx_v_r_rec_idx);
-
-                /* "debugblock/new_topk_sim_join.pyx":1150
- *                                     topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))
- * 
- *                             if compared_set.count(l_rec_idx):             # <<<<<<<<<<<<<<
- *                                 compared_set[l_rec_idx].insert(r_rec_idx)
- *                             else:
- */
-                goto __pyx_L111;
-              }
-
-              /* "debugblock/new_topk_sim_join.pyx":1153
- *                                 compared_set[l_rec_idx].insert(r_rec_idx)
- *                             else:
- *                                 compared_set[l_rec_idx] = uset[int]()             # <<<<<<<<<<<<<<
- *                                 compared_set[l_rec_idx].insert(r_rec_idx)
- * 
- */
-              /*else*/ {
-                try {
-                  __pyx_t_10 = std::unordered_set<int> ();
-                } catch(...) {
-                  #ifdef WITH_THREAD
-                  PyGILState_STATE __pyx_gilstate_save = PyGILState_Ensure();
-                  #endif
-                  __Pyx_CppExn2PyErr();
-                  #ifdef WITH_THREAD
-                  PyGILState_Release(__pyx_gilstate_save);
-                  #endif
-                  {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1153; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-                }
-                (__pyx_v_compared_set[__pyx_v_l_rec_idx]) = __pyx_t_10;
-
-                /* "debugblock/new_topk_sim_join.pyx":1154
- *                             else:
- *                                 compared_set[l_rec_idx] = uset[int]()
- *                                 compared_set[l_rec_idx].insert(r_rec_idx)             # <<<<<<<<<<<<<<
- * 
- *                             if active_dict.count(l_rec_idx) and active_dict[l_rec_idx].count(r_rec_idx):
- */
-                (__pyx_v_compared_set[__pyx_v_l_rec_idx]).insert(__pyx_v_r_rec_idx);
-              }
-              __pyx_L111:;
-
-              /* "debugblock/new_topk_sim_join.pyx":1156
- *                                 compared_set[l_rec_idx].insert(r_rec_idx)
- * 
- *                             if active_dict.count(l_rec_idx) and active_dict[l_rec_idx].count(r_rec_idx):             # <<<<<<<<<<<<<<
- *                                 active_dict[l_rec_idx].erase(r_rec_idx)
- *                         else:
- */
-              __pyx_t_2 = (__pyx_v_active_dict.count(__pyx_v_l_rec_idx) != 0);
-              if (__pyx_t_2) {
-              } else {
-                __pyx_t_1 = __pyx_t_2;
-                goto __pyx_L113_bool_binop_done;
-              }
-              __pyx_t_2 = ((__pyx_v_active_dict[__pyx_v_l_rec_idx]).count(__pyx_v_r_rec_idx) != 0);
-              __pyx_t_1 = __pyx_t_2;
-              __pyx_L113_bool_binop_done:;
-              if (__pyx_t_1) {
-
-                /* "debugblock/new_topk_sim_join.pyx":1157
- * 
- *                             if active_dict.count(l_rec_idx) and active_dict[l_rec_idx].count(r_rec_idx):
- *                                 active_dict[l_rec_idx].erase(r_rec_idx)             # <<<<<<<<<<<<<<
- *                         else:
- *                             overlap = new_get_overlap(ltoken_vector[l_rec_idx], rtoken_vector[r_rec_idx],
- */
-                (__pyx_v_active_dict[__pyx_v_l_rec_idx]).erase(__pyx_v_r_rec_idx);
-
-                /* "debugblock/new_topk_sim_join.pyx":1156
- *                                 compared_set[l_rec_idx].insert(r_rec_idx)
- * 
- *                             if active_dict.count(l_rec_idx) and active_dict[l_rec_idx].count(r_rec_idx):             # <<<<<<<<<<<<<<
- *                                 active_dict[l_rec_idx].erase(r_rec_idx)
- *                         else:
- */
-              }
-
-              /* "debugblock/new_topk_sim_join.pyx":1125
- *                         total_compared_pairs += 1
- *                     elif ltoken_vector[l_rec_idx][l_tok_idx + 1] == rtoken_vector[r_rec_idx][r_tok_idx + 1]:
- *                         if reuse_set.count(l_rec_idx) and reuse_set[l_rec_idx].count(r_rec_idx):             # <<<<<<<<<<<<<<
- *                             reuse_info = reuse_set[l_rec_idx][r_rec_idx]
- *                             overlap = reuse_info.overlap
- */
-              goto __pyx_L97;
-            }
-
-            /* "debugblock/new_topk_sim_join.pyx":1159
- *                                 active_dict[l_rec_idx].erase(r_rec_idx)
- *                         else:
- *                             overlap = new_get_overlap(ltoken_vector[l_rec_idx], rtoken_vector[r_rec_idx],             # <<<<<<<<<<<<<<
- *                                                       0, 0)
- *                             # if l_rec_idx == 3482 and r_rec_idx == 4047:
- */
-            /*else*/ {
-              __pyx_v_overlap = __pyx_f_10debugblock_17new_topk_sim_join_new_get_overlap((__pyx_v_ltoken_vector[__pyx_v_l_rec_idx]), (__pyx_v_rtoken_vector[__pyx_v_r_rec_idx]), 0, 0);
-
-              /* "debugblock/new_topk_sim_join.pyx":1164
- *                             #     printf("right2.2\n")
- *                             #     printf("%d\n", overlap)
- *                             if active_dict.count(l_rec_idx) and active_dict[l_rec_idx].count(r_rec_idx):             # <<<<<<<<<<<<<<
- *                                 # overlap += active_dict[l_rec_idx][r_rec_idx]
- *                                 active_dict[l_rec_idx].erase(r_rec_idx)
- */
-              __pyx_t_2 = (__pyx_v_active_dict.count(__pyx_v_l_rec_idx) != 0);
-              if (__pyx_t_2) {
-              } else {
-                __pyx_t_1 = __pyx_t_2;
-                goto __pyx_L116_bool_binop_done;
-              }
-              __pyx_t_2 = ((__pyx_v_active_dict[__pyx_v_l_rec_idx]).count(__pyx_v_r_rec_idx) != 0);
-              __pyx_t_1 = __pyx_t_2;
-              __pyx_L116_bool_binop_done:;
-              if (__pyx_t_1) {
-
-                /* "debugblock/new_topk_sim_join.pyx":1166
- *                             if active_dict.count(l_rec_idx) and active_dict[l_rec_idx].count(r_rec_idx):
- *                                 # overlap += active_dict[l_rec_idx][r_rec_idx]
- *                                 active_dict[l_rec_idx].erase(r_rec_idx)             # <<<<<<<<<<<<<<
- * 
- *                             sim = overlap * 1.0 / (l_len + r_len - overlap)
- */
-                (__pyx_v_active_dict[__pyx_v_l_rec_idx]).erase(__pyx_v_r_rec_idx);
-
-                /* "debugblock/new_topk_sim_join.pyx":1164
- *                             #     printf("right2.2\n")
- *                             #     printf("%d\n", overlap)
- *                             if active_dict.count(l_rec_idx) and active_dict[l_rec_idx].count(r_rec_idx):             # <<<<<<<<<<<<<<
- *                                 # overlap += active_dict[l_rec_idx][r_rec_idx]
- *                                 active_dict[l_rec_idx].erase(r_rec_idx)
- */
-              }
-
-              /* "debugblock/new_topk_sim_join.pyx":1168
- *                                 active_dict[l_rec_idx].erase(r_rec_idx)
- * 
- *                             sim = overlap * 1.0 / (l_len + r_len - overlap)             # <<<<<<<<<<<<<<
- *                             if topk_heap.size() == output_size:
- *                                 if topk_heap.top().sim < sim:
- */
-              __pyx_t_13 = (__pyx_v_overlap * 1.0);
-              __pyx_t_3 = ((__pyx_v_l_len + __pyx_v_r_len) - __pyx_v_overlap);
-              if (unlikely(__pyx_t_3 == 0)) {
-                #ifdef WITH_THREAD
-                PyGILState_STATE __pyx_gilstate_save = PyGILState_Ensure();
-                #endif
-                PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-                #ifdef WITH_THREAD
-                PyGILState_Release(__pyx_gilstate_save);
-                #endif
-                {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1168; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-              }
-              __pyx_v_sim = (__pyx_t_13 / __pyx_t_3);
-
-              /* "debugblock/new_topk_sim_join.pyx":1169
- * 
- *                             sim = overlap * 1.0 / (l_len + r_len - overlap)
- *                             if topk_heap.size() == output_size:             # <<<<<<<<<<<<<<
- *                                 if topk_heap.top().sim < sim:
- *                                     topk_heap.pop()
- */
-              __pyx_t_1 = ((__pyx_v_topk_heap.size() == __pyx_v_output_size) != 0);
-              if (__pyx_t_1) {
-
-                /* "debugblock/new_topk_sim_join.pyx":1170
- *                             sim = overlap * 1.0 / (l_len + r_len - overlap)
- *                             if topk_heap.size() == output_size:
- *                                 if topk_heap.top().sim < sim:             # <<<<<<<<<<<<<<
- *                                     topk_heap.pop()
- *                                     topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))
- */
-                __pyx_t_1 = ((__pyx_v_topk_heap.top().sim < __pyx_v_sim) != 0);
-                if (__pyx_t_1) {
-
-                  /* "debugblock/new_topk_sim_join.pyx":1171
- *                             if topk_heap.size() == output_size:
- *                                 if topk_heap.top().sim < sim:
- *                                     topk_heap.pop()             # <<<<<<<<<<<<<<
- *                                     topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))
- *                             else:
- */
-                  __pyx_v_topk_heap.pop();
-
-                  /* "debugblock/new_topk_sim_join.pyx":1172
- *                                 if topk_heap.top().sim < sim:
- *                                     topk_heap.pop()
- *                                     topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))             # <<<<<<<<<<<<<<
- *                             else:
- *                                 topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))
- */
-                  __pyx_v_topk_heap.push(TopPair(__pyx_v_sim, __pyx_v_l_rec_idx, __pyx_v_r_rec_idx));
-
-                  /* "debugblock/new_topk_sim_join.pyx":1170
- *                             sim = overlap * 1.0 / (l_len + r_len - overlap)
- *                             if topk_heap.size() == output_size:
- *                                 if topk_heap.top().sim < sim:             # <<<<<<<<<<<<<<
- *                                     topk_heap.pop()
- *                                     topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))
- */
-                }
-
-                /* "debugblock/new_topk_sim_join.pyx":1169
- * 
- *                             sim = overlap * 1.0 / (l_len + r_len - overlap)
- *                             if topk_heap.size() == output_size:             # <<<<<<<<<<<<<<
- *                                 if topk_heap.top().sim < sim:
- *                                     topk_heap.pop()
- */
-                goto __pyx_L118;
-              }
-
-              /* "debugblock/new_topk_sim_join.pyx":1174
- *                                     topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))
- *                             else:
- *                                 topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))             # <<<<<<<<<<<<<<
- * 
- *                             if compared_set.count(l_rec_idx):
- */
-              /*else*/ {
-                __pyx_v_topk_heap.push(TopPair(__pyx_v_sim, __pyx_v_l_rec_idx, __pyx_v_r_rec_idx));
-              }
-              __pyx_L118:;
-
-              /* "debugblock/new_topk_sim_join.pyx":1176
- *                                 topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))
- * 
- *                             if compared_set.count(l_rec_idx):             # <<<<<<<<<<<<<<
- *                                 compared_set[l_rec_idx].insert(r_rec_idx)
- *                             else:
- */
-              __pyx_t_1 = (__pyx_v_compared_set.count(__pyx_v_l_rec_idx) != 0);
-              if (__pyx_t_1) {
-
-                /* "debugblock/new_topk_sim_join.pyx":1177
- * 
- *                             if compared_set.count(l_rec_idx):
- *                                 compared_set[l_rec_idx].insert(r_rec_idx)             # <<<<<<<<<<<<<<
- *                             else:
- *                                 compared_set[l_rec_idx] = uset[int]()
- */
-                (__pyx_v_compared_set[__pyx_v_l_rec_idx]).insert(__pyx_v_r_rec_idx);
-
-                /* "debugblock/new_topk_sim_join.pyx":1176
- *                                 topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))
- * 
- *                             if compared_set.count(l_rec_idx):             # <<<<<<<<<<<<<<
- *                                 compared_set[l_rec_idx].insert(r_rec_idx)
- *                             else:
- */
-                goto __pyx_L120;
-              }
-
-              /* "debugblock/new_topk_sim_join.pyx":1179
- *                                 compared_set[l_rec_idx].insert(r_rec_idx)
- *                             else:
- *                                 compared_set[l_rec_idx] = uset[int]()             # <<<<<<<<<<<<<<
- *                                 compared_set[l_rec_idx].insert(r_rec_idx)
- * 
- */
-              /*else*/ {
-                try {
-                  __pyx_t_10 = std::unordered_set<int> ();
-                } catch(...) {
-                  #ifdef WITH_THREAD
-                  PyGILState_STATE __pyx_gilstate_save = PyGILState_Ensure();
-                  #endif
-                  __Pyx_CppExn2PyErr();
-                  #ifdef WITH_THREAD
-                  PyGILState_Release(__pyx_gilstate_save);
-                  #endif
-                  {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1179; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-                }
-                (__pyx_v_compared_set[__pyx_v_l_rec_idx]) = __pyx_t_10;
-
-                /* "debugblock/new_topk_sim_join.pyx":1180
- *                             else:
- *                                 compared_set[l_rec_idx] = uset[int]()
- *                                 compared_set[l_rec_idx].insert(r_rec_idx)             # <<<<<<<<<<<<<<
- * 
- *                         total_compared_pairs += 1
- */
-                (__pyx_v_compared_set[__pyx_v_l_rec_idx]).insert(__pyx_v_r_rec_idx);
-              }
-              __pyx_L120:;
-            }
-            __pyx_L97:;
-
-            /* "debugblock/new_topk_sim_join.pyx":1182
- *                                 compared_set[l_rec_idx].insert(r_rec_idx)
- * 
- *                         total_compared_pairs += 1             # <<<<<<<<<<<<<<
- *                     else:
- *                         # printf("right3\n")
- */
-            __pyx_v_total_compared_pairs = (__pyx_v_total_compared_pairs + 1);
-
-            /* "debugblock/new_topk_sim_join.pyx":1124
- * 
- *                         total_compared_pairs += 1
- *                     elif ltoken_vector[l_rec_idx][l_tok_idx + 1] == rtoken_vector[r_rec_idx][r_tok_idx + 1]:             # <<<<<<<<<<<<<<
- *                         if reuse_set.count(l_rec_idx) and reuse_set[l_rec_idx].count(r_rec_idx):
- *                             reuse_info = reuse_set[l_rec_idx][r_rec_idx]
- */
-            goto __pyx_L89;
-          }
-
-          /* "debugblock/new_topk_sim_join.pyx":1185
+          /* "debugblock/new_topk_sim_join.pyx":1201
  *                     else:
  *                         # printf("right3\n")
  *                         if active_dict.count(l_rec_idx):             # <<<<<<<<<<<<<<
@@ -10397,7 +8521,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
             __pyx_t_1 = (__pyx_v_active_dict.count(__pyx_v_l_rec_idx) != 0);
             if (__pyx_t_1) {
 
-              /* "debugblock/new_topk_sim_join.pyx":1186
+              /* "debugblock/new_topk_sim_join.pyx":1202
  *                         # printf("right3\n")
  *                         if active_dict.count(l_rec_idx):
  *                             if active_dict[l_rec_idx].count(r_rec_idx):             # <<<<<<<<<<<<<<
@@ -10407,7 +8531,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
               __pyx_t_1 = ((__pyx_v_active_dict[__pyx_v_l_rec_idx]).count(__pyx_v_r_rec_idx) != 0);
               if (__pyx_t_1) {
 
-                /* "debugblock/new_topk_sim_join.pyx":1187
+                /* "debugblock/new_topk_sim_join.pyx":1203
  *                         if active_dict.count(l_rec_idx):
  *                             if active_dict[l_rec_idx].count(r_rec_idx):
  *                                 value = active_dict[l_rec_idx][r_rec_idx]             # <<<<<<<<<<<<<<
@@ -10416,45 +8540,54 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
                 __pyx_v_value = ((__pyx_v_active_dict[__pyx_v_l_rec_idx])[__pyx_v_r_rec_idx]);
 
-                /* "debugblock/new_topk_sim_join.pyx":1188
+                /* "debugblock/new_topk_sim_join.pyx":1204
  *                             if active_dict[l_rec_idx].count(r_rec_idx):
  *                                 value = active_dict[l_rec_idx][r_rec_idx]
  *                                 if value == prefix_match_max_size:             # <<<<<<<<<<<<<<
  *                                     if reuse_set.count(l_rec_idx) and reuse_set[l_rec_idx].count(r_rec_idx):
- *                                         reuse_info = reuse_set[l_rec_idx][r_rec_idx]
+ *                                         reuse_count += 1
  */
                 __pyx_t_1 = ((__pyx_v_value == __pyx_v_prefix_match_max_size) != 0);
                 if (__pyx_t_1) {
 
-                  /* "debugblock/new_topk_sim_join.pyx":1189
+                  /* "debugblock/new_topk_sim_join.pyx":1205
  *                                 value = active_dict[l_rec_idx][r_rec_idx]
  *                                 if value == prefix_match_max_size:
  *                                     if reuse_set.count(l_rec_idx) and reuse_set[l_rec_idx].count(r_rec_idx):             # <<<<<<<<<<<<<<
+ *                                         reuse_count += 1
  *                                         reuse_info = reuse_set[l_rec_idx][r_rec_idx]
- *                                         overlap = reuse_info.overlap
  */
                   __pyx_t_2 = (__pyx_v_reuse_set.count(__pyx_v_l_rec_idx) != 0);
                   if (__pyx_t_2) {
                   } else {
                     __pyx_t_1 = __pyx_t_2;
-                    goto __pyx_L125_bool_binop_done;
+                    goto __pyx_L77_bool_binop_done;
                   }
                   __pyx_t_2 = ((__pyx_v_reuse_set[__pyx_v_l_rec_idx]).count(__pyx_v_r_rec_idx) != 0);
                   __pyx_t_1 = __pyx_t_2;
-                  __pyx_L125_bool_binop_done:;
+                  __pyx_L77_bool_binop_done:;
                   if (__pyx_t_1) {
 
-                    /* "debugblock/new_topk_sim_join.pyx":1190
+                    /* "debugblock/new_topk_sim_join.pyx":1206
  *                                 if value == prefix_match_max_size:
  *                                     if reuse_set.count(l_rec_idx) and reuse_set[l_rec_idx].count(r_rec_idx):
+ *                                         reuse_count += 1             # <<<<<<<<<<<<<<
+ *                                         reuse_info = reuse_set[l_rec_idx][r_rec_idx]
+ *                                         overlap = reuse_info.overlap
+ */
+                    __pyx_v_reuse_count = (__pyx_v_reuse_count + 1);
+
+                    /* "debugblock/new_topk_sim_join.pyx":1207
+ *                                     if reuse_set.count(l_rec_idx) and reuse_set[l_rec_idx].count(r_rec_idx):
+ *                                         reuse_count += 1
  *                                         reuse_info = reuse_set[l_rec_idx][r_rec_idx]             # <<<<<<<<<<<<<<
  *                                         overlap = reuse_info.overlap
  *                                         denom = l_len + r_len - overlap
  */
                     __pyx_v_reuse_info = ((__pyx_v_reuse_set[__pyx_v_l_rec_idx])[__pyx_v_r_rec_idx]);
 
-                    /* "debugblock/new_topk_sim_join.pyx":1191
- *                                     if reuse_set.count(l_rec_idx) and reuse_set[l_rec_idx].count(r_rec_idx):
+                    /* "debugblock/new_topk_sim_join.pyx":1208
+ *                                         reuse_count += 1
  *                                         reuse_info = reuse_set[l_rec_idx][r_rec_idx]
  *                                         overlap = reuse_info.overlap             # <<<<<<<<<<<<<<
  *                                         denom = l_len + r_len - overlap
@@ -10463,7 +8596,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
                     __pyx_t_3 = __pyx_v_reuse_info.overlap;
                     __pyx_v_overlap = __pyx_t_3;
 
-                    /* "debugblock/new_topk_sim_join.pyx":1192
+                    /* "debugblock/new_topk_sim_join.pyx":1209
  *                                         reuse_info = reuse_set[l_rec_idx][r_rec_idx]
  *                                         overlap = reuse_info.overlap
  *                                         denom = l_len + r_len - overlap             # <<<<<<<<<<<<<<
@@ -10472,7 +8605,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
                     __pyx_v_denom = ((__pyx_v_l_len + __pyx_v_r_len) - __pyx_v_overlap);
 
-                    /* "debugblock/new_topk_sim_join.pyx":1199
+                    /* "debugblock/new_topk_sim_join.pyx":1216
  *                                         #         printf("%d %d ", field_pair.first, field_pair.second)
  *                                         #     printf("\n")
  *                                         if denom <= 0 or topk_heap.size() < output_size or \             # <<<<<<<<<<<<<<
@@ -10483,16 +8616,16 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
                     if (!__pyx_t_2) {
                     } else {
                       __pyx_t_1 = __pyx_t_2;
-                      goto __pyx_L128_bool_binop_done;
+                      goto __pyx_L80_bool_binop_done;
                     }
                     __pyx_t_2 = ((__pyx_v_topk_heap.size() < __pyx_v_output_size) != 0);
                     if (!__pyx_t_2) {
                     } else {
                       __pyx_t_1 = __pyx_t_2;
-                      goto __pyx_L128_bool_binop_done;
+                      goto __pyx_L80_bool_binop_done;
                     }
 
-                    /* "debugblock/new_topk_sim_join.pyx":1200
+                    /* "debugblock/new_topk_sim_join.pyx":1217
  *                                         #     printf("\n")
  *                                         if denom <= 0 or topk_heap.size() < output_size or \
  *                                                 overlap * 1.0 / denom > topk_heap.top().sim:             # <<<<<<<<<<<<<<
@@ -10508,13 +8641,13 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
                       #ifdef WITH_THREAD
                       PyGILState_Release(__pyx_gilstate_save);
                       #endif
-                      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1200; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+                      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1217; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
                     }
                     __pyx_t_2 = (((__pyx_t_13 / __pyx_v_denom) > __pyx_v_topk_heap.top().sim) != 0);
                     __pyx_t_1 = __pyx_t_2;
-                    __pyx_L128_bool_binop_done:;
+                    __pyx_L80_bool_binop_done:;
 
-                    /* "debugblock/new_topk_sim_join.pyx":1199
+                    /* "debugblock/new_topk_sim_join.pyx":1216
  *                                         #         printf("%d %d ", field_pair.first, field_pair.second)
  *                                         #     printf("\n")
  *                                         if denom <= 0 or topk_heap.size() < output_size or \             # <<<<<<<<<<<<<<
@@ -10523,7 +8656,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
                     if (__pyx_t_1) {
 
-                      /* "debugblock/new_topk_sim_join.pyx":1201
+                      /* "debugblock/new_topk_sim_join.pyx":1218
  *                                         if denom <= 0 or topk_heap.size() < output_size or \
  *                                                 overlap * 1.0 / denom > topk_heap.top().sim:
  *                                             for field_pair in reuse_info.map:             # <<<<<<<<<<<<<<
@@ -10538,7 +8671,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
                         ++__pyx_t_7;
                         __pyx_v_field_pair = __pyx_t_9;
 
-                        /* "debugblock/new_topk_sim_join.pyx":1202
+                        /* "debugblock/new_topk_sim_join.pyx":1219
  *                                                 overlap * 1.0 / denom > topk_heap.top().sim:
  *                                             for field_pair in reuse_info.map:
  *                                                 lfield = field_pair.first / offset_of_field_num             # <<<<<<<<<<<<<<
@@ -10553,7 +8686,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
                           #ifdef WITH_THREAD
                           PyGILState_Release(__pyx_gilstate_save);
                           #endif
-                          {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1202; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+                          {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1219; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
                         }
                         else if (sizeof(int) == sizeof(long) && (!(((int const )-1) > 0)) && unlikely(__pyx_v_offset_of_field_num == (int const )-1)  && unlikely(UNARY_NEG_WOULD_OVERFLOW(__pyx_v_field_pair.first))) {
                           #ifdef WITH_THREAD
@@ -10563,11 +8696,11 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
                           #ifdef WITH_THREAD
                           PyGILState_Release(__pyx_gilstate_save);
                           #endif
-                          {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1202; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+                          {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1219; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
                         }
                         __pyx_v_lfield = __Pyx_div_int(__pyx_v_field_pair.first, __pyx_v_offset_of_field_num);
 
-                        /* "debugblock/new_topk_sim_join.pyx":1203
+                        /* "debugblock/new_topk_sim_join.pyx":1220
  *                                             for field_pair in reuse_info.map:
  *                                                 lfield = field_pair.first / offset_of_field_num
  *                                                 rfield = field_pair.first % offset_of_field_num             # <<<<<<<<<<<<<<
@@ -10582,11 +8715,11 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
                           #ifdef WITH_THREAD
                           PyGILState_Release(__pyx_gilstate_save);
                           #endif
-                          {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1203; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+                          {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1220; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
                         }
                         __pyx_v_rfield = __Pyx_mod_int(__pyx_v_field_pair.first, __pyx_v_offset_of_field_num);
 
-                        /* "debugblock/new_topk_sim_join.pyx":1204
+                        /* "debugblock/new_topk_sim_join.pyx":1221
  *                                                 lfield = field_pair.first / offset_of_field_num
  *                                                 rfield = field_pair.first % offset_of_field_num
  *                                                 if not remained_fields.count(lfield) or not remained_fields.count(rfield):             # <<<<<<<<<<<<<<
@@ -10597,14 +8730,14 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
                         if (!__pyx_t_2) {
                         } else {
                           __pyx_t_1 = __pyx_t_2;
-                          goto __pyx_L134_bool_binop_done;
+                          goto __pyx_L86_bool_binop_done;
                         }
                         __pyx_t_2 = ((!(__pyx_v_remained_fields.count(__pyx_v_rfield) != 0)) != 0);
                         __pyx_t_1 = __pyx_t_2;
-                        __pyx_L134_bool_binop_done:;
+                        __pyx_L86_bool_binop_done:;
                         if (__pyx_t_1) {
 
-                          /* "debugblock/new_topk_sim_join.pyx":1205
+                          /* "debugblock/new_topk_sim_join.pyx":1222
  *                                                 rfield = field_pair.first % offset_of_field_num
  *                                                 if not remained_fields.count(lfield) or not remained_fields.count(rfield):
  *                                                     overlap -= field_pair.second             # <<<<<<<<<<<<<<
@@ -10613,7 +8746,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
                           __pyx_v_overlap = (__pyx_v_overlap - __pyx_v_field_pair.second);
 
-                          /* "debugblock/new_topk_sim_join.pyx":1204
+                          /* "debugblock/new_topk_sim_join.pyx":1221
  *                                                 lfield = field_pair.first / offset_of_field_num
  *                                                 rfield = field_pair.first % offset_of_field_num
  *                                                 if not remained_fields.count(lfield) or not remained_fields.count(rfield):             # <<<<<<<<<<<<<<
@@ -10622,7 +8755,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
                         }
 
-                        /* "debugblock/new_topk_sim_join.pyx":1201
+                        /* "debugblock/new_topk_sim_join.pyx":1218
  *                                         if denom <= 0 or topk_heap.size() < output_size or \
  *                                                 overlap * 1.0 / denom > topk_heap.top().sim:
  *                                             for field_pair in reuse_info.map:             # <<<<<<<<<<<<<<
@@ -10631,7 +8764,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
                       }
 
-                      /* "debugblock/new_topk_sim_join.pyx":1206
+                      /* "debugblock/new_topk_sim_join.pyx":1223
  *                                                 if not remained_fields.count(lfield) or not remained_fields.count(rfield):
  *                                                     overlap -= field_pair.second
  *                                             sim = overlap * 1.0 / (l_len + r_len - overlap)             # <<<<<<<<<<<<<<
@@ -10648,11 +8781,11 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
                         #ifdef WITH_THREAD
                         PyGILState_Release(__pyx_gilstate_save);
                         #endif
-                        {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1206; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+                        {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1223; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
                       }
                       __pyx_v_sim = (__pyx_t_13 / __pyx_t_3);
 
-                      /* "debugblock/new_topk_sim_join.pyx":1207
+                      /* "debugblock/new_topk_sim_join.pyx":1224
  *                                                     overlap -= field_pair.second
  *                                             sim = overlap * 1.0 / (l_len + r_len - overlap)
  *                                             if topk_heap.size() == output_size:             # <<<<<<<<<<<<<<
@@ -10662,7 +8795,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
                       __pyx_t_1 = ((__pyx_v_topk_heap.size() == __pyx_v_output_size) != 0);
                       if (__pyx_t_1) {
 
-                        /* "debugblock/new_topk_sim_join.pyx":1208
+                        /* "debugblock/new_topk_sim_join.pyx":1225
  *                                             sim = overlap * 1.0 / (l_len + r_len - overlap)
  *                                             if topk_heap.size() == output_size:
  *                                                 if topk_heap.top().sim < sim:             # <<<<<<<<<<<<<<
@@ -10672,7 +8805,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
                         __pyx_t_1 = ((__pyx_v_topk_heap.top().sim < __pyx_v_sim) != 0);
                         if (__pyx_t_1) {
 
-                          /* "debugblock/new_topk_sim_join.pyx":1209
+                          /* "debugblock/new_topk_sim_join.pyx":1226
  *                                             if topk_heap.size() == output_size:
  *                                                 if topk_heap.top().sim < sim:
  *                                                     topk_heap.pop()             # <<<<<<<<<<<<<<
@@ -10681,7 +8814,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
                           __pyx_v_topk_heap.pop();
 
-                          /* "debugblock/new_topk_sim_join.pyx":1210
+                          /* "debugblock/new_topk_sim_join.pyx":1227
  *                                                 if topk_heap.top().sim < sim:
  *                                                     topk_heap.pop()
  *                                                     topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))             # <<<<<<<<<<<<<<
@@ -10690,7 +8823,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
                           __pyx_v_topk_heap.push(TopPair(__pyx_v_sim, __pyx_v_l_rec_idx, __pyx_v_r_rec_idx));
 
-                          /* "debugblock/new_topk_sim_join.pyx":1208
+                          /* "debugblock/new_topk_sim_join.pyx":1225
  *                                             sim = overlap * 1.0 / (l_len + r_len - overlap)
  *                                             if topk_heap.size() == output_size:
  *                                                 if topk_heap.top().sim < sim:             # <<<<<<<<<<<<<<
@@ -10699,17 +8832,17 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
                         }
 
-                        /* "debugblock/new_topk_sim_join.pyx":1207
+                        /* "debugblock/new_topk_sim_join.pyx":1224
  *                                                     overlap -= field_pair.second
  *                                             sim = overlap * 1.0 / (l_len + r_len - overlap)
  *                                             if topk_heap.size() == output_size:             # <<<<<<<<<<<<<<
  *                                                 if topk_heap.top().sim < sim:
  *                                                     topk_heap.pop()
  */
-                        goto __pyx_L136;
+                        goto __pyx_L88;
                       }
 
-                      /* "debugblock/new_topk_sim_join.pyx":1212
+                      /* "debugblock/new_topk_sim_join.pyx":1229
  *                                                     topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))
  *                                             else:
  *                                                 topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))             # <<<<<<<<<<<<<<
@@ -10719,9 +8852,9 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
                       /*else*/ {
                         __pyx_v_topk_heap.push(TopPair(__pyx_v_sim, __pyx_v_l_rec_idx, __pyx_v_r_rec_idx));
                       }
-                      __pyx_L136:;
+                      __pyx_L88:;
 
-                      /* "debugblock/new_topk_sim_join.pyx":1199
+                      /* "debugblock/new_topk_sim_join.pyx":1216
  *                                         #         printf("%d %d ", field_pair.first, field_pair.second)
  *                                         #     printf("\n")
  *                                         if denom <= 0 or topk_heap.size() < output_size or \             # <<<<<<<<<<<<<<
@@ -10730,7 +8863,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
                     }
 
-                    /* "debugblock/new_topk_sim_join.pyx":1214
+                    /* "debugblock/new_topk_sim_join.pyx":1231
  *                                                 topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))
  * 
  *                                         if compared_set.count(l_rec_idx):             # <<<<<<<<<<<<<<
@@ -10740,7 +8873,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
                     __pyx_t_1 = (__pyx_v_compared_set.count(__pyx_v_l_rec_idx) != 0);
                     if (__pyx_t_1) {
 
-                      /* "debugblock/new_topk_sim_join.pyx":1215
+                      /* "debugblock/new_topk_sim_join.pyx":1232
  * 
  *                                         if compared_set.count(l_rec_idx):
  *                                             compared_set[l_rec_idx].insert(r_rec_idx)             # <<<<<<<<<<<<<<
@@ -10749,17 +8882,17 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
                       (__pyx_v_compared_set[__pyx_v_l_rec_idx]).insert(__pyx_v_r_rec_idx);
 
-                      /* "debugblock/new_topk_sim_join.pyx":1214
+                      /* "debugblock/new_topk_sim_join.pyx":1231
  *                                                 topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))
  * 
  *                                         if compared_set.count(l_rec_idx):             # <<<<<<<<<<<<<<
  *                                             compared_set[l_rec_idx].insert(r_rec_idx)
  *                                         else:
  */
-                      goto __pyx_L138;
+                      goto __pyx_L90;
                     }
 
-                    /* "debugblock/new_topk_sim_join.pyx":1217
+                    /* "debugblock/new_topk_sim_join.pyx":1234
  *                                             compared_set[l_rec_idx].insert(r_rec_idx)
  *                                         else:
  *                                             compared_set[l_rec_idx] = uset[int]()             # <<<<<<<<<<<<<<
@@ -10777,11 +8910,11 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
                         #ifdef WITH_THREAD
                         PyGILState_Release(__pyx_gilstate_save);
                         #endif
-                        {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1217; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+                        {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1234; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
                       }
                       (__pyx_v_compared_set[__pyx_v_l_rec_idx]) = __pyx_t_10;
 
-                      /* "debugblock/new_topk_sim_join.pyx":1218
+                      /* "debugblock/new_topk_sim_join.pyx":1235
  *                                         else:
  *                                             compared_set[l_rec_idx] = uset[int]()
  *                                             compared_set[l_rec_idx].insert(r_rec_idx)             # <<<<<<<<<<<<<<
@@ -10790,9 +8923,9 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
                       (__pyx_v_compared_set[__pyx_v_l_rec_idx]).insert(__pyx_v_r_rec_idx);
                     }
-                    __pyx_L138:;
+                    __pyx_L90:;
 
-                    /* "debugblock/new_topk_sim_join.pyx":1220
+                    /* "debugblock/new_topk_sim_join.pyx":1237
  *                                             compared_set[l_rec_idx].insert(r_rec_idx)
  * 
  *                                         if active_dict.count(l_rec_idx) and active_dict[l_rec_idx].count(r_rec_idx):             # <<<<<<<<<<<<<<
@@ -10803,14 +8936,14 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
                     if (__pyx_t_2) {
                     } else {
                       __pyx_t_1 = __pyx_t_2;
-                      goto __pyx_L140_bool_binop_done;
+                      goto __pyx_L92_bool_binop_done;
                     }
                     __pyx_t_2 = ((__pyx_v_active_dict[__pyx_v_l_rec_idx]).count(__pyx_v_r_rec_idx) != 0);
                     __pyx_t_1 = __pyx_t_2;
-                    __pyx_L140_bool_binop_done:;
+                    __pyx_L92_bool_binop_done:;
                     if (__pyx_t_1) {
 
-                      /* "debugblock/new_topk_sim_join.pyx":1221
+                      /* "debugblock/new_topk_sim_join.pyx":1238
  * 
  *                                         if active_dict.count(l_rec_idx) and active_dict[l_rec_idx].count(r_rec_idx):
  *                                             active_dict[l_rec_idx].erase(r_rec_idx)             # <<<<<<<<<<<<<<
@@ -10819,7 +8952,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
                       (__pyx_v_active_dict[__pyx_v_l_rec_idx]).erase(__pyx_v_r_rec_idx);
 
-                      /* "debugblock/new_topk_sim_join.pyx":1220
+                      /* "debugblock/new_topk_sim_join.pyx":1237
  *                                             compared_set[l_rec_idx].insert(r_rec_idx)
  * 
  *                                         if active_dict.count(l_rec_idx) and active_dict[l_rec_idx].count(r_rec_idx):             # <<<<<<<<<<<<<<
@@ -10828,17 +8961,17 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
                     }
 
-                    /* "debugblock/new_topk_sim_join.pyx":1189
+                    /* "debugblock/new_topk_sim_join.pyx":1205
  *                                 value = active_dict[l_rec_idx][r_rec_idx]
  *                                 if value == prefix_match_max_size:
  *                                     if reuse_set.count(l_rec_idx) and reuse_set[l_rec_idx].count(r_rec_idx):             # <<<<<<<<<<<<<<
+ *                                         reuse_count += 1
  *                                         reuse_info = reuse_set[l_rec_idx][r_rec_idx]
- *                                         overlap = reuse_info.overlap
  */
-                    goto __pyx_L124;
+                    goto __pyx_L76;
                   }
 
-                  /* "debugblock/new_topk_sim_join.pyx":1226
+                  /* "debugblock/new_topk_sim_join.pyx":1243
  *                                         # overlap += new_get_overlap(ltoken_vector[l_rec_idx], rtoken_vector[r_rec_idx],
  *                                         #                            l_tok_idx, r_tok_idx)
  *                                         overlap = new_get_overlap(ltoken_vector[l_rec_idx], rtoken_vector[r_rec_idx],             # <<<<<<<<<<<<<<
@@ -10848,7 +8981,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
                   /*else*/ {
                     __pyx_v_overlap = __pyx_f_10debugblock_17new_topk_sim_join_new_get_overlap((__pyx_v_ltoken_vector[__pyx_v_l_rec_idx]), (__pyx_v_rtoken_vector[__pyx_v_r_rec_idx]), 0, 0);
 
-                    /* "debugblock/new_topk_sim_join.pyx":1228
+                    /* "debugblock/new_topk_sim_join.pyx":1245
  *                                         overlap = new_get_overlap(ltoken_vector[l_rec_idx], rtoken_vector[r_rec_idx],
  *                                                                    0, 0)
  *                                         active_dict[l_rec_idx].erase(r_rec_idx)             # <<<<<<<<<<<<<<
@@ -10857,7 +8990,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
                     (__pyx_v_active_dict[__pyx_v_l_rec_idx]).erase(__pyx_v_r_rec_idx);
 
-                    /* "debugblock/new_topk_sim_join.pyx":1230
+                    /* "debugblock/new_topk_sim_join.pyx":1247
  *                                         active_dict[l_rec_idx].erase(r_rec_idx)
  * 
  *                                         sim = overlap * 1.0 / (l_len + r_len - overlap)             # <<<<<<<<<<<<<<
@@ -10874,11 +9007,11 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
                       #ifdef WITH_THREAD
                       PyGILState_Release(__pyx_gilstate_save);
                       #endif
-                      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1230; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+                      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1247; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
                     }
                     __pyx_v_sim = (__pyx_t_13 / __pyx_t_3);
 
-                    /* "debugblock/new_topk_sim_join.pyx":1231
+                    /* "debugblock/new_topk_sim_join.pyx":1248
  * 
  *                                         sim = overlap * 1.0 / (l_len + r_len - overlap)
  *                                         if topk_heap.size() == output_size:             # <<<<<<<<<<<<<<
@@ -10888,7 +9021,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
                     __pyx_t_1 = ((__pyx_v_topk_heap.size() == __pyx_v_output_size) != 0);
                     if (__pyx_t_1) {
 
-                      /* "debugblock/new_topk_sim_join.pyx":1232
+                      /* "debugblock/new_topk_sim_join.pyx":1249
  *                                         sim = overlap * 1.0 / (l_len + r_len - overlap)
  *                                         if topk_heap.size() == output_size:
  *                                             if topk_heap.top().sim < sim:             # <<<<<<<<<<<<<<
@@ -10898,7 +9031,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
                       __pyx_t_1 = ((__pyx_v_topk_heap.top().sim < __pyx_v_sim) != 0);
                       if (__pyx_t_1) {
 
-                        /* "debugblock/new_topk_sim_join.pyx":1233
+                        /* "debugblock/new_topk_sim_join.pyx":1250
  *                                         if topk_heap.size() == output_size:
  *                                             if topk_heap.top().sim < sim:
  *                                                 topk_heap.pop()             # <<<<<<<<<<<<<<
@@ -10907,7 +9040,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
                         __pyx_v_topk_heap.pop();
 
-                        /* "debugblock/new_topk_sim_join.pyx":1234
+                        /* "debugblock/new_topk_sim_join.pyx":1251
  *                                             if topk_heap.top().sim < sim:
  *                                                 topk_heap.pop()
  *                                                 topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))             # <<<<<<<<<<<<<<
@@ -10916,7 +9049,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
                         __pyx_v_topk_heap.push(TopPair(__pyx_v_sim, __pyx_v_l_rec_idx, __pyx_v_r_rec_idx));
 
-                        /* "debugblock/new_topk_sim_join.pyx":1232
+                        /* "debugblock/new_topk_sim_join.pyx":1249
  *                                         sim = overlap * 1.0 / (l_len + r_len - overlap)
  *                                         if topk_heap.size() == output_size:
  *                                             if topk_heap.top().sim < sim:             # <<<<<<<<<<<<<<
@@ -10925,17 +9058,17 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
                       }
 
-                      /* "debugblock/new_topk_sim_join.pyx":1231
+                      /* "debugblock/new_topk_sim_join.pyx":1248
  * 
  *                                         sim = overlap * 1.0 / (l_len + r_len - overlap)
  *                                         if topk_heap.size() == output_size:             # <<<<<<<<<<<<<<
  *                                             if topk_heap.top().sim < sim:
  *                                                 topk_heap.pop()
  */
-                      goto __pyx_L142;
+                      goto __pyx_L94;
                     }
 
-                    /* "debugblock/new_topk_sim_join.pyx":1236
+                    /* "debugblock/new_topk_sim_join.pyx":1253
  *                                                 topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))
  *                                         else:
  *                                             topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))             # <<<<<<<<<<<<<<
@@ -10945,9 +9078,9 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
                     /*else*/ {
                       __pyx_v_topk_heap.push(TopPair(__pyx_v_sim, __pyx_v_l_rec_idx, __pyx_v_r_rec_idx));
                     }
-                    __pyx_L142:;
+                    __pyx_L94:;
 
-                    /* "debugblock/new_topk_sim_join.pyx":1238
+                    /* "debugblock/new_topk_sim_join.pyx":1255
  *                                             topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))
  * 
  *                                         if compared_set.count(l_rec_idx):             # <<<<<<<<<<<<<<
@@ -10957,7 +9090,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
                     __pyx_t_1 = (__pyx_v_compared_set.count(__pyx_v_l_rec_idx) != 0);
                     if (__pyx_t_1) {
 
-                      /* "debugblock/new_topk_sim_join.pyx":1239
+                      /* "debugblock/new_topk_sim_join.pyx":1256
  * 
  *                                         if compared_set.count(l_rec_idx):
  *                                             compared_set[l_rec_idx].insert(r_rec_idx)             # <<<<<<<<<<<<<<
@@ -10966,17 +9099,17 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
                       (__pyx_v_compared_set[__pyx_v_l_rec_idx]).insert(__pyx_v_r_rec_idx);
 
-                      /* "debugblock/new_topk_sim_join.pyx":1238
+                      /* "debugblock/new_topk_sim_join.pyx":1255
  *                                             topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))
  * 
  *                                         if compared_set.count(l_rec_idx):             # <<<<<<<<<<<<<<
  *                                             compared_set[l_rec_idx].insert(r_rec_idx)
  *                                         else:
  */
-                      goto __pyx_L144;
+                      goto __pyx_L96;
                     }
 
-                    /* "debugblock/new_topk_sim_join.pyx":1241
+                    /* "debugblock/new_topk_sim_join.pyx":1258
  *                                             compared_set[l_rec_idx].insert(r_rec_idx)
  *                                         else:
  *                                             compared_set[l_rec_idx] = uset[int]()             # <<<<<<<<<<<<<<
@@ -10994,11 +9127,11 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
                         #ifdef WITH_THREAD
                         PyGILState_Release(__pyx_gilstate_save);
                         #endif
-                        {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1241; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+                        {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1258; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
                       }
                       (__pyx_v_compared_set[__pyx_v_l_rec_idx]) = __pyx_t_10;
 
-                      /* "debugblock/new_topk_sim_join.pyx":1242
+                      /* "debugblock/new_topk_sim_join.pyx":1259
  *                                         else:
  *                                             compared_set[l_rec_idx] = uset[int]()
  *                                             compared_set[l_rec_idx].insert(r_rec_idx)             # <<<<<<<<<<<<<<
@@ -11007,11 +9140,11 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
                       (__pyx_v_compared_set[__pyx_v_l_rec_idx]).insert(__pyx_v_r_rec_idx);
                     }
-                    __pyx_L144:;
+                    __pyx_L96:;
                   }
-                  __pyx_L124:;
+                  __pyx_L76:;
 
-                  /* "debugblock/new_topk_sim_join.pyx":1244
+                  /* "debugblock/new_topk_sim_join.pyx":1261
  *                                             compared_set[l_rec_idx].insert(r_rec_idx)
  * 
  *                                     total_compared_pairs += 1             # <<<<<<<<<<<<<<
@@ -11020,17 +9153,17 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
                   __pyx_v_total_compared_pairs = (__pyx_v_total_compared_pairs + 1);
 
-                  /* "debugblock/new_topk_sim_join.pyx":1188
+                  /* "debugblock/new_topk_sim_join.pyx":1204
  *                             if active_dict[l_rec_idx].count(r_rec_idx):
  *                                 value = active_dict[l_rec_idx][r_rec_idx]
  *                                 if value == prefix_match_max_size:             # <<<<<<<<<<<<<<
  *                                     if reuse_set.count(l_rec_idx) and reuse_set[l_rec_idx].count(r_rec_idx):
- *                                         reuse_info = reuse_set[l_rec_idx][r_rec_idx]
+ *                                         reuse_count += 1
  */
-                  goto __pyx_L123;
+                  goto __pyx_L75;
                 }
 
-                /* "debugblock/new_topk_sim_join.pyx":1246
+                /* "debugblock/new_topk_sim_join.pyx":1263
  *                                     total_compared_pairs += 1
  *                                 else:
  *                                     active_dict[l_rec_idx][r_rec_idx] += 1             # <<<<<<<<<<<<<<
@@ -11042,19 +9175,19 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
                   __pyx_t_11 = __pyx_v_r_rec_idx;
                   ((__pyx_v_active_dict[__pyx_t_3])[__pyx_t_11]) = (((__pyx_v_active_dict[__pyx_t_3])[__pyx_t_11]) + 1);
                 }
-                __pyx_L123:;
+                __pyx_L75:;
 
-                /* "debugblock/new_topk_sim_join.pyx":1186
+                /* "debugblock/new_topk_sim_join.pyx":1202
  *                         # printf("right3\n")
  *                         if active_dict.count(l_rec_idx):
  *                             if active_dict[l_rec_idx].count(r_rec_idx):             # <<<<<<<<<<<<<<
  *                                 value = active_dict[l_rec_idx][r_rec_idx]
  *                                 if value == prefix_match_max_size:
  */
-                goto __pyx_L122;
+                goto __pyx_L74;
               }
 
-              /* "debugblock/new_topk_sim_join.pyx":1248
+              /* "debugblock/new_topk_sim_join.pyx":1265
  *                                     active_dict[l_rec_idx][r_rec_idx] += 1
  *                             else:
  *                                 active_dict[l_rec_idx][r_rec_idx] = 1             # <<<<<<<<<<<<<<
@@ -11064,19 +9197,19 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
               /*else*/ {
                 ((__pyx_v_active_dict[__pyx_v_l_rec_idx])[__pyx_v_r_rec_idx]) = 1;
               }
-              __pyx_L122:;
+              __pyx_L74:;
 
-              /* "debugblock/new_topk_sim_join.pyx":1185
+              /* "debugblock/new_topk_sim_join.pyx":1201
  *                     else:
  *                         # printf("right3\n")
  *                         if active_dict.count(l_rec_idx):             # <<<<<<<<<<<<<<
  *                             if active_dict[l_rec_idx].count(r_rec_idx):
  *                                 value = active_dict[l_rec_idx][r_rec_idx]
  */
-              goto __pyx_L121;
+              goto __pyx_L73;
             }
 
-            /* "debugblock/new_topk_sim_join.pyx":1250
+            /* "debugblock/new_topk_sim_join.pyx":1267
  *                                 active_dict[l_rec_idx][r_rec_idx] = 1
  *                         else:
  *                             active_dict[l_rec_idx] = umap[int, short]()             # <<<<<<<<<<<<<<
@@ -11094,11 +9227,11 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
                 #ifdef WITH_THREAD
                 PyGILState_Release(__pyx_gilstate_save);
                 #endif
-                {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1250; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+                {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1267; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
               }
               (__pyx_v_active_dict[__pyx_v_l_rec_idx]) = __pyx_t_12;
 
-              /* "debugblock/new_topk_sim_join.pyx":1251
+              /* "debugblock/new_topk_sim_join.pyx":1268
  *                         else:
  *                             active_dict[l_rec_idx] = umap[int, short]()
  *                             active_dict[l_rec_idx][r_rec_idx] = 1             # <<<<<<<<<<<<<<
@@ -11107,11 +9240,11 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
               ((__pyx_v_active_dict[__pyx_v_l_rec_idx])[__pyx_v_r_rec_idx]) = 1;
             }
-            __pyx_L121:;
+            __pyx_L73:;
           }
-          __pyx_L89:;
+          __pyx_L65:;
 
-          /* "debugblock/new_topk_sim_join.pyx":1254
+          /* "debugblock/new_topk_sim_join.pyx":1271
  *                     # printf("pass check\n")
  * 
  *                     if total_compared_pairs % 100000 == 0 and \             # <<<<<<<<<<<<<<
@@ -11122,10 +9255,10 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
           if (__pyx_t_2) {
           } else {
             __pyx_t_1 = __pyx_t_2;
-            goto __pyx_L146_bool_binop_done;
+            goto __pyx_L98_bool_binop_done;
           }
 
-          /* "debugblock/new_topk_sim_join.pyx":1255
+          /* "debugblock/new_topk_sim_join.pyx":1272
  * 
  *                     if total_compared_pairs % 100000 == 0 and \
  *                             total_compared_pairs_set.count(total_compared_pairs) <= 0:             # <<<<<<<<<<<<<<
@@ -11134,9 +9267,9 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
           __pyx_t_2 = ((__pyx_v_total_compared_pairs_set.count(__pyx_v_total_compared_pairs) <= 0) != 0);
           __pyx_t_1 = __pyx_t_2;
-          __pyx_L146_bool_binop_done:;
+          __pyx_L98_bool_binop_done:;
 
-          /* "debugblock/new_topk_sim_join.pyx":1254
+          /* "debugblock/new_topk_sim_join.pyx":1271
  *                     # printf("pass check\n")
  * 
  *                     if total_compared_pairs % 100000 == 0 and \             # <<<<<<<<<<<<<<
@@ -11145,7 +9278,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
           if (__pyx_t_1) {
 
-            /* "debugblock/new_topk_sim_join.pyx":1256
+            /* "debugblock/new_topk_sim_join.pyx":1273
  *                     if total_compared_pairs % 100000 == 0 and \
  *                             total_compared_pairs_set.count(total_compared_pairs) <= 0:
  *                         total_compared_pairs_set.insert(total_compared_pairs)             # <<<<<<<<<<<<<<
@@ -11154,7 +9287,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
             __pyx_v_total_compared_pairs_set.insert(__pyx_v_total_compared_pairs);
 
-            /* "debugblock/new_topk_sim_join.pyx":1257
+            /* "debugblock/new_topk_sim_join.pyx":1274
  *                             total_compared_pairs_set.count(total_compared_pairs) <= 0:
  *                         total_compared_pairs_set.insert(total_compared_pairs)
  *                         if topk_heap.size() > 0:             # <<<<<<<<<<<<<<
@@ -11164,7 +9297,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
             __pyx_t_1 = ((__pyx_v_topk_heap.size() > 0) != 0);
             if (__pyx_t_1) {
 
-              /* "debugblock/new_topk_sim_join.pyx":1258
+              /* "debugblock/new_topk_sim_join.pyx":1275
  *                         total_compared_pairs_set.insert(total_compared_pairs)
  *                         if topk_heap.size() > 0:
  *                             printf("%ld (%.16f %d %d) (%.16f %d %d %d)\n",             # <<<<<<<<<<<<<<
@@ -11173,7 +9306,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
               printf(__pyx_k_ld_16f_d_d_16f_d_d_d, __pyx_v_total_compared_pairs, __pyx_v_topk_heap.top().sim, __pyx_v_topk_heap.top().l_rec, __pyx_v_topk_heap.top().r_rec, __pyx_v_prefix_events.top().threshold, __pyx_v_prefix_events.top().table_indicator, __pyx_v_prefix_events.top().rec_idx, __pyx_v_prefix_events.top().tok_idx);
 
-              /* "debugblock/new_topk_sim_join.pyx":1257
+              /* "debugblock/new_topk_sim_join.pyx":1274
  *                             total_compared_pairs_set.count(total_compared_pairs) <= 0:
  *                         total_compared_pairs_set.insert(total_compared_pairs)
  *                         if topk_heap.size() > 0:             # <<<<<<<<<<<<<<
@@ -11182,7 +9315,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
             }
 
-            /* "debugblock/new_topk_sim_join.pyx":1254
+            /* "debugblock/new_topk_sim_join.pyx":1271
  *                     # printf("pass check\n")
  * 
  *                     if total_compared_pairs % 100000 == 0 and \             # <<<<<<<<<<<<<<
@@ -11191,17 +9324,17 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
           }
 
-          /* "debugblock/new_topk_sim_join.pyx":1094
+          /* "debugblock/new_topk_sim_join.pyx":1110
  *             if l_inverted_index.count(token):
  *                 l_records = l_inverted_index[token]
  *                 for l_rec_tuple in l_records:             # <<<<<<<<<<<<<<
  *                     l_rec_idx = l_rec_tuple.first
  *                     l_tok_idx = l_rec_tuple.second
  */
-          __pyx_L81_continue:;
+          __pyx_L57_continue:;
         }
 
-        /* "debugblock/new_topk_sim_join.pyx":1092
+        /* "debugblock/new_topk_sim_join.pyx":1108
  *             token = rtoken_vector[r_rec_idx][r_tok_idx]
  *             r_len = rtoken_vector[r_rec_idx].size()
  *             if l_inverted_index.count(token):             # <<<<<<<<<<<<<<
@@ -11210,7 +9343,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
       }
 
-      /* "debugblock/new_topk_sim_join.pyx":1263
+      /* "debugblock/new_topk_sim_join.pyx":1280
  *                                    prefix_events.top().rec_idx, prefix_events.top().tok_idx)
  * 
  *             if r_tok_idx + 1 < r_len:             # <<<<<<<<<<<<<<
@@ -11220,7 +9353,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
       __pyx_t_1 = (((__pyx_v_r_tok_idx + 1) < __pyx_v_r_len) != 0);
       if (__pyx_t_1) {
 
-        /* "debugblock/new_topk_sim_join.pyx":1264
+        /* "debugblock/new_topk_sim_join.pyx":1281
  * 
  *             if r_tok_idx + 1 < r_len:
  *                 threshold = min(1 - (r_tok_idx + 1 - prefix_match_max_size) * 1.0 / r_len, 1.0)             # <<<<<<<<<<<<<<
@@ -11237,7 +9370,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
           #ifdef WITH_THREAD
           PyGILState_Release(__pyx_gilstate_save);
           #endif
-          {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1264; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1281; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         }
         __pyx_t_14 = (1.0 - (__pyx_t_6 / __pyx_v_r_len));
         if (((__pyx_t_13 < __pyx_t_14) != 0)) {
@@ -11247,7 +9380,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
         }
         __pyx_v_threshold = __pyx_t_6;
 
-        /* "debugblock/new_topk_sim_join.pyx":1265
+        /* "debugblock/new_topk_sim_join.pyx":1282
  *             if r_tok_idx + 1 < r_len:
  *                 threshold = min(1 - (r_tok_idx + 1 - prefix_match_max_size) * 1.0 / r_len, 1.0)
  *                 prefix_events.push(PrefixEvent(threshold, table_indicator, r_rec_idx, r_tok_idx + 1))             # <<<<<<<<<<<<<<
@@ -11256,7 +9389,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
         __pyx_v_prefix_events.push(PrefixEvent(__pyx_v_threshold, __pyx_v_table_indicator, __pyx_v_r_rec_idx, (__pyx_v_r_tok_idx + 1)));
 
-        /* "debugblock/new_topk_sim_join.pyx":1263
+        /* "debugblock/new_topk_sim_join.pyx":1280
  *                                    prefix_events.top().rec_idx, prefix_events.top().tok_idx)
  * 
  *             if r_tok_idx + 1 < r_len:             # <<<<<<<<<<<<<<
@@ -11265,7 +9398,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
       }
 
-      /* "debugblock/new_topk_sim_join.pyx":1267
+      /* "debugblock/new_topk_sim_join.pyx":1284
  *                 prefix_events.push(PrefixEvent(threshold, table_indicator, r_rec_idx, r_tok_idx + 1))
  * 
  *             if not r_inverted_index.count(token):             # <<<<<<<<<<<<<<
@@ -11275,7 +9408,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
       __pyx_t_1 = ((!(__pyx_v_r_inverted_index.count(__pyx_v_token) != 0)) != 0);
       if (__pyx_t_1) {
 
-        /* "debugblock/new_topk_sim_join.pyx":1268
+        /* "debugblock/new_topk_sim_join.pyx":1285
  * 
  *             if not r_inverted_index.count(token):
  *                 r_inverted_index[token] = oset[pair[int, int]]()             # <<<<<<<<<<<<<<
@@ -11292,11 +9425,11 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
           #ifdef WITH_THREAD
           PyGILState_Release(__pyx_gilstate_save);
           #endif
-          {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1268; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1285; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         }
         (__pyx_v_r_inverted_index[__pyx_v_token]) = __pyx_t_15;
 
-        /* "debugblock/new_topk_sim_join.pyx":1267
+        /* "debugblock/new_topk_sim_join.pyx":1284
  *                 prefix_events.push(PrefixEvent(threshold, table_indicator, r_rec_idx, r_tok_idx + 1))
  * 
  *             if not r_inverted_index.count(token):             # <<<<<<<<<<<<<<
@@ -11305,7 +9438,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
       }
 
-      /* "debugblock/new_topk_sim_join.pyx":1269
+      /* "debugblock/new_topk_sim_join.pyx":1286
  *             if not r_inverted_index.count(token):
  *                 r_inverted_index[token] = oset[pair[int, int]]()
  *             r_inverted_index[token].insert(pair[int, int](r_rec_idx, r_tok_idx))             # <<<<<<<<<<<<<<
@@ -11322,7 +9455,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
         #ifdef WITH_THREAD
         PyGILState_Release(__pyx_gilstate_save);
         #endif
-        {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1269; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1286; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       }
       try {
         (__pyx_v_r_inverted_index[__pyx_v_token]).insert(__pyx_t_5);
@@ -11334,14 +9467,14 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
         #ifdef WITH_THREAD
         PyGILState_Release(__pyx_gilstate_save);
         #endif
-        {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1269; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1286; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       }
     }
     __pyx_L8:;
   }
   __pyx_L4_break:;
 
-  /* "debugblock/new_topk_sim_join.pyx":1274
+  /* "debugblock/new_topk_sim_join.pyx":1291
  *     # printf("checkpoint3\n")
  * 
  *     cdef double bound = 1e-6             # <<<<<<<<<<<<<<
@@ -11350,7 +9483,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
   __pyx_v_bound = 1e-6;
 
-  /* "debugblock/new_topk_sim_join.pyx":1275
+  /* "debugblock/new_topk_sim_join.pyx":1292
  * 
  *     cdef double bound = 1e-6
  *     if prefix_events.size() > 0:             # <<<<<<<<<<<<<<
@@ -11360,7 +9493,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
   __pyx_t_1 = ((__pyx_v_prefix_events.size() > 0) != 0);
   if (__pyx_t_1) {
 
-    /* "debugblock/new_topk_sim_join.pyx":1276
+    /* "debugblock/new_topk_sim_join.pyx":1293
  *     cdef double bound = 1e-6
  *     if prefix_events.size() > 0:
  *         bound = prefix_events.top().threshold             # <<<<<<<<<<<<<<
@@ -11370,7 +9503,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
     __pyx_t_6 = __pyx_v_prefix_events.top().threshold;
     __pyx_v_bound = __pyx_t_6;
 
-    /* "debugblock/new_topk_sim_join.pyx":1275
+    /* "debugblock/new_topk_sim_join.pyx":1292
  * 
  *     cdef double bound = 1e-6
  *     if prefix_events.size() > 0:             # <<<<<<<<<<<<<<
@@ -11379,7 +9512,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
   }
 
-  /* "debugblock/new_topk_sim_join.pyx":1280
+  /* "debugblock/new_topk_sim_join.pyx":1297
  *     cdef pair[int, umap[int, short]] p1
  *     cdef pair[int, short] p2
  *     for p1 in active_dict:             # <<<<<<<<<<<<<<
@@ -11393,7 +9526,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
     ++__pyx_t_16;
     __pyx_v_p1 = __pyx_t_17;
 
-    /* "debugblock/new_topk_sim_join.pyx":1281
+    /* "debugblock/new_topk_sim_join.pyx":1298
  *     cdef pair[int, short] p2
  *     for p1 in active_dict:
  *         l_rec_idx = p1.first             # <<<<<<<<<<<<<<
@@ -11403,7 +9536,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
     __pyx_t_3 = __pyx_v_p1.first;
     __pyx_v_l_rec_idx = __pyx_t_3;
 
-    /* "debugblock/new_topk_sim_join.pyx":1282
+    /* "debugblock/new_topk_sim_join.pyx":1299
  *     for p1 in active_dict:
  *         l_rec_idx = p1.first
  *         for p2 in p1.second:             # <<<<<<<<<<<<<<
@@ -11418,7 +9551,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
       ++__pyx_t_18;
       __pyx_v_p2 = __pyx_t_20;
 
-      /* "debugblock/new_topk_sim_join.pyx":1283
+      /* "debugblock/new_topk_sim_join.pyx":1300
  *         l_rec_idx = p1.first
  *         for p2 in p1.second:
  *             if ltoken_vector[l_rec_idx].size() < (prefix_match_max_size + 1) / bound and\             # <<<<<<<<<<<<<<
@@ -11434,16 +9567,16 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
         #ifdef WITH_THREAD
         PyGILState_Release(__pyx_gilstate_save);
         #endif
-        {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1283; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1300; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       }
       __pyx_t_2 = (((__pyx_v_ltoken_vector[__pyx_v_l_rec_idx]).size() < (__pyx_t_21 / __pyx_v_bound)) != 0);
       if (__pyx_t_2) {
       } else {
         __pyx_t_1 = __pyx_t_2;
-        goto __pyx_L157_bool_binop_done;
+        goto __pyx_L109_bool_binop_done;
       }
 
-      /* "debugblock/new_topk_sim_join.pyx":1284
+      /* "debugblock/new_topk_sim_join.pyx":1301
  *         for p2 in p1.second:
  *             if ltoken_vector[l_rec_idx].size() < (prefix_match_max_size + 1) / bound and\
  *                     rtoken_vector[p2.first].size() < (prefix_match_max_size + 1) / bound:             # <<<<<<<<<<<<<<
@@ -11459,13 +9592,13 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
         #ifdef WITH_THREAD
         PyGILState_Release(__pyx_gilstate_save);
         #endif
-        {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1284; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1301; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       }
       __pyx_t_2 = (((__pyx_v_rtoken_vector[__pyx_v_p2.first]).size() < (__pyx_t_21 / __pyx_v_bound)) != 0);
       __pyx_t_1 = __pyx_t_2;
-      __pyx_L157_bool_binop_done:;
+      __pyx_L109_bool_binop_done:;
 
-      /* "debugblock/new_topk_sim_join.pyx":1283
+      /* "debugblock/new_topk_sim_join.pyx":1300
  *         l_rec_idx = p1.first
  *         for p2 in p1.second:
  *             if ltoken_vector[l_rec_idx].size() < (prefix_match_max_size + 1) / bound and\             # <<<<<<<<<<<<<<
@@ -11474,7 +9607,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
       if (__pyx_t_1) {
 
-        /* "debugblock/new_topk_sim_join.pyx":1285
+        /* "debugblock/new_topk_sim_join.pyx":1302
  *             if ltoken_vector[l_rec_idx].size() < (prefix_match_max_size + 1) / bound and\
  *                     rtoken_vector[p2.first].size() < (prefix_match_max_size + 1) / bound:
  *                 value = p2.second             # <<<<<<<<<<<<<<
@@ -11484,7 +9617,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
         __pyx_t_22 = __pyx_v_p2.second;
         __pyx_v_value = __pyx_t_22;
 
-        /* "debugblock/new_topk_sim_join.pyx":1286
+        /* "debugblock/new_topk_sim_join.pyx":1303
  *                     rtoken_vector[p2.first].size() < (prefix_match_max_size + 1) / bound:
  *                 value = p2.second
  *                 sim = value * 1.0 / (ltoken_vector[l_rec_idx].size() + rtoken_vector[p2.first].size() - value)             # <<<<<<<<<<<<<<
@@ -11501,11 +9634,11 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
           #ifdef WITH_THREAD
           PyGILState_Release(__pyx_gilstate_save);
           #endif
-          {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1286; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1303; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         }
         __pyx_v_sim = (__pyx_t_6 / __pyx_t_23);
 
-        /* "debugblock/new_topk_sim_join.pyx":1287
+        /* "debugblock/new_topk_sim_join.pyx":1304
  *                 value = p2.second
  *                 sim = value * 1.0 / (ltoken_vector[l_rec_idx].size() + rtoken_vector[p2.first].size() - value)
  *                 if topk_heap.size() == output_size:             # <<<<<<<<<<<<<<
@@ -11515,7 +9648,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
         __pyx_t_1 = ((__pyx_v_topk_heap.size() == __pyx_v_output_size) != 0);
         if (__pyx_t_1) {
 
-          /* "debugblock/new_topk_sim_join.pyx":1288
+          /* "debugblock/new_topk_sim_join.pyx":1305
  *                 sim = value * 1.0 / (ltoken_vector[l_rec_idx].size() + rtoken_vector[p2.first].size() - value)
  *                 if topk_heap.size() == output_size:
  *                     if topk_heap.top().sim < sim:             # <<<<<<<<<<<<<<
@@ -11525,7 +9658,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
           __pyx_t_1 = ((__pyx_v_topk_heap.top().sim < __pyx_v_sim) != 0);
           if (__pyx_t_1) {
 
-            /* "debugblock/new_topk_sim_join.pyx":1289
+            /* "debugblock/new_topk_sim_join.pyx":1306
  *                 if topk_heap.size() == output_size:
  *                     if topk_heap.top().sim < sim:
  *                         topk_heap.pop()             # <<<<<<<<<<<<<<
@@ -11534,7 +9667,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
             __pyx_v_topk_heap.pop();
 
-            /* "debugblock/new_topk_sim_join.pyx":1290
+            /* "debugblock/new_topk_sim_join.pyx":1307
  *                     if topk_heap.top().sim < sim:
  *                         topk_heap.pop()
  *                         topk_heap.push(TopPair(sim, l_rec_idx, p2.first))             # <<<<<<<<<<<<<<
@@ -11543,7 +9676,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
             __pyx_v_topk_heap.push(TopPair(__pyx_v_sim, __pyx_v_l_rec_idx, __pyx_v_p2.first));
 
-            /* "debugblock/new_topk_sim_join.pyx":1288
+            /* "debugblock/new_topk_sim_join.pyx":1305
  *                 sim = value * 1.0 / (ltoken_vector[l_rec_idx].size() + rtoken_vector[p2.first].size() - value)
  *                 if topk_heap.size() == output_size:
  *                     if topk_heap.top().sim < sim:             # <<<<<<<<<<<<<<
@@ -11552,17 +9685,17 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
           }
 
-          /* "debugblock/new_topk_sim_join.pyx":1287
+          /* "debugblock/new_topk_sim_join.pyx":1304
  *                 value = p2.second
  *                 sim = value * 1.0 / (ltoken_vector[l_rec_idx].size() + rtoken_vector[p2.first].size() - value)
  *                 if topk_heap.size() == output_size:             # <<<<<<<<<<<<<<
  *                     if topk_heap.top().sim < sim:
  *                         topk_heap.pop()
  */
-          goto __pyx_L159;
+          goto __pyx_L111;
         }
 
-        /* "debugblock/new_topk_sim_join.pyx":1292
+        /* "debugblock/new_topk_sim_join.pyx":1309
  *                         topk_heap.push(TopPair(sim, l_rec_idx, p2.first))
  *                 else:
  *                     topk_heap.push(TopPair(sim, l_rec_idx, p2.first))             # <<<<<<<<<<<<<<
@@ -11572,9 +9705,9 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
         /*else*/ {
           __pyx_v_topk_heap.push(TopPair(__pyx_v_sim, __pyx_v_l_rec_idx, __pyx_v_p2.first));
         }
-        __pyx_L159:;
+        __pyx_L111:;
 
-        /* "debugblock/new_topk_sim_join.pyx":1283
+        /* "debugblock/new_topk_sim_join.pyx":1300
  *         l_rec_idx = p1.first
  *         for p2 in p1.second:
  *             if ltoken_vector[l_rec_idx].size() < (prefix_match_max_size + 1) / bound and\             # <<<<<<<<<<<<<<
@@ -11583,7 +9716,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
       }
 
-      /* "debugblock/new_topk_sim_join.pyx":1282
+      /* "debugblock/new_topk_sim_join.pyx":1299
  *     for p1 in active_dict:
  *         l_rec_idx = p1.first
  *         for p2 in p1.second:             # <<<<<<<<<<<<<<
@@ -11592,7 +9725,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
     }
 
-    /* "debugblock/new_topk_sim_join.pyx":1280
+    /* "debugblock/new_topk_sim_join.pyx":1297
  *     cdef pair[int, umap[int, short]] p1
  *     cdef pair[int, short] p2
  *     for p1 in active_dict:             # <<<<<<<<<<<<<<
@@ -11601,16 +9734,25 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
   }
 
-  /* "debugblock/new_topk_sim_join.pyx":1295
+  /* "debugblock/new_topk_sim_join.pyx":1312
  * 
  * 
  *     printf("number of compared pairs: %ld\n", total_compared_pairs)             # <<<<<<<<<<<<<<
+ *     printf("number of reused pairs: %d\n", reuse_count)
  *     # printf("checkpoint4\n")
- * 
  */
   printf(__pyx_k_number_of_compared_pairs_ld, __pyx_v_total_compared_pairs);
 
-  /* "debugblock/new_topk_sim_join.pyx":1298
+  /* "debugblock/new_topk_sim_join.pyx":1313
+ * 
+ *     printf("number of compared pairs: %ld\n", total_compared_pairs)
+ *     printf("number of reused pairs: %d\n", reuse_count)             # <<<<<<<<<<<<<<
+ *     # printf("checkpoint4\n")
+ * 
+ */
+  printf(__pyx_k_number_of_reused_pairs_d, __pyx_v_reuse_count);
+
+  /* "debugblock/new_topk_sim_join.pyx":1316
  *     # printf("checkpoint4\n")
  * 
  *     return             # <<<<<<<<<<<<<<
@@ -11619,7 +9761,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
  */
   goto __pyx_L0;
 
-  /* "debugblock/new_topk_sim_join.pyx":861
+  /* "debugblock/new_topk_sim_join.pyx":874
  * 
  * 
  * cdef void new_topk_sim_join_reuse_impl(const vector[vector[int]]& ltoken_vector,             # <<<<<<<<<<<<<<
@@ -11633,7 +9775,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_topk_sim_join_reuse_imp
   __pyx_L0:;
 }
 
-/* "debugblock/new_topk_sim_join.pyx":1301
+/* "debugblock/new_topk_sim_join.pyx":1319
  * 
  * 
  * cdef int new_get_overlap(const vector[int]& ltoken_list, const vector[int]& rtoken_list,             # <<<<<<<<<<<<<<
@@ -11650,7 +9792,7 @@ static int __pyx_f_10debugblock_17new_topk_sim_join_new_get_overlap(std::vector<
   uint32_t __pyx_t_2;
   int __pyx_t_3;
 
-  /* "debugblock/new_topk_sim_join.pyx":1303
+  /* "debugblock/new_topk_sim_join.pyx":1321
  * cdef int new_get_overlap(const vector[int]& ltoken_list, const vector[int]& rtoken_list,
  *                          const int l_tok_idx, const int r_tok_idx) nogil:
  *     cdef int overlap = 0             # <<<<<<<<<<<<<<
@@ -11659,7 +9801,7 @@ static int __pyx_f_10debugblock_17new_topk_sim_join_new_get_overlap(std::vector<
  */
   __pyx_v_overlap = 0;
 
-  /* "debugblock/new_topk_sim_join.pyx":1307
+  /* "debugblock/new_topk_sim_join.pyx":1325
  * 
  *     cdef uset[int] rset
  *     for i in xrange(rtoken_list.size() - r_tok_idx):             # <<<<<<<<<<<<<<
@@ -11670,7 +9812,7 @@ static int __pyx_f_10debugblock_17new_topk_sim_join_new_get_overlap(std::vector<
   for (__pyx_t_2 = 0; __pyx_t_2 < __pyx_t_1; __pyx_t_2+=1) {
     __pyx_v_i = __pyx_t_2;
 
-    /* "debugblock/new_topk_sim_join.pyx":1308
+    /* "debugblock/new_topk_sim_join.pyx":1326
  *     cdef uset[int] rset
  *     for i in xrange(rtoken_list.size() - r_tok_idx):
  *         rset.insert(rtoken_list[i + r_tok_idx])             # <<<<<<<<<<<<<<
@@ -11680,7 +9822,7 @@ static int __pyx_f_10debugblock_17new_topk_sim_join_new_get_overlap(std::vector<
     __pyx_v_rset.insert((__pyx_v_rtoken_list[(__pyx_v_i + __pyx_v_r_tok_idx)]));
   }
 
-  /* "debugblock/new_topk_sim_join.pyx":1310
+  /* "debugblock/new_topk_sim_join.pyx":1328
  *         rset.insert(rtoken_list[i + r_tok_idx])
  * 
  *     for i in xrange(ltoken_list.size() - l_tok_idx):             # <<<<<<<<<<<<<<
@@ -11691,7 +9833,7 @@ static int __pyx_f_10debugblock_17new_topk_sim_join_new_get_overlap(std::vector<
   for (__pyx_t_2 = 0; __pyx_t_2 < __pyx_t_1; __pyx_t_2+=1) {
     __pyx_v_i = __pyx_t_2;
 
-    /* "debugblock/new_topk_sim_join.pyx":1311
+    /* "debugblock/new_topk_sim_join.pyx":1329
  * 
  *     for i in xrange(ltoken_list.size() - l_tok_idx):
  *         if rset.count(ltoken_list[i + l_tok_idx]):             # <<<<<<<<<<<<<<
@@ -11701,7 +9843,7 @@ static int __pyx_f_10debugblock_17new_topk_sim_join_new_get_overlap(std::vector<
     __pyx_t_3 = (__pyx_v_rset.count((__pyx_v_ltoken_list[(__pyx_v_i + __pyx_v_l_tok_idx)])) != 0);
     if (__pyx_t_3) {
 
-      /* "debugblock/new_topk_sim_join.pyx":1312
+      /* "debugblock/new_topk_sim_join.pyx":1330
  *     for i in xrange(ltoken_list.size() - l_tok_idx):
  *         if rset.count(ltoken_list[i + l_tok_idx]):
  *             overlap += 1             # <<<<<<<<<<<<<<
@@ -11710,7 +9852,7 @@ static int __pyx_f_10debugblock_17new_topk_sim_join_new_get_overlap(std::vector<
  */
       __pyx_v_overlap = (__pyx_v_overlap + 1);
 
-      /* "debugblock/new_topk_sim_join.pyx":1311
+      /* "debugblock/new_topk_sim_join.pyx":1329
  * 
  *     for i in xrange(ltoken_list.size() - l_tok_idx):
  *         if rset.count(ltoken_list[i + l_tok_idx]):             # <<<<<<<<<<<<<<
@@ -11720,7 +9862,7 @@ static int __pyx_f_10debugblock_17new_topk_sim_join_new_get_overlap(std::vector<
     }
   }
 
-  /* "debugblock/new_topk_sim_join.pyx":1314
+  /* "debugblock/new_topk_sim_join.pyx":1332
  *             overlap += 1
  * 
  *     return overlap             # <<<<<<<<<<<<<<
@@ -11730,7 +9872,7 @@ static int __pyx_f_10debugblock_17new_topk_sim_join_new_get_overlap(std::vector<
   __pyx_r = __pyx_v_overlap;
   goto __pyx_L0;
 
-  /* "debugblock/new_topk_sim_join.pyx":1301
+  /* "debugblock/new_topk_sim_join.pyx":1319
  * 
  * 
  * cdef int new_get_overlap(const vector[int]& ltoken_list, const vector[int]& rtoken_list,             # <<<<<<<<<<<<<<
@@ -11743,7 +9885,7 @@ static int __pyx_f_10debugblock_17new_topk_sim_join_new_get_overlap(std::vector<
   return __pyx_r;
 }
 
-/* "debugblock/new_topk_sim_join.pyx":1321
+/* "debugblock/new_topk_sim_join.pyx":1339
  * ####################################################################################################
  * ####################################################################################################
  * cdef void new_generate_prefix_events(const vector[vector[int]]& ltable,             # <<<<<<<<<<<<<<
@@ -11753,7 +9895,7 @@ static int __pyx_f_10debugblock_17new_topk_sim_join_new_get_overlap(std::vector<
 
 static void __pyx_f_10debugblock_17new_topk_sim_join_new_generate_prefix_events(std::vector<std::vector<int> >  const &__pyx_v_ltable, std::vector<std::vector<int> >  const &__pyx_v_rtable, std::priority_queue<PrefixEvent>  &__pyx_v_prefix_events) {
 
-  /* "debugblock/new_topk_sim_join.pyx":1324
+  /* "debugblock/new_topk_sim_join.pyx":1342
  *                                  const vector[vector[int]]& rtable,
  *                                  heap[PrefixEvent]& prefix_events) nogil:
  *     new_generate_prefix_events_impl(ltable, 0, prefix_events)             # <<<<<<<<<<<<<<
@@ -11762,7 +9904,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_generate_prefix_events(
  */
   __pyx_f_10debugblock_17new_topk_sim_join_new_generate_prefix_events_impl(__pyx_v_ltable, 0, __pyx_v_prefix_events);
 
-  /* "debugblock/new_topk_sim_join.pyx":1325
+  /* "debugblock/new_topk_sim_join.pyx":1343
  *                                  heap[PrefixEvent]& prefix_events) nogil:
  *     new_generate_prefix_events_impl(ltable, 0, prefix_events)
  *     new_generate_prefix_events_impl(rtable, 1, prefix_events)             # <<<<<<<<<<<<<<
@@ -11771,7 +9913,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_generate_prefix_events(
  */
   __pyx_f_10debugblock_17new_topk_sim_join_new_generate_prefix_events_impl(__pyx_v_rtable, 1, __pyx_v_prefix_events);
 
-  /* "debugblock/new_topk_sim_join.pyx":1327
+  /* "debugblock/new_topk_sim_join.pyx":1345
  *     new_generate_prefix_events_impl(rtable, 1, prefix_events)
  * 
  *     return             # <<<<<<<<<<<<<<
@@ -11780,7 +9922,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_generate_prefix_events(
  */
   goto __pyx_L0;
 
-  /* "debugblock/new_topk_sim_join.pyx":1321
+  /* "debugblock/new_topk_sim_join.pyx":1339
  * ####################################################################################################
  * ####################################################################################################
  * cdef void new_generate_prefix_events(const vector[vector[int]]& ltable,             # <<<<<<<<<<<<<<
@@ -11792,7 +9934,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_generate_prefix_events(
   __pyx_L0:;
 }
 
-/* "debugblock/new_topk_sim_join.pyx":1330
+/* "debugblock/new_topk_sim_join.pyx":1348
  * 
  * 
  * cdef void new_generate_prefix_events_impl(const vector[vector[int]]& table,             # <<<<<<<<<<<<<<
@@ -11807,7 +9949,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_generate_prefix_events_
   uint32_t __pyx_t_2;
   int __pyx_t_3;
 
-  /* "debugblock/new_topk_sim_join.pyx":1334
+  /* "debugblock/new_topk_sim_join.pyx":1352
  *                                       heap[PrefixEvent]& prefix_events) nogil:
  *     cdef uint i, length
  *     for i in xrange(table.size()):             # <<<<<<<<<<<<<<
@@ -11818,7 +9960,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_generate_prefix_events_
   for (__pyx_t_2 = 0; __pyx_t_2 < __pyx_t_1; __pyx_t_2+=1) {
     __pyx_v_i = __pyx_t_2;
 
-    /* "debugblock/new_topk_sim_join.pyx":1335
+    /* "debugblock/new_topk_sim_join.pyx":1353
  *     cdef uint i, length
  *     for i in xrange(table.size()):
  *         length = table[i].size()             # <<<<<<<<<<<<<<
@@ -11827,7 +9969,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_generate_prefix_events_
  */
     __pyx_v_length = (__pyx_v_table[__pyx_v_i]).size();
 
-    /* "debugblock/new_topk_sim_join.pyx":1336
+    /* "debugblock/new_topk_sim_join.pyx":1354
  *     for i in xrange(table.size()):
  *         length = table[i].size()
  *         if length > 0:             # <<<<<<<<<<<<<<
@@ -11837,7 +9979,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_generate_prefix_events_
     __pyx_t_3 = ((__pyx_v_length > 0) != 0);
     if (__pyx_t_3) {
 
-      /* "debugblock/new_topk_sim_join.pyx":1337
+      /* "debugblock/new_topk_sim_join.pyx":1355
  *         length = table[i].size()
  *         if length > 0:
  *             prefix_events.push(PrefixEvent(1.0, table_indicator, i, 0))             # <<<<<<<<<<<<<<
@@ -11846,7 +9988,7 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_generate_prefix_events_
  */
       __pyx_v_prefix_events.push(PrefixEvent(1.0, __pyx_v_table_indicator, __pyx_v_i, 0));
 
-      /* "debugblock/new_topk_sim_join.pyx":1336
+      /* "debugblock/new_topk_sim_join.pyx":1354
  *     for i in xrange(table.size()):
  *         length = table[i].size()
  *         if length > 0:             # <<<<<<<<<<<<<<
@@ -11856,14 +9998,14 @@ static void __pyx_f_10debugblock_17new_topk_sim_join_new_generate_prefix_events_
     }
   }
 
-  /* "debugblock/new_topk_sim_join.pyx":1339
+  /* "debugblock/new_topk_sim_join.pyx":1357
  *             prefix_events.push(PrefixEvent(1.0, table_indicator, i, 0))
  * 
  *     return             # <<<<<<<<<<<<<<
  */
   goto __pyx_L0;
 
-  /* "debugblock/new_topk_sim_join.pyx":1330
+  /* "debugblock/new_topk_sim_join.pyx":1348
  * 
  * 
  * cdef void new_generate_prefix_events_impl(const vector[vector[int]]& table,             # <<<<<<<<<<<<<<

@@ -417,6 +417,11 @@ cdef void new_topk_sim_join_record_impl(const vector[vector[int]]& ltoken_vector
 
     cdef pair[int, int] temp
 
+    # cdef int cmps[3]
+    # cmps[0] = 0
+    # cmps[1] = 0
+    # cmps[2] = 0
+
     # printf("checkpoint2\n")
 
     while prefix_events.size() > 0:
@@ -445,6 +450,7 @@ cdef void new_topk_sim_join_record_impl(const vector[vector[int]]& ltoken_vector
                         continue
 
                     if l_tok_idx + 1 == l_len or r_tok_idx + 1 == r_len:
+                        # cmps[0] += 1
                         # printf("left1\n")
                         overlap = 1
                         if active_dict.count(l_rec_idx) and active_dict[l_rec_idx].count(r_rec_idx):
@@ -461,54 +467,55 @@ cdef void new_topk_sim_join_record_impl(const vector[vector[int]]& ltoken_vector
                             topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))
 
                         total_compared_pairs += 1
-                    elif ltoken_vector[l_rec_idx][l_tok_idx + 1] == rtoken_vector[r_rec_idx][r_tok_idx + 1]:
-                        # printf("left2\n")
-                        reuse_info = ReuseInfo(0)
-                        # new_reuse_get_overlap(ltoken_vector[l_rec_idx], rtoken_vector[r_rec_idx],
-                        #                       lindex_vector[l_rec_idx], rindex_vector[r_rec_idx],
-                        #                       l_tok_idx, r_tok_idx, reuse_info, offset_of_field_num)
-                        #
-                        # if active_dict.count(l_rec_idx) and active_dict[l_rec_idx].count(r_rec_idx):
-                        #     bit_results = active_dict[l_rec_idx][r_rec_idx]
-                        #     active_dict[l_rec_idx].erase(r_rec_idx)
-                        #     value = bit_results & COUNT
-                        #     reuse_info.overlap += value
-                        #     for v in xrange(value):
-                        #         p = (bit_results & SHIFT_ARRAY[v]) >> (COUNT_BITS + FIELD_BITS * v)
-                        #         if reuse_info.map.count(p):
-                        #             reuse_info.map[p] += 1
-                        #         else:
-                        #             reuse_info.map[p] = 1
-
-                        new_reuse_get_overlap(ltoken_vector[l_rec_idx], rtoken_vector[r_rec_idx],
-                                              lindex_vector[l_rec_idx], rindex_vector[r_rec_idx],
-                                              0, 0, reuse_info, offset_of_field_num)
-
-                        if active_dict.count(l_rec_idx) and active_dict[l_rec_idx].count(r_rec_idx):
-                            active_dict[l_rec_idx].erase(r_rec_idx)
-
-                        overlap = reuse_info.overlap
-                        sim = overlap * 1.0 / (l_len + r_len - overlap)
-                        if topk_heap.size() == output_size:
-                            if topk_heap.top().sim < sim:
-                                topk_heap.pop()
-                                topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))
-                        else:
-                            topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))
-
-                        if compared_set.count(l_rec_idx):
-                            compared_set[l_rec_idx].insert(r_rec_idx)
-                        else:
-                            compared_set[l_rec_idx] = uset[int]()
-                            compared_set[l_rec_idx].insert(r_rec_idx)
-
-                        if reuse_set.count(l_rec_idx):
-                            reuse_set[l_rec_idx][r_rec_idx] = reuse_info
-                        else:
-                            reuse_set[l_rec_idx] = umap[int, ReuseInfo]()
-                            reuse_set[l_rec_idx][r_rec_idx] = reuse_info
-
-                        total_compared_pairs += 1
+                    # elif ltoken_vector[l_rec_idx][l_tok_idx + 1] == rtoken_vector[r_rec_idx][r_tok_idx + 1]:
+                    #     cmps[1] += 1
+                    #     # printf("left2\n")
+                    #     reuse_info = ReuseInfo(0)
+                    #     # new_reuse_get_overlap(ltoken_vector[l_rec_idx], rtoken_vector[r_rec_idx],
+                    #     #                       lindex_vector[l_rec_idx], rindex_vector[r_rec_idx],
+                    #     #                       l_tok_idx, r_tok_idx, reuse_info, offset_of_field_num)
+                    #     #
+                    #     # if active_dict.count(l_rec_idx) and active_dict[l_rec_idx].count(r_rec_idx):
+                    #     #     bit_results = active_dict[l_rec_idx][r_rec_idx]
+                    #     #     active_dict[l_rec_idx].erase(r_rec_idx)
+                    #     #     value = bit_results & COUNT
+                    #     #     reuse_info.overlap += value
+                    #     #     for v in xrange(value):
+                    #     #         p = (bit_results & SHIFT_ARRAY[v]) >> (COUNT_BITS + FIELD_BITS * v)
+                    #     #         if reuse_info.map.count(p):
+                    #     #             reuse_info.map[p] += 1
+                    #     #         else:
+                    #     #             reuse_info.map[p] = 1
+                    #
+                    #     new_reuse_get_overlap(ltoken_vector[l_rec_idx], rtoken_vector[r_rec_idx],
+                    #                           lindex_vector[l_rec_idx], rindex_vector[r_rec_idx],
+                    #                           0, 0, reuse_info, offset_of_field_num)
+                    #
+                    #     if active_dict.count(l_rec_idx) and active_dict[l_rec_idx].count(r_rec_idx):
+                    #         active_dict[l_rec_idx].erase(r_rec_idx)
+                    #
+                    #     overlap = reuse_info.overlap
+                    #     sim = overlap * 1.0 / (l_len + r_len - overlap)
+                    #     if topk_heap.size() == output_size:
+                    #         if topk_heap.top().sim < sim:
+                    #             topk_heap.pop()
+                    #             topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))
+                    #     else:
+                    #         topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))
+                    #
+                    #     if compared_set.count(l_rec_idx):
+                    #         compared_set[l_rec_idx].insert(r_rec_idx)
+                    #     else:
+                    #         compared_set[l_rec_idx] = uset[int]()
+                    #         compared_set[l_rec_idx].insert(r_rec_idx)
+                    #
+                    #     if reuse_set.count(l_rec_idx):
+                    #         reuse_set[l_rec_idx][r_rec_idx] = reuse_info
+                    #     else:
+                    #         reuse_set[l_rec_idx] = umap[int, ReuseInfo]()
+                    #         reuse_set[l_rec_idx][r_rec_idx] = reuse_info
+                    #
+                    #     total_compared_pairs += 1
                     else:
                         # printf("left3\n")
                         if active_dict.count(l_rec_idx):
@@ -517,6 +524,7 @@ cdef void new_topk_sim_join_record_impl(const vector[vector[int]]& ltoken_vector
                                 # printf("left3.1.1\n")
                                 value = active_dict[l_rec_idx][r_rec_idx] & COUNT
                                 if value == prefix_match_max_size:
+                                    # cmps[2] += 1
                                     # printf("left3.1.1.1\n")
                                     reuse_info = ReuseInfo(0)
                                     # new_reuse_get_overlap(ltoken_vector[l_rec_idx], rtoken_vector[r_rec_idx],
@@ -593,6 +601,7 @@ cdef void new_topk_sim_join_record_impl(const vector[vector[int]]& ltoken_vector
                                    total_compared_pairs, topk_heap.top().sim, topk_heap.top().l_rec, topk_heap.top().r_rec,
                                    prefix_events.top().threshold, prefix_events.top().table_indicator,
                                    prefix_events.top().rec_idx, prefix_events.top().tok_idx)
+                            # printf("%d %d %d\n", cmps[0], cmps[1], cmps[2])
 
             if l_tok_idx + 1 < l_len:
                 threshold = min(1 - (l_tok_idx + 1 - prefix_match_max_size) * 1.0 / l_len, 1.0)
@@ -620,6 +629,7 @@ cdef void new_topk_sim_join_record_impl(const vector[vector[int]]& ltoken_vector
                         continue
 
                     if l_tok_idx + 1 == l_len or r_tok_idx + 1 == r_len:
+                        # cmps[0] += 1
                         # printf("right1\n")
                         overlap = 1
                         if active_dict.count(l_rec_idx) and active_dict[l_rec_idx].count(r_rec_idx):
@@ -636,60 +646,62 @@ cdef void new_topk_sim_join_record_impl(const vector[vector[int]]& ltoken_vector
                             topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))
 
                         total_compared_pairs += 1
-                    elif ltoken_vector[l_rec_idx][l_tok_idx + 1] == rtoken_vector[r_rec_idx][r_tok_idx + 1]:
-                        # printf("right2\n")
-                        reuse_info = ReuseInfo(0)
-                        # new_reuse_get_overlap(ltoken_vector[l_rec_idx], rtoken_vector[r_rec_idx],
-                        #                       lindex_vector[l_rec_idx], rindex_vector[r_rec_idx],
-                        #                       l_tok_idx, r_tok_idx, reuse_info, offset_of_field_num)
-                        #
-                        # if active_dict.count(l_rec_idx) and active_dict[l_rec_idx].count(r_rec_idx):
-                        #     bit_results = active_dict[l_rec_idx][r_rec_idx]
-                        #     active_dict[l_rec_idx].erase(r_rec_idx)
-                        #     value = bit_results & COUNT
-                        #     reuse_info.overlap += value
-                        #     for v in xrange(value):
-                        #         p = (bit_results & SHIFT_ARRAY[v]) >> (COUNT_BITS + FIELD_BITS * v)
-                        #         if reuse_info.map.count(p):
-                        #             reuse_info.map[p] += 1
-                        #         else:
-                        #             reuse_info.map[p] = 1
-
-                        new_reuse_get_overlap(ltoken_vector[l_rec_idx], rtoken_vector[r_rec_idx],
-                                              lindex_vector[l_rec_idx], rindex_vector[r_rec_idx],
-                                              0, 0, reuse_info, offset_of_field_num)
-
-                        if active_dict.count(l_rec_idx) and active_dict[l_rec_idx].count(r_rec_idx):
-                            active_dict[l_rec_idx].erase(r_rec_idx)
-
-                        overlap = reuse_info.overlap
-                        sim = overlap * 1.0 / (l_len + r_len - overlap)
-                        if topk_heap.size() == output_size:
-                            if topk_heap.top().sim < sim:
-                                topk_heap.pop()
-                                topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))
-                        else:
-                            topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))
-
-                        if compared_set.count(l_rec_idx):
-                            compared_set[l_rec_idx].insert(r_rec_idx)
-                        else:
-                            compared_set[l_rec_idx] = uset[int]()
-                            compared_set[l_rec_idx].insert(r_rec_idx)
-
-                        if reuse_set.count(l_rec_idx):
-                            reuse_set[l_rec_idx][r_rec_idx] = reuse_info
-                        else:
-                            reuse_set[l_rec_idx] = umap[int, ReuseInfo]()
-                            reuse_set[l_rec_idx][r_rec_idx] = reuse_info
-
-                        total_compared_pairs += 1
+                    # elif ltoken_vector[l_rec_idx][l_tok_idx + 1] == rtoken_vector[r_rec_idx][r_tok_idx + 1]:
+                    #     cmps[1] += 1
+                    #     # printf("right2\n")
+                    #     reuse_info = ReuseInfo(0)
+                    #     # new_reuse_get_overlap(ltoken_vector[l_rec_idx], rtoken_vector[r_rec_idx],
+                    #     #                       lindex_vector[l_rec_idx], rindex_vector[r_rec_idx],
+                    #     #                       l_tok_idx, r_tok_idx, reuse_info, offset_of_field_num)
+                    #     #
+                    #     # if active_dict.count(l_rec_idx) and active_dict[l_rec_idx].count(r_rec_idx):
+                    #     #     bit_results = active_dict[l_rec_idx][r_rec_idx]
+                    #     #     active_dict[l_rec_idx].erase(r_rec_idx)
+                    #     #     value = bit_results & COUNT
+                    #     #     reuse_info.overlap += value
+                    #     #     for v in xrange(value):
+                    #     #         p = (bit_results & SHIFT_ARRAY[v]) >> (COUNT_BITS + FIELD_BITS * v)
+                    #     #         if reuse_info.map.count(p):
+                    #     #             reuse_info.map[p] += 1
+                    #     #         else:
+                    #     #             reuse_info.map[p] = 1
+                    #
+                    #     new_reuse_get_overlap(ltoken_vector[l_rec_idx], rtoken_vector[r_rec_idx],
+                    #                           lindex_vector[l_rec_idx], rindex_vector[r_rec_idx],
+                    #                           0, 0, reuse_info, offset_of_field_num)
+                    #
+                    #     if active_dict.count(l_rec_idx) and active_dict[l_rec_idx].count(r_rec_idx):
+                    #         active_dict[l_rec_idx].erase(r_rec_idx)
+                    #
+                    #     overlap = reuse_info.overlap
+                    #     sim = overlap * 1.0 / (l_len + r_len - overlap)
+                    #     if topk_heap.size() == output_size:
+                    #         if topk_heap.top().sim < sim:
+                    #             topk_heap.pop()
+                    #             topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))
+                    #     else:
+                    #         topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))
+                    #
+                    #     if compared_set.count(l_rec_idx):
+                    #         compared_set[l_rec_idx].insert(r_rec_idx)
+                    #     else:
+                    #         compared_set[l_rec_idx] = uset[int]()
+                    #         compared_set[l_rec_idx].insert(r_rec_idx)
+                    #
+                    #     if reuse_set.count(l_rec_idx):
+                    #         reuse_set[l_rec_idx][r_rec_idx] = reuse_info
+                    #     else:
+                    #         reuse_set[l_rec_idx] = umap[int, ReuseInfo]()
+                    #         reuse_set[l_rec_idx][r_rec_idx] = reuse_info
+                    #
+                    #     total_compared_pairs += 1
                     else:
                         # printf("right3\n")
                         if active_dict.count(l_rec_idx):
                             if active_dict[l_rec_idx].count(r_rec_idx):
                                 value = active_dict[l_rec_idx][r_rec_idx] & COUNT
                                 if value == prefix_match_max_size:
+                                    # cmps[2] += 1
                                     overlap = value
                                     reuse_info = ReuseInfo(0)
                                     # new_reuse_get_overlap(ltoken_vector[l_rec_idx], rtoken_vector[r_rec_idx],
@@ -760,6 +772,7 @@ cdef void new_topk_sim_join_record_impl(const vector[vector[int]]& ltoken_vector
                                    total_compared_pairs, topk_heap.top().sim, topk_heap.top().l_rec, topk_heap.top().r_rec,
                                    prefix_events.top().threshold, prefix_events.top().table_indicator,
                                    prefix_events.top().rec_idx, prefix_events.top().tok_idx)
+                            # printf("%d %d %d\n", cmps[0], cmps[1],cmps[2])
 
             if r_tok_idx + 1 < r_len:
                 threshold = min(1 - (r_tok_idx + 1 - prefix_match_max_size) * 1.0 / r_len, 1.0)
@@ -884,6 +897,8 @@ cdef void new_topk_sim_join_reuse_impl(const vector[vector[int]]& ltoken_vector,
     cdef int denom, lfield, rfield
     cdef pair[int, int] field_pair
 
+    cdef int reuse_count = 0
+
     # printf("checkpoint2\n")
 
     while prefix_events.size() > 0:
@@ -930,70 +945,70 @@ cdef void new_topk_sim_join_reuse_impl(const vector[vector[int]]& ltoken_vector,
                             topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))
 
                         total_compared_pairs += 1
-                    elif ltoken_vector[l_rec_idx][l_tok_idx + 1] == rtoken_vector[r_rec_idx][r_tok_idx + 1]:
-                        if reuse_set.count(l_rec_idx) and reuse_set[l_rec_idx].count(r_rec_idx):
-                            reuse_info = reuse_set[l_rec_idx][r_rec_idx]
-                            overlap = reuse_info.overlap
-                            denom = l_len + r_len - overlap
-                            # if l_rec_idx == 3482 and r_rec_idx == 4047:
-                            #     printf("left2.1\n")
-                            #     printf("%d %d %d %d\n", reuse_info.overlap, l_len, r_len, denom)
-                            #     for field_pair in reuse_info.map:
-                            #         printf("%d %d ", field_pair.first, field_pair.second)
-                            #     printf("\n")
-                            if denom <= 0 or topk_heap.size() < output_size or \
-                                    overlap * 1.0 / denom > topk_heap.top().sim:
-                                for field_pair in reuse_info.map:
-                                    lfield = field_pair.first / offset_of_field_num
-                                    rfield = field_pair.first % offset_of_field_num
-                                    if not remained_fields.count(lfield) or not remained_fields.count(rfield):
-                                        overlap -= field_pair.second
-                                sim = overlap * 1.0 / (l_len + r_len - overlap)
-                                if topk_heap.size() == output_size:
-                                    if topk_heap.top().sim < sim:
-                                        topk_heap.pop()
-                                        topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))
-                                else:
-                                    topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))
-
-                            if compared_set.count(l_rec_idx):
-                                compared_set[l_rec_idx].insert(r_rec_idx)
-                            else:
-                                compared_set[l_rec_idx] = uset[int]()
-                                compared_set[l_rec_idx].insert(r_rec_idx)
-
-                            if active_dict.count(l_rec_idx) and active_dict[l_rec_idx].count(r_rec_idx):
-                                active_dict[l_rec_idx].erase(r_rec_idx)
-
-                        else:
-                            # overlap = new_get_overlap(ltoken_vector[l_rec_idx], rtoken_vector[r_rec_idx],
-                            #                           l_tok_idx, r_tok_idx)
-                            overlap = new_get_overlap(ltoken_vector[l_rec_idx], rtoken_vector[r_rec_idx],
-                                                      0, 0)
-
-                            # if l_rec_idx == 3482 and r_rec_idx == 4047:
-                            #     printf("left2.2\n")
-                            #     printf("%d\n", overlap)
-
-                            if active_dict.count(l_rec_idx) and active_dict[l_rec_idx].count(r_rec_idx):
-                                # overlap += active_dict[l_rec_idx][r_rec_idx]
-                                active_dict[l_rec_idx].erase(r_rec_idx)
-
-                            sim = overlap * 1.0 / (l_len + r_len - overlap)
-                            if topk_heap.size() == output_size:
-                                if topk_heap.top().sim < sim:
-                                    topk_heap.pop()
-                                    topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))
-                            else:
-                                topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))
-
-                            if compared_set.count(l_rec_idx):
-                                compared_set[l_rec_idx].insert(r_rec_idx)
-                            else:
-                                compared_set[l_rec_idx] = uset[int]()
-                                compared_set[l_rec_idx].insert(r_rec_idx)
-
-                        total_compared_pairs += 1
+                    # elif ltoken_vector[l_rec_idx][l_tok_idx + 1] == rtoken_vector[r_rec_idx][r_tok_idx + 1]:
+                    #     if reuse_set.count(l_rec_idx) and reuse_set[l_rec_idx].count(r_rec_idx):
+                    #         reuse_info = reuse_set[l_rec_idx][r_rec_idx]
+                    #         overlap = reuse_info.overlap
+                    #         denom = l_len + r_len - overlap
+                    #         # if l_rec_idx == 3482 and r_rec_idx == 4047:
+                    #         #     printf("left2.1\n")
+                    #         #     printf("%d %d %d %d\n", reuse_info.overlap, l_len, r_len, denom)
+                    #         #     for field_pair in reuse_info.map:
+                    #         #         printf("%d %d ", field_pair.first, field_pair.second)
+                    #         #     printf("\n")
+                    #         if denom <= 0 or topk_heap.size() < output_size or \
+                    #                 overlap * 1.0 / denom > topk_heap.top().sim:
+                    #             for field_pair in reuse_info.map:
+                    #                 lfield = field_pair.first / offset_of_field_num
+                    #                 rfield = field_pair.first % offset_of_field_num
+                    #                 if not remained_fields.count(lfield) or not remained_fields.count(rfield):
+                    #                     overlap -= field_pair.second
+                    #             sim = overlap * 1.0 / (l_len + r_len - overlap)
+                    #             if topk_heap.size() == output_size:
+                    #                 if topk_heap.top().sim < sim:
+                    #                     topk_heap.pop()
+                    #                     topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))
+                    #             else:
+                    #                 topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))
+                    #
+                    #         if compared_set.count(l_rec_idx):
+                    #             compared_set[l_rec_idx].insert(r_rec_idx)
+                    #         else:
+                    #             compared_set[l_rec_idx] = uset[int]()
+                    #             compared_set[l_rec_idx].insert(r_rec_idx)
+                    #
+                    #         if active_dict.count(l_rec_idx) and active_dict[l_rec_idx].count(r_rec_idx):
+                    #             active_dict[l_rec_idx].erase(r_rec_idx)
+                    #
+                    #     else:
+                    #         # overlap = new_get_overlap(ltoken_vector[l_rec_idx], rtoken_vector[r_rec_idx],
+                    #         #                           l_tok_idx, r_tok_idx)
+                    #         overlap = new_get_overlap(ltoken_vector[l_rec_idx], rtoken_vector[r_rec_idx],
+                    #                                   0, 0)
+                    #
+                    #         # if l_rec_idx == 3482 and r_rec_idx == 4047:
+                    #         #     printf("left2.2\n")
+                    #         #     printf("%d\n", overlap)
+                    #
+                    #         if active_dict.count(l_rec_idx) and active_dict[l_rec_idx].count(r_rec_idx):
+                    #             # overlap += active_dict[l_rec_idx][r_rec_idx]
+                    #             active_dict[l_rec_idx].erase(r_rec_idx)
+                    #
+                    #         sim = overlap * 1.0 / (l_len + r_len - overlap)
+                    #         if topk_heap.size() == output_size:
+                    #             if topk_heap.top().sim < sim:
+                    #                 topk_heap.pop()
+                    #                 topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))
+                    #         else:
+                    #             topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))
+                    #
+                    #         if compared_set.count(l_rec_idx):
+                    #             compared_set[l_rec_idx].insert(r_rec_idx)
+                    #         else:
+                    #             compared_set[l_rec_idx] = uset[int]()
+                    #             compared_set[l_rec_idx].insert(r_rec_idx)
+                    #
+                    #     total_compared_pairs += 1
                     else:
                         # printf("left3\n")
                         if active_dict.count(l_rec_idx):
@@ -1004,6 +1019,7 @@ cdef void new_topk_sim_join_reuse_impl(const vector[vector[int]]& ltoken_vector,
                                 if value == prefix_match_max_size:
                                     # printf("left3.1.1.1\n")
                                     if reuse_set.count(l_rec_idx) and reuse_set[l_rec_idx].count(r_rec_idx):
+                                        reuse_count += 1
                                         reuse_info = reuse_set[l_rec_idx][r_rec_idx]
                                         overlap = reuse_info.overlap
                                         denom = l_len + r_len - overlap
@@ -1121,65 +1137,65 @@ cdef void new_topk_sim_join_reuse_impl(const vector[vector[int]]& ltoken_vector,
                             topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))
 
                         total_compared_pairs += 1
-                    elif ltoken_vector[l_rec_idx][l_tok_idx + 1] == rtoken_vector[r_rec_idx][r_tok_idx + 1]:
-                        if reuse_set.count(l_rec_idx) and reuse_set[l_rec_idx].count(r_rec_idx):
-                            reuse_info = reuse_set[l_rec_idx][r_rec_idx]
-                            overlap = reuse_info.overlap
-                            denom = l_len + r_len - overlap
-                            # if l_rec_idx == 3482 and r_rec_idx == 4047:
-                            #     printf("right2.1\n")
-                            #     printf("%d %d %d %d\n", reuse_info.overlap, l_len, r_len, denom)
-                            #     for field_pair in reuse_info.map:
-                            #         printf("%d %d ", field_pair.first, field_pair.second)
-                            #     printf("\n")
-                            if denom <= 0 or topk_heap.size() < output_size or \
-                                    overlap * 1.0 / denom > topk_heap.top().sim:
-                                for field_pair in reuse_info.map:
-                                    lfield = field_pair.first / offset_of_field_num
-                                    rfield = field_pair.first % offset_of_field_num
-                                    if not remained_fields.count(lfield) or not remained_fields.count(rfield):
-                                        overlap -= field_pair.second
-                                sim = overlap * 1.0 / (l_len + r_len - overlap)
-                                if topk_heap.size() == output_size:
-                                    if topk_heap.top().sim < sim:
-                                        topk_heap.pop()
-                                        topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))
-                                else:
-                                    topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))
-
-                            if compared_set.count(l_rec_idx):
-                                compared_set[l_rec_idx].insert(r_rec_idx)
-                            else:
-                                compared_set[l_rec_idx] = uset[int]()
-                                compared_set[l_rec_idx].insert(r_rec_idx)
-
-                            if active_dict.count(l_rec_idx) and active_dict[l_rec_idx].count(r_rec_idx):
-                                active_dict[l_rec_idx].erase(r_rec_idx)
-                        else:
-                            overlap = new_get_overlap(ltoken_vector[l_rec_idx], rtoken_vector[r_rec_idx],
-                                                      0, 0)
-                            # if l_rec_idx == 3482 and r_rec_idx == 4047:
-                            #     printf("right2.2\n")
-                            #     printf("%d\n", overlap)
-                            if active_dict.count(l_rec_idx) and active_dict[l_rec_idx].count(r_rec_idx):
-                                # overlap += active_dict[l_rec_idx][r_rec_idx]
-                                active_dict[l_rec_idx].erase(r_rec_idx)
-
-                            sim = overlap * 1.0 / (l_len + r_len - overlap)
-                            if topk_heap.size() == output_size:
-                                if topk_heap.top().sim < sim:
-                                    topk_heap.pop()
-                                    topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))
-                            else:
-                                topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))
-
-                            if compared_set.count(l_rec_idx):
-                                compared_set[l_rec_idx].insert(r_rec_idx)
-                            else:
-                                compared_set[l_rec_idx] = uset[int]()
-                                compared_set[l_rec_idx].insert(r_rec_idx)
-
-                        total_compared_pairs += 1
+                    # elif ltoken_vector[l_rec_idx][l_tok_idx + 1] == rtoken_vector[r_rec_idx][r_tok_idx + 1]:
+                    #     if reuse_set.count(l_rec_idx) and reuse_set[l_rec_idx].count(r_rec_idx):
+                    #         reuse_info = reuse_set[l_rec_idx][r_rec_idx]
+                    #         overlap = reuse_info.overlap
+                    #         denom = l_len + r_len - overlap
+                    #         # if l_rec_idx == 3482 and r_rec_idx == 4047:
+                    #         #     printf("right2.1\n")
+                    #         #     printf("%d %d %d %d\n", reuse_info.overlap, l_len, r_len, denom)
+                    #         #     for field_pair in reuse_info.map:
+                    #         #         printf("%d %d ", field_pair.first, field_pair.second)
+                    #         #     printf("\n")
+                    #         if denom <= 0 or topk_heap.size() < output_size or \
+                    #                 overlap * 1.0 / denom > topk_heap.top().sim:
+                    #             for field_pair in reuse_info.map:
+                    #                 lfield = field_pair.first / offset_of_field_num
+                    #                 rfield = field_pair.first % offset_of_field_num
+                    #                 if not remained_fields.count(lfield) or not remained_fields.count(rfield):
+                    #                     overlap -= field_pair.second
+                    #             sim = overlap * 1.0 / (l_len + r_len - overlap)
+                    #             if topk_heap.size() == output_size:
+                    #                 if topk_heap.top().sim < sim:
+                    #                     topk_heap.pop()
+                    #                     topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))
+                    #             else:
+                    #                 topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))
+                    #
+                    #         if compared_set.count(l_rec_idx):
+                    #             compared_set[l_rec_idx].insert(r_rec_idx)
+                    #         else:
+                    #             compared_set[l_rec_idx] = uset[int]()
+                    #             compared_set[l_rec_idx].insert(r_rec_idx)
+                    #
+                    #         if active_dict.count(l_rec_idx) and active_dict[l_rec_idx].count(r_rec_idx):
+                    #             active_dict[l_rec_idx].erase(r_rec_idx)
+                    #     else:
+                    #         overlap = new_get_overlap(ltoken_vector[l_rec_idx], rtoken_vector[r_rec_idx],
+                    #                                   0, 0)
+                    #         # if l_rec_idx == 3482 and r_rec_idx == 4047:
+                    #         #     printf("right2.2\n")
+                    #         #     printf("%d\n", overlap)
+                    #         if active_dict.count(l_rec_idx) and active_dict[l_rec_idx].count(r_rec_idx):
+                    #             # overlap += active_dict[l_rec_idx][r_rec_idx]
+                    #             active_dict[l_rec_idx].erase(r_rec_idx)
+                    #
+                    #         sim = overlap * 1.0 / (l_len + r_len - overlap)
+                    #         if topk_heap.size() == output_size:
+                    #             if topk_heap.top().sim < sim:
+                    #                 topk_heap.pop()
+                    #                 topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))
+                    #         else:
+                    #             topk_heap.push(TopPair(sim, l_rec_idx, r_rec_idx))
+                    #
+                    #         if compared_set.count(l_rec_idx):
+                    #             compared_set[l_rec_idx].insert(r_rec_idx)
+                    #         else:
+                    #             compared_set[l_rec_idx] = uset[int]()
+                    #             compared_set[l_rec_idx].insert(r_rec_idx)
+                    #
+                    #     total_compared_pairs += 1
                     else:
                         # printf("right3\n")
                         if active_dict.count(l_rec_idx):
@@ -1187,6 +1203,7 @@ cdef void new_topk_sim_join_reuse_impl(const vector[vector[int]]& ltoken_vector,
                                 value = active_dict[l_rec_idx][r_rec_idx]
                                 if value == prefix_match_max_size:
                                     if reuse_set.count(l_rec_idx) and reuse_set[l_rec_idx].count(r_rec_idx):
+                                        reuse_count += 1
                                         reuse_info = reuse_set[l_rec_idx][r_rec_idx]
                                         overlap = reuse_info.overlap
                                         denom = l_len + r_len - overlap
@@ -1293,6 +1310,7 @@ cdef void new_topk_sim_join_reuse_impl(const vector[vector[int]]& ltoken_vector,
 
 
     printf("number of compared pairs: %ld\n", total_compared_pairs)
+    printf("number of reused pairs: %d\n", reuse_count)
     # printf("checkpoint4\n")
 
     return

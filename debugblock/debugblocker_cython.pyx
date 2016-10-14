@@ -39,7 +39,7 @@ include "original_topk_sim_join.pyx"
 PREFIX_MATCH_MAX_SIZE = 4
 PREFIX_MULTIPLY_FACTOR = 5
 OFFSET_OF_FIELD_NUM = 10
-MINIMAL_NUM_FIELDS = 1
+MINIMAL_NUM_FIELDS = 0
 FIELD_REMOVE_RATIO = 0.1
 
 def debugblocker_cython(lrecord_token_list, rrecord_token_list,
@@ -104,6 +104,7 @@ cdef void generate_recom_lists(vector[vector[int]]& ltoken_vector, vector[vector
         print 'too few lists:', field_list
         return
 
+
     start = time.time()
     generate_recom_list_for_config(ltoken_vector, rtoken_vector,
                                    lindex_vector, rindex_vector,
@@ -143,6 +144,7 @@ cdef void generate_recom_lists(vector[vector[int]]& ltoken_vector, vector[vector
         removed_field_index = field_list.size() - 1
     print 'required remove-field ratio:', ratio
     print 'actual max ratio:', max_ratio
+
 
     cdef vector[vector[TopPair]] temp_lists
     cdef vector[vector[vector[int]]] ltoken_vector_parallel
